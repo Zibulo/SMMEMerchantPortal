@@ -9,12 +9,11 @@ import vfs.automation.core.utilities.SystemUtilities;
 @CucumberOptions(
         monochrome = true,
         features = "src/test/resources/features/web",
-        tags = "@merchantweblogin,@merchantweblogoff",
+        tags = "@merchantOnBoardingFullJenourney",
         glue = "za.co.vodacom.stepDefinitions",
         plugin = {"pretty",
                 "json:target/report/json/cucumber.json",
-                "junit:target/report/TEST-za.co.vodacom.runners.Runner.xml",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
+                "junit:target/report/TEST-za.co.vodacom.runners.Runner.xml"})
 public class Runner{
     @Before
     public void setup()throws Exception{

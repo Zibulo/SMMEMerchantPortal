@@ -9,6 +9,6 @@ public class Logoff {
 
     public Logoff(WebDriver driver) {PageFactory.initElements(driver,this);}
 
-    @FindBy(xpath="")
-    public WebElement logout;
+    @FindBy(xpath ="//*[@id=\"root\"]/div/div[2]/div/aside/ul/li[8]/a")
+    public WebElement Submitlogoff;
 }

@@ -10,6 +10,7 @@ import vfs.automation.core.utilities.SystemUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MerchantChangePassword extends SystemUtilities {
 
@@ -22,7 +23,7 @@ public class MerchantChangePassword extends SystemUtilities {
         headerList.add(origin);
         Headers headers = new Headers(headerList);
 
-        return restInteractionPoint.post(headers,endpoint, changePassword(userId,oldPassword,newPassword));
+        return restInteractionPoint.post((Map<String, String>) headers,endpoint, changePassword(userId,oldPassword,newPassword));
     }
 
     private String changePassword(String userId,String oldPassword, String newPassword) throws Exception {

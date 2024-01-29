@@ -3,7 +3,6 @@ package za.co.vodacom.api.apiFeatures;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import org.json.JSONObject;
 import vfs.automation.core.api.RestInteractionPoint;
 import vfs.automation.core.messageTypes.JSONBuilder;
@@ -11,6 +10,7 @@ import vfs.automation.core.utilities.SystemUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MerchantForgotPassword extends SystemUtilities {
 
@@ -24,7 +24,7 @@ public class MerchantForgotPassword extends SystemUtilities {
         headerList.add(origin);
         Headers headers = new Headers(headerList);
 
-        return restInteractionPoint.post(headers,endpoint, forgetPassword(userName));
+        return restInteractionPoint.post((Map<String, String>) headers,endpoint, forgetPassword(userName));
     }
 
     private String forgetPassword(String userId) throws Exception {

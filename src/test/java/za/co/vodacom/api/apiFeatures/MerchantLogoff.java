@@ -3,7 +3,6 @@ package za.co.vodacom.api.apiFeatures;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
-import net.bytebuddy.implementation.bind.annotation.Origin;
 import org.json.JSONObject;
 import vfs.automation.core.api.RestInteractionPoint;
 import vfs.automation.core.messageTypes.JSONBuilder;
@@ -11,6 +10,7 @@ import vfs.automation.core.utilities.SystemUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class MerchantLogoff extends SystemUtilities {
@@ -36,7 +36,7 @@ public class MerchantLogoff extends SystemUtilities {
         //
         // String headers = "Origin,http://localhost:8080";
 
-        return restInteractionPoint.post(headers,endpoint,LogoffToSMMEPortal(userId));
+        return restInteractionPoint.post((Map<String, String>) headers,endpoint,LogoffToSMMEPortal(userId));
     }
 
     private String LogoffToSMMEPortal(String userId) {

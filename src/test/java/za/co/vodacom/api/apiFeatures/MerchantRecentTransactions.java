@@ -3,12 +3,12 @@ package za.co.vodacom.api.apiFeatures;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import vfs.automation.core.api.RestInteractionPoint;
 import vfs.automation.core.utilities.SystemUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class MerchantRecentTransactions extends SystemUtilities {
 
@@ -46,7 +46,7 @@ public class MerchantRecentTransactions extends SystemUtilities {
         headerList.add(origin);
         Headers headers = new Headers(headerList);
 
-        return  restInteractionPoint.get(headers,endpoint);
+        return  restInteractionPoint.get((Map<String, String>) headers,endpoint);
 
 
     }

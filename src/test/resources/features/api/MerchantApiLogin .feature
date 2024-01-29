@@ -1,4 +1,4 @@
-@merchantLogin
+@merchantApiLogin
 
 Feature: SMME Login
 
@@ -8,7 +8,7 @@ Feature: SMME Login
 
     Examples:
       | TC | ScenarioDescription         | ScenarioType | userName        | passWord | appChannel | ExpectedResponseCode |
-      | 1  | SMME valid credential login | Positive     | VPS475074793423 | MzY0MA==     | Web        | 200                  |
+      | 1  | SMME valid credential login | Positive     | VPS397935709375 | Password001!     | Web        | 200                  |
 
 
 
