@@ -1,0 +1,242 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "line": 5,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 20838291200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The webBrowser is launched",
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.theWebBrowserIsLaunched()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2024-02-01T11:03:13.121Z",
+        "line": 20,
+        "name": "\"Merchant onBoard Chop-Chop Device\"",
+        "description": "",
+        "id": "onboarding-new-merchant-choose-pos-option;\"\u003cscenariodescription\u003e\";;2",
+        "after": [
+          {
+            "result": {
+              "duration": 1217744600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.afterTest(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 10342351400,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I am on the merchant landing page \"Merchant onBoard Chop-Chop Device\"\"SMME Merchant Login\"\"smmeURL\"\"Itumeleng Phale\"\"\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Merchant onBoard Chop-Chop Device\"",
+                  "offset": 34
+                },
+                {
+                  "val": "\"SMME Merchant Login\"",
+                  "offset": 69
+                },
+                {
+                  "val": "\"smmeURL\"",
+                  "offset": 90
+                },
+                {
+                  "val": "\"Itumeleng Phale\"",
+                  "offset": 99
+                },
+                {
+                  "val": "\"\"",
+                  "offset": 116
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnMerchantLandingLoginPage(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6092710100,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "I Choose Avalaible POS Option \"Chop-Chop\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Chop-Chop\"",
+                  "offset": 30
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 20075330400,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "Submit Merchant details \"Business owner/director\" \"Ecomm Automator\" \"VFS Ecomm\" \"Itumeleng.Phale@vodacom.co.za\" \"0829973883\" \"South African\" \"0104041074089\" \"4586 Isacholo Crescent\" \"0157\" \"Amberville\" \"Centurion\" \"Gauteng\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Business owner/director\"",
+                  "offset": 24
+                },
+                {
+                  "val": "\"Ecomm Automator\"",
+                  "offset": 50
+                },
+                {
+                  "val": "\"VFS Ecomm\"",
+                  "offset": 68
+                },
+                {
+                  "val": "\"Itumeleng.Phale@vodacom.co.za\"",
+                  "offset": 80
+                },
+                {
+                  "val": "\"0829973883\"",
+                  "offset": 112
+                },
+                {
+                  "val": "\"South African\"",
+                  "offset": 125
+                },
+                {
+                  "val": "\"0104041074089\"",
+                  "offset": 141
+                },
+                {
+                  "val": "\"4586 Isacholo Crescent\"",
+                  "offset": 157
+                },
+                {
+                  "val": "\"0157\"",
+                  "offset": 182
+                },
+                {
+                  "val": "\"Amberville\"",
+                  "offset": 189
+                },
+                {
+                  "val": "\"Centurion\"",
+                  "offset": 202
+                },
+                {
+                  "val": "\"Gauteng\"",
+                  "offset": 214
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5049500900,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "I Then Complete Device Order",
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iThenCompleteDeviceOrder()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 24346908400,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "I Provide Company and Personal Details \"Company\" \"No\" \"150000\" \"IBP Testing VFS\" \"Yes\" \"123456789012\" \"Agricultural Cooperatives\" \"Ditekong Software Testing\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Company\"",
+                  "offset": 39
+                },
+                {
+                  "val": "\"No\"",
+                  "offset": 49
+                },
+                {
+                  "val": "\"150000\"",
+                  "offset": 54
+                },
+                {
+                  "val": "\"IBP Testing VFS\"",
+                  "offset": 63
+                },
+                {
+                  "val": "\"Yes\"",
+                  "offset": 81
+                },
+                {
+                  "val": "\"123456789012\"",
+                  "offset": 87
+                },
+                {
+                  "val": "\"Agricultural Cooperatives\"",
+                  "offset": 102
+                },
+                {
+                  "val": "\"Ditekong Software Testing\"",
+                  "offset": 130
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iProvideCompanyAndPersonalDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@merchantOnBoardingFullJenourney"
+          }
+        ]
+      }
+    ],
+    "name": "OnBoarding New Merchant Choose POS Option",
+    "description": "",
+    "id": "onboarding-new-merchant-choose-pos-option",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/web/merchantOnBoardingFullJourney.feature",
+    "tags": [
+      {
+        "name": "@merchantOnBoardingFullJenourney",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

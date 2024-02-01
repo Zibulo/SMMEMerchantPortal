@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="88.982">
+    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Merchant onBoard Chop-Chop Device&quot;" time="88.249">
+        <system-out><![CDATA[Given The webBrowser is launched............................................passed
+Given I am on the merchant landing page "Merchant onBoard Chop-Chop Device""SMME Merchant Login""smmeURL""Itumeleng Phale""".passed
+And I Choose Avalaible POS Option "Chop-Chop"...............................passed
+And Submit Merchant details "Business owner/director" "Ecomm Automator" "VFS Ecomm" "Itumeleng.Phale@vodacom.co.za" "0829973883" "South African" "0104041074089" "4586 Isacholo Crescent" "0157" "Amberville" "Centurion" "Gauteng".passed
+And I Then Complete Device Order............................................passed
+And I Provide Company and Personal Details "Company" "No" "150000" "IBP Testing VFS" "Yes" "123456789012" "Agricultural Cooperatives" "Ditekong Software Testing".passed
+]]></system-out>
+    </testcase>
+</testsuite>
