@@ -86,8 +86,21 @@ public class Login {
     public WebElement acctSetUpGetStartedBtn;
     @FindBy(xpath="//input[@automationid='Revamp_Business_Details_Company_Type']")
     public WebElement companyType;
-    @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[2]")
+
+
+    @FindBy(xpath="//div[@automationid='undefined_Field_Item_Street_Sole_Proprietorship_undefined' and contains(@class, 'autocomplete-item')]")
+    public WebElement soleProTypeOption;
+
+    @FindBy(xpath="//div[@automationid='undefined_Field_Item_Street_Partnership_undefined' and contains(@class, 'autocomplete-item')]")
+    public WebElement partnershipTypeOption;
+    @FindBy(xpath="//div[@automationid='undefined_Field_Item_Street_Company_undefined' and contains(@class, 'autocomplete-item')]")
     public WebElement companyTypeOption;
+    @FindBy(xpath=" //*[@id='float-label']/div/div/div[2]/div[4]")
+    public WebElement npoTypeOption;
+    @FindBy(xpath=" //*[@id='float-label']/div/div/div[2]/div[6]")
+    public WebElement trustTypeOption;
+    @FindBy(xpath=" //div[@automationid='undefined_Field_Item_Street_Close_Corporation_undefined' and contains(@class, 'autocomplete-item')]")
+    public WebElement closeTypeOption;
     @FindBy(xpath="//button[@automationid='Revamp_Setup_Your_Account_Get_Started_Button']")
     public WebElement businessMonthlIncome;
 
@@ -104,12 +117,14 @@ public class Login {
     public WebElement companyRegNo;
     @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/article/section/input")
     public WebElement businessCategory;
+
+    @FindBy(className = "search-results-container")
+    public WebElement businessCategorySearchResults;
+    @FindBy(xpath = "//li[@class='search-results-container']")
+    public WebElement selBusinessCat;
     @FindBy(xpath="//input[@name='businessCategory.name' and @class='search-box false' and contains(text(), 'Agricultural Cooperatives')]\n")
     public WebElement businessCategoryClick;
-
-    @FindBy(xpath="//button[@automationid='Revamp_Footer_Next_Button']")
-    public WebElement  detailsNextBtn;
-    @FindBy(xpath="//article[class='search-results-container' and contains(text(), 'Agricultural Cooperatives')]\n")
+    @FindBy(xpath="//article[class='search-results-container' and contains(text(), 'Agricultural Cooperatives')]")
     public WebElement businessCategoryClick1;
 
     @FindBy(xpath="//button[@automationid='Revamp_Order_Summary_Confirm_Submission_Submit_Button']")
@@ -170,5 +185,66 @@ public class Login {
 
     @FindBy(xpath="")
     public WebElement merchantWeb;
+
+    @FindBy(className = "drop-down-closed-right-icon icon-drop-down-arrow-reskin")
+    public WebElement partnersIdTypeFld;
+    @FindBy(className ="drop-down-closed-right-icon icon-drop-down-arrow-reskin")
+    public  WebElement partnersIdType;
+
+    @FindBy(name = "directors[0].idNumber")
+    public WebElement partnerID;
+
+    @FindBy(xpath ="//button[@automationid='Revamp_Footer_Next_Button']")
+    public WebElement nextBtn;
+    @FindBy(xpath = "//button[@automationid='Revamp_Footer_Confirm_Button']")
+    public WebElement confirmBtn;
+    @FindBy(name = "accountHolderFullName")
+    public WebElement accountNme;
+    @FindBy(xpath = "//*[@id='float-label']/div/div/div/input")
+    public  WebElement bankNameFld;
+    @FindBy(xpath = "//*[@automationid='undefined_Field_Item_Street_Nedbank_undefined']")
+    public WebElement selBankName;
+    @FindBy(name = "accountNumber")
+    public WebElement accountNum;
+    @FindBy(xpath = "//*[@automationid='Revamp_Bank_Details_Account_Type']")
+    public WebElement accountTypeFld;
+    @FindBy(xpath = "//*[@automationid='undefined_Field_Item_Street_Current_Cheque_Account_undefined']")
+    public WebElement selAccountType;
+    @FindBy(className = "selfie-container")
+    public WebElement openCamDiv;
+    @FindBy(xpath ="//button[contains(@class, 'open-webcam-button')]")
+    public WebElement openCamera;
+    @FindBy(xpath = "//*[@id='root']/div/div[1]/div/section[1]/article/div[1]/div[1]/div[2]/div[1]/div[3]/div/div/div/button")
+    public WebElement takePhoto;
+    @FindBy(xpath = "//*[@automationid='Revamp_Personal_Selfie_Image_Capture_Capture_Button']")
+    public WebElement takeSelfie;
+    @FindBy(xpath = "//h3[text()='1. SA ID / Passport']")
+    public WebElement uploadID;
+    @FindBy(xpath = "//h3[contains(text(), '2. Proof of banking')]")
+    public WebElement uploadBanking;
+    @FindBy(xpath = " //h3[contains(text(), '3. Resolution letter')]")
+    public WebElement resolutionLetter;
+    @FindBy(xpath = "  //h3[contains(text(), '3. Trust Resolution letter')]")
+    public WebElement trustResolutionLetter;
+
+    @FindBy(xpath = "//button[@automationid='Revamp_Upload_Documents_File_Upload_ID_Passport_Upload_Button']")
+    public WebElement uploadbutton;
+
+    @FindBy(xpath = "//*[@id='float-label']/div/div/div/input")
+    public WebElement idFIELD;
+    @FindBy(xpath = "  //div[contains(@automationid, 'undefined_Field_Item_Street_') and contains(@automationid, '_undefined') and contains(@class, 'autocomplete-item') and contains(@class, 'has-padding-x-5') and contains(@class, 'has-padding-y-7') and contains(@class, 'light')][1]")
+    public WebElement ID1;
+    @FindBy(xpath = "  //div[contains(@automationid, 'undefined_Field_Item_Street_') and contains(@automationid, '_undefined') and contains(@class, 'autocomplete-item') and contains(@class, 'has-padding-x-5') and contains(@class, 'has-padding-y-7') and contains(@class, 'light')][2]")
+    public WebElement ID2;
+    @FindBy(xpath = " //h3[contains(text(), '4. NPO founding documentation')]")
+    public WebElement uploadnpofund;
+    @FindBy(xpath = " //h3[contains(text(), '4. Trust deed')]")
+    public WebElement uploadtrustdeed;
+    @FindBy(xpath = "//*[@id='root']/div/div[1]/div/section[1]/div/section[2]/div[1]/div/section/h3")
+    public WebElement uploadIDT;
+
+
+
+
 
 }

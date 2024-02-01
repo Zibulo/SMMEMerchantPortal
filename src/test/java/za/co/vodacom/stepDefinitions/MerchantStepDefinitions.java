@@ -291,15 +291,42 @@ public class MerchantStepDefinitions extends SystemUtilities {
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
 
-    @And("I tell about partners")
-    public void iTellAboutPartners() throws Exception {
-
+    @And("I Provide the Partners Details {string}{string}")
+    public void iProvideThePartnersDetails(String companytype, String  partnersID) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        Thread.sleep(3500);
-        merchantTransactions.tellAboutPartners();
-        extentTest.log(LogStatus.PASS, "Pos Option is Selected");
+        merchantTransactions.providePartnersDetails(companytype,partnersID);
+        extentTest.log(LogStatus.PASS, "Partners Details Entered successfully");
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
+    @And("I Provide the Banking Details {string} {string} {string}")
+    public void iProvideBankingDetails(String companytype,String accountName, String accountNumber) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.provideBankingDetails(companytype,accountName, accountNumber);
+        extentTest.log(LogStatus.PASS, "Banking Details Entered successfully");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
+
+    @And("I take a selfie")
+    public void takeSelfie() throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.takeASelfie();
+        extentTest.log(LogStatus.PASS, "Selfie taken successfully");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+
+    }
+
+    @And("I  upload documents {string}")
+    public void iUploadDocuments(String companytype) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.uploadDoc(companytype);
+        extentTest.log(LogStatus.PASS, "Documents uploaded successfully");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+
+    }
+
 }
 

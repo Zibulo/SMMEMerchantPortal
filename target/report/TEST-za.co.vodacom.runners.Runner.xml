@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="104.276">
+    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Merchant onBoard Chop-Chop Device&quot;" time="104.069">
+        <failure message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id='root']/div/div[1]/div/section[1]/div/section[2]/div[1]/div[1]/div/div/p&quot;}&#10;  (Session info: chrome=121.0.6167.140)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-LM', ip: '192.168.208.170', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '19.0.2'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.140, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\mutsl001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 6505cbda8fc021fbb6584291392d9dd1&#10;*** Element info: {Using=xpath, value=//*[@id='root']/div/div[1]/div/section[1]/div/section[2]/div[1]/div[1]/div/div/p}" type="org.openqa.selenium.NoSuchElementException"><![CDATA[Given The webBrowser is launched............................................passed
+Given I am on the merchant landing page "Merchant onBoard Chop-Chop Device""SMME Merchant Login""smmeURL""Livhuwani Mutshafa""".passed
+And I Choose Avalaible POS Option "Chop-Chop"...............................passed
+And Submit Merchant details "Business owner/director" "Ecomm Automator" "VFS Ecomm" "livhuwani.mutshafa@vcontractor.co.za" "0829973883" "South African" "0104041074089" "4586 Isacholo Crescent" "0157" "Amberville" "Centurion" "Gauteng".passed
+And I Then Complete Device Order............................................passed
+And I Provide Company and Personal Details "Sole Proprietorship" "No" "150000" "IBP Testing VFS" "Yes" "123456789012" "Agricultural Cooperatives" "Ditekong Software Testing".passed
+And I Provide the Partners Details "Sole Proprietorship""6508267473086".....passed
+And I Provide the Banking Details "Sole Proprietorship" "TM Ngwane" "1234567890".passed
+And I take a selfie.........................................................passed
+And I  upload documents "Sole Proprietorship"...............................failed
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='root']/div/div[1]/div/section[1]/div/section[2]/div[1]/div[1]/div/div/p"}
+  (Session info: chrome=121.0.6167.140)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ILAB-LM', ip: '192.168.208.170', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '19.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.140, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\mutsl001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63315}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6505cbda8fc021fbb6584291392d9dd1
+*** Element info: {Using=xpath, value=//*[@id='root']/div/div[1]/div/section[1]/div/section[2]/div[1]/div[1]/div/div/p}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy20.click(Unknown Source)
+	at vfs.automation.core.utilities.WebDriverUtilities.clickElement(WebDriverUtilities.java:123)
+	at za.co.vodacom.web.webFeatures.MerchantTransactions.uploadDoc(MerchantTransactions.java:310)
+	at za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iUploadDocuments(MerchantStepDefinitions.java:324)
+	at ✽.I  upload documents "Sole Proprietorship"(file:///C:/Users/mutsl001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/merchantOnBoardingFullJourney.feature:17)
+]]></failure>
+    </testcase>
+</testsuite>
