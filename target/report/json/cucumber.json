@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 20838291200,
+              "duration": 4849036200,
               "status": "passed"
             },
             "line": 6,
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "start_timestamp": "2024-02-01T11:03:13.121Z",
+        "start_timestamp": "2024-02-02T08:00:27.712Z",
         "line": 20,
         "name": "\"Merchant onBoard Chop-Chop Device\"",
         "description": "",
@@ -32,7 +32,7 @@
         "after": [
           {
             "result": {
-              "duration": 1217744600,
+              "duration": 536531900,
               "status": "passed"
             },
             "match": {
@@ -45,7 +45,7 @@
         "steps": [
           {
             "result": {
-              "duration": 10342351400,
+              "duration": 9556506600,
               "status": "passed"
             },
             "line": 9,
@@ -79,7 +79,7 @@
           },
           {
             "result": {
-              "duration": 6092710100,
+              "duration": 4299441400,
               "status": "passed"
             },
             "line": 10,
@@ -97,7 +97,7 @@
           },
           {
             "result": {
-              "duration": 20075330400,
+              "duration": 11833815900,
               "status": "passed"
             },
             "line": 11,
@@ -159,7 +159,7 @@
           },
           {
             "result": {
-              "duration": 5049500900,
+              "duration": 4013138800,
               "status": "passed"
             },
             "line": 12,
@@ -171,7 +171,7 @@
           },
           {
             "result": {
-              "duration": 24346908400,
+              "duration": 21415003100,
               "status": "passed"
             },
             "line": 13,

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="88.982">
-    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Merchant onBoard Chop-Chop Device&quot;" time="88.249">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="56.896">
+    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Merchant onBoard Chop-Chop Device&quot;" time="56.617">
         <system-out><![CDATA[Given The webBrowser is launched............................................passed
 Given I am on the merchant landing page "Merchant onBoard Chop-Chop Device""SMME Merchant Login""smmeURL""Itumeleng Phale""".passed
 And I Choose Avalaible POS Option "Chop-Chop"...............................passed
