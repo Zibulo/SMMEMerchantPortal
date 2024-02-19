@@ -220,7 +220,27 @@ public class Login {
     public WebElement takeSelfie;
     @FindBy(xpath = "//h3[text()='1. SA ID / Passport']")
     public WebElement uploadID;
-    @FindBy(xpath = "//h3[contains(text(), '2. Proof of banking')]")
+
+    @FindBy(xpath = "//input[@role='combobox']")
+    public WebElement selectIdType;
+    @FindBy(xpath = "//div[text()='Smart ID Card']")
+    public WebElement smartCard;
+
+    @FindBy(xpath = "//div[text()='Green Barcoded ID Book']")
+    public WebElement greenCard;
+
+    @FindBy(xpath = "//div[text()='Passport']")
+    public WebElement passport;
+
+    @FindBy(xpath = "//button[text()='Confirm']")
+    public WebElement confirmPhoto;
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement uploadIdType;
+    @FindBy(xpath = "//button[@type='button']")
+    public WebElement uploadPhoto;
+
+
+    @FindBy(xpath = "//img[@class='w-8 h-8' and @alt='upload']")
     public WebElement uploadBanking;
     @FindBy(xpath = " //h3[contains(text(), '3. Resolution letter')]")
     public WebElement resolutionLetter;

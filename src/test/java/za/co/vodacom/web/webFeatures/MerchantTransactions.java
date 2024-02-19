@@ -298,8 +298,10 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.nextBtn);
     }
 
+    //public void idtypeUpload(idDocumentType)
 
-    public void uploadDoc(String companytype) throws Exception {
+
+    public void uploadDoc(String companytype,String idDocumentType) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         fileupload up = new fileupload();
@@ -307,14 +309,56 @@ public class MerchantTransactions extends SystemUtilities {
         if (companytype.equalsIgnoreCase("Sole Proprietorship")) {
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
-            webDriverUtil.clickElement(login.uploadbutton);
+
+            if (idDocumentType.equalsIgnoreCase("smart card")) {
+                webDriverUtil.implicitWait(driver,30);
+                webDriverUtil.clickElement(login.selectIdType);
+                 Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+            }
+        else  if(idDocumentType.equalsIgnoreCase("green card")){
+                webDriverUtil.implicitWait(driver,30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+//                Thread.sleep(300);
+//                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//                webDriverUtil.implicitWait(driver, 60);
+//                JavascriptExecutor executor = (JavascriptExecutor)driver;
+//                executor.executeScript("arguments[0].scrollIntoView(true);", login.uploadBanking);
+////                webDriverUtil.clickElement(login.uploadBanking);
+//                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
+
+            }
+
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.implicitWait(driver, 90);
+            Thread.sleep(3000);
+
             webDriverUtil.clickElement(login.uploadBanking);
             up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
-
         }
         else if(companytype.equalsIgnoreCase("NPO")){
 
