@@ -240,7 +240,7 @@ public class Login {
     public WebElement uploadPhoto;
 
 
-    @FindBy(xpath = "//img[@class='w-8 h-8' and @alt='upload']")
+    @FindBy(xpath = "//h3[text()='2. Proof of banking']")
     public WebElement uploadBanking;
     @FindBy(xpath = " //h3[contains(text(), '3. Resolution letter')]")
     public WebElement resolutionLetter;
@@ -250,8 +250,8 @@ public class Login {
     @FindBy(xpath = "//button[@automationid='Revamp_Upload_Documents_File_Upload_ID_Passport_Upload_Button']")
     public WebElement uploadbutton;
 
-    @FindBy(xpath = "//*[@id='float-label']/div/div/div/input")
-    public WebElement idFIELD;
+    @FindBy(xpath = "//input[@value='']")
+    public WebElement selectIdNo;
     @FindBy(xpath = "  //div[contains(@automationid, 'undefined_Field_Item_Street_') and contains(@automationid, '_undefined') and contains(@class, 'autocomplete-item') and contains(@class, 'has-padding-x-5') and contains(@class, 'has-padding-y-7') and contains(@class, 'light')][1]")
     public WebElement ID1;
     @FindBy(xpath = "  //div[contains(@automationid, 'undefined_Field_Item_Street_') and contains(@automationid, '_undefined') and contains(@class, 'autocomplete-item') and contains(@class, 'has-padding-x-5') and contains(@class, 'has-padding-y-7') and contains(@class, 'light')][2]")

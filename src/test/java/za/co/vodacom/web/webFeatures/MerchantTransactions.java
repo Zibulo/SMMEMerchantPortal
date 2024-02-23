@@ -15,16 +15,18 @@ import java.util.Arrays;
 
 public class MerchantTransactions extends SystemUtilities {
 
-     public WebDriver driver;
+    public WebDriver driver;
 
-    public  MerchantTransactions(WebDriver driver) { this.driver = driver; }
+    public MerchantTransactions(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void selectLandingPage(String landingPage) throws Exception {
         driver.get(getPropertyValue("Environment", landingPage));//.replace("env", getSystemProperty("env")));
         driver.manage().window().maximize();
     }
 
-    public void populateCredentials(String merchantId,String password) throws Exception {
+    public void populateCredentials(String merchantId, String password) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
 
@@ -37,12 +39,12 @@ public class MerchantTransactions extends SystemUtilities {
     }
 
     public void choosePosOption(String deviceOption) throws Exception {
-       WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-       Login login = new Login(driver);
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
 
-       if (deviceOption.equalsIgnoreCase("Chop-Chop")) {
+        if (deviceOption.equalsIgnoreCase("Chop-Chop")) {
 
-           ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.addPosOptionChopChop);
 
@@ -51,15 +53,12 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.clickElement(login.addPosOptionKwika);
 
         } else if (deviceOption.equalsIgnoreCase("VodaPay Max")) {
-        webDriverUtil.implicitWait(driver, 20);
+            webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.addPosOptionMax);
-    }
-        else if (deviceOption.equalsIgnoreCase("VodaPay Payment Gateway")) {
+        } else if (deviceOption.equalsIgnoreCase("VodaPay Payment Gateway")) {
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.addPosOptionPaymentGateway);
-        }
-
-        else if (deviceOption.equalsIgnoreCase("VodaPay Tap on Phone")) {
+        } else if (deviceOption.equalsIgnoreCase("VodaPay Tap on Phone")) {
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.addPosOptionScrollBar);
             Thread.sleep(600);
@@ -81,26 +80,27 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.clickElement(login.addPosOptionScrollBar);
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.addPosOptionPayRequest);
-        }
-        else if (deviceOption.equalsIgnoreCase("VodaPay Max2")) {
+        } else if (deviceOption.equalsIgnoreCase("VodaPay Max2")) {
 
-           webDriverUtil.implicitWait(driver, 20);
-           webDriverUtil.clickElement(login.addPosOptionScrollBar);
-           Thread.sleep(600);
-           webDriverUtil.clickElement(login.addPosOptionScrollBar);
-           Thread.sleep(600);
-           webDriverUtil.clickElement(login.addPosOptionScrollBar);
-           Thread.sleep(600);
-           webDriverUtil.clickElement(login.addPosOptionScrollBar);
-           Thread.sleep(600);;
-           webDriverUtil.clickElement(login.addPosOptionScrollBar);
-           webDriverUtil.implicitWait(driver, 20);
-           webDriverUtil.clickElement(login.addPosoptionMax2);
+            webDriverUtil.implicitWait(driver, 20);
+            webDriverUtil.clickElement(login.addPosOptionScrollBar);
+            Thread.sleep(600);
+            webDriverUtil.clickElement(login.addPosOptionScrollBar);
+            Thread.sleep(600);
+            webDriverUtil.clickElement(login.addPosOptionScrollBar);
+            Thread.sleep(600);
+            webDriverUtil.clickElement(login.addPosOptionScrollBar);
+            Thread.sleep(600);
+            ;
+            webDriverUtil.clickElement(login.addPosOptionScrollBar);
+            webDriverUtil.implicitWait(driver, 20);
+            webDriverUtil.clickElement(login.addPosoptionMax2);
         }
 
-       webDriverUtil.implicitWait(driver, 30);
-       webDriverUtil.clickElement(login.checkoutProceedBtn);
+        webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.clickElement(login.checkoutProceedBtn);
     }
+
     public void completeDeviceOrder() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
@@ -109,7 +109,8 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.completeOrderBtn);
         webDriverUtil.implicitWait(driver, 30);
         webDriverUtil.clickElement(login.completeSubmitBtn);
-     }
+    }
+
     public void provideCompanyPersonalDetails(String companyType, String monthlyIncomeKnowledge, String businessMonthlIncome,
                                               String companyRegName, String companyDifferentName, String companyRegNo,
                                               String businessCategory, String companyTradingName) throws Exception {
@@ -122,7 +123,7 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.implicitWait(driver, 30);
         webDriverUtil.clickElement(login.acctSetUpGetStartedBtn);
         webDriverUtil.implicitWait(driver, 20);
-        if(companyType.equalsIgnoreCase("Sole Proprietorship")) {
+        if (companyType.equalsIgnoreCase("Sole Proprietorship")) {
 
             webDriverUtil.clickElement(login.companyType);
             webDriverUtil.clickElement(login.soleProTypeOption);
@@ -130,23 +131,19 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.clickElement(login.companyType);
             webDriverUtil.clickElement(login.partnershipTypeOption);
 
-        }
-        else if (companyType.equalsIgnoreCase("Trust")) {
+        } else if (companyType.equalsIgnoreCase("Trust")) {
             webDriverUtil.clickElement(login.companyType);
             webDriverUtil.clickElement(login.trustTypeOption);
 
-        }
-        else if (companyType.equalsIgnoreCase("company")) {
+        } else if (companyType.equalsIgnoreCase("company")) {
             webDriverUtil.clickElement(login.companyType);
             webDriverUtil.clickElement(login.companyTypeOption);
 
-        }
-        else if (companyType.equalsIgnoreCase("Close Corporation")) {
+        } else if (companyType.equalsIgnoreCase("Close Corporation")) {
             webDriverUtil.clickElement(login.companyType);
             webDriverUtil.clickElement(login.closeTypeOption);
 
-        }
-        else {
+        } else {
             webDriverUtil.clickElement(login.companyType);
             webDriverUtil.clickElement(login.npoTypeOption);
         }
@@ -179,7 +176,7 @@ public class MerchantTransactions extends SystemUtilities {
             System.out.println("This company is unknown, does not belong to me.");
 
         }
-        if(companyType.equalsIgnoreCase("Sole Proprietorship")) {
+        if (companyType.equalsIgnoreCase("Sole Proprietorship")) {
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.businessCategory);
             webDriverUtil.implicitWait(driver, 30);
@@ -191,8 +188,7 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.waitUntilVisible(driver, login.businessCategorySearchResults, 30);
             webDriverUtil.clickElement(login.businessCategorySearchResults);
 
-        }
-        else {
+        } else {
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.enterText(login.companyRegNo, companyRegNo);
             //webDriverUtil.implicitWait(driver, 30);
@@ -247,7 +243,8 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
         webDriverUtil.clickElement(login.nextBtn);
     }
-    public void provideBankingDetails(String CompanyType ,String accountName, String accountNumber) throws Exception {
+
+    public void provideBankingDetails(String CompanyType, String accountName, String accountNumber) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(800);
@@ -301,37 +298,37 @@ public class MerchantTransactions extends SystemUtilities {
     //public void idtypeUpload(idDocumentType)
 
 
-    public void uploadDoc(String companytype,String idDocumentType) throws Exception {
+    public void uploadDoc(String companytype, String idDocumentType) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         fileupload up = new fileupload();
 
-        if (companytype.equalsIgnoreCase("Sole Proprietorship")) {
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadID);
 
+        webDriverUtil.implicitWait(driver, 20);
+        webDriverUtil.clickElement(login.uploadID);
+        if (companytype.equalsIgnoreCase("Sole Proprietorship")) {
             if (idDocumentType.equalsIgnoreCase("smart card")) {
-                webDriverUtil.implicitWait(driver,30);
+                webDriverUtil.implicitWait(driver, 30);
                 webDriverUtil.clickElement(login.selectIdType);
-                 Thread.sleep(300);
+                Thread.sleep(300);
                 webDriverUtil.implicitWait(driver, 20);
                 webDriverUtil.clickElement(login.smartCard);
                 webDriverUtil.clickElement(login.uploadIdType);
-
+                    //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                      //upload back part
                 ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
                 webDriverUtil.clickElement(login.uploadPhoto);
                 up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
                 webDriverUtil.clickElement(login.confirmPhoto);
                 webDriverUtil.clickElement(login.uploadID);
 
-                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-                webDriverUtil.clickElement(login.uploadPhoto);
-                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
-                webDriverUtil.clickElement(login.confirmPhoto);
-                webDriverUtil.clickElement(login.uploadID);
-            }
-        else  if(idDocumentType.equalsIgnoreCase("green card")){
-                webDriverUtil.implicitWait(driver,30);
+            } else if (idDocumentType.equalsIgnoreCase("green card")) {
+                webDriverUtil.implicitWait(driver, 30);
                 webDriverUtil.clickElement(login.selectIdType);
                 Thread.sleep(300);
                 webDriverUtil.implicitWait(driver, 20);
@@ -342,40 +339,188 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.clickElement(login.uploadPhoto);
                 up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
                 webDriverUtil.clickElement(login.confirmPhoto);
-//                Thread.sleep(300);
-//                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-//                webDriverUtil.implicitWait(driver, 60);
-//                JavascriptExecutor executor = (JavascriptExecutor)driver;
-//                executor.executeScript("arguments[0].scrollIntoView(true);", login.uploadBanking);
-////                webDriverUtil.clickElement(login.uploadBanking);
-//                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
 
+            } else {
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
             }
 
-
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-//            webDriverUtil.implicitWait(driver, 90);
-            Thread.sleep(3000);
-
+//            webDriverUtil.implicitWait(driver,120);
+            Thread.sleep(40000);
             webDriverUtil.clickElement(login.uploadBanking);
+            System.out.println("clicked");
             up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
-        }
-        else if(companytype.equalsIgnoreCase("NPO")){
 
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
-            webDriverUtil.clickElement(login.idFIELD);
-            webDriverUtil.clickElement(login.ID1);
-            webDriverUtil.clickElement(login.uploadbutton);
+        } else if (companytype.equalsIgnoreCase("NPO")) {
 
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
-            webDriverUtil.clickElement(login.idFIELD);
-            webDriverUtil.clickElement(login.ID2);
-            webDriverUtil.clickElement(login.uploadbutton);
+            if (idDocumentType.equalsIgnoreCase("smart card")) {
 
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                //submit partnersID
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+            } else if (idDocumentType.equalsIgnoreCase("green card")) {
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+                //upload partner Id
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+//                webDriverUtil.implicitWait(driver, 30);
+//                webDriverUtil.clickElement(login.selectIdType);
+//                Thread.sleep(300);
+//                webDriverUtil.implicitWait(driver, 20);
+//                webDriverUtil.clickElement(login.passport);
+//                webDriverUtil.clickElement(login.uploadIdType);
+//
+//                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//                webDriverUtil.clickElement(login.uploadPhoto);
+//                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+//                webDriverUtil.clickElement(login.confirmPhoto);
+
+            } else {
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                //upload partners ID
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+            }
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadBanking);
@@ -391,23 +536,159 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.uploadnpofund);
             up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\Resolution.pdf");
-        }
 
-        else if(companytype.equalsIgnoreCase("Trust")){
+        } else if (companytype.equalsIgnoreCase("Trust")) {
 
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadIDT);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
-            webDriverUtil.clickElement(login.idFIELD);
-            webDriverUtil.clickElement(login.ID1);
-            webDriverUtil.clickElement(login.uploadbutton);
+            if (idDocumentType.equalsIgnoreCase("smart card")) {
 
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
-            webDriverUtil.clickElement(login.idFIELD);
-            webDriverUtil.clickElement(login.ID2);
-            webDriverUtil.clickElement(login.uploadbutton);
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                //submit partnersID
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+            } else if (idDocumentType.equalsIgnoreCase("green card")) {
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+                //upload partner Id
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+            } else {
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                //upload partners ID
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+            }
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 20);
@@ -424,23 +705,158 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.uploadtrustdeed);
             up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\Resolution.pdf");
-        }
+        } else {
 
-        else {
+            if (idDocumentType.equalsIgnoreCase("smart card")) {
 
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
-            webDriverUtil.clickElement(login.idFIELD);
-            webDriverUtil.clickElement(login.ID1);
-            webDriverUtil.clickElement(login.uploadbutton);
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
 
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
-            webDriverUtil.clickElement(login.idFIELD);
-            webDriverUtil.clickElement(login.ID2);
-            webDriverUtil.clickElement(login.uploadbutton);
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                //submit partnersID
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+            } else if (idDocumentType.equalsIgnoreCase("green card")) {
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+                //upload partner Id
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+            } else {
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID1);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                //upload partners ID
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.uploadID);
+
+                webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.passport);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.selectIdNo);
+                webDriverUtil.clickElement(login.ID2);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                //upload front part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+                //upload back part
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+            }
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 20);
@@ -452,8 +868,6 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.resolutionLetter);
             up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
-
-
 
 
         }
@@ -579,16 +993,17 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.implicitWait(driver, 30);
         webDriverUtil.clickElement(login.completeSubmitBtn);
     }
+
     public void Logoff() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Logoff logoff = new Logoff(driver);
 
-        webDriverUtil.implicitWait(driver,60);
+        webDriverUtil.implicitWait(driver, 60);
         //driver.quit();
         webDriverUtil.clickElement(logoff.Submitlogoff);
     }
 
-    private String getOwnershipDetails (String ownershipDetails) throws Exception {
+    private String getOwnershipDetails(String ownershipDetails) throws Exception {
         switch (ownershipDetails) {
             case "Instalments for a fixed period scheduled by merchant":
                 return "01";
