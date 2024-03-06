@@ -318,15 +318,16 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     }
 
-    @And("I  upload documents {string}")
-    public void iUploadDocuments(String companytype) throws Exception {
+    @And("I  upload documents {string}{string}")
+    public void iUploadDocuments(String companytype,String idType) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        merchantTransactions.uploadDoc(companytype);
+        merchantTransactions.uploadDoc(companytype,idType);
         extentTest.log(LogStatus.PASS, "Documents uploaded successfully");
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
 
     }
+
 
 }
 

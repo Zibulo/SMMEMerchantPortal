@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 4849036200,
+              "duration": 5627370400,
               "status": "passed"
             },
             "line": 6,
@@ -24,15 +24,15 @@
         ]
       },
       {
-        "start_timestamp": "2024-02-02T08:00:27.712Z",
-        "line": 20,
+        "start_timestamp": "2024-03-06T09:48:33.003Z",
+        "line": 24,
         "name": "\"Merchant onBoard Chop-Chop Device\"",
         "description": "",
         "id": "onboarding-new-merchant-choose-pos-option;\"\u003cscenariodescription\u003e\";;2",
         "after": [
           {
             "result": {
-              "duration": 536531900,
+              "duration": 719632300,
               "status": "passed"
             },
             "match": {
@@ -45,7 +45,7 @@
         "steps": [
           {
             "result": {
-              "duration": 9556506600,
+              "duration": 9360257300,
               "status": "passed"
             },
             "line": 9,
@@ -79,7 +79,7 @@
           },
           {
             "result": {
-              "duration": 4299441400,
+              "duration": 4985068200,
               "status": "passed"
             },
             "line": 10,
@@ -97,11 +97,11 @@
           },
           {
             "result": {
-              "duration": 11833815900,
+              "duration": 11956004000,
               "status": "passed"
             },
             "line": 11,
-            "name": "Submit Merchant details \"Business owner/director\" \"Ecomm Automator\" \"VFS Ecomm\" \"Itumeleng.Phale@vodacom.co.za\" \"0829973883\" \"South African\" \"0104041074089\" \"4586 Isacholo Crescent\" \"0157\" \"Amberville\" \"Centurion\" \"Gauteng\"",
+            "name": "Submit Merchant details \"Business owner/director\" \"Ecomm Automator\" \"VFS Ecomm\" \"itumeleng.phale@vodacom.co.za\" \"0829973883\" \"South African\" \"9509040030083\" \"4586 Isacholo Crescent\" \"0157\" \"Amberville\" \"Centurion\" \"Gauteng\"",
             "match": {
               "arguments": [
                 {
@@ -117,7 +117,7 @@
                   "offset": 68
                 },
                 {
-                  "val": "\"Itumeleng.Phale@vodacom.co.za\"",
+                  "val": "\"itumeleng.phale@vodacom.co.za\"",
                   "offset": 80
                 },
                 {
@@ -129,7 +129,7 @@
                   "offset": 125
                 },
                 {
-                  "val": "\"0104041074089\"",
+                  "val": "\"9509040030083\"",
                   "offset": 141
                 },
                 {
@@ -159,7 +159,7 @@
           },
           {
             "result": {
-              "duration": 4013138800,
+              "duration": 6287435400,
               "status": "passed"
             },
             "line": 12,
@@ -171,47 +171,130 @@
           },
           {
             "result": {
-              "duration": 21415003100,
+              "duration": 25750170400,
               "status": "passed"
             },
             "line": 13,
-            "name": "I Provide Company and Personal Details \"Company\" \"No\" \"150000\" \"IBP Testing VFS\" \"Yes\" \"123456789012\" \"Agricultural Cooperatives\" \"Ditekong Software Testing\"",
+            "name": "I Provide Company and Personal Details \"Sole Proprietorship\" \"No\" \"150000\" \"IBP Testing VFS\" \"Yes\" \"123456789012\" \"Agricultural Cooperatives\" \"Ditekong Software Testing\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"Company\"",
+                  "val": "\"Sole Proprietorship\"",
                   "offset": 39
                 },
                 {
                   "val": "\"No\"",
-                  "offset": 49
+                  "offset": 61
                 },
                 {
                   "val": "\"150000\"",
-                  "offset": 54
+                  "offset": 66
                 },
                 {
                   "val": "\"IBP Testing VFS\"",
-                  "offset": 63
+                  "offset": 75
                 },
                 {
                   "val": "\"Yes\"",
-                  "offset": 81
+                  "offset": 93
                 },
                 {
                   "val": "\"123456789012\"",
-                  "offset": 87
+                  "offset": 99
                 },
                 {
                   "val": "\"Agricultural Cooperatives\"",
-                  "offset": 102
+                  "offset": 114
                 },
                 {
                   "val": "\"Ditekong Software Testing\"",
-                  "offset": 130
+                  "offset": 142
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iProvideCompanyAndPersonalDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 9149076700,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "I Provide the Partners Details \"Sole Proprietorship\"\"6508267473086\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Sole Proprietorship\"",
+                  "offset": 31
+                },
+                {
+                  "val": "\"6508267473086\"",
+                  "offset": 52
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iProvideThePartnersDetails(java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 17339803200,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I Provide the Banking Details \"Sole Proprietorship\" \"WI Tester\" \"1234567890\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Sole Proprietorship\"",
+                  "offset": 30
+                },
+                {
+                  "val": "\"WI Tester\"",
+                  "offset": 52
+                },
+                {
+                  "val": "\"1234567890\"",
+                  "offset": 64
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iProvideBankingDetails(java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 13620099900,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "I take a selfie",
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.takeSelfie()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//h4[contains(text(), \u0027Upload\u0027)]\"}\n  (Session info: chrome\u003d122.0.6261.95)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027E0810877\u0027, ip: \u002710.103.217.251\u0027, os.name: \u0027Windows 11\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002717.0.6\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.95, chrome: {chromedriverVersion: 122.0.6261.94 (880dbf29479c..., userDataDir: C:\\Users\\Phaleitu\\AppData\\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53689}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: 3de91b91280349f078fde616f4f934fd\n*** Element info: {Using\u003dxpath, value\u003d//h4[contains(text(), \u0027Upload\u0027)]}\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\r\n\tat java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)\r\n\tat java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\r\n\tat java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\r\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\r\n\tat jdk.proxy2/jdk.proxy2.$Proxy20.click(Unknown Source)\r\n\tat vfs.automation.core.utilities.WebDriverUtilities.clickElement(WebDriverUtilities.java:133)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.uploadDoc(MerchantTransactions.java:373)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iUploadDocuments(MerchantStepDefinitions.java:324)\r\n\tat ✽.I  upload documents \"Sole Proprietorship\"\"green card\"(file:///C:/Users/Phaleitu/IdeaProjects/SMME%20Merchant%20Portal/src/test/resources/features/web/merchantOnBoardingFullJourney.feature:17)\r\n",
+              "duration": 48387050100,
+              "status": "failed"
+            },
+            "line": 17,
+            "name": "I  upload documents \"Sole Proprietorship\"\"green card\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Sole Proprietorship\"",
+                  "offset": 20
+                },
+                {
+                  "val": "\"green card\"",
+                  "offset": 41
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iUploadDocuments(java.lang.String,java.lang.String)"
             },
             "keyword": "And "
           }

@@ -21,6 +21,9 @@ public class MerchantTransactions extends SystemUtilities {
 
     public void selectLandingPage(String landingPage) throws Exception {
         driver.get(getPropertyValue("Environment", landingPage));//.replace("env", getSystemProperty("env")));
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--disable-notifications");
         driver.manage().window().maximize();
     }
 
@@ -264,104 +267,161 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.selAccountType);
         Thread.sleep(800);
         webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
+
         webDriverUtil.clickElement(login.nextBtn);
-        Thread.sleep(800);
+
+
+        //driver.findElement(By.id("triggerPopupButton")).click();
+        //Thread.sleep(3000);
+        // Switch to the alert
+        //Alert alert = driver.switchTo().alert();
+
+        // Perform actions on the alert (e.g., accept, dismiss, get text)
+        //alert.accept(); // To accept the alert
+
+        //ChromeOptions optionsC = new ChromeOptions();
+        //optionsC.addArguments(Arrays.asList("disable-infobars", "ignore-certificate-errors", "start-maximized", "use-fake-ui-for-media-stream"));
+
+        //optionsC.addArguments("--disable-popup-blocking");
+        Thread.sleep(5000);
     }
 
     public void takeASelfie() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
-        Thread.sleep(800);
-        //    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+        Thread.sleep(8000);
         webDriverUtil.waitUntilVisible(driver, login.openCamDiv, 30);
-        //Thread.sleep(500);
+//Thread.sleep(500);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         ChromeOptions optionsC = new ChromeOptions();
         optionsC.addArguments("use-fake-ui-for-media-stream");
         //optionsC.addArguments(Arrays.asList("disable-infobars", "ignore-certificate-errors", "start-maximized", "use-fake-ui-for-media-stream"));
 
-        webDriverUtil.explicitWait(driver, login.openCamera, 60);
-        webDriverUtil.clickElement(login.openCamera);
-        Thread.sleep(500);
+//optionsC.addArguments(Arrays.asList("disable-infobars", "ignore-certificate-errors", "start-maximized", "use-fake-ui-for-media-stream"));
 
+        webDriverUtil.explicitWait(driver, login.openCamera, 120);
+        webDriverUtil.clickElement(login.openCamera);
+        Thread.sleep(2400);
 
         optionsC.addArguments(Arrays.asList("disable-infobars", "ignore-certificate-errors", "start-maximized", "use-fake-ui-for-media-stream"));
-        webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.implicitWait(driver, 120);
         webDriverUtil.clickElement(login.takeSelfie);
-        Thread.sleep(500);
-        //  webDriverUtil.waitUntilElementClickable(driver,login.openCamDiv,30);
-        //  Thread.sleep(500);
-        //webDriverUtil.waitUntilEnabled(driver, login.takePhoto, 30);
-        // webDriverUtil.clickElement(login.takePhoto);
+        Thread.sleep(2400);
+//  webDriverUtil.waitUntilElementClickable(driver,login.openCamDiv,30);
+//  Thread.sleep(500);
+//webDriverUtil.waitUntilEnabled(driver, login.takePhoto, 30);
+// webDriverUtil.clickElement(login.takePhoto);
 
-        //  Thread.sleep(800);
+//  Thread.sleep(800);
         webDriverUtil.clickElement(login.nextBtn);
+
+
+
     }
 
+    //public void idtypeUpload(idDocumentType)
 
-    public void uploadDoc(String companytype) throws Exception {
+
+    public void uploadDoc(String companytype,String idDocumentType) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         fileupload up = new fileupload();
 
         if (companytype.equalsIgnoreCase("Sole Proprietorship")) {
             webDriverUtil.implicitWait(driver, 20);
-            Thread.sleep(1200);
             webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\identity.png");
-            webDriverUtil.clickElement(login.uploadbutton);
 
-            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-            webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadBanking);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
+            if (idDocumentType.equalsIgnoreCase("smart card")) {
+                webDriverUtil.implicitWait(driver,30);
+                webDriverUtil.clickElement(login.selectIdType);
+                 Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.smartCard);
+                webDriverUtil.clickElement(login.uploadIdType);
 
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.clickElement(login.uploadID);
+            }
+        else  if(idDocumentType.equalsIgnoreCase("green card")){
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//              webDriverUtil.implicitWait(driver, 90);
+                webDriverUtil.implicitWait(driver,30);
+                webDriverUtil.clickElement(login.selectIdType);
+                Thread.sleep(300);
+                webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.clickElement(login.greenCard);
+                webDriverUtil.clickElement(login.uploadIdType);
+
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadPhoto);
+                up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\idd.jpeg");
+                webDriverUtil.clickElement(login.confirmPhoto);
+
+                Thread.sleep(20000);
+                ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                webDriverUtil.clickElement(login.uploadBanking);
+                up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\banking.pdf");
+
+                }
         }
+
         else if(companytype.equalsIgnoreCase("NPO")){
 
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\identity.jpg");
             webDriverUtil.clickElement(login.idFIELD);
             webDriverUtil.clickElement(login.ID1);
             webDriverUtil.clickElement(login.uploadbutton);
 
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\identity.jpg");
             webDriverUtil.clickElement(login.idFIELD);
             webDriverUtil.clickElement(login.ID2);
             webDriverUtil.clickElement(login.uploadbutton);
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.clickElement(login.uploadBanking);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
+            Thread.sleep(2400);
+            //webDriverUtil.clickElement(login.uploadBanking);
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\banking.pdf");
 
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.resolutionLetter);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\Resolution.pdf");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\Resolution.pdf");
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.uploadnpofund);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\Resolution.pdf");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\Resolution.pdf");
         }
 
         else if(companytype.equalsIgnoreCase("Trust")){
 
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadIDT);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\identity.jpg");
             webDriverUtil.clickElement(login.idFIELD);
             webDriverUtil.clickElement(login.ID1);
             webDriverUtil.clickElement(login.uploadbutton);
 
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\identity.jpg");
             webDriverUtil.clickElement(login.idFIELD);
             webDriverUtil.clickElement(login.ID2);
             webDriverUtil.clickElement(login.uploadbutton);
@@ -369,32 +429,32 @@ public class MerchantTransactions extends SystemUtilities {
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadBanking);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\banking.pdf");
 
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.trustResolutionLetter);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\Resolution.pdf");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\Resolution.pdf");
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.uploadtrustdeed);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\Resolution.pdf");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\Resolution.pdf");
         }
 
         else {
 
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\identity.jpg");
             webDriverUtil.clickElement(login.idFIELD);
             webDriverUtil.clickElement(login.ID1);
             webDriverUtil.clickElement(login.uploadbutton);
 
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadID);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\identity.jpg");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\identity.jpg");
             webDriverUtil.clickElement(login.idFIELD);
             webDriverUtil.clickElement(login.ID2);
             webDriverUtil.clickElement(login.uploadbutton);
@@ -402,13 +462,13 @@ public class MerchantTransactions extends SystemUtilities {
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.uploadBanking);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\banking.pdf");
 
 
             ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
             webDriverUtil.implicitWait(driver, 30);
             webDriverUtil.clickElement(login.resolutionLetter);
-            up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\banking.pdf");
+            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\banking.pdf");
 
 
 

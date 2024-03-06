@@ -220,14 +220,33 @@ public class Login {
     public WebElement takeSelfie;
     @FindBy(xpath = "//h3[text()='1. SA ID / Passport']")
     public WebElement uploadID;
-    @FindBy(xpath = "//h3[contains(text(), '2. Proof of banking')]")
+
+    @FindBy(xpath = "//input[@role='combobox']")
+    public WebElement selectIdType;
+    @FindBy(xpath = "//div[text()='Smart ID Card']")
+    public WebElement smartCard;
+
+    @FindBy(xpath = "//div[text()='Green Barcoded ID Book']")
+    public WebElement greenCard;
+
+    @FindBy(xpath = "//div[text()='Passport']")
+    public WebElement passport;
+
+    @FindBy(xpath = "//button[text()='Confirm']")
+    public WebElement confirmPhoto;
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement uploadIdType;
+    @FindBy(xpath = "//button[@type='button']")
+    public WebElement uploadPhoto;
+
+    @FindBy(xpath = "//h4[contains(text(), 'Upload')]")
     public WebElement uploadBanking;
     @FindBy(xpath = " //h3[contains(text(), '3. Resolution letter')]")
     public WebElement resolutionLetter;
     @FindBy(xpath = "  //h3[contains(text(), '3. Trust Resolution letter')]")
     public WebElement trustResolutionLetter;
 
-    @FindBy(xpath = "//button[@automationid='Revamp_Upload_Documents_File_Upload_ID_Passport_Upload_Button']")
+    @FindBy(xpath = "//h4[@class='text-base md:text-3xl !font-normal  text-center']//span[@class='underline md:no-underline' and text()='Upload']")
     public WebElement uploadbutton;
 
     @FindBy(xpath = "//*[@id='float-label']/div/div/div/input")
