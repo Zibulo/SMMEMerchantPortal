@@ -16,8 +16,8 @@ public class MerchantAccounts {
     @FindBy(name="password")
     public WebElement password;
 
-    @FindBy(xpath="//span[@automationid=\"Revamp_Choose_Solution_Carousel_Card_Vodapay_Chop_Chop_Plus\" and contains(@class, \"icon-add-utility\")]")  //*[@id="carousel"]/div[1]/section/div/div/span[2]
-    public WebElement addPosoption;
+//    @FindBy(xpath="//span[@automationid=\"Revamp_Choose_Solution_Carousel_Card_Vodapay_Chop_Chop_Plus\" and contains(@class, \"icon-add-utility\")]")  //*[@id="carousel"]/div[1]/section/div/div/span[2]
+//    public WebElement addPosoption;
 
     @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div/span")
     public WebElement ownershipDetails;
@@ -62,16 +62,20 @@ public class MerchantAccounts {
     public WebElement completeOrderBtn;
     @FindBy(xpath="//button[@automationid='Revamp_Order_Summary_Confirm_Submission_Submit_Button']")
     public WebElement completeSubmitBtn;
+
     @FindBy(xpath="//input[@automationid='Revamp_Your_Details_Business_Address_Street_Address']")
     public WebElement businessStreetName;
+
     @FindBy(xpath="//input[@name='address.postalCode']")
     public WebElement businessPostalCode;
+
     @FindBy(xpath="//input[@automationid='Revamp_Your_Details_Business_Address_Suburb']")
     public WebElement businessSuburb;
     @FindBy(xpath="//*[@id='float-label']/div/div/div/span")
     public WebElement businessSuburbInput;
     @FindBy(xpath="//*[@id='float-label']/div/div/div[2]/div[1]")
     public WebElement businessSuburbOption;
+
     @FindBy(xpath="//input[@name='address.city']")
     public WebElement businessTown;
     @FindBy(xpath="//input[@automationid='Revamp_Your_Details_Business_Address_Province']")

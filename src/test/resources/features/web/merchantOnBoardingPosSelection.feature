@@ -1,4 +1,4 @@
-@merchantOnBoardingPosSelection
+@posSelection
 
 Feature: OnBoarding New Merchant Choose POS Option
 
@@ -10,8 +10,8 @@ Feature: OnBoarding New Merchant Choose POS Option
     And I Choose Avalaible POS Option
     And Submit Merchant details "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>"
     And I Then Complete Device Order
-    #And I Provide Company and Personal Details
-    #And I logoff from Merchant Portal
+    And I Provide Company and Personal Details
+    And I logoff from Merchant Portal
 
 
     Examples:
