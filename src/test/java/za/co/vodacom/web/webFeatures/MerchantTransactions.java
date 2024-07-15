@@ -15,8 +15,10 @@ import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
 import za.co.vodacom.web.pageObjectModel.Login;
 import za.co.vodacom.web.pageObjectModel.Logoff;
 
+import java.security.Key;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.List;
 
 public class MerchantTransactions extends SystemUtilities {
 
@@ -143,7 +145,7 @@ public class MerchantTransactions extends SystemUtilities {
         //webDriverUtil.clickElement(login.completeOrderBtn);
     }
 
-    public void populateOnceCardDetails(String onceCardHolder, String onceCardNo, String onceExpireYear,String onceExpiryDate,String onceCvv) throws Exception {
+    public void populateOnceCardDetails(String onceCardHolder, String onceCardNo,String onceExpiryDate,String onceCvv) throws Exception {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         CardDetailsPom cardDetailsPom = new CardDetailsPom(driver);
@@ -153,10 +155,10 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.implicitWait(driver, 30);
         webDriverUtil.enterText(cardDetailsPom.onceCardHolder, onceCardHolder);
         webDriverUtil.enterText(cardDetailsPom.onceCardNo, onceCardNo);
-        webDriverUtil.selectByVisibleText(cardDetailsPom.onceExpireYear, getCardExpiryYear(onceExpireYear));
+        //webDriverUtil.selectByVisibleText(cardDetailsPom.onceExpireYear, getCardExpiryYear(onceExpireYear));
         webDriverUtil.implicitWait(driver, 10);
-        webDriverUtil.selectByVisibleText(cardDetailsPom.onceExpiryDate, getCardExpireDate(onceExpiryDate));
-
+        //webDriverUtil.selectByVisibleText(cardDetailsPom.onceExpiryDate, getCardExpireDate(onceExpiryDate));
+        webDriverUtil.enterText(cardDetailsPom.onceExpiryDate, getCardExpireDate(onceExpiryDate));
        // webDriverUtil.enterText(cardDetailsPom.onceCardExpiry, onceExpireYear);
        // webDriverUtil.enterText(cardDetailsPom.onceExpiryDate, onceExpiryDate);
         webDriverUtil.enterText(cardDetailsPom.onceCvv, onceCvv);
@@ -245,14 +247,27 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.assignDeviceNxtBtn);
         webDriverUtil.implicitWait(driver, 30);
 
-       if (devicePaymentOption.equalsIgnoreCase("Payflex")) {
+       if (devicePaymentOption.equalsIgnoreCase("Payflex"))
+       {
            webDriverUtil.implicitWait(driver, 30);
            webDriverUtil.clickElement(login.devicePaymentOption);
            webDriverUtil.clickElement(login.assignDeviceContinueBtn);
            webDriverUtil.implicitWait(driver, 30);
            webDriverUtil.clickElement(login.reserveFundsBtn);
 
-        } else {
+       } else if(devicePaymentOption.equalsIgnoreCase("cash"))
+       {
+           webDriverUtil.implicitWait(driver, 30);
+           webDriverUtil.clickElement(login.devicePaymentOption);
+          // webDriverUtil.implicitWait(driver, 30)
+          // webDriverUtil.clickElement(log);
+           webDriverUtil.clickElement(login.randomClick);
+           webDriverUtil.implicitWait(driver, 30);
+           webDriverUtil.clickElement(login.continueApplicationBtn);
+           webDriverUtil.implicitWait(driver, 30);
+           webDriverUtil.clickElement(login.readyToSubmitBtn);
+       }
+       else {
            webDriverUtil.implicitWait(driver, 30);
            webDriverUtil.clickElement(login.deviceCardPaymentOption);
            webDriverUtil.implicitWait(driver, 30);
@@ -282,6 +297,93 @@ public class MerchantTransactions extends SystemUtilities {
 
       }
 
+      public void completeCustomerLandingPage() throws Exception {
+          WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+          Login login = new Login(driver);
+
+          webDriverUtil.implicitWait(driver, 30);
+          webDriverUtil.clickElement(login.setupCustomerCompletePage_btn);
+      }
+
+      public void customebusinessComplete(String companyTypeOption, String companyRegName,
+                                          String businessMonthlIncome, String businessCategory) throws Exception {
+          WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+          Login login = new Login(driver);
+          webDriverUtil.implicitWait(driver, 30);
+
+          webDriverUtil.clickElement(login.describeYourBusinessposition_dropDown);
+          String businessDescription = "Sole Proprietorship";
+          if (companyTypeOption.equalsIgnoreCase("Sole Proprietorship") ||
+                  companyTypeOption.equalsIgnoreCase("Unregistered business")) {
+              webDriverUtil.implicitWait(driver, 5);
+              webDriverUtil.clickElement(login.describeYourBusiness_dropDown);
+              System.out.println("I see drop down");
+              webDriverUtil.implicitWait(driver, 5);
+
+          } else if (companyTypeOption.equalsIgnoreCase("Close Corporation")) {
+              webDriverUtil.implicitWait(driver, 5);
+              webDriverUtil.clickElement(login.gameDrpdwnOption);
+
+          } else if (companyTypeOption.equalsIgnoreCase("Company")) {
+              // webDriverUtil.clickElement(login.selectDealerDrpdwn);
+              webDriverUtil.implicitWait(driver, 5);
+              webDriverUtil.clickElement(login.oneSourceDirectOption);
+          }
+          webDriverUtil.implicitWait(driver, 5);
+          webDriverUtil.enterText(login.businesName_txt,companyRegName);
+
+          webDriverUtil.implicitWait(driver, 5);
+          webDriverUtil.enterText(login.businessMonthlIncome_text,businessMonthlIncome);
+
+          webDriverUtil.implicitWait(driver, 30);
+/*          webDriverUtil.clickElement(login.businessCategory_text);
+          webDriverUtil.enterText(login.businessCategory_text,businessCategory);*/
+
+/*          WebDriverWait wait = new WebDriverWait(driver, 10);
+          List<WebElement> suggestions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className("search-box")));
+
+          // Iterate through the suggestions and select the one that matches or contains the text
+          for (WebElement suggestion : suggestions) {
+              if (suggestion.getText().contains(businessCategory)) {
+                  suggestion.click();
+                  break;
+              }
+          }*/
+
+          webDriverUtil.implicitWait(driver, 30);
+          webDriverUtil.enterText(login.businessCategory,businessCategory);
+
+          //Actions builder = new Actions(driver);
+          //builder.sendKeys(login.businessCategory);
+          //builder.sendKeys(Keys.TAB);
+          //builder.release().perform();
+          //Thread.sleep(2400);
+
+          // Locate the input element using XPath
+          WebElement businessCategoryInput = driver.findElement(By.xpath("//input[@name='businessCategory.name']"));
+
+          // Perform actions on the input element, e.g., get the value or set a new value
+          String currentValue = businessCategoryInput.getAttribute("value");
+
+          //webDriverUtil.clickElement(login.businessCategoryInput);
+          System.out.println("Current value: " + currentValue);
+
+          webDriverUtil.waitUntilVisible(driver, login.businessCategorySearchResults, 30);
+          webDriverUtil.clickElement(login.businessCategorySearchResults);
+          //businessCategoryInput.clear();  // Clear the existing value if necessary
+          businessCategoryInput.sendKeys("");
+
+          webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
+          webDriverUtil.clickElement(login.nextBtn);
+
+          webDriverUtil.waitUntilElementClickable(driver, login.confirmBtn, 30);
+          webDriverUtil.clickElement(login.confirmBtn);
+
+          webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
+          webDriverUtil.clickElement(login.nextBtn);
+
+          Thread.sleep(3000);
+      }
     public void completePaymentRequest() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         CommonMethods commonMethods = new CommonMethods();
@@ -654,6 +756,7 @@ public class MerchantTransactions extends SystemUtilities {
 
         if (companytype.equalsIgnoreCase("Sole Proprietorship")) {
             if (idDocumentType.equalsIgnoreCase("smart card")) {
+                System.out.println("I see myself here smart card");
                 webDriverUtil.implicitWait(driver, 30);
                 webDriverUtil.clickElement(login.selectIdType);
                 Thread.sleep(300);
@@ -674,6 +777,7 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.clickElement(login.uploadID);
 
             } else if (idDocumentType.equalsIgnoreCase("green card")) {
+                System.out.println("I see myself here green card");
                 webDriverUtil.implicitWait(driver, 30);
                 webDriverUtil.clickElement(login.selectIdType);
                 Thread.sleep(300);
@@ -683,11 +787,12 @@ public class MerchantTransactions extends SystemUtilities {
 
                 ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
                 webDriverUtil.clickElement(login.uploadPhoto);
-                up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\idd.jpeg");
+                up.handleFileDialog("C:\\Users\\ntyit001\\IdeaProjects\\SMMEMerchantPortal\\ID\\9509040030083.jpeg");
                 webDriverUtil.clickElement(login.confirmPhoto);
                 Thread.sleep(30000);
 
             } else {
+                System.out.println("I see myself here another card");
                 webDriverUtil.implicitWait(driver, 30);
                 webDriverUtil.clickElement(login.selectIdType);
                 Thread.sleep(300);
@@ -699,20 +804,23 @@ public class MerchantTransactions extends SystemUtilities {
                 ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
                 webDriverUtil.clickElement(login.uploadPhoto);
                 up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
-                webDriverUtil.clickElement(login.confirmPhoto);
                 webDriverUtil.clickElement(login.uploadID);
+                webDriverUtil.clickElement(login.confirmPhoto);
+
                 //upload back part
                 ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
                 webDriverUtil.clickElement(login.uploadPhoto);
                 up.handleFileDialog("C:\\Users\\mutsl001\\Desktop\\idd.jpeg");
                 webDriverUtil.clickElement(login.confirmPhoto);
+                webDriverUtil.implicitWait(driver, 30);
                 webDriverUtil.clickElement(login.uploadID);
-            }
 
+            }
+            Thread.sleep(7000);
             webDriverUtil.clickElement(login.uploadBanking);
             System.out.println("New Clicked upload by Itu");
             Thread.sleep(7500);
-            up.handleFileDialog("C:\\Users\\Phaleitu\\IdeaProjects\\SMME Merchant Portal\\ID\\banking.pdf");
+            up.handleFileDialog("C:\\Users\\ntyit001\\IdeaProjects\\SMMEMerchantPortal\\ID\\banking.pdf");
 
             Thread.sleep(2400);
             webDriverUtil.clickElement(login.nextBtn);
@@ -1354,6 +1462,7 @@ public class MerchantTransactions extends SystemUtilities {
         Actions act = new Actions(driver);
         webDriverUtil.implicitWait(driver, 60);
         webDriverUtil.enterText(login.inputBusinessStreetName, inputBusinessStreetName);
+        webDriverUtil.implicitWait(driver, 60);
         webDriverUtil.clickElement(login.businessStreetName);
         //webDriverUtil.enterText(login.businessStreetName, businessStreetName);
         Thread.sleep(800);

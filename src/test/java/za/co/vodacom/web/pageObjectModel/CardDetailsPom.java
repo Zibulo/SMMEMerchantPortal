@@ -108,14 +108,15 @@ public class CardDetailsPom {
     public WebElement ozowPayOptionContinueBtn;
     @FindBy(xpath = "//*[@id='reskin-content']/div[3]/div/div/div[2]/div/div[2]/div/div/div/input")
     public WebElement ozowOTP;
-    @FindBy(xpath = "//*[@id='nameOfCard']")
+    @FindBy(xpath = "//*[@id='NewCard_NameOnCard']")
     public WebElement onceCardHolder;
-    @FindBy(xpath = "//*[@id='cardNumber']")
+
+    @FindBy(xpath = "//*[@id='NewCard_CardNumber']")
     public WebElement onceCardNo;
 
     @FindBy(xpath="//*[@id='cardExpiryYear']")
     public WebElement onceCardExpiry;
-    @FindBy(xpath ="//*[@id='NewCard_Cvv']")
+    @FindBy(xpath ="//*[@id=\"NewCard_ExpiryDate\"]")
     public WebElement onceCvv;
 
     @FindBy(xpath = "//*[@id='cardExpiryYear']")
