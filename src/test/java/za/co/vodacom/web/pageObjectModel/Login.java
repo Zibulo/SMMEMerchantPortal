@@ -97,9 +97,17 @@ public class Login {
     public WebElement assignDeviceNxtBtn;
     @FindBy(xpath="//label[@for='cash-/-other' and @id='cash-/-other']")
     public WebElement devicePaymentOption;
-
     @FindBy(xpath="//*[@id='card-payment']")
     public WebElement deviceCardPaymentOption;
+
+    @FindBy(xpath ="//*[@id='root']/div/div[1]/div/section[1]/main/div[2]")
+    public WebElement randomClick;
+
+    @FindBy(xpath ="//*[@id='root']/div/div[1]/div/section[2]/div/div[1]/div[2]")
+    public WebElement continueApplicationBtn;
+    @FindBy(xpath = "//*[@id='root']/div/div[1]/div/section[1]/main/div[2]/dialog[1]/div/button[2]")
+    public  WebElement readyToSubmitBtn;
+
     @FindBy(xpath="//*[@id='root']/div/div[1]/div/section[1]/section/div[1]/form/div/div/div/p")
     public WebElement onlinePaymentOptionBtn;
     @FindBy(xpath="//button[contains(text(),'Continue to payment')]")
@@ -281,7 +289,7 @@ public class Login {
     public WebElement uploadIdType;
     @FindBy(xpath = "//button[@type='button']")
     public WebElement uploadPhoto;
-    @FindBy(xpath ="/html/body/div[1]/div/div[1]/div/section[1]/div/section[2]/div[2]/div[2]/section/div[1]/div/section[1]/h4/span[1]")
+    @FindBy(xpath ="//*[@id=\"root\"]/div/div[1]/div/section[1]/div/section[2]/div[2]/div[2]/section/div[1]/div/section[1]")
     public WebElement uploadBanking;
 
     @FindBy(xpath = "//h4[text()='Drag and Drop']")
@@ -334,11 +342,23 @@ public class Login {
     @FindBy(xpath="//button[normalize-space()='Login']")
     public WebElement brk_loginBtn;
 
+    @FindBy(xpath="//*[@id='root']/div/div[1]/div/section/article/div[1]/div/div/button")
+    public WebElement setupCustomerCompletePage_btn;
 
+    @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[1]/input")
+    public WebElement describeYourBusinessposition_dropDown;
 
+    @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[1]")
+    public WebElement describeYourBusiness_dropDown;
 
+    @FindBy(xpath="//*[@id=\"float-label\"]/input")
+    public WebElement businesName_txt;
 
+    @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/div[4]/div[1]/input")
+    public WebElement businessMonthlIncome_text;
 
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/article/section/input")
+    public WebElement businessCategory_text;
 
 
 
