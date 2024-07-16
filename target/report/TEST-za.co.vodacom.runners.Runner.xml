@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="195.951">
+    <testcase classname="third Party Login" name="&quot;Third Party Makro Dealer login&quot;" time="195.59">
+        <failure message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[text()='Blue Valley Golf Estate']&quot;}&#10;  (Session info: chrome=126.0.6478.127)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-TNT', ip: '192.168.8.111', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.127, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50949}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: bb8e023cfb8def72ada8dee9f890d030&#10;*** Element info: {Using=xpath, value=//div[text()='Blue Valley Golf Estate']}" type="org.openqa.selenium.NoSuchElementException"><![CDATA[Given The webBrowser is launched............................................passed
+And I am on the dealer landing page "Third Party Makro Dealer login""Makro dealer journey""3poURL""Tebello Ntyingila""".passed
+And When I select Dealer "Game""Junius01""Testing@123"......................passed
+And I Choose Available POS Option "VodaPay Kwika"...........................passed
+And Submit Merchant details "Business owner/director" "Ecomm Automator" "VFS Ecomm" "ought-remember@epcworly.mailosaur.net" "0829973883" "South African" "9509040030083" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng".failed
+And I Then Assign Device and Process Order "emailReceipt" "Cash"............skipped
+And Start Setup Customer Account Landing Page...............................skipped
+And Tell Us About The Customers Business "Sole Proprietorship" "VFS Payment Testing" "15000" "Computer Software Shop".skipped
+And I Provide the Banking Details "Sole Proprietorship" "VFS Automators" "1234567890".skipped
+And I take a selfie.........................................................skipped
+And I  upload documents "Sole Proprietorship""green card"...................skipped
+
+StackTrace:
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[text()='Blue Valley Golf Estate']"}
+  (Session info: chrome=126.0.6478.127)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ILAB-TNT', ip: '192.168.8.111', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.127, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50949}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: bb8e023cfb8def72ada8dee9f890d030
+*** Element info: {Using=xpath, value=//div[text()='Blue Valley Golf Estate']}
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy20.click(Unknown Source)
+	at vfs.automation.core.utilities.WebDriverUtilities.clickElement(WebDriverUtilities.java:133)
+	at za.co.vodacom.web.webFeatures.MerchantTransactions.submitMerchantDetails(MerchantTransactions.java:1473)
+	at za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(MerchantStepDefinitions.java:264)
+	at ✽.Submit Merchant details "Business owner/director" "Ecomm Automator" "VFS Ecomm" "ought-remember@epcworly.mailosaur.net" "0829973883" "South African" "9509040030083" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng"(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/thirdPartyOnboardPaymentRequest.feature:13)
+]]></failure>
+    </testcase>
+</testsuite>
