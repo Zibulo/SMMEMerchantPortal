@@ -1,0 +1,16 @@
+za\co\vodacom\api\apiFeatures\MerchantLogoff.class
+za\co\vodacom\web\webFeatures\ThirdPartyLogin1.class
+za\co\vodacom\web\pageObjectModel\MerchantAccounts.class
+za\co\vodacom\api\apiFeatures\MerchantRecentTransactions.class
+za\co\vodacom\web\pageObjectModel\Login.class
+za\co\vodacom\web\webFeatures\MerchantTransactions.class
+za\co\vodacom\stepDefinitions\MerchantStepDefinitions.class
+za\co\vodacom\web\pageObjectModel\CardDetailsPom.class
+za\co\vodacom\api\apiFeatures\MerchantProfileView.class
+za\co\vodacom\api\apiFeatures\MerchantForgotPassword.class
+za\co\vodacom\api\apiFeatures\MerchantLogin.class
+za\co\vodacom\commonMethods\CommonMethods.class
+za\co\vodacom\api\apiFeatures\MerchantChangePassword.class
+za\co\vodacom\fileUploadHandler\fileupload.class
+za\co\vodacom\web\pageObjectModel\Logoff.class
+za\co\vodacom\runners\Runner.class
