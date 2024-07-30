@@ -16,6 +16,7 @@ import vfs.automation.core.assertions.Assertions;
 import vfs.automation.core.utilities.SystemUtilities;
 import vfs.automation.core.utilities.WebDriverUtilities;
 import za.co.vodacom.api.apiFeatures.*;
+import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
 import za.co.vodacom.web.webFeatures.MerchantTransactions;
 
 
@@ -247,7 +248,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
-        Thread.sleep(2400);
+        Thread.sleep(3600);
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
         merchantTransactions.choosePosOption(deviceOption);
@@ -255,6 +256,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         String filename = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(filename));
     }
+
 
     @And("Submit Merchant details {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
     public void submitMerchantDetails(String ownershipDetails, String firstName, String surName, String eMail, String mobileNo, String idType, String merchantID,
@@ -289,10 +291,10 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
         Thread.sleep(1200);
         extentTest.log(LogStatus.PASS, "I populate bank card details.");
-        webDriverUtil.implicitWait(driver, 30);
+       // webDriverUtil.implicitWait(driver, 30);
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-        webDriverUtil.implicitWait(driver, 10);
+        //webDriverUtil.implicitWait(driver, 10);
         merchantTransactions.populateOnceCardDetails(onceCardHolder, onceCardNumber,onceExpiryDate, onceCVV);
         extentTest.log(LogStatus.PASS, "Bank card details successfully populated.");
         //String fileName = webDriverUtil.takeScreenshot(driver);
@@ -300,20 +302,21 @@ public class MerchantStepDefinitions extends SystemUtilities {
     }
 
     @And("I Populate ThreeD Secure {string}{string}{string}")
-    public void populatePopulateDSecureUcf(String cardType, String bankName, String threeDPassword) throws Exception {
+    public void iPopulateThreeDSecure(String threeDPassword, String cardType, String bankName) throws Exception {
 
-        MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        MerchantTransactions paymentsTransactions = new MerchantTransactions(driver);
 
-        Thread.sleep(3500);
+        Thread.sleep(2000);
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-        merchantTransactions.populate3DSecure(cardType, bankName, threeDPassword);
-        Thread.sleep(3500);
+        paymentsTransactions.populateOnce3DSecure(threeDPassword, cardType, bankName);
+
+        //webDriverUtil.implicitWait(driver, 50);
         String fileName1 = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName1));
         extentTest.log(LogStatus.PASS, "3D Security Succefully Authenticated");
-        Thread.sleep(2400);
+
     }
 
     @And("I select ECom Response URL and decode Bank Response URL {string}{string}")
@@ -342,7 +345,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
 
-        webDriverUtil.implicitWait(driver, 10);
+        //webDriverUtil.implicitWait(driver, 10);
         resultSet = merchantTransactions.mustAssertAndReport();
         System.out.println("This is the returning message from web page: " + resultSet);
         Assertions assertions = new Assertions();
@@ -358,7 +361,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     public void iThenAssignDevicesForDelivery(String deviceReceiptOption, String devicePaymentOption) throws Exception {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        webDriverUtil.implicitWait(driver, 40);
+        //webDriverUtil.implicitWait(driver, 40);
         merchantTransactions.assignDevicesAndProcessOrder(deviceReceiptOption,devicePaymentOption);
         extentTest.log(LogStatus.PASS, "Devices delivery address assigned");
         String fileName = webDriverUtil.takeScreenshot(driver);
@@ -367,7 +370,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("Start Setup Customer Account Landing Page")
     public void startSetupCustomerAccountLandingPage() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        webDriverUtil.implicitWait(driver, 40);
+        //webDriverUtil.implicitWait(driver, 40);
         merchantTransactions.completeCustomerLandingPage();
         extentTest.log(LogStatus.PASS, "Setup Customer Landing page completed");
         String fileName = webDriverUtil.takeScreenshot(driver);
@@ -377,7 +380,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("Tell Us About The Customers Business {string} {string} {string} {string}")
     public void tellUsAboutTheCustomersBusiness(String companyTypeOption, String companyRegName, String businessMonthlIncome, String businessCategory) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        webDriverUtil.implicitWait(driver, 40);
+        //webDriverUtil.implicitWait(driver, 40);
         extentTest.log(LogStatus.PASS, "Tell Us About Your Business Start");
         merchantTransactions.customebusinessComplete(companyTypeOption,companyRegName, businessMonthlIncome, businessCategory);
 
@@ -391,11 +394,11 @@ public class MerchantStepDefinitions extends SystemUtilities {
         MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
-        webDriverUtil.implicitWait(driver, 40);
+        //webDriverUtil.implicitWait(driver, 40);
         merchantTransactions.populateOnceCardDetails(onceNameOnCard, onceCardNo, onceExpiryDate, onceCvv);
-        webDriverUtil.implicitWait(driver, 30);
+        //webDriverUtil.implicitWait(driver, 30);
         String fileName = webDriverUtil.takeScreenshot(driver);
-        webDriverUtil.implicitWait(driver, 40);
+        //webDriverUtil.implicitWait(driver, 40);
         if (extentReport == null) {
             extentReport = new ExtentReports("target/report/extent/ExtentResults.html");
         }
@@ -403,18 +406,34 @@ public class MerchantStepDefinitions extends SystemUtilities {
         extentTest.log(LogStatus.PASS, "Payment Card details successfully populated and submitted");
     }
 
-    @And("I verify Payment Request Link and complete payment")
-    public void iCompletePayment() throws Exception {
+    @And("I verify Payment Request Link and complete payment {string}")
+    public void iCompletePayment(String devicePaymentOption) throws Exception {
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment"))
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            Thread.sleep(3500);
+            merchantTransactions.completePaymentRequest();
+            extentTest.log(LogStatus.PASS, "Complete payment request");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
 
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        Thread.sleep(3500);
-        merchantTransactions.completePaymentRequest();
-        extentTest.log(LogStatus.PASS, "Complete payment request");
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
 
-    @And("I Provide Company and Personal Details {string} {string} {string} {string} {string} {string} {string} {string}")
+    @And("I select immediate payment method {string}{string}{string}{string}{string}{string}")
+    public void iSelectPaymentMethod(String onceNameOnCard, String onceCardNo,
+                                     String onceExpireYear, String onceExpiryDate, String onceCvv, String devicePaymentOption) throws Exception {
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment")) {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
+
+            CardDetailsPom cardDetailsPom = new CardDetailsPom(driver);
+            merchantTransactions.selectPayment(onceNameOnCard, onceCardNo,
+                    onceExpireYear, onceExpiryDate, onceCvv);
+        }
+    }
+
+        @And("I Provide Company and Personal Details {string} {string} {string} {string} {string} {string} {string} {string}")
     public void iProvideCompanyAndPersonalDetails(String companyTypeOption,String companyRegName, String monthlyIncomeKnowledge,String businessMonthlIncome
                                                   ,String companyDifferentName,
                                                   String companyRegNo,String businessCategory,String companyTradingName) throws Exception {
@@ -485,7 +504,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     public void iSelectDealer(String dealer,String userId,String password) throws Exception {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        Thread.sleep(2400);
+        Thread.sleep(4000);
 
         if (extentReport == null) {
             extentReport = new ExtentReports("target/report/extent/ExtentResults.html");

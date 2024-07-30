@@ -28,15 +28,15 @@ public class ThirdPartyLogin1 extends SystemUtilities {
         Login login = new Login(driver);
 
         webDriverUtil.clickElement(login.selectDealerDrpdwn);
-        webDriverUtil.implicitWait(driver, 05);
+        //webDriverUtil.implicitWait(driver, 05);
         webDriverUtil.clickElement(login.makroDrpdwnOption);
-        webDriverUtil.implicitWait(driver, 05);
+        //webDriverUtil.implicitWait(driver, 05);
 
         webDriverUtil.enterText(login.userId, userId);
-        webDriverUtil.implicitWait(driver, 05);
+        //webDriverUtil.implicitWait(driver, 05);
         webDriverUtil.enterText(login.makroPassword, password);
         webDriverUtil.clickElement(login.brk_loginBtn);
-        webDriverUtil.implicitWait(driver, 05);
+        //webDriverUtil.implicitWait(driver, 05);
 
     }
 }

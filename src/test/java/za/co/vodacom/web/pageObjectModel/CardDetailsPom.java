@@ -106,6 +106,10 @@ public class CardDetailsPom {
     public WebElement ozowPayOption;
     @FindBy(xpath = "//*[@id='next-button']")
     public WebElement ozowPayOptionContinueBtn;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div[2]/div/div/div[3]/div[1]/div/button")
+    public WebElement tradePaymentSubmit;
+
     @FindBy(xpath = "//*[@id='reskin-content']/div[3]/div/div/div[2]/div/div[2]/div/div/div/input")
     public WebElement ozowOTP;
     @FindBy(xpath = "//*[@id='NewCard_NameOnCard']")
@@ -114,16 +118,29 @@ public class CardDetailsPom {
     @FindBy(xpath = "//*[@id='NewCard_CardNumber']")
     public WebElement onceCardNo;
 
+    @FindBy(xpath = "//*[@id='cardNumber']")
+    public WebElement onceCardNo_ten;
+
     @FindBy(xpath="//*[@id='cardExpiryYear']")
     public WebElement onceCardExpiry;
-    @FindBy(xpath ="//*[@id=\"NewCard_ExpiryDate\"]")
+    @FindBy(xpath ="//*[@id=\"cardCvv\"]")
     public WebElement onceCvv;
 
     @FindBy(xpath = "//*[@id='cardExpiryYear']")
     public WebElement onceExpireYear;
 
+    @FindBy(xpath = "/html/body/div/div[2]/div[2]/div/div/div[3]/div[1]/div/button")
+    public WebElement OncepaymentSubmit;
+
+    @FindBy(xpath = "//*[@id='nameOfCard']")
+    public WebElement onceNameOnCard;
+
     @FindBy(xpath = "//*[@id='NewCard_ExpiryDate']")
     public WebElement onceExpiryDate;
+
+    @FindBy(xpath = "//*[@id='cardExpiryDate']")
+    public WebElement onceExpiryDate_ten;
+
     @FindBy(xpath = "//*[@id='SubmitButton']")
     public WebElement onceNewPayButton;
     @FindBy(xpath = "//*[@id='saveCardCheckbox']")

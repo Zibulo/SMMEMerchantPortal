@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class Login {
     public Login(WebDriver driver){
         PageFactory.initElements(driver,this);
@@ -30,6 +32,15 @@ public class Login {
     @FindBy(xpath="//span[@automationid='Revamp_Choose_Solution_Carousel_Card_Vodapay_Max_Plus' and contains(@class, 'icon-add-utility')]")
     public WebElement addPosOptionMax;
 
+    @FindBy(xpath="/html/body/div[5]/button")
+    public WebElement closeCart;
+
+     @FindBy(xpath=" //*[@id=\"root\"]/div/div[1]/div/section[1]/section/article/div/article/section[3]/section/button/span[2]")
+    public WebElement addToCart;
+
+    @FindBy(xpath="//*[@id='radix-4']")
+    public WebElement paymentSolution_btn;
+
     @FindBy(xpath=" //*[@id=\"radix-3\"]/div/div/div/div/div[1]/article")
     public WebElement posOptionMaxSelection;
     @FindBy(xpath="//*[@id='carousel']/div[4]/section/button")
@@ -42,6 +53,41 @@ public class Login {
     public WebElement moreVodaPosPaySolutions;
     @FindBy(xpath="//button[@type='button' and @class='sc-fHekdT fbFaKr']")
     public WebElement addPosOptionTapOnPhone;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[3]/article/figure/img")
+    public WebElement OptionTapOnPhone;
+
+    @FindBy(xpath="//*[@id='radix-3']/div/div[1]/div/div/div[2]/article/figure/img")
+    public WebElement OptionVodaPaymentGateway;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[1]/article/figcaption/p")
+    public WebElement Option_img1;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[2]/article/figcaption/p[1]")
+    public WebElement Option_img2;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[3]/article/figcaption/p[1]")
+    public WebElement Option_img3;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[4]/article/figcaption/p[1]")
+    public WebElement Option_img4;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[5]/article/figcaption/p[1]")
+    public WebElement Option_img5;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[2]/button[3]")
+    public WebElement radio_solution_third;
+
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[2]/button[1]")
+    public WebElement radio_solution_first;
+
+
+    //*[@id="radix-3"]/div/div[1]/div/div/div[1]/article/figure/img
+    @FindBy(xpath="//img[@alt='VodaPay Kwika']")
+    public WebElement OptionKwika;
+
+    @FindBy(tagName="img")
+    public List<WebElement> solutionImages;
 
     @FindBy(xpath="//*[@id=\"carousel\"]/div[6]/section/button")
     public WebElement addPosOptionPayRequest;
@@ -77,6 +123,9 @@ public class Login {
     @FindBy(name="surname")
     public WebElement surName;
 
+    @FindBy(xpath="(//*[@id=\"float-label\"]/div/div/div[1]/input)")
+    public WebElement ownershipdrpdwn;
+
     @FindBy(name="emailAddress")
     public WebElement eMail;
 
@@ -89,6 +138,37 @@ public class Login {
     public WebElement idNumber;
     @FindBy(xpath="/html/body/div[5]/section/button") //Absolute xpath used to locate elements
     public WebElement checkoutProceedBtn;
+
+    @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[2]/div/div[1]/div[2]/button") //Absolute xpath used to locate elements
+    public WebElement solutionCheckoutProceedBtn;
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/h3[1]") //Absolute xpath used to locate elements
+    public WebElement paymentMethodVPG;
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/div[1]/div/div/div[1]/div/div/div[1]/section/button") //Absolute xpath used to locate elements
+    public WebElement VPGVisaCard;
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/div[1]/div/div/div[1]/div/div/div[2]/section/button") //Absolute xpath used to locate elements
+    public WebElement VPGamericanExpress;
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/div[1]/div/div/div[1]/div/div/div[3]/section/button") //Absolute xpath used to locate elements
+    public WebElement VPG_qrCard;
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/div[1]/div/div/div[2]/button[2]") //Absolute xpath used to locate elements
+    public WebElement VPG_second_radioBtn;
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/div[1]/div/div/div[1]/div/div/div[4]/section/button") //Absolute xpath used to locate elements
+    public WebElement instant_ozow;
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/h3[2]") //Absolute xpath used to locate elements
+    public WebElement paymentMethodVPR;
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/div[2]/div/div/div[1]/div/div/div[1]/section/button") //Absolute xpath used to locate elements
+    public WebElement VPRVisaCard;
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/div[2]/div/div/div[1]/div/div/div[2]/section/button") //Absolute xpath used to locate elements
+    public WebElement VPRamericanExpress;
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[2]/div/div[1]/div[2]/button") //Absolute xpath used to locate elements
+    public WebElement Vpgvpt_proceedBtn;
+
     @FindBy(xpath="//button[normalize-space(text())='Continue to payment']")
     public WebElement orderContinueBtn;
     @FindBy(xpath="//button[@type='button' and @data-automationid='undefined_Plus' and contains(@class, 'ns-text-grey-600') and contains(@class, 'ns-cursor-pointer')]")
