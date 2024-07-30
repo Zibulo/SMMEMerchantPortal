@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="101.281">
-    <testcase classname="third Party Login" name="&quot;Physical Device with all Virtual payment&quot;" time="101.075">
-        <failure message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id='radix-4']&quot;}&#10;  (Session info: chrome=126.0.6478.185)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-TNT', ip: '192.168.8.104', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.2'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.185, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64234}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 0a25b8d86a5088d17489a4b7f5a5514c&#10;*** Element info: {Using=xpath, value=//*[@id='radix-4']}" type="org.openqa.selenium.NoSuchElementException"><![CDATA[Given The webBrowser is launched............................................passed
-And I am on the dealer landing page "Physical Device with all Virtual payment""Game dealer journey""3poURL""Tebello Ntyingila""".passed
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="68.927">
+    <testcase classname="third Party Login" name="&quot;Kwika Journey&quot;" time="68.794">
+        <failure message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;root&quot;]/div/div[1]/div/section[1]/main/article/h3[2]&quot;}&#10;  (Session info: chrome=127.0.6533.73)&#10;For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-TNT', ip: '10.103.154.185', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.2'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.73, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55942}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: f21f07d34acf16464489ff85cecb8a5d&#10;*** Element info: {Using=xpath, value=//*[@id=&quot;root&quot;]/div/div[1]/div/section[1]/main/article/h3[2]}" type="org.openqa.selenium.NoSuchElementException"><![CDATA[Given The webBrowser is launched............................................passed
+And I am on the dealer landing page "Kwika Journey""Game dealer journey""3poURL""Tebello Ntyingila""".passed
 And When I select Dealer "Game""Junius01""Testing@123"......................passed
-And I Choose Available POS Option "VodaPay Kwika,VodaPay Tap on Phone,VodaPay Payment Gateway,VodaPay Payment Request,VodaPay Max".failed
+And I Choose Available POS Option "VodaPay Payment Gateway".................failed
+And I Provide the Banking Details "Sole Proprietorship" "VFS Automators" "1234567890".skipped
 
 StackTrace:
-org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='radix-4']"}
-  (Session info: chrome=126.0.6478.185)
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="root"]/div/div[1]/div/section[1]/main/article/h3[2]"}
+  (Session info: chrome=127.0.6533.73)
 For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ILAB-TNT', ip: '192.168.8.104', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.2'
+System info: host: 'ILAB-TNT', ip: '10.103.154.185', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.2'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.185, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64234}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0a25b8d86a5088d17489a4b7f5a5514c
-*** Element info: {Using=xpath, value=//*[@id='radix-4']}
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.73, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55942}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: f21f07d34acf16464489ff85cecb8a5d
+*** Element info: {Using=xpath, value=//*[@id="root"]/div/div[1]/div/section[1]/main/article/h3[2]}
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -31,10 +32,10 @@ Session ID: 0a25b8d86a5088d17489a4b7f5a5514c
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
 	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
 	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy20.getAttribute(Unknown Source)
-	at za.co.vodacom.web.webFeatures.MerchantTransactions.choosePosOption(MerchantTransactions.java:82)
+	at jdk.proxy2/jdk.proxy2.$Proxy20.isDisplayed(Unknown Source)
+	at za.co.vodacom.web.webFeatures.MerchantTransactions.choosePosOption(MerchantTransactions.java:452)
 	at za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(MerchantStepDefinitions.java:254)
-	at ✽.I Choose Available POS Option "VodaPay Kwika,VodaPay Tap on Phone,VodaPay Payment Gateway,VodaPay Payment Request,VodaPay Max"(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/thirdPartyOnboardPaymentRequest.feature:12)
+	at ✽.I Choose Available POS Option "VodaPay Payment Gateway"(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/thirdPartyOnboardPaymentRequest.feature:12)
 ]]></failure>
     </testcase>
 </testsuite>

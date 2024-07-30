@@ -60,8 +60,9 @@ public class MerchantTransactions extends SystemUtilities {
         Login login = new Login(driver);
 
         String[] stringArray = deviceOption.split(",");
-
+        Boolean runPaymentMethod = false;
         for (String s : stringArray) {
+
             if (s.equalsIgnoreCase("VodaPay Kwika")) {
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
@@ -71,8 +72,11 @@ public class MerchantTransactions extends SystemUtilities {
 
                 // Create an instance of JavascriptExecutor
                 JavascriptExecutor js = (JavascriptExecutor) driver;
-
+                Thread.sleep(5000);
                 // Scroll to the bottom of the page
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -120,7 +124,7 @@ public class MerchantTransactions extends SystemUtilities {
                     Thread.sleep(2000);
                     login.Option_img5.click();
                 }
-
+                Thread.sleep(2000);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
                 Thread.sleep(6000);
                 webDriverUtil.clickElement(login.closeCart);
@@ -130,13 +134,16 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();actions.sendKeys(Keys.PAGE_DOWN).perform();actions.sendKeys(Keys.PAGE_DOWN).perform();actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+
 
                 // Create an instance of JavascriptExecutor
                 JavascriptExecutor js = (JavascriptExecutor) driver;
 
                 // Scroll to the bottom of the page
                 js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 if(login.paymentSolution_btn.getAttribute("data-state").
                         equalsIgnoreCase("closed"))
                 {
@@ -186,6 +193,7 @@ public class MerchantTransactions extends SystemUtilities {
                 System.out.println("Product Selected: "+s);
 
             } else if (s.equalsIgnoreCase("VodaPay Payment Gateway")) {
+                runPaymentMethod=true;
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -195,10 +203,14 @@ public class MerchantTransactions extends SystemUtilities {
 
                 // Scroll to the bottom of the page
                 js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-                Thread.sleep(3000);
+                Thread.sleep(5000);
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
                 if(login.paymentSolution_btn.getAttribute("data-state").
                         equalsIgnoreCase("closed"))
                 {
+                    actions.sendKeys(Keys.PAGE_DOWN).perform();
+                    actions.sendKeys(Keys.PAGE_DOWN).perform();
                     login.paymentSolution_btn.click();
                     js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
                 }
@@ -244,6 +256,7 @@ public class MerchantTransactions extends SystemUtilities {
                 System.out.println("Product Selected: "+s);
 
             } else if (s.equalsIgnoreCase("VodaPay Tap on Phone")) {
+                runPaymentMethod = true;
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -254,6 +267,10 @@ public class MerchantTransactions extends SystemUtilities {
                 // Scroll to the bottom of the page
                 js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
                 Thread.sleep(3000);
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
                 if(login.paymentSolution_btn.getAttribute("data-state").
                         equalsIgnoreCase("closed"))
                 {
@@ -302,6 +319,7 @@ public class MerchantTransactions extends SystemUtilities {
                 System.out.println("Product Selected: "+s);
 
             } else if (s.equalsIgnoreCase("VodaPay Payment Request")) {
+                runPaymentMethod=true;
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
                 Thread.sleep(3000);
@@ -396,54 +414,57 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(10000);
         webDriverUtil.clickElement(login.solutionCheckoutProceedBtn);
 
-
-        if(login.paymentMethodVPG.isDisplayed())
+        if(runPaymentMethod)
         {
-            actions.sendKeys(Keys.PAGE_DOWN).perform();
-            Thread.sleep(5000);
-            System.out.println("Show Payment MTH");
-            System.out.println(login.paymentMethodVPG.getText());
-            if(login.VPGVisaCard.getText().equalsIgnoreCase("select"))
+            if(login.paymentMethodVPG.isDisplayed())
             {
-                login.VPGVisaCard.click();
-            }
-            Thread.sleep(2000);
-            if(login.VPGamericanExpress.getText().equalsIgnoreCase("select"))
-            {
-                login.VPGamericanExpress.click();
-            }
-            Thread.sleep(2000);
-            if(login.VPG_qrCard.getText().equalsIgnoreCase("select"))
-            {
-                login.VPG_qrCard.click();
-            }
-            if(login.instant_ozow.getText().equalsIgnoreCase("select"))
-            {
-                login.VPG_second_radioBtn.click();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                Thread.sleep(5000);
+                System.out.println("Show Payment MTH");
+                System.out.println(login.paymentMethodVPG.getText());
+                if(login.VPGVisaCard.getText().equalsIgnoreCase("select"))
+                {
+                    login.VPGVisaCard.click();
+                }
                 Thread.sleep(2000);
-                login.instant_ozow.click();
+                if(login.VPGamericanExpress.getText().equalsIgnoreCase("select"))
+                {
+                    login.VPGamericanExpress.click();
+                }
+                Thread.sleep(2000);
+                if(login.VPG_qrCard.getText().equalsIgnoreCase("select"))
+                {
+                    login.VPG_qrCard.click();
+                }
+                if(login.instant_ozow.getText().equalsIgnoreCase("select"))
+                {
+                    login.VPG_second_radioBtn.click();
+                    Thread.sleep(2000);
+                    login.instant_ozow.click();
+                }
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+
+
             }
-            actions.sendKeys(Keys.PAGE_DOWN).perform();
-            actions.sendKeys(Keys.PAGE_DOWN).perform();
 
+            if(login.paymentMethodVPR.isDisplayed()) {
+                Thread.sleep(5000);
+                if(login.VPRVisaCard.getText().equalsIgnoreCase("select"))
+                {
+                    login.VPRVisaCard.click();
+                }
+                Thread.sleep(2000);
+                if(login.VPRamericanExpress.getText().equalsIgnoreCase("select"))
+                {
+                    login.VPRamericanExpress.click();
+                }
 
-
+                webDriverUtil.clickElement(login.Vpgvpt_proceedBtn);
+            }
         }
 
-        if(login.paymentMethodVPR.isDisplayed()) {
-            Thread.sleep(5000);
-            if(login.VPRVisaCard.getText().equalsIgnoreCase("select"))
-            {
-                login.VPRVisaCard.click();
-            }
-            Thread.sleep(2000);
-            if(login.VPRamericanExpress.getText().equalsIgnoreCase("select"))
-            {
-                login.VPRamericanExpress.click();
-            }
-
-            webDriverUtil.clickElement(login.Vpgvpt_proceedBtn);
-        }
 
 
     }

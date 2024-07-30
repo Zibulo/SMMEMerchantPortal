@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 1402378000,
+              "duration": 1320616500,
               "status": "passed"
             },
             "line": 7,
@@ -24,15 +24,15 @@
         ]
       },
       {
-        "start_timestamp": "2024-07-29T17:07:58.953Z",
-        "line": 34,
-        "name": "\"Physical Device with all Virtual payment\"",
+        "start_timestamp": "2024-07-30T12:35:25.384Z",
+        "line": 36,
+        "name": "\"Kwika Journey\"",
         "description": "",
         "id": "third-party-login;\"\u003cscenariodescription\u003e\";;2",
         "after": [
           {
             "result": {
-              "duration": 549892100,
+              "duration": 267160300,
               "status": "passed"
             },
             "match": {
@@ -45,32 +45,32 @@
         "steps": [
           {
             "result": {
-              "duration": 72699113500,
+              "duration": 5989428000,
               "status": "passed"
             },
             "line": 10,
-            "name": "I am on the dealer landing page \"Physical Device with all Virtual payment\"\"Game dealer journey\"\"3poURL\"\"Tebello Ntyingila\"\"\"",
+            "name": "I am on the dealer landing page \"Kwika Journey\"\"Game dealer journey\"\"3poURL\"\"Tebello Ntyingila\"\"\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"Physical Device with all Virtual payment\"",
+                  "val": "\"Kwika Journey\"",
                   "offset": 32
                 },
                 {
                   "val": "\"Game dealer journey\"",
-                  "offset": 74
+                  "offset": 47
                 },
                 {
                   "val": "\"3poURL\"",
-                  "offset": 95
+                  "offset": 68
                 },
                 {
                   "val": "\"Tebello Ntyingila\"",
-                  "offset": 103
+                  "offset": 76
                 },
                 {
                   "val": "\"\"",
-                  "offset": 122
+                  "offset": 95
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnDealerLandingLoginPage(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -79,7 +79,7 @@
           },
           {
             "result": {
-              "duration": 16389692800,
+              "duration": 16053003000,
               "status": "passed"
             },
             "line": 11,
@@ -105,20 +105,45 @@
           },
           {
             "result": {
-              "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id\u003d\u0027radix-4\u0027]\"}\n  (Session info: chrome\u003d126.0.6478.185)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027ILAB-TNT\u0027, ip: \u0027192.168.8.104\u0027, os.name: \u0027Windows 11\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002722.0.2\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 126.0.6478.185, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\\Users\\ntyit001\\AppData\\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64234}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: 0a25b8d86a5088d17489a4b7f5a5514c\n*** Element info: {Using\u003dxpath, value\u003d//*[@id\u003d\u0027radix-4\u0027]}\r\n\tat java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)\r\n\tat java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\r\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\r\n\tat jdk.proxy2/jdk.proxy2.$Proxy20.getAttribute(Unknown Source)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.choosePosOption(MerchantTransactions.java:82)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(MerchantStepDefinitions.java:254)\r\n\tat ✽.I Choose Available POS Option \"VodaPay Kwika,VodaPay Tap on Phone,VodaPay Payment Gateway,VodaPay Payment Request,VodaPay Max\"(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/thirdPartyOnboardPaymentRequest.feature:12)\r\n",
-              "duration": 9977863700,
+              "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id\u003d\"root\"]/div/div[1]/div/section[1]/main/article/h3[2]\"}\n  (Session info: chrome\u003d127.0.6533.73)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027ILAB-TNT\u0027, ip: \u002710.103.154.185\u0027, os.name: \u0027Windows 11\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002722.0.2\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.73, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\\Users\\ntyit001\\AppData\\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55942}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: f21f07d34acf16464489ff85cecb8a5d\n*** Element info: {Using\u003dxpath, value\u003d//*[@id\u003d\"root\"]/div/div[1]/div/section[1]/main/article/h3[2]}\r\n\tat java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)\r\n\tat java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\r\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\r\n\tat jdk.proxy2/jdk.proxy2.$Proxy20.isDisplayed(Unknown Source)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.choosePosOption(MerchantTransactions.java:452)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(MerchantStepDefinitions.java:254)\r\n\tat ✽.I Choose Available POS Option \"VodaPay Payment Gateway\"(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/thirdPartyOnboardPaymentRequest.feature:12)\r\n",
+              "duration": 45116478900,
               "status": "failed"
             },
             "line": 12,
-            "name": "I Choose Available POS Option \"VodaPay Kwika,VodaPay Tap on Phone,VodaPay Payment Gateway,VodaPay Payment Request,VodaPay Max\"",
+            "name": "I Choose Available POS Option \"VodaPay Payment Gateway\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"VodaPay Kwika,VodaPay Tap on Phone,VodaPay Payment Gateway,VodaPay Payment Request,VodaPay Max\"",
+                  "val": "\"VodaPay Payment Gateway\"",
                   "offset": 30
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 22,
+            "name": "I Provide the Banking Details \"Sole Proprietorship\" \"VFS Automators\" \"1234567890\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Sole Proprietorship\"",
+                  "offset": 30
+                },
+                {
+                  "val": "\"VFS Automators\"",
+                  "offset": 52
+                },
+                {
+                  "val": "\"1234567890\"",
+                  "offset": 69
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iProvideBankingDetails(java.lang.String,java.lang.String,java.lang.String)"
             },
             "keyword": "And "
           }
