@@ -370,19 +370,19 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("Start Setup Customer Account Landing Page")
     public void startSetupCustomerAccountLandingPage() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        //webDriverUtil.implicitWait(driver, 40);
+        webDriverUtil.implicitWait(driver, 40);
         merchantTransactions.completeCustomerLandingPage();
         extentTest.log(LogStatus.PASS, "Setup Customer Landing page completed");
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
 
-    @And("Tell Us About The Customers Business {string} {string} {string} {string}")
-    public void tellUsAboutTheCustomersBusiness(String companyTypeOption, String companyRegName, String businessMonthlIncome, String businessCategory) throws Exception {
+    @And("FICA PROCESS Pages Tell Us About The Customers Business {string} {string} {string} {string} {string}")
+    public void tellUsAboutTheCustomersBusiness(String companyTypeOption, String companyRegName, String businessMonthlIncome, String businessCategory, String AddressYearMonthDayStayed) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        //webDriverUtil.implicitWait(driver, 40);
+        webDriverUtil.implicitWait(driver, 40);
         extentTest.log(LogStatus.PASS, "Tell Us About Your Business Start");
-        merchantTransactions.customebusinessComplete(companyTypeOption,companyRegName, businessMonthlIncome, businessCategory);
+        merchantTransactions.customebusinessComplete(companyTypeOption,companyRegName, businessMonthlIncome, businessCategory,AddressYearMonthDayStayed);
 
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
@@ -544,6 +544,46 @@ public class MerchantStepDefinitions extends SystemUtilities {
     }
 
 
+    @And("I close ThreeD tab {string}{string}")
+    public void iCloseThreeDTab(String devicePaymentOption, String bankName) throws Exception {
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment")
+        && bankName.equalsIgnoreCase("Nedbank Debit"))
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
+            Thread.sleep(2400);
+            merchantTransactions.closeThreeDtab();
+            extentTest.log(LogStatus.PASS, "Close Three Dtab");
+           // String fileName = webDriverUtil.takeScreenshot(driver);
+           // extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
+
+    }
+
+    @And("I Check Payment Status {string}{string}")
+    public void iCheckPaymentStatus(String devicePaymentOption, String bankName) throws Exception {
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment")
+                && bankName.equalsIgnoreCase("Nedbank Debit"))
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+
+            Thread.sleep(2400);
+            merchantTransactions.checkPaymentStatus();
+            extentTest.log(LogStatus.PASS, "Close Three Dtab");
+             String fileName = webDriverUtil.takeScreenshot(driver);
+             extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
+
+    }
+
+    @And("FICA PROCESS Pages Confirm the customers personal details {string} {string} {string}")
+    public void ficaPROCESSPagesConfirmTheCustomersPersonalDetails(String ownershipDetails, String firstName, String surName) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.confirmCustomerPersonalDetails(ownershipDetails, firstName, surName);
+
+        extentTest.log(LogStatus.PASS, "Confirm Personal Details is Selected");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
 }
 
