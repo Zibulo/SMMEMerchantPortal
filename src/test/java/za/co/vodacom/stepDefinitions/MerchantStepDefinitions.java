@@ -19,6 +19,9 @@ import za.co.vodacom.api.apiFeatures.*;
 import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
 import za.co.vodacom.web.webFeatures.MerchantTransactions;
 
+import static za.co.vodacom.web.webFeatures.MerchantTransactions.KwikaOnly;
+import static za.co.vodacom.web.webFeatures.MerchantTransactions.ficaConfirmation;
+
 
 public class MerchantStepDefinitions extends SystemUtilities {
 
@@ -303,19 +306,22 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I Populate ThreeD Secure {string}{string}{string}")
     public void iPopulateThreeDSecure(String threeDPassword, String cardType, String bankName) throws Exception {
+        if(KwikaOnly)
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            MerchantTransactions paymentsTransactions = new MerchantTransactions(driver);
 
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        MerchantTransactions paymentsTransactions = new MerchantTransactions(driver);
+            Thread.sleep(2000);
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            paymentsTransactions.populateOnce3DSecure(threeDPassword, cardType, bankName);
 
-        Thread.sleep(2000);
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-        paymentsTransactions.populateOnce3DSecure(threeDPassword, cardType, bankName);
+            //webDriverUtil.implicitWait(driver, 50);
+            String fileName1 = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName1));
+            extentTest.log(LogStatus.PASS, "3D Security Succefully Authenticated");
+        }
 
-        //webDriverUtil.implicitWait(driver, 50);
-        String fileName1 = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName1));
-        extentTest.log(LogStatus.PASS, "3D Security Succefully Authenticated");
 
     }
 
@@ -408,7 +414,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I verify Payment Request Link and complete payment {string}")
     public void iCompletePayment(String devicePaymentOption) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment"))
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && KwikaOnly)
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             Thread.sleep(3500);
@@ -423,7 +429,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("I select immediate payment method {string}{string}{string}{string}{string}{string}")
     public void iSelectPaymentMethod(String onceNameOnCard, String onceCardNo,
                                      String onceExpireYear, String onceExpiryDate, String onceCvv, String devicePaymentOption) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment")) {
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && KwikaOnly) {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
 
@@ -547,7 +553,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("I close ThreeD tab {string}{string}")
     public void iCloseThreeDTab(String devicePaymentOption, String bankName) throws Exception {
         if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-        && bankName.equalsIgnoreCase("Nedbank Debit"))
+        && bankName.equalsIgnoreCase("Nedbank Debit") && KwikaOnly)
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
@@ -563,7 +569,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("I Check Payment Status {string}{string}")
     public void iCheckPaymentStatus(String devicePaymentOption, String bankName) throws Exception {
         if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-                && bankName.equalsIgnoreCase("Nedbank Debit"))
+                && bankName.equalsIgnoreCase("Nedbank Debit") && KwikaOnly)
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
@@ -578,12 +584,27 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("FICA PROCESS Pages Confirm the customers personal details {string} {string} {string}")
     public void ficaPROCESSPagesConfirmTheCustomersPersonalDetails(String ownershipDetails, String firstName, String surName) throws Exception {
+        if(ficaConfirmation)
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            merchantTransactions.confirmCustomerPersonalDetails(ownershipDetails, firstName, surName);
+
+            extentTest.log(LogStatus.PASS, "Confirm Personal Details is Selected");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
+
+    }
+
+    @And("FICA PROCESS Pages Confirm the customers banking details {string} {string} {string} {string} {string}")
+    public void ficaPROCESSPagesConfirmTheCustomersBankingDetails(String bankName, String idNo, String account_number, String firstName, String surName) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        merchantTransactions.confirmCustomerPersonalDetails(ownershipDetails, firstName, surName);
+        merchantTransactions.confirmCustomerBankingDetails(bankName, idNo,account_number, firstName, surName);
 
         extentTest.log(LogStatus.PASS, "Confirm Personal Details is Selected");
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
+
 }
 

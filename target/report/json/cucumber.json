@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 1663176300,
+              "duration": 1187377500,
               "status": "passed"
             },
             "line": 7,
@@ -24,15 +24,15 @@
         ]
       },
       {
-        "start_timestamp": "2024-08-08T09:11:54.872Z",
+        "start_timestamp": "2024-08-16T14:33:29.191Z",
         "line": 40,
-        "name": "\"Markro selects Physical Devices with all Virtual payment\"",
+        "name": "\"Markro selects Max\"",
         "description": "",
         "id": "third-party-login;\"\u003cscenariodescription\u003e\";;2",
         "after": [
           {
             "result": {
-              "duration": 268996000,
+              "duration": 252531100,
               "status": "passed"
             },
             "match": {
@@ -45,32 +45,32 @@
         "steps": [
           {
             "result": {
-              "duration": 5252913600,
+              "duration": 23065769100,
               "status": "passed"
             },
             "line": 10,
-            "name": "I am on the dealer landing page \"Markro selects Physical Devices with all Virtual payment\"\"Makro dealer journey\"\"3poURL\"\"Tebello Ntyingila\"\"\"",
+            "name": "I am on the dealer landing page \"Markro selects Max\"\"Makro dealer journey\"\"3poURL\"\"Tebello Ntyingila\"\"\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"Markro selects Physical Devices with all Virtual payment\"",
+                  "val": "\"Markro selects Max\"",
                   "offset": 32
                 },
                 {
                   "val": "\"Makro dealer journey\"",
-                  "offset": 90
+                  "offset": 52
                 },
                 {
                   "val": "\"3poURL\"",
-                  "offset": 112
+                  "offset": 74
                 },
                 {
                   "val": "\"Tebello Ntyingila\"",
-                  "offset": 120
+                  "offset": 82
                 },
                 {
                   "val": "\"\"",
-                  "offset": 139
+                  "offset": 101
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnDealerLandingLoginPage(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -79,7 +79,7 @@
           },
           {
             "result": {
-              "duration": 15968273000,
+              "duration": 15966391300,
               "status": "passed"
             },
             "line": 11,
@@ -105,15 +105,15 @@
           },
           {
             "result": {
-              "duration": 134271728800,
+              "duration": 42949448400,
               "status": "passed"
             },
             "line": 12,
-            "name": "I Choose Available POS Option \"VodaPay Kwika,VodaPay Tap on Phone,VodaPay Payment Gateway,VodaPay Payment Request,VodaPay Max\"",
+            "name": "I Choose Available POS Option \"VodaPay Max\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"VodaPay Kwika,VodaPay Tap on Phone,VodaPay Payment Gateway,VodaPay Payment Request,VodaPay Max\"",
+                  "val": "\"VodaPay Max\"",
                   "offset": 30
                 }
               ],
@@ -123,11 +123,11 @@
           },
           {
             "result": {
-              "duration": 21208986000,
+              "duration": 22039163600,
               "status": "passed"
             },
             "line": 13,
-            "name": "Submit Merchant details \"Business owner/director\" \"NONDIPHA\" \"LOUW\" \"nervous-strange@2mk3aglp.mailosaur.net\" \"0833721854\" \"South African\" \"9509040030083\" \"4586 Isacholo Crescent\" \"4586 Isacholo Crescent\" \"0187\" \"Blue Golf Estate\" \"Centurion\" \"Gauteng\"",
+            "name": "Submit Merchant details \"Business owner/director\" \"SEEQELA\" \"SEEQELA\" \"nervous-strange@2mk3aglp.mailosaur.net\" \"0833721854\" \"South African\" \"6807015897087\" \"4586 Isacholo Crescent\" \"4586 Isacholo Crescent\" \"0187\" \"Blue Golf Estate\" \"Centurion\" \"Gauteng\"",
             "match": {
               "arguments": [
                 {
@@ -135,52 +135,52 @@
                   "offset": 24
                 },
                 {
-                  "val": "\"NONDIPHA\"",
+                  "val": "\"SEEQELA\"",
                   "offset": 50
                 },
                 {
-                  "val": "\"LOUW\"",
-                  "offset": 61
+                  "val": "\"SEEQELA\"",
+                  "offset": 60
                 },
                 {
                   "val": "\"nervous-strange@2mk3aglp.mailosaur.net\"",
-                  "offset": 68
+                  "offset": 70
                 },
                 {
                   "val": "\"0833721854\"",
-                  "offset": 109
+                  "offset": 111
                 },
                 {
                   "val": "\"South African\"",
-                  "offset": 122
+                  "offset": 124
                 },
                 {
-                  "val": "\"9509040030083\"",
-                  "offset": 138
-                },
-                {
-                  "val": "\"4586 Isacholo Crescent\"",
-                  "offset": 154
+                  "val": "\"6807015897087\"",
+                  "offset": 140
                 },
                 {
                   "val": "\"4586 Isacholo Crescent\"",
-                  "offset": 179
+                  "offset": 156
+                },
+                {
+                  "val": "\"4586 Isacholo Crescent\"",
+                  "offset": 181
                 },
                 {
                   "val": "\"0187\"",
-                  "offset": 204
+                  "offset": 206
                 },
                 {
                   "val": "\"Blue Golf Estate\"",
-                  "offset": 211
+                  "offset": 213
                 },
                 {
                   "val": "\"Centurion\"",
-                  "offset": 230
+                  "offset": 232
                 },
                 {
                   "val": "\"Gauteng\"",
-                  "offset": 242
+                  "offset": 244
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -189,7 +189,7 @@
           },
           {
             "result": {
-              "duration": 13263692600,
+              "duration": 12927909100,
               "status": "passed"
             },
             "line": 14,
@@ -211,7 +211,6 @@
           },
           {
             "result": {
-              "duration": 30691221100,
               "status": "passed"
             },
             "line": 15,
@@ -229,7 +228,7 @@
           },
           {
             "result": {
-              "duration": 5585021800,
+              "duration": 2525600,
               "status": "passed"
             },
             "line": 16,
@@ -267,7 +266,6 @@
           },
           {
             "result": {
-              "duration": 18768587900,
               "status": "passed"
             },
             "line": 17,
@@ -293,7 +291,7 @@
           },
           {
             "result": {
-              "duration": 7454239300,
+              "duration": 1508000,
               "status": "passed"
             },
             "line": 18,
@@ -315,7 +313,6 @@
           },
           {
             "result": {
-              "duration": 9779127500,
               "status": "passed"
             },
             "line": 19,
@@ -337,7 +334,7 @@
           },
           {
             "result": {
-              "duration": 30341821500,
+              "duration": 30273759600,
               "status": "passed"
             },
             "line": 20,
@@ -349,7 +346,7 @@
           },
           {
             "result": {
-              "duration": 31680768300,
+              "duration": 31649252600,
               "status": "passed"
             },
             "line": 21,
@@ -383,11 +380,11 @@
           },
           {
             "result": {
-              "duration": 15206743800,
+              "duration": 14942465100,
               "status": "passed"
             },
             "line": 22,
-            "name": "FICA PROCESS Pages Confirm the customers personal details \"Business owner/director\" \"NONDIPHA\" \"LOUW\"",
+            "name": "FICA PROCESS Pages Confirm the customers personal details \"Business owner/director\" \"SEEQELA\" \"SEEQELA\"",
             "match": {
               "arguments": [
                 {
@@ -395,12 +392,12 @@
                   "offset": 58
                 },
                 {
-                  "val": "\"NONDIPHA\"",
+                  "val": "\"SEEQELA\"",
                   "offset": 84
                 },
                 {
-                  "val": "\"LOUW\"",
-                  "offset": 95
+                  "val": "\"SEEQELA\"",
+                  "offset": 94
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ficaPROCESSPagesConfirmTheCustomersPersonalDetails(java.lang.String,java.lang.String,java.lang.String)"
@@ -409,11 +406,70 @@
           },
           {
             "result": {
-              "status": "undefined"
+              "duration": 48634315400,
+              "status": "passed"
             },
             "line": 23,
-            "name": "FICA PROCESS Pages Confirm the customers banking details Nedbank Debit\" \"NONDIPHA\" \"LOUW\"",
-            "match": {},
+            "name": "FICA PROCESS Pages Confirm the customers banking details \"Nedbank Debit\" \"6807015897087\" \"1288655444\" \"SEEQELA\" \"SEEQELA\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Nedbank Debit\"",
+                  "offset": 57
+                },
+                {
+                  "val": "\"6807015897087\"",
+                  "offset": 73
+                },
+                {
+                  "val": "\"1288655444\"",
+                  "offset": 89
+                },
+                {
+                  "val": "\"SEEQELA\"",
+                  "offset": 102
+                },
+                {
+                  "val": "\"SEEQELA\"",
+                  "offset": 112
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ficaPROCESSPagesConfirmTheCustomersBankingDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//button[@automationid\u003d\u0027Revamp_Personal_Selfie_Open_Camera\u0027]\"}\n  (Session info: chrome\u003d127.0.6533.120)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027ILAB-TNT\u0027, ip: \u0027192.168.8.104\u0027, os.name: \u0027Windows 11\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002722.0.1\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 127.0.6533.120, chrome: {chromedriverVersion: 126.0.6478.63 (df799988fdc9..., userDataDir: C:\\Users\\ntyit001\\AppData\\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49699}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: 6923ab0858064e7350a1be5fd796ab18\n*** Element info: {Using\u003dxpath, value\u003d//button[@automationid\u003d\u0027Revamp_Personal_Selfie_Open_Camera\u0027]}\r\n\tat java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)\r\n\tat java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\r\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\r\n\tat jdk.proxy2/jdk.proxy2.$Proxy20.click(Unknown Source)\r\n\tat vfs.automation.core.utilities.WebDriverUtilities.clickElement(WebDriverUtilities.java:130)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.takeASelfie(MerchantTransactions.java:1301)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.takeSelfie(MerchantStepDefinitions.java:491)\r\n\tat ✽.I take a selfie(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/thirdPartyOnboardPaymentRequest.feature:24)\r\n",
+              "duration": 6084636300,
+              "status": "failed"
+            },
+            "line": 24,
+            "name": "I take a selfie",
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.takeSelfie()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 25,
+            "name": "I  upload documents \"Sole Proprietorship\"\"green card\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Sole Proprietorship\"",
+                  "offset": 20
+                },
+                {
+                  "val": "\"green card\"",
+                  "offset": 41
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iUploadDocuments(java.lang.String,java.lang.String)"
+            },
             "keyword": "And "
           }
         ],

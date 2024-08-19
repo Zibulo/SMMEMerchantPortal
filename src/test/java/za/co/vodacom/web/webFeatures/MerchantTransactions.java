@@ -27,7 +27,11 @@ import java.util.List;
 public class MerchantTransactions extends SystemUtilities {
 
     public WebDriver driver;
-    static boolean ficaConfirmation = false;
+    public static boolean ficaConfirmation = false;
+    public static boolean KwikaOnly = false;
+    Boolean runPaymentMethod = false;
+    Boolean runVPGCheck = false;
+    Boolean runVPRCheck = false;
 
     public MerchantTransactions(WebDriver driver) {
         this.driver = driver;
@@ -65,12 +69,11 @@ public class MerchantTransactions extends SystemUtilities {
         Login login = new Login(driver);
 
         String[] stringArray = deviceOption.split(",");
-        Boolean runPaymentMethod = false;
-        Boolean runVPGCheck = false;
-        Boolean runVPRCheck = false;
+
         for (String s : stringArray) {
 
             if (s.equalsIgnoreCase("VodaPay Kwika")) {
+                KwikaOnly = true;
                 webDriverUtil.implicitWait(driver, 100);
                 Actions actions = new Actions(driver);
                 Thread.sleep(7000);
@@ -154,6 +157,7 @@ public class MerchantTransactions extends SystemUtilities {
                 ficaConfirmation= true;
                 System.out.println("Fica Confirmation is true");
                 System.out.println(String.valueOf(ficaConfirmation));
+                Thread.sleep(12000);
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -163,10 +167,10 @@ public class MerchantTransactions extends SystemUtilities {
 
                 // Create an instance of JavascriptExecutor
                 JavascriptExecutor js = (JavascriptExecutor) driver;
-
+                Thread.sleep(2000);
                 // Scroll to the bottom of the page
                 js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-                Thread.sleep(5000);
+                Thread.sleep(2000);
                 if(login.paymentSolution_btn.getAttribute("data-state").
                         equalsIgnoreCase("closed"))
                 {
@@ -341,10 +345,11 @@ public class MerchantTransactions extends SystemUtilities {
                     Thread.sleep(2000);
                     login.Option_img5.click();
                 }
-
+                webDriverUtil.waitUntilElementClickable(driver,login.addPosOptionKwika, 120);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
                 Thread.sleep(6000);
                 webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.waitUntilElementClickable(driver,login.closeCart, 120);
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
 
@@ -408,7 +413,7 @@ public class MerchantTransactions extends SystemUtilities {
                     Thread.sleep(2000);
                     login.Option_img5.click();
                 }
-
+                Thread.sleep(3000);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
                 Thread.sleep(6000);
                 webDriverUtil.clickElement(login.closeCart);
@@ -679,40 +684,60 @@ public class MerchantTransactions extends SystemUtilities {
            //webDriverUtil.implicitWait(driver, 30);
            webDriverUtil.clickElement(login.readyToSubmitBtn);
        }
-       else {
+       else
+       {
            webDriverUtil.implicitWait(driver, 30);
            //Thread.sleep(10000);
-           webDriverUtil.waitUntilVisible(driver,login.deviceCardPaymentOption,30);
-           webDriverUtil.clickElement(login.deviceCardPaymentOption);
-           ////webDriverUtil.implicitWait(driver, 30);
-           webDriverUtil.waitUntilVisible(driver,login.orderContinueBtn,30);
-           webDriverUtil.clickElement(login.orderContinueBtn);
-           webDriverUtil.implicitWait(driver, 30);
-           webDriverUtil.clickElement(login.reserveFundsBtn);
+           if(KwikaOnly)
+           {
+               webDriverUtil.waitUntilVisible(driver,login.deviceCardPaymentOption,30);
+               webDriverUtil.clickElement(login.deviceCardPaymentOption);
 
-           if (deviceReceiptOption.equalsIgnoreCase("smsReceipt")) {
+
                ////webDriverUtil.implicitWait(driver, 30);
-               webDriverUtil.clickElement(login.smsRadioOption);
-           } else {
-               //webDriverUtil.implicitWait(driver, 20);
-               //Thread.sleep(10000);
-               webDriverUtil.waitUntilVisible(driver,login.emailRadioOption,30);
-               webDriverUtil.clickElement(login.emailRadioOption);
-               System.out.println("The email option has been selected");
+               webDriverUtil.waitUntilVisible(driver,login.orderContinueBtn,30);
+               webDriverUtil.clickElement(login.orderContinueBtn);
+               webDriverUtil.implicitWait(driver, 30);
+               webDriverUtil.clickElement(login.reserveFundsBtn);
+
+               if (deviceReceiptOption.equalsIgnoreCase("smsReceipt")) {
+                   ////webDriverUtil.implicitWait(driver, 30);
+                   webDriverUtil.clickElement(login.smsRadioOption);
+               }
+               else
+               {
+                   //webDriverUtil.implicitWait(driver, 20);
+                   //Thread.sleep(10000);
+                   webDriverUtil.waitUntilVisible(driver,login.emailRadioOption,30);
+                   webDriverUtil.clickElement(login.emailRadioOption);
+                   System.out.println("The email option has been selected");
+               }
+
+               //////webDriverUtil.implicitWait(driver, 30);
+               //webDriverUtil.clickElement(login.addDeviceBtn);
+               //////webDriverUtil.implicitWait(driver, 60);
+               //Thread.sleep(600);
+               //webDriverUtil.clickElement(login.orderContinueBtn);
+               //////webDriverUtil.implicitWait(driver, 30);
+
+               ////webDriverUtil.implicitWait(driver, 60);
+               webDriverUtil.clickElement(login.sendPaymentRequestBtn);
+           } else if (ficaConfirmation && !KwikaOnly)
+           {
+               Thread.sleep(3000);
+               webDriverUtil.implicitWait(driver, 60);
+               webDriverUtil.waitUntilElementClickable(driver,login.completeApplicationBtn, 120);
+               webDriverUtil.clickElement(login.completeApplicationBtn);
+
+               Thread.sleep(3000);
+               webDriverUtil.implicitWait(driver, 60);
+               webDriverUtil.waitUntilElementClickable(driver,login.submitBtn, 120);
+               webDriverUtil.clickElement(login.submitBtn);
            }
 
-           //////webDriverUtil.implicitWait(driver, 30);
-           //webDriverUtil.clickElement(login.addDeviceBtn);
-           //////webDriverUtil.implicitWait(driver, 60);
-           //Thread.sleep(600);
-           //webDriverUtil.clickElement(login.orderContinueBtn);
-           //////webDriverUtil.implicitWait(driver, 30);
+       }
 
-           ////webDriverUtil.implicitWait(driver, 60);
-           webDriverUtil.clickElement(login.sendPaymentRequestBtn);
-        }
-
-      }
+    }
 
       public void completeCustomerLandingPage() throws Exception {
           WebDriverUtilities webDriverUtil = new WebDriverUtilities();
@@ -803,23 +828,29 @@ public class MerchantTransactions extends SystemUtilities {
 
           // Scroll to the bottom of the page
           js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-          webDriverUtil.clickElement(login.urlText_input);
-          webDriverUtil.enterText(login.urlText_input,"https://www.google.com");
+          if(runVPRCheck || runVPGCheck)
+          {
+              webDriverUtil.clickElement(login.urlText_input);
+              webDriverUtil.enterText(login.urlText_input,"https://www.google.com");
+          }
+
 
           //webDriverUtil.waitUntilElementClickable(driver, login.confirmBtn, 30);
 
 
           //webDriverUtil.waitUntilElementClickable(driver, login.confirmBtn, 30);
+          //This code needs to run if you selected VodaPay Max
           if(ficaConfirmation)
           {
               Thread.sleep(3000);
               webDriverUtil.waitUntilElementClickable(driver, login.ficaConfirmBtn, 30);
               webDriverUtil.clickElement(login.ficaConfirmBtn);
+
+              webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
+              webDriverUtil.clickElement(login.nextBtn);
           }
 
 
-          webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
-          webDriverUtil.clickElement(login.nextBtn);
 
           Thread.sleep(3000);
           webDriverUtil.implicitWait(driver,30);
@@ -828,24 +859,28 @@ public class MerchantTransactions extends SystemUtilities {
 
           Thread.sleep(3000);
           webDriverUtil.implicitWait(driver, 30);
-          webDriverUtil.waitUntilElementClickable(driver, login.residential_address, 120);
-          webDriverUtil.clickElement(login.residential_address);
+          if(ficaConfirmation)
+          {
+              webDriverUtil.waitUntilElementClickable(driver, login.residential_address, 120);
+              webDriverUtil.clickElement(login.residential_address);
 
-         // convertAddressYearMonthDayStayedDate(2024-03-16) data passed format
-          int[] dateParts =   convertAddressYearMonthDayStayedDate(AddressYearMonthDayStayed);
-          //String.valueOf(2024),String.valueOf(03),String.valueOf(16) format type ///Year = 2024 //Month = 03 Day //Day
-          clickTateTimeInput(String.valueOf(dateParts[0]),String.valueOf(dateParts[1]),String.valueOf(dateParts[2]));
+              // convertAddressYearMonthDayStayedDate(2024-03-16) data passed format
+              int[] dateParts =   convertAddressYearMonthDayStayedDate(AddressYearMonthDayStayed);
+              //String.valueOf(2024),String.valueOf(03),String.valueOf(16) format type ///Year = 2024 //Month = 03 Day //Day
+              clickTateTimeInput(String.valueOf(dateParts[0]),String.valueOf(dateParts[1]),String.valueOf(dateParts[2]));
 
-          Actions actions = new Actions(driver);
-          Thread.sleep(5000);
-          actions.sendKeys(Keys.PAGE_DOWN);
-          ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-          webDriverUtil.waitUntilElementClickable(driver,login.typeOfResidence, 120);
-          Thread.sleep(1000);
-          webDriverUtil.clickElement(login.typeOfResidence);
-          Thread.sleep(1000);
-          webDriverUtil.waitUntilElementClickable(driver,login.selectOwner, 120);
-          webDriverUtil.clickElement(login.selectOwner);
+              Actions actions = new Actions(driver);
+              Thread.sleep(5000);
+              actions.sendKeys(Keys.PAGE_DOWN);
+              ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+              webDriverUtil.waitUntilElementClickable(driver,login.typeOfResidence, 120);
+              Thread.sleep(1000);
+              webDriverUtil.clickElement(login.typeOfResidence);
+              Thread.sleep(1000);
+              webDriverUtil.waitUntilElementClickable(driver,login.selectOwner, 120);
+              webDriverUtil.clickElement(login.selectOwner);
+          }
+
 
           webDriverUtil.waitUntilElementClickable(driver,login.clickResidentialNextBtn, 120);
           webDriverUtil.clickElement(login.clickResidentialNextBtn);
@@ -1289,7 +1324,8 @@ public class MerchantTransactions extends SystemUtilities {
         fileupload up = new fileupload();
 
         Thread.sleep(800);
-        ////webDriverUtil.implicitWait(driver, 20);
+        webDriverUtil.implicitWait(driver, 20);
+        webDriverUtil.waitUntilElementClickable(driver,login.uploadID, 120);
         webDriverUtil.clickElement(login.uploadID);
 
         if (companytype.equalsIgnoreCase("Sole Proprietorship")) {
@@ -1325,7 +1361,8 @@ public class MerchantTransactions extends SystemUtilities {
 
                 ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
                 webDriverUtil.clickElement(login.uploadPhoto);
-                up.handleFileDialog("C:\\Users\\ntyit001\\IdeaProjects\\SMMEMerchantPortal\\ID\\9509040030083.jpeg");
+                up.handleFileDialog("C:\\Users\\ntyit001\\IdeaProjects\\SMMEMerchantPortal\\ID\\6807015897087.jpeg");
+                webDriverUtil.waitUntilElementClickable(driver,login.confirmPhoto, 120);
                 webDriverUtil.clickElement(login.confirmPhoto);
                 Thread.sleep(30000);
 
@@ -2091,7 +2128,80 @@ public class MerchantTransactions extends SystemUtilities {
        webDriverUtil.clickElement(login.confirmPersonaldetailsNext);
     }
 
-    public String extractInitials(String firstName) {
+   public void confirmCustomerBankingDetails(String bankName, String idNo, String account_number,String firstName, String surName) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        Thread.sleep(10000);
+        //////webDriverUtil.implicitWait(driver, 18000);
+
+       //Run this code if kwika is selected and max not selected to input account holder name manually
+       if(KwikaOnly && !ficaConfirmation)
+       {
+           webDriverUtil.waitUntilElementClickable(driver,login.accountHolder_input, 120);
+           webDriverUtil.enterText(login.accountHolder_input,firstName+" "+surName);
+       }
+
+       Actions actions = new Actions(driver);
+       actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+       Thread.sleep(4000);
+       System.out.println("B Select Bank input w");
+        webDriverUtil.waitUntilElementClickable(driver,login.bank_input, 120);
+       System.out.println("A Select Bank input w");
+       System.out.println("B Select Bank input");
+        webDriverUtil.clickElement(login.bank_input);
+       System.out.println("A Select Bank input");
+       System.out.println("B Select Bank select w");
+       Thread.sleep(2000);
+        webDriverUtil.waitUntilElementClickable(driver,login.bank_select, 120);
+       System.out.println("A Select Bank select w");
+       System.out.println("B Select Bank select");
+        webDriverUtil.clickElement(login.bank_select);
+       System.out.println("A Select Bank select");
+
+       Thread.sleep(2000);
+       webDriverUtil.waitUntilElementClickable(driver,login.accountNumber_input, 120);
+       webDriverUtil.clickElement(login.accountNumber_input);
+       webDriverUtil.enterText(login.accountNumber_input,account_number);
+
+       Thread.sleep(2000);
+       webDriverUtil.waitUntilElementClickable(driver,login.accountType_input, 120);
+       webDriverUtil.clickElement(login.accountType_input);
+       Thread.sleep(2000);
+       if(ficaConfirmation)
+       {
+           webDriverUtil.waitUntilElementClickable(driver,login.accountType_select, 120);
+           webDriverUtil.clickElement(login.accountType_select);
+       }else
+       {
+           webDriverUtil.waitUntilElementClickable(driver,login.accountType_select_kwikaOnly, 120);
+           webDriverUtil.clickElement(login.accountType_select_kwikaOnly);
+       }
+
+
+        if(ficaConfirmation)
+        {
+            Thread.sleep(2000);
+            webDriverUtil.waitUntilElementClickable(driver,login.bank_AccountOpenMonth_input, 120);
+            webDriverUtil.clickElement(login.bank_AccountOpenMonth_input);
+            Thread.sleep(2000);
+            webDriverUtil.waitUntilElementClickable(driver,login.bank_AccountOpenMonth_select, 120);
+            webDriverUtil.clickElement(login.bank_AccountOpenMonth_select);
+
+            Thread.sleep(2000);
+            webDriverUtil.waitUntilElementClickable(driver,login.bank_AccountOpenYear_input, 120);
+            webDriverUtil.clickElement(login.bank_AccountOpenYear_input);
+            Thread.sleep(2000);
+            webDriverUtil.waitUntilElementClickable(driver,login.bank_AccountOpenYear_select, 120);
+            webDriverUtil.clickElement(login.bank_AccountOpenYear_select);
+        }
+
+       Thread.sleep(2000);
+       webDriverUtil.waitUntilElementClickable(driver,login.confirmBankingDetails_btn, 120);
+       webDriverUtil.clickElement(login.confirmBankingDetails_btn);
+       Thread.sleep(15000);
+    }
+   public String extractInitials(String firstName) {
         // Split the name into words
         String[] words = firstName.split(" ");
 
@@ -2108,7 +2218,7 @@ public class MerchantTransactions extends SystemUtilities {
         return initials.toString().toUpperCase(); // Convert to uppercase if needed
 
     }
-        public void tellAboutPartners() throws Exception {
+   public void tellAboutPartners() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
 
@@ -2118,7 +2228,7 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.completeSubmitBtn);
     }
 
-    public void Logoff() throws Exception {
+   public void Logoff() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Logoff logoff = new Logoff(driver);
 
@@ -2126,7 +2236,6 @@ public class MerchantTransactions extends SystemUtilities {
         //driver.quit();
         webDriverUtil.clickElement(logoff.Submitlogoff);
     }
-
     private String getCardExpireDate (String expireDate){
         switch (expireDate) {
             case "January":
@@ -2211,12 +2320,14 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(6000);
         webDriverUtil.clickElement(login.selectDealerDrpdwn);
         if (dealer.equalsIgnoreCase("Makro")) {
-            ////webDriverUtil.implicitWait(driver, 05);
+            webDriverUtil.implicitWait(driver, 05);
+            webDriverUtil.waitUntilElementClickable(driver,login.makroDrpdwnOption, 120);
             webDriverUtil.clickElement(login.makroDrpdwnOption);
             ////webDriverUtil.implicitWait(driver, 05);
 
          } else if (dealer.equalsIgnoreCase("Game")) {
             ////webDriverUtil.implicitWait(driver, 05);
+            webDriverUtil.waitUntilElementClickable(driver,login.gameDrpdwnOption, 120);
             webDriverUtil.clickElement(login.gameDrpdwnOption);
 
          } else if (dealer.equalsIgnoreCase("One Source Direct")) {

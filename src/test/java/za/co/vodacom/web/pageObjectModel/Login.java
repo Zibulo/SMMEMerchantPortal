@@ -125,6 +125,45 @@ public class Login {
     @FindBy(xpath="//button[contains(text(),'Next')]")
     public WebElement confirmPersonaldetailsNext;
 
+    @FindBy(xpath="//input[@automationid='Revamp_Bank_Details_Account_Holder_Full_Name']")
+    public WebElement accountHolder_input;
+
+    @FindBy(xpath="//input[@automationid='Revamp_Bank_Details_Bank_Name']")
+    public WebElement bank_input;
+
+    @FindBy(xpath="//*[@id='float-label']/div/div/div[2]/div[2]")
+    public WebElement bank_select;
+
+    @FindBy(xpath="//input[@automationid='Revamp_Bank_Details_Account_Number']")
+    public WebElement accountNumber_input;
+
+    @FindBy(xpath="//div[automationid='undefined_Field_Item_Street_Current_Cheque_Account_undefined']")
+    public WebElement accountNumber_select;
+
+    @FindBy(xpath="//input[@automationid='Revamp_Bank_Details_Account_Type']")
+    public WebElement accountType_input;
+
+    @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[1]/article/div[2]/div/div/div/form/div[5]/div[1]/div/div/div[2]/div[1]")
+    public WebElement accountType_select;
+
+
+    @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[1]/article/div[2]/div/div/div/form/div[4]/div/div/div/div[2]/div[1]")
+    public WebElement accountType_select_kwikaOnly;
+
+    @FindBy(xpath="//input[@automationid='Revamp_Bank_Details_Bank_Account_Open_Since_Month']")
+    public WebElement bank_AccountOpenMonth_input;
+
+    @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[1]")
+    public WebElement bank_AccountOpenMonth_select;
+
+    @FindBy(xpath="//input[@automationid='Revamp_Bank_Details_Bank_Account_Open_Since_Year']")
+    public WebElement bank_AccountOpenYear_input;
+
+    @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[1]")
+    public WebElement bank_AccountOpenYear_select;
+
+    @FindBy(xpath="//button[contains(text(),'Next')]")
+    public WebElement confirmBankingDetails_btn;
 
     @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[1]")
     public WebElement idSAOption;
@@ -225,6 +264,13 @@ public class Login {
     public WebElement onlinePaymentOptionBtn;
     @FindBy(xpath="//button[contains(text(),'Continue to payment')]")
     public WebElement assignDeviceContinueBtn;
+
+    @FindBy(xpath="//button[contains(text(),'Complete application')]")
+    public WebElement completeApplicationBtn;
+
+    @FindBy(xpath="//*[@id='root']/div/div[1]/div/section[1]/main/div[2]/dialog[1]/div/button[2]")
+    public WebElement submitBtn;
+
     @FindBy(xpath="//button[contains(text(),'Reserve funds')]")
     public WebElement reserveFundsBtn;
     @FindBy(xpath="//input[@name='receiptOption' and @type='radio' and @value='sms']")
