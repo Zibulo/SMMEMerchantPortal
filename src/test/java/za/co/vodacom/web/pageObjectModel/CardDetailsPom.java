@@ -112,8 +112,18 @@ public class CardDetailsPom {
 
     @FindBy(xpath = "//*[@id='reskin-content']/div[3]/div/div/div[2]/div/div[2]/div/div/div/input")
     public WebElement ozowOTP;
+
+    @FindBy(xpath = "/html/body/div/div[2]/div[1]/div/div[3]/div[1]/div[2]/p")
+    public WebElement paymentmethod_btn;
+
+    @FindBy(xpath="//button[contains(text(),'Continue')]")
+    public WebElement paymentmethod_continue_btn;
+
     @FindBy(xpath = "//*[@id='NewCard_NameOnCard']")
     public WebElement onceCardHolder;
+
+    @FindBy(xpath = "//*[@id='nameOfCard']")
+    public WebElement VPG_onceCardHolder;
 
     @FindBy(xpath = "//*[@id='NewCard_CardNumber']")
     public WebElement onceCardNo;
@@ -125,6 +135,9 @@ public class CardDetailsPom {
     public WebElement onceCardExpiry;
     @FindBy(xpath ="//*[@id=\"cardCvv\"]")
     public WebElement onceCvv;
+
+    @FindBy(xpath ="//*[@id=\"NewCard_Cvv\"]")
+    public WebElement new_onceCvv;
 
     @FindBy(xpath = "//*[@id='cardExpiryYear']")
     public WebElement onceExpireYear;

@@ -24,9 +24,9 @@ public class CommonMethods {
     public String getPaymentRequestLink() throws Exception{
 
         Thread.sleep(3600);
-        String apikey = "mAlUb1vW2pkUn8AmGhwrxP5ef3os2gqL";
-        String serverid = "2mk3aglp";
-        String server_domain = "2mk3aglp.mailosaur.net";
+        String apikey = "QhdHhPFO9lj4fQwYai2xdPXZXSqKJ8xF";
+        String serverid = "dggrvtf2";
+        String server_domain = "service-community@dggrvtf2.mailosaur.net";
 
         MailosaurClient maialosaur = new MailosaurClient(apikey);
         MessageSearchParams params = new MessageSearchParams();

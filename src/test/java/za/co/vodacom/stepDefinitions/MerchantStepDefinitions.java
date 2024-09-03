@@ -261,12 +261,12 @@ public class MerchantStepDefinitions extends SystemUtilities {
     }
 
 
-    @And("Submit Merchant details {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+    @And("Submit Merchant details {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
     public void submitMerchantDetails(String ownershipDetails, String firstName, String surName, String eMail, String mobileNo, String idType, String merchantID,
-                                      String inputBusinessStreetName,String businessStreetName, String businessPostalCode,String businessSuburb,String  businessTown,String Province) throws Exception {
+                                      String inputBusinessStreetName,String businessStreetName, String businessPostalCode,String businessSuburb,String  businessTown,String Province, String journey_name) throws Exception {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        merchantTransactions.submitMerchantDetails(ownershipDetails, firstName, surName, eMail, mobileNo, idType, merchantID,inputBusinessStreetName, businessStreetName, businessPostalCode, businessSuburb, businessTown, Province);
+        merchantTransactions.submitMerchantDetails(ownershipDetails, firstName, surName, eMail, mobileNo, idType, merchantID,inputBusinessStreetName, businessStreetName, businessPostalCode, businessSuburb, businessTown, Province, journey_name);
 
         extentTest.log(LogStatus.PASS, "Pos Option is Selected");
         String fileName = webDriverUtil.takeScreenshot(driver);
@@ -285,9 +285,9 @@ public class MerchantStepDefinitions extends SystemUtilities {
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
 
-    @And("I populate Bank Card Details {string} {string} {string} {string}")
+    @And("I populate Bank Card Details {string} {string} {string} {string} {string}")
     public void ipopulateOnceOffPayment(String onceCardHolder, String onceCardNumber
-            ,String onceExpiryDate, String onceCVV) throws Exception {
+            ,String onceExpireYear, String onceExpiryDate, String onceCVV) throws Exception {
 
         MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
@@ -298,7 +298,25 @@ public class MerchantStepDefinitions extends SystemUtilities {
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
         //webDriverUtil.implicitWait(driver, 10);
-        merchantTransactions.populateOnceCardDetails(onceCardHolder, onceCardNumber,onceExpiryDate, onceCVV);
+        merchantTransactions.populateOnceCardDetails(onceCardHolder, onceCardNumber,onceExpireYear,onceExpiryDate, onceCVV);
+        extentTest.log(LogStatus.PASS, "Bank card details successfully populated.");
+        //String fileName = webDriverUtil.takeScreenshot(driver);
+        //extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
+
+    @And("I populate VPG Payment Details")
+    public void ipopulateVPGOnceOffPayment() throws Exception {
+
+        MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+
+        Thread.sleep(1200);
+        extentTest.log(LogStatus.PASS, "I populate bank card details.");
+        // webDriverUtil.implicitWait(driver, 30);
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        //webDriverUtil.implicitWait(driver, 10);
+        merchantTransactions.populateVPGOnceCardDetails();
         extentTest.log(LogStatus.PASS, "Bank card details successfully populated.");
         //String fileName = webDriverUtil.takeScreenshot(driver);
         //extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
@@ -401,7 +419,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
         //webDriverUtil.implicitWait(driver, 40);
-        merchantTransactions.populateOnceCardDetails(onceNameOnCard, onceCardNo, onceExpiryDate, onceCvv);
+        merchantTransactions.populateOnceCardDetails(onceNameOnCard, onceCardNo, onceExpireYear, onceExpiryDate, onceCvv);
         //webDriverUtil.implicitWait(driver, 30);
         String fileName = webDriverUtil.takeScreenshot(driver);
         //webDriverUtil.implicitWait(driver, 40);
@@ -606,5 +624,24 @@ public class MerchantStepDefinitions extends SystemUtilities {
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
 
+    @And("Submit Barcode Information {string}")
+    public void submitBarcodeInformation(String barcodeNumber) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.submitbarcodeInformation(barcodeNumber);
+
+        extentTest.log(LogStatus.PASS, "Submit Barcode Information");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
+
+    @And("Device Assign Name {string}")
+    public void deviceAssignName(String firstName) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.deviceAssignName(firstName);
+
+        extentTest.log(LogStatus.PASS, "Submit Barcode Information");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
 }
 

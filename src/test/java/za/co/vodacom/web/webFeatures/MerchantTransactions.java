@@ -29,9 +29,11 @@ public class MerchantTransactions extends SystemUtilities {
     public WebDriver driver;
     public static boolean ficaConfirmation = false;
     public static boolean KwikaOnly = false;
+    public static boolean assignDeviceActivation;
     Boolean runPaymentMethod = false;
     Boolean runVPGCheck = false;
     Boolean runVPRCheck = false;
+
 
     public MerchantTransactions(WebDriver driver) {
         this.driver = driver;
@@ -103,11 +105,14 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.implicitWait(driver,30);
                 webDriverUtil.implicitWait(driver,30);
 
+                Thread.sleep(2000);
+
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
 
+                Thread.sleep(1000);
                 webDriverUtil.implicitWait(driver,30);
                 webDriverUtil.implicitWait(driver,30);
 
@@ -130,14 +135,15 @@ public class MerchantTransactions extends SystemUtilities {
                     login.radio_solution_first.click();
                     Thread.sleep(2000);
                     login.Option_img3.click();
-                }else if(login.Option_img4.getText().equalsIgnoreCase("VodaPay Kwika"))
+                }
+                else if(login.Option_img4.getText().equalsIgnoreCase("VodaPay Kwika"))
                 {
                     login.radio_solution_first.click();
                     Thread.sleep(2000);
                     login.Option_img4.click();
-                }else
+                }
+                else
                 {
-                    webDriverUtil.implicitWait(driver,30);
                     webDriverUtil.implicitWait(driver,30);
                     webDriverUtil.waitUntilElementClickable(driver,login.radio_solution_third, 120);
                     login.radio_solution_third.click();
@@ -299,7 +305,7 @@ public class MerchantTransactions extends SystemUtilities {
 
                 // Scroll to the bottom of the page
                 js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-                Thread.sleep(3000);
+                Thread.sleep(7000);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -548,35 +554,67 @@ public class MerchantTransactions extends SystemUtilities {
         Login login = new Login(driver);
 
         ////webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.waitUntilElementClickable(driver,login.addDeviceBtn, 120);
         webDriverUtil.clickElement(login.addDeviceBtn);
         ////webDriverUtil.implicitWait(driver, 60);
         Thread.sleep(600);
+        webDriverUtil.waitUntilElementClickable(driver,login.orderContinueBtn, 120);
         webDriverUtil.clickElement(login.orderContinueBtn);
         ////webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.waitUntilElementClickable(driver,login.reserveFundsBtn, 120);
         webDriverUtil.clickElement(login.reserveFundsBtn);
         Thread.sleep(1200);
         //webDriverUtil.clickElement(login.completeOrderBtn);
     }
 
-    public void populateOnceCardDetails(String onceCardHolder, String onceCardNo,String onceExpiryDate,String onceCvv) throws Exception {
+    public void populateOnceCardDetails(String onceCardHolder, String onceCardNo,String onceExpireYear,String onceExpiryDate,String onceCvv) throws Exception {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         CardDetailsPom cardDetailsPom = new CardDetailsPom(driver);
 
         Thread.sleep(10000);
         //Card details to be populated
-        ////webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.waitUntilElementClickable(driver,cardDetailsPom.onceCardHolder, 120);
         webDriverUtil.enterText(cardDetailsPom.onceCardHolder, onceCardHolder);
         webDriverUtil.enterText(cardDetailsPom.onceCardNo, onceCardNo);
         //webDriverUtil.selectByVisibleText(cardDetailsPom.onceExpireYear, getCardExpiryYear(onceExpireYear));
         //webDriverUtil.implicitWait(driver, 10);
         //webDriverUtil.selectByVisibleText(cardDetailsPom.onceExpiryDate, getCardExpireDate(onceExpiryDate));
-        webDriverUtil.enterText(cardDetailsPom.onceExpiryDate, getCardExpireDate(onceExpiryDate));
+        webDriverUtil.waitUntilElementClickable(driver,cardDetailsPom.onceExpiryDate, 120);
+        // Convert month to numeric format
+        String monthNumber = getMonthNumber(onceExpiryDate);
+
+        // Extract last two digits of the year
+        String yearLastTwoDigits = onceExpireYear.substring(onceExpireYear.length() - 2);
+
+        // Concatenate month and last two digits of the year
+        String result = monthNumber + yearLastTwoDigits;
+
+        webDriverUtil.enterText(cardDetailsPom.onceExpiryDate, result);
        // webDriverUtil.enterText(cardDetailsPom.onceCardExpiry, onceExpireYear);
        // webDriverUtil.enterText(cardDetailsPom.onceExpiryDate, onceExpiryDate);
-        webDriverUtil.enterText(cardDetailsPom.onceCvv, onceCvv);
+        webDriverUtil.waitUntilElementClickable(driver,cardDetailsPom.new_onceCvv, 120);
+        webDriverUtil.enterText(cardDetailsPom.new_onceCvv, onceCvv);
         //webDriverUtil.implicitWait(driver, 30);
         webDriverUtil.clickElement(cardDetailsPom.onceNewPayButton);
+
+    }
+
+    public void populateVPGOnceCardDetails() throws Exception {
+
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        CardDetailsPom cardDetailsPom = new CardDetailsPom(driver);
+
+        Thread.sleep(10000);
+
+        //Select Payment Method
+        webDriverUtil.waitUntilElementClickable(driver,cardDetailsPom.paymentmethod_btn, 120);
+        webDriverUtil.clickElement(cardDetailsPom.paymentmethod_btn);
+
+        webDriverUtil.waitUntilElementClickable(driver,cardDetailsPom.paymentmethod_continue_btn, 120);
+        webDriverUtil.clickElement(cardDetailsPom.paymentmethod_continue_btn);
+
 
     }
 
@@ -652,15 +690,21 @@ public class MerchantTransactions extends SystemUtilities {
 
 
     public void assignDevicesAndProcessOrder(String deviceReceiptOption, String devicePaymentOption ) throws Exception {
+
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
 
-        Thread.sleep(800);
-        webDriverUtil.implicitWait(driver, 30);
-        Thread.sleep(5000);
-        webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceNxtBtn, 120);
-        webDriverUtil.clickElement(login.assignDeviceNxtBtn);
-        //webDriverUtil.implicitWait(driver, 30);
+        //Assign device If statement code
+        if(KwikaOnly || ficaConfirmation)
+        {
+            Thread.sleep(800);
+            webDriverUtil.implicitWait(driver, 30);
+            Thread.sleep(5000);
+            webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceNxtBtn, 120);
+            webDriverUtil.clickElement(login.assignDeviceNxtBtn);
+            //webDriverUtil.implicitWait(driver, 30)
+        }
+;
 
        if (devicePaymentOption.equalsIgnoreCase("Payflex"))
        {
@@ -671,7 +715,8 @@ public class MerchantTransactions extends SystemUtilities {
            //webDriverUtil.implicitWait(driver, 30);
            webDriverUtil.clickElement(login.reserveFundsBtn);
 
-       } else if(devicePaymentOption.equalsIgnoreCase("cash"))
+       }
+       else if(devicePaymentOption.equalsIgnoreCase("cash"))
        {
            webDriverUtil.implicitWait(driver, 30);
            //webDriverUtil.clickElement(login.devicePaymentOption);
@@ -722,7 +767,20 @@ public class MerchantTransactions extends SystemUtilities {
 
                ////webDriverUtil.implicitWait(driver, 60);
                webDriverUtil.clickElement(login.sendPaymentRequestBtn);
-           } else if (ficaConfirmation && !KwikaOnly)
+           }
+           else if (ficaConfirmation && !KwikaOnly)
+           {
+               Thread.sleep(3000);
+               webDriverUtil.implicitWait(driver, 60);
+               webDriverUtil.waitUntilElementClickable(driver,login.completeApplicationBtn, 120);
+               webDriverUtil.clickElement(login.completeApplicationBtn);
+
+               Thread.sleep(3000);
+               webDriverUtil.implicitWait(driver, 60);
+               webDriverUtil.waitUntilElementClickable(driver,login.submitBtn, 120);
+               webDriverUtil.clickElement(login.submitBtn);
+           }
+           else if (!ficaConfirmation && !KwikaOnly)
            {
                Thread.sleep(3000);
                webDriverUtil.implicitWait(driver, 60);
@@ -749,6 +807,8 @@ public class MerchantTransactions extends SystemUtilities {
           // Scroll to the bottom of the page
           js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
           webDriverUtil.implicitWait(driver, 100);
+          Thread.sleep(2000);
+          webDriverUtil.waitUntilElementClickable(driver,login.setupCustomerCompletePage_btn, 120);
           webDriverUtil.clickElement(login.setupCustomerCompletePage_btn);
       }
 
@@ -1008,6 +1068,7 @@ public class MerchantTransactions extends SystemUtilities {
 
         Thread.sleep(4000);
         ////webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.waitUntilElementClickable(driver,login.acctSetUpGetStartedBtn, 120);
         webDriverUtil.clickElement(login.acctSetUpGetStartedBtn);
         ////webDriverUtil.implicitWait(driver, 30);
 
@@ -1991,7 +2052,7 @@ public class MerchantTransactions extends SystemUtilities {
     }
 
     public void submitMerchantDetails(String ownershipDetails, String firstName, String surName, String eMail,
-                                      String mobileNo, String idType, String idNumber,String inputBusinessStreetName,String businessStreetName, String businessPostalCode, String businessSuburb, String businessTown, String businessProvince) throws Exception {
+                                      String mobileNo, String idType, String idNumber,String inputBusinessStreetName,String businessStreetName, String businessPostalCode, String businessSuburb, String businessTown, String businessProvince, String journey_name) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(10000);
@@ -2051,6 +2112,7 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(1000);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         webDriverUtil.implicitWait(driver, 60);
+        webDriverUtil.waitUntilElementClickable(driver,login.businessPostalCode, 120);
         webDriverUtil.enterText(login.businessPostalCode, businessPostalCode);
         Thread.sleep(800);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -2092,7 +2154,14 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.clickElement(login.businessProvWesternCape);
         }
 
-        webDriverUtil.clickElement(login.checkoutBtn);
+        if(journey_name.equalsIgnoreCase("Device Activation"))
+        {
+            webDriverUtil.clickElement(login.nextSubmitMerchantBtn);
+        }else
+        {
+            webDriverUtil.clickElement(login.checkoutBtn);
+        }
+
         Thread.sleep(2400);
 
     }
@@ -2135,7 +2204,7 @@ public class MerchantTransactions extends SystemUtilities {
         //////webDriverUtil.implicitWait(driver, 18000);
 
        //Run this code if kwika is selected and max not selected to input account holder name manually
-       if(KwikaOnly && !ficaConfirmation)
+       if((KwikaOnly && !ficaConfirmation) || assignDeviceActivation)
        {
            webDriverUtil.waitUntilElementClickable(driver,login.accountHolder_input, 120);
            webDriverUtil.enterText(login.accountHolder_input,firstName+" "+surName);
@@ -2514,5 +2583,77 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(2000);
         webDriverUtil.clickElement(login.checkPaymentStatusBtn);
         webDriverUtil.implicitWait(driver, 20);
+    }
+
+    public static String getMonthNumber(String month) {
+        switch (month) {
+            case "January":
+                return "01";
+            case "February":
+                return "02";
+            case "March":
+                return "03";
+            case "April":
+                return "04";
+            case "May":
+                return "05";
+            case "June":
+                return "06";
+            case "July":
+                return "07";
+            case "August":
+                return "08";
+            case "September":
+                return "09";
+            case "October":
+                return "10";
+            case "November":
+                return "11";
+            case "December":
+                return "12";
+            default:
+                throw new IllegalArgumentException("Invalid month: " + month);
+        }
+    }
+
+    public void submitbarcodeInformation(String barcodeNumber) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        webDriverUtil.waitUntilElementClickable(driver,login.selectBarcode_btn, 120);
+        webDriverUtil.clickElement(login.selectBarcode_btn);
+
+        webDriverUtil.waitUntilElementClickable(driver,login.enterbarcode_input, 120);
+        System.out.println(barcodeNumber);
+        System.out.println("barcode");
+        Thread.sleep(2000);
+        webDriverUtil.enterText(login.enterbarcode_input,barcodeNumber);
+
+        webDriverUtil.waitUntilElementClickable(driver,login.enterbarcode_input_confirm, 120);
+        Thread.sleep(2000);
+        webDriverUtil.enterText(login.enterbarcode_input_confirm,barcodeNumber);
+
+        webDriverUtil.waitUntilElementClickable(driver,login.barcode_submit_btn, 120);
+        webDriverUtil.clickElement(login.barcode_submit_btn);
+
+
+    }
+
+    public void deviceAssignName(String firstname) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        assignDeviceActivation =true;
+        Thread.sleep(5000);
+        // Create an instance of JavascriptExecutor
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        // Scroll down by 1000 pixels
+        js.executeScript("window.scrollBy(0, 1000)");
+        Thread.sleep(1000);
+
+        webDriverUtil.waitUntilElementClickable(driver,login.card_machine_name_input, 120);
+        webDriverUtil.enterText(login.card_machine_name_input,firstname+" device");
+
+        webDriverUtil.waitUntilElementClickable(driver,login.assignDevice_btn, 120);
+        webDriverUtil.clickElement(login.assignDevice_btn);
     }
 }

@@ -146,6 +146,23 @@ public class Login {
     @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[1]/article/div[2]/div/div/div/form/div[5]/div[1]/div/div/div[2]/div[1]")
     public WebElement accountType_select;
 
+    @FindBy(xpath="//button[contains(text(), 'Enter barcode manually')]")
+    public WebElement selectBarcode_btn;
+
+    @FindBy(xpath="//input[@automationid='DA_Enter_Barcode']")
+    public WebElement enterbarcode_input;
+
+    @FindBy(xpath="//input[@automationid='DA_Confirm_Barcode']")
+    public WebElement enterbarcode_input_confirm;
+
+    @FindBy(xpath="//button[contains(@class, 'ns-bg-red-600') and contains(@class, 'ns-text-white') and text()='Next']")
+    public WebElement assignDevice_btn;
+
+    @FindBy(xpath="//input[@id='cardMachines.0.name']")
+    public WebElement card_machine_name_input;
+
+    @FindBy(xpath="//button[@type='submit' and contains(@class, 'primary') and contains(@class, 'medium-size') and @automationid='DA_Continue_Button']")
+    public WebElement barcode_submit_btn;
 
     @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[1]/article/div[2]/div/div/div/form/div[4]/div/div/div/div[2]/div[1]")
     public WebElement accountType_select_kwikaOnly;
@@ -375,9 +392,11 @@ public class Login {
     @FindBy(xpath="//input[@automationid='Revamp_Your_Details_Business_Address_Street_Address']")
     public WebElement businessAddress;
 
-    @FindBy(xpath=("//button[contains(text(),'Checkout')]")
-    )
+    @FindBy(xpath=("//button[contains(text(),'Checkout')]"))
     public WebElement checkoutBtn;
+
+    @FindBy(xpath=("//button[contains(text(),'Next')]"))
+    public WebElement nextSubmitMerchantBtn;
 
     @FindBy(xpath="//div[text()='Show business address details']")
     public WebElement businessAddressExpand;
@@ -445,7 +464,7 @@ public class Login {
     public WebElement accountTypeFld;
     @FindBy(xpath = "//*[@automationid='undefined_Field_Item_Street_Current_Cheque_Account_undefined']")
     public WebElement selAccountType;
-    @FindBy(xpath ="//button[@automationid='Revamp_Personal_Selfie_Open_Camera']")
+    @FindBy(xpath ="//button[contains(@class, 'ns-bg-red-600') and text()='Open camera']")//*[@id="root"]/div/div[1]/div/section[2]/div/div[1]/div[2]/button
     public WebElement openCamDiv;
 
     @FindBy(xpath ="//span[text()='Open camera']")
@@ -454,7 +473,7 @@ public class Login {
     public WebElement retakePic;
     @FindBy(xpath = "//button[contains(text(),'Confirm')]")
     public WebElement confirmTakePhotoBtn;
-    @FindBy(xpath = "//button[contains(text(),'Take photo')]")
+    @FindBy(xpath = "//button[contains(@class, 'ns-border') and contains(@class, 'ns-bg-grey-300') and contains(@class, 'ns-rounded-full')]")
     public WebElement takeSelfie;
     @FindBy(xpath = "//span[text()='Upload']")
     public WebElement uploadID;
