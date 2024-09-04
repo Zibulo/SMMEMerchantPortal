@@ -2156,9 +2156,11 @@ public class MerchantTransactions extends SystemUtilities {
 
         if(journey_name.equalsIgnoreCase("Device Activation"))
         {
+            webDriverUtil.waitUntilElementClickable(driver,login.nextSubmitMerchantBtn, 120);
             webDriverUtil.clickElement(login.nextSubmitMerchantBtn);
         }else
         {
+            webDriverUtil.waitUntilElementClickable(driver,login.checkoutBtn, 120);
             webDriverUtil.clickElement(login.checkoutBtn);
         }
 
