@@ -324,7 +324,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I Populate ThreeD Secure {string}{string}{string}")
     public void iPopulateThreeDSecure(String threeDPassword, String cardType, String bankName) throws Exception {
-        if(KwikaOnly)
+        if(KwikaOnly || ficaConfirmation)
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             MerchantTransactions paymentsTransactions = new MerchantTransactions(driver);
@@ -432,10 +432,10 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I verify Payment Request Link and complete payment {string}")
     public void iCompletePayment(String devicePaymentOption) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && KwikaOnly)
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation))
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            Thread.sleep(3500);
+            Thread.sleep(7000);
             merchantTransactions.completePaymentRequest();
             extentTest.log(LogStatus.PASS, "Complete payment request");
             String fileName = webDriverUtil.takeScreenshot(driver);
@@ -447,7 +447,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("I select immediate payment method {string}{string}{string}{string}{string}{string}")
     public void iSelectPaymentMethod(String onceNameOnCard, String onceCardNo,
                                      String onceExpireYear, String onceExpiryDate, String onceCvv, String devicePaymentOption) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && KwikaOnly) {
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation)) {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
 
@@ -571,7 +571,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("I close ThreeD tab {string}{string}")
     public void iCloseThreeDTab(String devicePaymentOption, String bankName) throws Exception {
         if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-        && bankName.equalsIgnoreCase("Nedbank Debit") && KwikaOnly)
+        && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
@@ -587,7 +587,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("I Check Payment Status {string}{string}")
     public void iCheckPaymentStatus(String devicePaymentOption, String bankName) throws Exception {
         if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-                && bankName.equalsIgnoreCase("Nedbank Debit") && KwikaOnly)
+                && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 

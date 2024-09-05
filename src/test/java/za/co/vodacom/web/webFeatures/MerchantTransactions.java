@@ -163,7 +163,7 @@ public class MerchantTransactions extends SystemUtilities {
                 ficaConfirmation= true;
                 System.out.println("Fica Confirmation is true");
                 System.out.println(String.valueOf(ficaConfirmation));
-                Thread.sleep(12000);
+                Thread.sleep(15000);
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -220,8 +220,10 @@ public class MerchantTransactions extends SystemUtilities {
                 }
 
                 Thread.sleep(2000);
-                webDriverUtil.waitUntilElementClickable(driver,login.addPosOptionKwika, 120);
-                webDriverUtil.clickElement(login.addPosOptionKwika);
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                Thread.sleep(2000);
+                webDriverUtil.waitUntilElementClickable(driver,login.addMaxToCart, 120);
+                webDriverUtil.clickElement(login.addMaxToCart);
                 //Thread.sleep(6000);
                 webDriverUtil.waitUntilElementClickable(driver,login.closeCart, 60);
                 webDriverUtil.clickElement(login.closeCart);
@@ -772,13 +774,30 @@ public class MerchantTransactions extends SystemUtilities {
            {
                Thread.sleep(3000);
                webDriverUtil.implicitWait(driver, 60);
-               webDriverUtil.waitUntilElementClickable(driver,login.completeApplicationBtn, 120);
-               webDriverUtil.clickElement(login.completeApplicationBtn);
+               webDriverUtil.waitUntilElementClickable(driver,login.deviceCardPaymentOption, 120);
+               webDriverUtil.clickElement(login.deviceCardPaymentOption);
+               webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceContinueBtn, 120);
+               webDriverUtil.clickElement(login.assignDeviceContinueBtn);
 
                Thread.sleep(3000);
                webDriverUtil.implicitWait(driver, 60);
                webDriverUtil.waitUntilElementClickable(driver,login.submitBtn, 120);
                webDriverUtil.clickElement(login.submitBtn);
+
+               if (deviceReceiptOption.equalsIgnoreCase("smsReceipt")) {
+                   ////webDriverUtil.implicitWait(driver, 30);
+                   webDriverUtil.clickElement(login.smsRadioOption);
+               }
+               else
+               {
+                   //webDriverUtil.implicitWait(driver, 20);
+                   //Thread.sleep(10000);
+                   webDriverUtil.waitUntilVisible(driver,login.emailRadioOption,30);
+                   webDriverUtil.clickElement(login.emailRadioOption);
+                   System.out.println("The email option has been selected");
+               }
+
+               webDriverUtil.clickElement(login.sendPaymentRequestBtn);
            }
            else if (!ficaConfirmation && !KwikaOnly)
            {
@@ -903,10 +922,10 @@ public class MerchantTransactions extends SystemUtilities {
           if(ficaConfirmation)
           {
               Thread.sleep(3000);
-              webDriverUtil.waitUntilElementClickable(driver, login.ficaConfirmBtn, 30);
+              webDriverUtil.waitUntilElementClickable(driver, login.ficaConfirmBtn, 120);
               webDriverUtil.clickElement(login.ficaConfirmBtn);
 
-              webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
+              webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 120);
               webDriverUtil.clickElement(login.nextBtn);
           }
 
@@ -2055,8 +2074,8 @@ public class MerchantTransactions extends SystemUtilities {
                                       String mobileNo, String idType, String idNumber,String inputBusinessStreetName,String businessStreetName, String businessPostalCode, String businessSuburb, String businessTown, String businessProvince, String journey_name) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
-        Thread.sleep(10000);
-        //////webDriverUtil.implicitWait(driver, 18000);
+        //Thread.sleep(10000);
+        webDriverUtil.waitUntilElementClickable(driver,login.ownershipDetails, 120);
         webDriverUtil.clickElement(login.ownershipDetails);
         if (ownershipDetails.equalsIgnoreCase("Business owner/director")) {
             ////webDriverUtil.implicitWait(driver, 20);
@@ -2157,6 +2176,7 @@ public class MerchantTransactions extends SystemUtilities {
         if(journey_name.equalsIgnoreCase("Device Activation"))
         {
             webDriverUtil.waitUntilElementClickable(driver,login.nextSubmitMerchantBtn, 120);
+            //webDriverUtil.clickElement(login.checkoutBtn);
             webDriverUtil.clickElement(login.nextSubmitMerchantBtn);
         }else
         {

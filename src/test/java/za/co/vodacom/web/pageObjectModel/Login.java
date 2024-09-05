@@ -26,6 +26,9 @@ public class Login {
     @FindBy(xpath= "//span[contains(text(),'Add to cart') and contains(@class, 'ns-bg-blue-700')]")
     public WebElement addPosOptionKwika;
 
+    @FindBy(xpath= "//span[text()='Add to cart']")
+    public WebElement addMaxToCart;
+
     @FindBy(xpath= "//*[@id='radix-9']/section/section[1]/button")
     public WebElement posCloseBtn;
 
