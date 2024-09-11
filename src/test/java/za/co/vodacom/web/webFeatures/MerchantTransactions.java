@@ -1,5 +1,6 @@
 package za.co.vodacom.web.webFeatures;
 
+import io.cucumber.java.PendingException;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,9 +31,11 @@ public class MerchantTransactions extends SystemUtilities {
     public static boolean ficaConfirmation = false;
     public static boolean KwikaOnly = false;
     public static boolean assignDeviceActivation;
+    public static boolean SkipForTapOnPhoneOnly;
     Boolean runPaymentMethod = false;
     Boolean runVPGCheck = false;
     Boolean runVPRCheck = false;
+    Boolean tapOnPhone = false;
 
 
     public MerchantTransactions(WebDriver driver) {
@@ -69,6 +72,13 @@ public class MerchantTransactions extends SystemUtilities {
     public void choosePosOption(String deviceOption) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
+
+        WebDriverWait wait = new WebDriverWait(driver, 120L);
+
+        // Wait for the page title to be the expected value
+        wait.until(ExpectedConditions.titleIs("VodaPay SMME Portal"));
+        Thread.sleep(6000);
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(login.)));
 
         String[] stringArray = deviceOption.split(",");
 
@@ -298,6 +308,7 @@ public class MerchantTransactions extends SystemUtilities {
 
             } else if (s.equalsIgnoreCase("VodaPay Tap on Phone")) {
                 runPaymentMethod = true;
+                Thread.sleep(15000);
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -353,6 +364,8 @@ public class MerchantTransactions extends SystemUtilities {
                     Thread.sleep(2000);
                     login.Option_img5.click();
                 }
+                Thread.sleep(2000);
+                tapOnPhone = true;
                 webDriverUtil.waitUntilElementClickable(driver,login.addPosOptionKwika, 120);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
                 Thread.sleep(6000);
@@ -366,8 +379,8 @@ public class MerchantTransactions extends SystemUtilities {
                 runVPRCheck=true;
                 webDriverUtil.implicitWait(driver, 30);
                 Actions actions = new Actions(driver);
-                Thread.sleep(3000);
-                Thread.sleep(3000);
+                Thread.sleep(7000);
+                Thread.sleep(6000);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
 
                 // Create an instance of JavascriptExecutor
@@ -542,7 +555,17 @@ public class MerchantTransactions extends SystemUtilities {
             actions.sendKeys(Keys.PAGE_DOWN).perform();
             actions.sendKeys(Keys.PAGE_DOWN).perform();
             Thread.sleep(1000);
-            webDriverUtil.clickElement(login.Vpgvpt_proceedBtn);
+
+            if(tapOnPhone && !runVPRCheck  &&
+                    !runVPGCheck && !ficaConfirmation && !KwikaOnly)
+            {
+                SkipForTapOnPhoneOnly =true;
+            }
+            else
+            {
+                webDriverUtil.clickElement(login.Vpgvpt_proceedBtn);
+            }
+
 
         }
 
@@ -691,13 +714,13 @@ public class MerchantTransactions extends SystemUtilities {
     }
 
 
-    public void assignDevicesAndProcessOrder(String deviceReceiptOption, String devicePaymentOption ) throws Exception {
+    public void assignDevicesAndProcessOrder(String deviceReceiptOption, String devicePaymentOption, String journey_name) throws Exception {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
 
         //Assign device If statement code
-        if(KwikaOnly || ficaConfirmation)
+        if((KwikaOnly || ficaConfirmation) &&journey_name.equalsIgnoreCase("Three PO"))
         {
             Thread.sleep(800);
             webDriverUtil.implicitWait(driver, 30);
@@ -711,11 +734,31 @@ public class MerchantTransactions extends SystemUtilities {
        if (devicePaymentOption.equalsIgnoreCase("Payflex"))
        {
            //webDriverUtil.implicitWait(driver, 30);
+           webDriverUtil.waitUntilElementClickable(driver,login.devicePaymentOption, 120);
            webDriverUtil.clickElement(login.devicePaymentOption);
            //webDriverUtil.implicitWait(driver, 30);
+           webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceContinueBtn, 120);
            webDriverUtil.clickElement(login.assignDeviceContinueBtn);
            //webDriverUtil.implicitWait(driver, 30);
+           webDriverUtil.waitUntilElementClickable(driver,login.reserveFundsBtn, 120);
            webDriverUtil.clickElement(login.reserveFundsBtn);
+
+       }
+       else if (journey_name.equalsIgnoreCase("Self Onboarding"))
+       {
+           if(KwikaOnly || ficaConfirmation)
+           {
+               webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceContinueBtn, 120);
+               webDriverUtil.clickElement(login.assignDeviceContinueBtn);
+           }else
+           {
+               webDriverUtil.waitUntilElementClickable(driver,login.completeApplicationBtn, 120);
+               webDriverUtil.clickElement(login.completeApplicationBtn);
+           }
+
+
+           webDriverUtil.waitUntilElementClickable(driver,login.readyToSubmitBtn, 120);
+           webDriverUtil.clickElement(login.readyToSubmitBtn);
 
        }
        else if(devicePaymentOption.equalsIgnoreCase("cash"))
@@ -726,7 +769,7 @@ public class MerchantTransactions extends SystemUtilities {
           // webDriverUtil.clickElement(log);
            //webDriverUtil.clickElement(login.randomClick);
            //webDriverUtil.implicitWait(driver, 30);
-           Thread.sleep(000);
+           Thread.sleep(1000);
            webDriverUtil.clickElement(login.continueApplicationBtn);
            //webDriverUtil.implicitWait(driver, 30);
            webDriverUtil.clickElement(login.readyToSubmitBtn);
@@ -897,25 +940,38 @@ public class MerchantTransactions extends SystemUtilities {
 
           webDriverUtil.waitUntilVisible(driver, login.businessCategorySearchResults, 120);
           webDriverUtil.clickElement(login.businessCategorySearchResults);
+          Thread.sleep(3000);
           //businessCategoryInput.clear();  // Clear the existing value if necessary
-          businessCategoryInput.sendKeys("");
+          //businessCategoryInput.sendKeys("");
+          System.out.println("I am waiting for category to finish selecting");
+          System.out.println(3000);
 
-          webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
-          webDriverUtil.clickElement(login.nextBtn);
+          //webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 30);
+          //webDriverUtil.clickElement(login.nextBtn);
 
           JavascriptExecutor js = (JavascriptExecutor) driver;
 
           // Scroll to the bottom of the page
           js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-          if(runVPRCheck || runVPGCheck)
+/*          if(runVPRCheck || runVPGCheck)
           {
-              webDriverUtil.clickElement(login.urlText_input);
+              webDriverUtil.waitUntilElementClickable(driver,login.urlText_input, 120);
+              Thread.sleep(5000);
+              //webDriverUtil.clickElement(login.urlText_input);
+              //Thread.sleep(2000);
               webDriverUtil.enterText(login.urlText_input,"https://www.google.com");
-          }
+              System.out.println("Investigate");
+             // Thread.sleep(30000);
+          }*/
 
 
           //webDriverUtil.waitUntilElementClickable(driver, login.confirmBtn, 30);
+        if(runVPGCheck || runVPRCheck)
+          {
 
+              webDriverUtil.waitUntilElementClickable(driver,login.urlText_input, 120);
+              webDriverUtil.enterText(login.urlText_input,"https://www.google.com");
+          }
 
           //webDriverUtil.waitUntilElementClickable(driver, login.confirmBtn, 30);
           //This code needs to run if you selected VodaPay Max
@@ -925,6 +981,10 @@ public class MerchantTransactions extends SystemUtilities {
               webDriverUtil.waitUntilElementClickable(driver, login.ficaConfirmBtn, 120);
               webDriverUtil.clickElement(login.ficaConfirmBtn);
 
+              webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 120);
+              webDriverUtil.clickElement(login.nextBtn);
+          }else
+          {
               webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 120);
               webDriverUtil.clickElement(login.nextBtn);
           }
@@ -2076,6 +2136,7 @@ public class MerchantTransactions extends SystemUtilities {
         Login login = new Login(driver);
         //Thread.sleep(10000);
         webDriverUtil.waitUntilElementClickable(driver,login.ownershipDetails, 120);
+        Thread.sleep(10000);
         webDriverUtil.clickElement(login.ownershipDetails);
         if (ownershipDetails.equalsIgnoreCase("Business owner/director")) {
             ////webDriverUtil.implicitWait(driver, 20);
@@ -2226,7 +2287,7 @@ public class MerchantTransactions extends SystemUtilities {
         //////webDriverUtil.implicitWait(driver, 18000);
 
        //Run this code if kwika is selected and max not selected to input account holder name manually
-       if((KwikaOnly && !ficaConfirmation) || assignDeviceActivation)
+       if((KwikaOnly && !ficaConfirmation) || assignDeviceActivation || runVPGCheck || runVPRCheck || tapOnPhone)
        {
            webDriverUtil.waitUntilElementClickable(driver,login.accountHolder_input, 120);
            webDriverUtil.enterText(login.accountHolder_input,firstName+" "+surName);
@@ -2678,4 +2739,14 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.waitUntilElementClickable(driver,login.assignDevice_btn, 120);
         webDriverUtil.clickElement(login.assignDevice_btn);
     }
+
+    public void acccessDeviceActivationPage() throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+
+        webDriverUtil.waitUntilElementClickable(driver,login.deviceActivationLandingPage, 120);
+        webDriverUtil.clickElement(login.deviceActivationLandingPage);
+
+    }
+
 }

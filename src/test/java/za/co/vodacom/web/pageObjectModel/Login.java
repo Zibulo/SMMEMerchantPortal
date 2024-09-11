@@ -164,6 +164,9 @@ public class Login {
     @FindBy(xpath="//input[@id='cardMachines.0.name']")
     public WebElement card_machine_name_input;
 
+    @FindBy(xpath="//span[contains(@class, 'content-normal') and contains(@class, 'font-bold') and text()='Register here']")
+    public WebElement deviceActivationLandingPage;
+
     @FindBy(xpath="//button[@type='submit' and contains(@class, 'primary') and contains(@class, 'medium-size') and @automationid='DA_Continue_Button']")
     public WebElement barcode_submit_btn;
 
@@ -426,8 +429,9 @@ public class Login {
     @FindBy(xpath ="//button[contains(text(),'Next')]")
     public WebElement nextBtn;
 
-    @FindBy(xpath = "/html/body/div[1]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/div[6]/div[1]/input")
+    @FindBy(xpath = "/html/body/div[1]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/div[6]/div/input")
     public WebElement urlText_input;
+
     @FindBy(xpath = "//button[contains(text(),'Confirm')]")
     public WebElement confirmBtn;
 
@@ -452,7 +456,7 @@ public class Login {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/div[2]/div/span/div/div/div[1]/button[2]")
     public WebElement previousDate;
 
-    @FindBy(xpath = "/html/body/div[1]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/section/div/div/label/img")
+    @FindBy(xpath = "//button[text()='Confirm']")
     public WebElement ficaConfirmBtn;
 
     @FindBy(name = "accountHolderFullName")

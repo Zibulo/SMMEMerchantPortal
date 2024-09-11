@@ -19,8 +19,7 @@ import za.co.vodacom.api.apiFeatures.*;
 import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
 import za.co.vodacom.web.webFeatures.MerchantTransactions;
 
-import static za.co.vodacom.web.webFeatures.MerchantTransactions.KwikaOnly;
-import static za.co.vodacom.web.webFeatures.MerchantTransactions.ficaConfirmation;
+import static za.co.vodacom.web.webFeatures.MerchantTransactions.*;
 
 
 public class MerchantStepDefinitions extends SystemUtilities {
@@ -69,8 +68,10 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @Given("The webBrowser is launched")
     public void theWebBrowserIsLaunched() throws Exception {
-
-        setSystemProperty("Browser", "CHROME"); //Defaults the environment to chrome unless if it is set in the environment variables.
+        System.setProperty("Browser","FIREFOX");
+        setSystemProperty("Browser", "FIREFOX"); //Defaults the environment to chrome unless if it is set in the environment variables.
+        System.out.println("I am testing browser");
+        System.out.println(getSystemProperty("Browser"));
         if (driver == null) {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             driver = webDriverUtil.initializeWebDriver(getSystemProperty("Browser"), Integer.parseInt(getSystemProperty("timeout")));
@@ -265,12 +266,19 @@ public class MerchantStepDefinitions extends SystemUtilities {
     public void submitMerchantDetails(String ownershipDetails, String firstName, String surName, String eMail, String mobileNo, String idType, String merchantID,
                                       String inputBusinessStreetName,String businessStreetName, String businessPostalCode,String businessSuburb,String  businessTown,String Province, String journey_name) throws Exception {
 
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        merchantTransactions.submitMerchantDetails(ownershipDetails, firstName, surName, eMail, mobileNo, idType, merchantID,inputBusinessStreetName, businessStreetName, businessPostalCode, businessSuburb, businessTown, Province, journey_name);
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            merchantTransactions.submitMerchantDetails(ownershipDetails, firstName, surName, eMail, mobileNo, idType, merchantID,inputBusinessStreetName, businessStreetName, businessPostalCode, businessSuburb, businessTown, Province, journey_name);
 
-        extentTest.log(LogStatus.PASS, "Pos Option is Selected");
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            extentTest.log(LogStatus.PASS, "Pos Option is Selected");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
 
     }
 
@@ -304,42 +312,51 @@ public class MerchantStepDefinitions extends SystemUtilities {
         //extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
 
-    @And("I populate VPG Payment Details")
-    public void ipopulateVPGOnceOffPayment() throws Exception {
+    @And("I populate VPG Payment Details {string}")
+    public void ipopulateVPGOnceOffPayment(String devicePaymentOption) throws Exception {
+        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation))
+        {
+            MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
-        MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            Thread.sleep(1200);
+            extentTest.log(LogStatus.PASS, "I populate bank card details.");
+            // webDriverUtil.implicitWait(driver, 30);
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            //webDriverUtil.implicitWait(driver, 10);
+            merchantTransactions.populateVPGOnceCardDetails();
+            extentTest.log(LogStatus.PASS, "Bank card details successfully populated.");
 
-        Thread.sleep(1200);
-        extentTest.log(LogStatus.PASS, "I populate bank card details.");
-        // webDriverUtil.implicitWait(driver, 30);
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-        //webDriverUtil.implicitWait(driver, 10);
-        merchantTransactions.populateVPGOnceCardDetails();
-        extentTest.log(LogStatus.PASS, "Bank card details successfully populated.");
+        }
         //String fileName = webDriverUtil.takeScreenshot(driver);
         //extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
 
     @And("I Populate ThreeD Secure {string}{string}{string}")
     public void iPopulateThreeDSecure(String threeDPassword, String cardType, String bankName) throws Exception {
-        if(KwikaOnly || ficaConfirmation)
+        if(SkipForTapOnPhoneOnly)
         {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            MerchantTransactions paymentsTransactions = new MerchantTransactions(driver);
-
-            Thread.sleep(2000);
-            String fileName = webDriverUtil.takeScreenshot(driver);
-            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-            paymentsTransactions.populateOnce3DSecure(threeDPassword, cardType, bankName);
-
-            //webDriverUtil.implicitWait(driver, 50);
-            String fileName1 = webDriverUtil.takeScreenshot(driver);
-            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName1));
-            extentTest.log(LogStatus.PASS, "3D Security Succefully Authenticated");
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
         }
+        else
+        {
+            if(KwikaOnly || ficaConfirmation)
+            {
+                WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+                MerchantTransactions paymentsTransactions = new MerchantTransactions(driver);
 
+                Thread.sleep(2000);
+                String fileName = webDriverUtil.takeScreenshot(driver);
+                extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+                paymentsTransactions.populateOnce3DSecure(threeDPassword, cardType, bankName);
+
+                //webDriverUtil.implicitWait(driver, 50);
+                String fileName1 = webDriverUtil.takeScreenshot(driver);
+                extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName1));
+                extentTest.log(LogStatus.PASS, "3D Security Succefully Authenticated");
+            }
+        }
 
     }
 
@@ -381,35 +398,58 @@ public class MerchantStepDefinitions extends SystemUtilities {
     }
 
 
-    @And("I Then Assign Device and Process Order {string} {string}")
-    public void iThenAssignDevicesForDelivery(String deviceReceiptOption, String devicePaymentOption) throws Exception {
+    @And("I Then Assign Device and Process Order {string} {string} {string}")
+    public void iThenAssignDevicesForDelivery(String deviceReceiptOption, String devicePaymentOption, String journey_name) throws Exception {
 
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        //webDriverUtil.implicitWait(driver, 40);
-        merchantTransactions.assignDevicesAndProcessOrder(deviceReceiptOption,devicePaymentOption);
-        extentTest.log(LogStatus.PASS, "Devices delivery address assigned");
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            //webDriverUtil.implicitWait(driver, 40);
+            merchantTransactions.assignDevicesAndProcessOrder(deviceReceiptOption,devicePaymentOption,journey_name);
+            extentTest.log(LogStatus.PASS, "Devices delivery address assigned");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
+
     }
     @And("Start Setup Customer Account Landing Page")
     public void startSetupCustomerAccountLandingPage() throws Exception {
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        webDriverUtil.implicitWait(driver, 40);
-        merchantTransactions.completeCustomerLandingPage();
-        extentTest.log(LogStatus.PASS, "Setup Customer Landing page completed");
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            webDriverUtil.implicitWait(driver, 40);
+            merchantTransactions.completeCustomerLandingPage();
+            extentTest.log(LogStatus.PASS, "Setup Customer Landing page completed");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
     }
 
     @And("FICA PROCESS Pages Tell Us About The Customers Business {string} {string} {string} {string} {string}")
     public void tellUsAboutTheCustomersBusiness(String companyTypeOption, String companyRegName, String businessMonthlIncome, String businessCategory, String AddressYearMonthDayStayed) throws Exception {
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        webDriverUtil.implicitWait(driver, 40);
-        extentTest.log(LogStatus.PASS, "Tell Us About Your Business Start");
-        merchantTransactions.customebusinessComplete(companyTypeOption,companyRegName, businessMonthlIncome, businessCategory,AddressYearMonthDayStayed);
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            webDriverUtil.implicitWait(driver, 40);
+            extentTest.log(LogStatus.PASS, "Tell Us About Your Business Start");
+            merchantTransactions.customebusinessComplete(companyTypeOption,companyRegName, businessMonthlIncome, businessCategory,AddressYearMonthDayStayed);
 
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
     }
 
     @And("I populate Once Card Details {string}{string}{string}{string}{string}")
@@ -432,14 +472,22 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I verify Payment Request Link and complete payment {string}")
     public void iCompletePayment(String devicePaymentOption) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation))
+
+        if(SkipForTapOnPhoneOnly)
         {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            Thread.sleep(7000);
-            merchantTransactions.completePaymentRequest();
-            extentTest.log(LogStatus.PASS, "Complete payment request");
-            String fileName = webDriverUtil.takeScreenshot(driver);
-            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation))
+            {
+                WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+                Thread.sleep(7000);
+                merchantTransactions.completePaymentRequest();
+                extentTest.log(LogStatus.PASS, "Complete payment request");
+                String fileName = webDriverUtil.takeScreenshot(driver);
+                extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            }
         }
 
     }
@@ -447,13 +495,21 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @And("I select immediate payment method {string}{string}{string}{string}{string}{string}")
     public void iSelectPaymentMethod(String onceNameOnCard, String onceCardNo,
                                      String onceExpireYear, String onceExpiryDate, String onceCvv, String devicePaymentOption) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation)) {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
 
-            CardDetailsPom cardDetailsPom = new CardDetailsPom(driver);
-            merchantTransactions.selectPayment(onceNameOnCard, onceCardNo,
-                    onceExpireYear, onceExpiryDate, onceCvv);
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation)) {
+                WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+                MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
+
+                CardDetailsPom cardDetailsPom = new CardDetailsPom(driver);
+                merchantTransactions.selectPayment(onceNameOnCard, onceCardNo,
+                        onceExpireYear, onceExpiryDate, onceCvv);
+            }
         }
     }
 
@@ -503,25 +559,37 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I take a selfie")
     public void takeSelfie() throws Exception {
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
-        Thread.sleep(2400);
-        merchantTransactions.takeASelfie();
-        extentTest.log(LogStatus.PASS, "Selfie taken successfully");
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-
+            Thread.sleep(2400);
+            merchantTransactions.takeASelfie();
+            extentTest.log(LogStatus.PASS, "Selfie taken successfully");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
     }
 
     @And("I  upload documents {string}{string}")
     public void iUploadDocuments(String companytype,String idType) throws Exception {
-        //Thread.sleep(2400);
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        merchantTransactions.uploadDoc(companytype,idType);
-        extentTest.log(LogStatus.PASS, "Documents uploaded successfully");
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            //Thread.sleep(2400);
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            merchantTransactions.uploadDoc(companytype,idType);
+            extentTest.log(LogStatus.PASS, "Documents uploaded successfully");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
     }
 
     @And("When I select Dealer {string}{string}{string}")
@@ -570,58 +638,88 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I close ThreeD tab {string}{string}")
     public void iCloseThreeDTab(String devicePaymentOption, String bankName) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-        && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
+        if(SkipForTapOnPhoneOnly)
         {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-
-            Thread.sleep(2400);
-            merchantTransactions.closeThreeDtab();
-            extentTest.log(LogStatus.PASS, "Close Three Dtab");
-           // String fileName = webDriverUtil.takeScreenshot(driver);
-           // extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
         }
+        else
+        {
+            if(devicePaymentOption.equalsIgnoreCase("cardPayment")
+                    && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
+            {
+                WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+
+                Thread.sleep(2400);
+                merchantTransactions.closeThreeDtab();
+                extentTest.log(LogStatus.PASS, "Close Three Dtab");
+                // String fileName = webDriverUtil.takeScreenshot(driver);
+                // extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            }
+        }
+
 
     }
 
     @And("I Check Payment Status {string}{string}")
     public void iCheckPaymentStatus(String devicePaymentOption, String bankName) throws Exception {
-        if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-                && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
+        if(SkipForTapOnPhoneOnly)
         {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            if(devicePaymentOption.equalsIgnoreCase("cardPayment")
+                    && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
+            {
+                WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
-            Thread.sleep(2400);
-            merchantTransactions.checkPaymentStatus();
-            extentTest.log(LogStatus.PASS, "Close Three Dtab");
-             String fileName = webDriverUtil.takeScreenshot(driver);
-             extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+                Thread.sleep(2400);
+                merchantTransactions.checkPaymentStatus();
+                extentTest.log(LogStatus.PASS, "Close Three Dtab");
+                String fileName = webDriverUtil.takeScreenshot(driver);
+                extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            }
         }
 
     }
 
     @And("FICA PROCESS Pages Confirm the customers personal details {string} {string} {string}")
     public void ficaPROCESSPagesConfirmTheCustomersPersonalDetails(String ownershipDetails, String firstName, String surName) throws Exception {
-        if(ficaConfirmation)
-        {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            merchantTransactions.confirmCustomerPersonalDetails(ownershipDetails, firstName, surName);
 
-            extentTest.log(LogStatus.PASS, "Confirm Personal Details is Selected");
-            String fileName = webDriverUtil.takeScreenshot(driver);
-            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            if(ficaConfirmation)
+            {
+                WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+                merchantTransactions.confirmCustomerPersonalDetails(ownershipDetails, firstName, surName);
+
+                extentTest.log(LogStatus.PASS, "Confirm Personal Details is Selected");
+                String fileName = webDriverUtil.takeScreenshot(driver);
+                extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            }
         }
 
     }
 
     @And("FICA PROCESS Pages Confirm the customers banking details {string} {string} {string} {string} {string}")
     public void ficaPROCESSPagesConfirmTheCustomersBankingDetails(String bankName, String idNo, String account_number, String firstName, String surName) throws Exception {
-        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-        merchantTransactions.confirmCustomerBankingDetails(bankName, idNo,account_number, firstName, surName);
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            merchantTransactions.confirmCustomerBankingDetails(bankName, idNo,account_number, firstName, surName);
 
-        extentTest.log(LogStatus.PASS, "Confirm Personal Details is Selected");
-        String fileName = webDriverUtil.takeScreenshot(driver);
-        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+            extentTest.log(LogStatus.PASS, "Confirm Personal Details is Selected");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
     }
 
     @And("Submit Barcode Information {string}")
@@ -640,6 +738,16 @@ public class MerchantStepDefinitions extends SystemUtilities {
         merchantTransactions.deviceAssignName(firstName);
 
         extentTest.log(LogStatus.PASS, "Submit Barcode Information");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
+
+    @And("Access Device Activation Page")
+    public void accessDeviceActivationPage() throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.acccessDeviceActivationPage();
+
+        extentTest.log(LogStatus.PASS, "Access Device Activation Page");
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }

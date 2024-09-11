@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="3.848">
+    <testcase classname="Device Activation" name="&quot;Kwika Activation&quot;" time="3.689">
+        <failure message="no such window: target window already closed&#10;from unknown error: web view not found&#10;  (Session info: chrome=128.0.6613.120)&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-TNT', ip: '192.168.8.102', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 128.0.6613.120, chrome: {chromedriverVersion: 128.0.6613.84 (606aa55c7d68..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58046}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 3036a0f36ed1165da9ac4bad90b4ced0" type="org.openqa.selenium.NoSuchWindowException"><![CDATA[Given The webBrowser is launched............................................passed
+Given I am on the merchant landing page "Kwika Activation""Kwika Activation""smmeURL""Tebello Ntyingila""".failed
+And Access Device Activation Page...........................................skipped
+And Submit Merchant details "Business owner/director" "NONDIPHA" "LOUW" "satisfied-by@dggrvtf2.mailosaur.net" "0833721854" "South African" "6807015897087" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng" "Device Activation".skipped
+And Submit Barcode Information "K3R0W007700"................................skipped
+And Device Assign Name "NONDIPHA"...........................................skipped
+And Start Setup Customer Account Landing Page...............................skipped
+And FICA PROCESS Pages Tell Us About The Customers Business "Sole Proprietorship" "VFS Payment Testing" "15000" "Computer Software Shop" "2024-03-03".skipped
+And FICA PROCESS Pages Confirm the customers personal details "Business owner/director" "NONDIPHA" "LOUW".skipped
+And FICA PROCESS Pages Confirm the customers banking details "Nedbank Debit" "6807015897087" "1288655444" "NONDIPHA" "LOUW".skipped
+
+StackTrace:
+org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=128.0.6613.120)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ILAB-TNT', ip: '192.168.8.102', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 128.0.6613.120, chrome: {chromedriverVersion: 128.0.6613.84 (606aa55c7d68..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58046}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 3036a0f36ed1165da9ac4bad90b4ced0
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
+	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:837)
+	at za.co.vodacom.web.webFeatures.MerchantTransactions.selectLandingPage(MerchantTransactions.java:48)
+	at za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnMerchantLandingLoginPage(MerchantStepDefinitions.java:101)
+	at ✽.I am on the merchant landing page "Kwika Activation""Kwika Activation""smmeURL""Tebello Ntyingila"""(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/deviceActivationRevamped.feature:9)
+]]></failure>
+    </testcase>
+</testsuite>
