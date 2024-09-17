@@ -2174,6 +2174,7 @@ public class MerchantTransactions extends SystemUtilities {
 
         ////webDriverUtil.implicitWait(driver, 60);
         webDriverUtil.enterText(login.idNumber, idNumber);
+
         ////webDriverUtil.implicitWait(driver, 60);
         Actions act = new Actions(driver);
         ////webDriverUtil.implicitWait(driver, 60);
@@ -2184,6 +2185,7 @@ public class MerchantTransactions extends SystemUtilities {
         act.sendKeys(Keys.PAGE_DOWN).perform();
         webDriverUtil.waitUntilElementClickable(driver,login.businessStreetName, 120);
         webDriverUtil.clickElement(login.businessStreetName);
+
         //webDriverUtil.enterText(login.businessStreetName, businessStreetName);
         Thread.sleep(800);
        // ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
@@ -2197,8 +2199,10 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(800);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Thread.sleep(800);
+        webDriverUtil.waitUntilElementClickable(driver,login.businessSuburb, 120);
         webDriverUtil.clickElement(login.businessSuburb);
         webDriverUtil.implicitWait(driver, 60);
+        webDriverUtil.waitUntilElementClickable(driver,login.businessSuburbOption, 120);
         webDriverUtil.clickElement(login.businessSuburbOption);
 
         webDriverUtil.enterText(login.businessTown, businessTown);

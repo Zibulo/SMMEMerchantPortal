@@ -38,7 +38,7 @@
         <dependency>
             <groupId>za.co.vodacom.vfs.automation.core</groupId>
             <artifactId>vfs-automation-core</artifactId>
-            <version>1.8.5</version>
+            <version>1.8.6</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>

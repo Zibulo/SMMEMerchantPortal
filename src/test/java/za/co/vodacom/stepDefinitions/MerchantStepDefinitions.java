@@ -12,6 +12,8 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import vfs.automation.core.assertions.Assertions;
 import vfs.automation.core.utilities.SystemUtilities;
 import vfs.automation.core.utilities.WebDriverUtilities;
@@ -68,13 +70,16 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @Given("The webBrowser is launched")
     public void theWebBrowserIsLaunched() throws Exception {
-        System.setProperty("Browser","FIREFOX");
-        setSystemProperty("Browser", "FIREFOX"); //Defaults the environment to chrome unless if it is set in the environment variables.
-        System.out.println("I am testing browser");
-        System.out.println(getSystemProperty("Browser"));
+        System.setProperty("Browser","EDGE");
+        //System.setProperty("java.net.preferIPv4Stack", "true");
+        setSystemProperty("Browser", "EDGE"); //Defaults the environment to chrome unless if it is set in the environment variables.
+   /*     System.out.println("I am testing browser");
+        System.out.println(getSystemProperty("Browser"));*/
         if (driver == null) {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             driver = webDriverUtil.initializeWebDriver(getSystemProperty("Browser"), Integer.parseInt(getSystemProperty("timeout")));
+/*            FirefoxOptions options = new FirefoxOptions();
+            options.addPreference("permissions.default.camera", 1);*/
         }
     }
 
