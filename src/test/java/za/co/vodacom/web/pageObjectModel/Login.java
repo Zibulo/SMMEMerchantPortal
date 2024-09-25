@@ -471,7 +471,7 @@ public class Login {
     public WebElement accountTypeFld;
     @FindBy(xpath = "//*[@automationid='undefined_Field_Item_Street_Current_Cheque_Account_undefined']")
     public WebElement selAccountType;
-    @FindBy(xpath ="//button[contains(@class, 'ns-bg-red-600') and text()='Open camera']")//*[@id="root"]/div/div[1]/div/section[2]/div/div[1]/div[2]/button
+    @FindBy(xpath ="//button[@automationid='Revamp_Personal_Selfie_Open_Camera']")//*[@id="root"]/div/div[1]/div/section[2]/div/div[1]/div[2]/button
     public WebElement openCamDiv;
 
     @FindBy(xpath ="//span[text()='Open camera']")
@@ -480,7 +480,7 @@ public class Login {
     public WebElement retakePic;
     @FindBy(xpath = "//button[contains(text(),'Confirm')]")
     public WebElement confirmTakePhotoBtn;
-    @FindBy(xpath = "//button[contains(@class, 'ns-border') and contains(@class, 'ns-bg-grey-300') and contains(@class, 'ns-rounded-full')]")
+    @FindBy(xpath = "//button[@class='h-10 w-38 text-base font-medium text-center rounded-8 bg-white-50 hover:bg-grey-100 active:bg-grey-200 disabled:cursor-not-allowed disabled:bg-grey-700 text-black']")
     public WebElement takeSelfie;
     @FindBy(xpath = "//span[text()='Upload']")
     public WebElement uploadID;

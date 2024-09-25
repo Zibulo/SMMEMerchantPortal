@@ -70,7 +70,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @Given("The webBrowser is launched")
     public void theWebBrowserIsLaunched() throws Exception {
-        System.setProperty("Browser","EDGE");
+        System.setProperty("Browser","Chrome");
         //System.setProperty("java.net.preferIPv4Stack", "true");
         setSystemProperty("Browser", "EDGE"); //Defaults the environment to chrome unless if it is set in the environment variables.
    /*     System.out.println("I am testing browser");

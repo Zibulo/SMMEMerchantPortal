@@ -21,8 +21,8 @@ Feature: third Party Login
     And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
     And FICA PROCESS Pages Confirm the customers personal details "<ownershipDetails>" "<firstName>" "<surName>"
     And FICA PROCESS Pages Confirm the customers banking details "<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
-    #And I take a selfie
-    #And I  upload documents "<companyTypeOption>""<idDocumentType>"
+    And I take a selfie
+    And I  upload documents "<companyTypeOption>""<idDocumentType>"
 
 
     #And I populate Once Card Details "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>"

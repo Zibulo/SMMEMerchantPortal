@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 3050672300,
+              "duration": 4311905000,
               "status": "passed"
             },
             "line": 6,
@@ -24,15 +24,15 @@
         ]
       },
       {
-        "start_timestamp": "2024-09-13T11:28:06.678Z",
-        "line": 44,
-        "name": "\"Makro selects Kwika\"",
+        "start_timestamp": "2024-09-25T10:06:59.228Z",
+        "line": 33,
+        "name": "\"Kwika Activation\"",
         "description": "",
-        "id": "onboarding-new-merchant-choose-pos-option;\"\u003cscenariodescription\u003e\";;2",
+        "id": "device-activation;\"\u003cscenariodescription\u003e\";;2",
         "after": [
           {
             "result": {
-              "duration": 771286500,
+              "duration": 632293200,
               "status": "passed"
             },
             "match": {
@@ -45,32 +45,32 @@
         "steps": [
           {
             "result": {
-              "duration": 12331950100,
+              "duration": 35366791800,
               "status": "passed"
             },
             "line": 9,
-            "name": "I am on the merchant landing page \"Makro selects Kwika\"\"Makro dealer journey\"\"smmeOnboardingURL\"\"Tebello Ntyingila\"\"\"",
+            "name": "I am on the merchant landing page \"Kwika Activation\"\"Kwika Activation\"\"smmeURL\"\"Tebello Ntyingila\"\"\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"Makro selects Kwika\"",
+                  "val": "\"Kwika Activation\"",
                   "offset": 34
                 },
                 {
-                  "val": "\"Makro dealer journey\"",
-                  "offset": 55
+                  "val": "\"Kwika Activation\"",
+                  "offset": 52
                 },
                 {
-                  "val": "\"smmeOnboardingURL\"",
-                  "offset": 77
+                  "val": "\"smmeURL\"",
+                  "offset": 70
                 },
                 {
                   "val": "\"Tebello Ntyingila\"",
-                  "offset": 96
+                  "offset": 79
                 },
                 {
                   "val": "\"\"",
-                  "offset": 115
+                  "offset": 98
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnMerchantLandingLoginPage(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -79,29 +79,23 @@
           },
           {
             "result": {
-              "duration": 39621184000,
+              "duration": 5611157500,
               "status": "passed"
             },
             "line": 10,
-            "name": "I Choose Available POS Option \"VodaPay Kwika\"",
+            "name": "Access Device Activation Page",
             "match": {
-              "arguments": [
-                {
-                  "val": "\"VodaPay Kwika\"",
-                  "offset": 30
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(java.lang.String)"
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.accessDeviceActivationPage()"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "duration": 23220724900,
+              "duration": 25479239200,
               "status": "passed"
             },
             "line": 11,
-            "name": "Submit Merchant details \"Business owner/director\" \"NONDIPHA\" \"LOUW\" \"nervous-strange@2mk3aglp.mailosaur.net\" \"0833721854\" \"South African\" \"6807015897087\" \"4586 Isacholo Crescent\" \"4586 Isacholo Crescent\" \"0187\" \"Blue Golf Estate\" \"Centurion\" \"Gauteng\" \"Self Onboarding\"",
+            "name": "Submit Merchant details \"Business owner/director\" \"NONDIPHA\" \"LOUW\" \"satisfied-by@dggrvtf2.mailosaur.net\" \"0833721854\" \"South African\" \"6807015897087\" \"4586 Isacholo Crescent\" \"4586 Isacholo Crescent\" \"0187\" \"Blue Golf Estate\" \"Centurion\" \"Gauteng\" \"Device Activation\"",
             "match": {
               "arguments": [
                 {
@@ -117,48 +111,48 @@
                   "offset": 61
                 },
                 {
-                  "val": "\"nervous-strange@2mk3aglp.mailosaur.net\"",
+                  "val": "\"satisfied-by@dggrvtf2.mailosaur.net\"",
                   "offset": 68
                 },
                 {
                   "val": "\"0833721854\"",
-                  "offset": 109
+                  "offset": 106
                 },
                 {
                   "val": "\"South African\"",
-                  "offset": 122
+                  "offset": 119
                 },
                 {
                   "val": "\"6807015897087\"",
-                  "offset": 138
+                  "offset": 135
                 },
                 {
                   "val": "\"4586 Isacholo Crescent\"",
-                  "offset": 154
+                  "offset": 151
                 },
                 {
                   "val": "\"4586 Isacholo Crescent\"",
-                  "offset": 179
+                  "offset": 176
                 },
                 {
                   "val": "\"0187\"",
-                  "offset": 204
+                  "offset": 201
                 },
                 {
                   "val": "\"Blue Golf Estate\"",
-                  "offset": 211
+                  "offset": 208
                 },
                 {
                   "val": "\"Centurion\"",
-                  "offset": 230
+                  "offset": 227
                 },
                 {
                   "val": "\"Gauteng\"",
-                  "offset": 242
+                  "offset": 239
                 },
                 {
-                  "val": "\"Self Onboarding\"",
-                  "offset": 252
+                  "val": "\"Device Activation\"",
+                  "offset": 249
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -167,116 +161,46 @@
           },
           {
             "result": {
-              "duration": 2156910600,
+              "duration": 6672214300,
               "status": "passed"
             },
             "line": 12,
-            "name": "I Then Assign Device and Process Order \"emailReceipt\" \"cardPayment\" \"Self Onboarding\"",
+            "name": "Submit Barcode Information \"K3R0W007700\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"emailReceipt\"",
-                  "offset": 39
-                },
-                {
-                  "val": "\"cardPayment\"",
-                  "offset": 54
-                },
-                {
-                  "val": "\"Self Onboarding\"",
-                  "offset": 68
+                  "val": "\"K3R0W007700\"",
+                  "offset": 27
                 }
               ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iThenAssignDevicesForDelivery(java.lang.String,java.lang.String,java.lang.String)"
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitBarcodeInformation(java.lang.String)"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "error_message": "org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: DefaultElementLocator \u0027By.xpath: /html/body/div/div[2]/div[1]/div/div[3]/div[1]/div[2]/p\u0027 (tried for 120 second(s) with 500 milliseconds interval)\r\n\tat org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)\r\n\tat org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)\r\n\tat vfs.automation.core.utilities.WebDriverUtilities.waitUntilElementClickable(WebDriverUtilities.java:187)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.populateVPGOnceCardDetails(MerchantTransactions.java:637)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ipopulateVPGOnceOffPayment(MerchantStepDefinitions.java:333)\r\n\tat ✽.I populate VPG Payment Details \"cardPayment\"(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/SelfOnBoarding.feature:13)\r\nCaused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"/html/body/div/div[2]/div[1]/div/div[3]/div[1]/div[2]/p\"}\n  (Session info: MicrosoftEdge\u003d128.0.2739.67)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027ILAB-TNT\u0027, ip: \u0027192.168.33.226\u0027, os.name: \u0027Windows 11\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002722.0.1\u0027\nDriver info: org.openqa.selenium.edge.EdgeDriver\nCapabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.67, fedcm:accounts: true, javascriptEnabled: true, ms:edgeOptions: {debuggerAddress: localhost:62329}, msedge: {msedgedriverVersion: 128.0.2739.67 (248489733b87..., userDataDir: C:\\Users\\ntyit001\\AppData\\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: 15ff711c4ffa9db748ddb51875363dba\n*** Element info: {Using\u003dxpath, value\u003d/html/body/div/div[2]/div[1]/div/div[3]/div[1]/div[2]/p}\r\n\tat java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)\r\n\tat java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)\r\n\tat org.openqa.selenium.By$ByXPath.findElement(By.java:353)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\r\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\r\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\r\n\tat jdk.proxy2/jdk.proxy2.$Proxy20.isDisplayed(Unknown Source)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:314)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:43)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:300)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:297)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:670)\r\n\tat org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:666)\r\n\tat org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:249)\r\n\tat vfs.automation.core.utilities.WebDriverUtilities.waitUntilElementClickable(WebDriverUtilities.java:187)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.populateVPGOnceCardDetails(MerchantTransactions.java:637)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ipopulateVPGOnceOffPayment(MerchantStepDefinitions.java:333)\r\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:580)\r\n\tat io.cucumber.java.Invoker.doInvoke(Invoker.java:66)\r\n\tat io.cucumber.java.Invoker.invoke(Invoker.java:24)\r\n\tat io.cucumber.java.AbstractGlueDefinition.invokeMethod(AbstractGlueDefinition.java:47)\r\n\tat io.cucumber.java.JavaStepDefinition.execute(JavaStepDefinition.java:29)\r\n\tat io.cucumber.core.runner.CoreStepDefinition.execute(CoreStepDefinition.java:66)\r\n\tat io.cucumber.core.runner.PickleStepDefinitionMatch.runStep(PickleStepDefinitionMatch.java:63)\r\n\tat io.cucumber.core.runner.ExecutionMode$1.execute(ExecutionMode.java:10)\r\n\tat io.cucumber.core.runner.TestStep.executeStep(TestStep.java:92)\r\n\tat io.cucumber.core.runner.TestStep.run(TestStep.java:64)\r\n\tat io.cucumber.core.runner.PickleStepTestStep.run(PickleStepTestStep.java:51)\r\n\tat io.cucumber.core.runner.TestCase.run(TestCase.java:104)\r\n\tat io.cucumber.core.runner.Runner.runPickle(Runner.java:71)\r\n\tat io.cucumber.junit.PickleRunners$NoStepDescriptions.run(PickleRunners.java:151)\r\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:135)\r\n\tat io.cucumber.junit.FeatureRunner.runChild(FeatureRunner.java:27)\r\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\r\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\r\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\r\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\r\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\r\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\r\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:199)\r\n\tat io.cucumber.junit.Cucumber.runChild(Cucumber.java:90)\r\n\tat org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)\r\n\tat org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)\r\n\tat org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)\r\n\tat org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)\r\n\tat org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)\r\n\tat io.cucumber.junit.Cucumber$RunCucumber.evaluate(Cucumber.java:234)\r\n\tat org.junit.runners.ParentRunner.run(ParentRunner.java:363)\r\n\tat org.junit.runner.JUnitCore.run(JUnitCore.java:137)\r\n\tat com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)\r\n\tat com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)\r\n\tat com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)\r\n\tat com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)\r\n\tat com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)\r\n\tat com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)\r\n",
-              "duration": 131710824700,
-              "status": "failed"
+              "duration": 7196300800,
+              "status": "passed"
             },
             "line": 13,
-            "name": "I populate VPG Payment Details \"cardPayment\"",
+            "name": "Device Assign Name \"NONDIPHA\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"cardPayment\"",
-                  "offset": 31
+                  "val": "\"NONDIPHA\"",
+                  "offset": 19
                 }
               ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ipopulateVPGOnceOffPayment(java.lang.String)"
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.deviceAssignName(java.lang.String)"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 32913941200,
+              "status": "passed"
             },
             "line": 14,
-            "name": "I select immediate payment method \"NONDIPHA LOUW\"\"5181030000959467\"\"2029\"\"February\"\"813\"\"cardPayment\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"NONDIPHA LOUW\"",
-                  "offset": 34
-                },
-                {
-                  "val": "\"5181030000959467\"",
-                  "offset": 49
-                },
-                {
-                  "val": "\"2029\"",
-                  "offset": 67
-                },
-                {
-                  "val": "\"February\"",
-                  "offset": 73
-                },
-                {
-                  "val": "\"813\"",
-                  "offset": 83
-                },
-                {
-                  "val": "\"cardPayment\"",
-                  "offset": 88
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iSelectPaymentMethod(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "line": 15,
-            "name": "I Populate ThreeD Secure \"test123\"\"Physical\"\"Nedbank Debit\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"test123\"",
-                  "offset": 25
-                },
-                {
-                  "val": "\"Physical\"",
-                  "offset": 34
-                },
-                {
-                  "val": "\"Nedbank Debit\"",
-                  "offset": 44
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iPopulateThreeDSecure(java.lang.String,java.lang.String,java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "line": 16,
             "name": "Start Setup Customer Account Landing Page",
             "match": {
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.startSetupCustomerAccountLandingPage()"
@@ -285,9 +209,10 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 12711380300,
+              "status": "passed"
             },
-            "line": 17,
+            "line": 15,
             "name": "FICA PROCESS Pages Tell Us About The Customers Business \"Sole Proprietorship\" \"VFS Payment Testing\" \"15000\" \"Computer Software Shop\" \"2024-03-03\"",
             "match": {
               "arguments": [
@@ -318,9 +243,10 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 3051000,
+              "status": "passed"
             },
-            "line": 18,
+            "line": 16,
             "name": "FICA PROCESS Pages Confirm the customers personal details \"Business owner/director\" \"NONDIPHA\" \"LOUW\"",
             "match": {
               "arguments": [
@@ -343,9 +269,10 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 42244215400,
+              "status": "passed"
             },
-            "line": 19,
+            "line": 17,
             "name": "FICA PROCESS Pages Confirm the customers banking details \"Nedbank Debit\" \"6807015897087\" \"1288655444\" \"NONDIPHA\" \"LOUW\"",
             "match": {
               "arguments": [
@@ -373,23 +300,57 @@
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ficaPROCESSPagesConfirmTheCustomersBankingDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
             },
             "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 15112671000,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "I take a selfie",
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.takeSelfie()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 111227043900,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "I  upload documents \"Sole Proprietorship\"\"green card\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Sole Proprietorship\"",
+                  "offset": 20
+                },
+                {
+                  "val": "\"green card\"",
+                  "offset": 41
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iUploadDocuments(java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
           }
         ],
         "tags": [
           {
-            "name": "@SelfOnBoarding"
+            "name": "@deviceActivationRevamp"
           }
         ]
       }
     ],
-    "name": "OnBoarding New Merchant Choose POS Option",
+    "name": "Device Activation",
     "description": "",
-    "id": "onboarding-new-merchant-choose-pos-option",
+    "id": "device-activation",
     "keyword": "Feature",
-    "uri": "file:src/test/resources/features/web/SelfOnBoarding.feature",
+    "uri": "file:src/test/resources/features/web/deviceActivationRevamped.feature",
     "tags": [
       {
-        "name": "@SelfOnBoarding",
+        "name": "@deviceActivationRevamp",
         "type": "Tag",
         "location": {
           "line": 1,
