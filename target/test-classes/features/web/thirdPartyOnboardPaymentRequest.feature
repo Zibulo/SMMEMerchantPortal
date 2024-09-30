@@ -11,6 +11,7 @@ Feature: third Party Login
     And When I select Dealer "<dealer>""<userId>""<password>"
     And I Choose Available POS Option "<deviceOption>"
     And Submit Merchant details "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
+    And Submit Merchant details SF Confirmation "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
     And I Then Assign Device and Process Order "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
     And I verify Payment Request Link and complete payment "<devicePaymentOption>"
     And I select immediate payment method "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>""<devicePaymentOption>"
@@ -21,8 +22,8 @@ Feature: third Party Login
     And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
     And FICA PROCESS Pages Confirm the customers personal details "<ownershipDetails>" "<firstName>" "<surName>"
     And FICA PROCESS Pages Confirm the customers banking details "<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
-    #And I take a selfie
-    #And I  upload documents "<companyTypeOption>""<idDocumentType>"
+    And I take a selfie
+    And I  upload documents "<companyTypeOption>""<idDocumentType>"
 
 
     #And I populate Once Card Details "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>"

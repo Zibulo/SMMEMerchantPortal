@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 4311905000,
+              "duration": 2060000000,
               "status": "passed"
             },
             "line": 6,
@@ -24,15 +24,15 @@
         ]
       },
       {
-        "start_timestamp": "2024-09-25T10:06:59.228Z",
-        "line": 33,
+        "start_timestamp": "2024-09-30T11:43:30.421Z",
+        "line": 35,
         "name": "\"Kwika Activation\"",
         "description": "",
         "id": "device-activation;\"\u003cscenariodescription\u003e\";;2",
         "after": [
           {
             "result": {
-              "duration": 632293200,
+              "duration": 1617000000,
               "status": "passed"
             },
             "match": {
@@ -45,7 +45,7 @@
         "steps": [
           {
             "result": {
-              "duration": 35366791800,
+              "duration": 5356000000,
               "status": "passed"
             },
             "line": 9,
@@ -79,7 +79,7 @@
           },
           {
             "result": {
-              "duration": 5611157500,
+              "duration": 4674000000,
               "status": "passed"
             },
             "line": 10,
@@ -91,7 +91,7 @@
           },
           {
             "result": {
-              "duration": 25479239200,
+              "duration": 22197000000,
               "status": "passed"
             },
             "line": 11,
@@ -161,177 +161,71 @@
           },
           {
             "result": {
-              "duration": 6672214300,
+              "duration": 4243000000,
               "status": "passed"
             },
             "line": 12,
-            "name": "Submit Barcode Information \"K3R0W007700\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"K3R0W007700\"",
-                  "offset": 27
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitBarcodeInformation(java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 7196300800,
-              "status": "passed"
-            },
-            "line": 13,
-            "name": "Device Assign Name \"NONDIPHA\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"NONDIPHA\"",
-                  "offset": 19
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.deviceAssignName(java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 32913941200,
-              "status": "passed"
-            },
-            "line": 14,
-            "name": "Start Setup Customer Account Landing Page",
-            "match": {
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.startSetupCustomerAccountLandingPage()"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 12711380300,
-              "status": "passed"
-            },
-            "line": 15,
-            "name": "FICA PROCESS Pages Tell Us About The Customers Business \"Sole Proprietorship\" \"VFS Payment Testing\" \"15000\" \"Computer Software Shop\" \"2024-03-03\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"Sole Proprietorship\"",
-                  "offset": 56
-                },
-                {
-                  "val": "\"VFS Payment Testing\"",
-                  "offset": 78
-                },
-                {
-                  "val": "\"15000\"",
-                  "offset": 100
-                },
-                {
-                  "val": "\"Computer Software Shop\"",
-                  "offset": 108
-                },
-                {
-                  "val": "\"2024-03-03\"",
-                  "offset": 133
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.tellUsAboutTheCustomersBusiness(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 3051000,
-              "status": "passed"
-            },
-            "line": 16,
-            "name": "FICA PROCESS Pages Confirm the customers personal details \"Business owner/director\" \"NONDIPHA\" \"LOUW\"",
+            "name": "Submit Merchant details SF Confirmation \"Business owner/director\" \"NONDIPHA\" \"LOUW\" \"satisfied-by@dggrvtf2.mailosaur.net\" \"0833721854\" \"South African\" \"6807015897087\" \"4586 Isacholo Crescent\" \"4586 Isacholo Crescent\" \"0187\" \"Blue Golf Estate\" \"Centurion\" \"Gauteng\" \"Device Activation\"",
             "match": {
               "arguments": [
                 {
                   "val": "\"Business owner/director\"",
-                  "offset": 58
+                  "offset": 40
                 },
                 {
                   "val": "\"NONDIPHA\"",
+                  "offset": 66
+                },
+                {
+                  "val": "\"LOUW\"",
+                  "offset": 77
+                },
+                {
+                  "val": "\"satisfied-by@dggrvtf2.mailosaur.net\"",
                   "offset": 84
                 },
                 {
-                  "val": "\"LOUW\"",
-                  "offset": 95
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ficaPROCESSPagesConfirmTheCustomersPersonalDetails(java.lang.String,java.lang.String,java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 42244215400,
-              "status": "passed"
-            },
-            "line": 17,
-            "name": "FICA PROCESS Pages Confirm the customers banking details \"Nedbank Debit\" \"6807015897087\" \"1288655444\" \"NONDIPHA\" \"LOUW\"",
-            "match": {
-              "arguments": [
+                  "val": "\"0833721854\"",
+                  "offset": 122
+                },
                 {
-                  "val": "\"Nedbank Debit\"",
-                  "offset": 57
+                  "val": "\"South African\"",
+                  "offset": 135
                 },
                 {
                   "val": "\"6807015897087\"",
-                  "offset": 73
+                  "offset": 151
                 },
                 {
-                  "val": "\"1288655444\"",
-                  "offset": 89
+                  "val": "\"4586 Isacholo Crescent\"",
+                  "offset": 167
                 },
                 {
-                  "val": "\"NONDIPHA\"",
-                  "offset": 102
+                  "val": "\"4586 Isacholo Crescent\"",
+                  "offset": 192
                 },
                 {
-                  "val": "\"LOUW\"",
-                  "offset": 113
+                  "val": "\"0187\"",
+                  "offset": 217
+                },
+                {
+                  "val": "\"Blue Golf Estate\"",
+                  "offset": 224
+                },
+                {
+                  "val": "\"Centurion\"",
+                  "offset": 243
+                },
+                {
+                  "val": "\"Gauteng\"",
+                  "offset": 255
+                },
+                {
+                  "val": "\"Device Activation\"",
+                  "offset": 265
                 }
               ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.ficaPROCESSPagesConfirmTheCustomersBankingDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 15112671000,
-              "status": "passed"
-            },
-            "line": 18,
-            "name": "I take a selfie",
-            "match": {
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.takeSelfie()"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 111227043900,
-              "status": "passed"
-            },
-            "line": 19,
-            "name": "I  upload documents \"Sole Proprietorship\"\"green card\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"Sole Proprietorship\"",
-                  "offset": 20
-                },
-                {
-                  "val": "\"green card\"",
-                  "offset": 41
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iUploadDocuments(java.lang.String,java.lang.String)"
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetailsSFConfirmation(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
             },
             "keyword": "And "
           }

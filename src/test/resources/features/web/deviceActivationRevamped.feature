@@ -9,14 +9,16 @@ Feature: Device Activation
     Given I am on the merchant landing page "<ScenarioDescription>""<reportName>""<landingPage>""<reportAuthor>""<landingPageSuccess>"
     And Access Device Activation Page
     And Submit Merchant details "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
-    And Submit Barcode Information "<Barcode Number>"
-    And Device Assign Name "<firstName>"
-    And Start Setup Customer Account Landing Page
-    And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
-    And FICA PROCESS Pages Confirm the customers personal details "<ownershipDetails>" "<firstName>" "<surName>"
-    And FICA PROCESS Pages Confirm the customers banking details "<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
-    And I take a selfie
-    And I  upload documents "<companyTypeOption>""<idDocumentType>"
+    And Submit Merchant details SF Confirmation "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
+
+    #And Submit Barcode Information "<Barcode Number>"
+    #And Device Assign Name "<firstName>"
+    #And Start Setup Customer Account Landing Page
+    #And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
+    #And FICA PROCESS Pages Confirm the customers personal details "<ownershipDetails>" "<firstName>" "<surName>"
+    #And FICA PROCESS Pages Confirm the customers banking details "<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
+    #And I take a selfie
+    #And I  upload documents "<companyTypeOption>""<idDocumentType>"
 
 
 #    And I Then Complete Device Order

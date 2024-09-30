@@ -756,5 +756,24 @@ public class MerchantStepDefinitions extends SystemUtilities {
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
     }
+
+    @And("Submit Merchant details SF Confirmation {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+    public void submitMerchantDetailsSFConfirmation(String ownershipDetails, String firstName, String surName, String eMail, String mobileNo, String idType, String merchantID,
+                                                    String inputBusinessStreetName,String businessStreetName, String businessPostalCode,String businessSuburb,String  businessTown,String Province, String journey_name) throws Exception {
+        if(SkipForTapOnPhoneOnly)
+        {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        }
+        else
+        {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            response = merchantTransactions.submitMerchantDetailsSFConfirmation();
+            System.out.println("Response for token");
+            System.out.println(response.prettyPrint());
+/*            extentTest.log(LogStatus.PASS, "Pos Option is Selected");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));*/
+        }
+    }
 }
 

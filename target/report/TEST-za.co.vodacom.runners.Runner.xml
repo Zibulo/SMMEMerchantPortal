@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="300.106">
-    <testcase classname="Device Activation" name="&quot;Kwika Activation&quot;" time="299.655">
-        <system-out><![CDATA[Given The webBrowser is launched............................................passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="40.698">
+<testcase classname="Device Activation" name="&quot;Kwika Activation&quot;" time="40.36">
+<system-out><![CDATA[Given The webBrowser is launched............................................passed
 Given I am on the merchant landing page "Kwika Activation""Kwika Activation""smmeURL""Tebello Ntyingila""".passed
 And Access Device Activation Page...........................................passed
 And Submit Merchant details "Business owner/director" "NONDIPHA" "LOUW" "satisfied-by@dggrvtf2.mailosaur.net" "0833721854" "South African" "6807015897087" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng" "Device Activation".passed
-And Submit Barcode Information "K3R0W007700"................................passed
-And Device Assign Name "NONDIPHA"...........................................passed
-And Start Setup Customer Account Landing Page...............................passed
-And FICA PROCESS Pages Tell Us About The Customers Business "Sole Proprietorship" "VFS Payment Testing" "15000" "Computer Software Shop" "2024-03-03".passed
-And FICA PROCESS Pages Confirm the customers personal details "Business owner/director" "NONDIPHA" "LOUW".passed
-And FICA PROCESS Pages Confirm the customers banking details "Nedbank Debit" "6807015897087" "1288655444" "NONDIPHA" "LOUW".passed
-And I take a selfie.........................................................passed
-And I  upload documents "Sole Proprietorship""green card"...................passed
+And Submit Merchant details SF Confirmation "Business owner/director" "NONDIPHA" "LOUW" "satisfied-by@dggrvtf2.mailosaur.net" "0833721854" "South African" "6807015897087" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng" "Device Activation".passed
 ]]></system-out>
-    </testcase>
+</testcase>
 </testsuite>

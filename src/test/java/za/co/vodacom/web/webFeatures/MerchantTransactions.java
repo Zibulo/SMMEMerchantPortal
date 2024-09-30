@@ -1,29 +1,32 @@
 package za.co.vodacom.web.webFeatures;
 
-import io.cucumber.java.PendingException;
+import com.relevantcodes.extentreports.ExtentTest;
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import vfs.automation.core.api.RestInteractionPoint;
 import vfs.automation.core.utilities.SystemUtilities;
 import vfs.automation.core.utilities.WebDriverUtilities;
+import za.co.vodacom.api.apiFeatures.SFTokenManage;
 import za.co.vodacom.commonMethods.CommonMethods;
 import za.co.vodacom.fileUploadHandler.fileupload;
 import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
 import za.co.vodacom.web.pageObjectModel.Login;
 import za.co.vodacom.web.pageObjectModel.Logoff;
 
-import java.security.Key;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MerchantTransactions extends SystemUtilities {
 
@@ -2183,6 +2186,7 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.implicitWait(driver, 24000);
         //Thread.sleep(12000);
         act.sendKeys(Keys.PAGE_DOWN).perform();
+        ///Uncomment for business if the function is working
         webDriverUtil.waitUntilElementClickable(driver,login.businessStreetName, 120);
         webDriverUtil.clickElement(login.businessStreetName);
 
@@ -2253,7 +2257,22 @@ public class MerchantTransactions extends SystemUtilities {
 
     }
 
-   public void confirmCustomerPersonalDetails(String ownershipDetails, String firstName, String surName) throws Exception {
+    public Response submitMerchantDetailsSFConfirmation() throws Exception {
+        // Create an instance of the RestClient
+        RestInteractionPoint restInteractionPoint = new RestInteractionPoint();
+        String endpoint="https://vodapayapiqa.vodacom.co.za/cloud/public-services/financial-services/v1/smme/salesforce/token?isbeUser=true";
+        Map<String,String> headers = new HashMap<>();
+        headers.put("isbeUser","true");
+
+        RestAssured.useRelaxedHTTPSValidation();
+        RequestSpecification httpRequest = RestAssured.given();
+        httpRequest.request(Method.GET, endpoint);
+
+        return restInteractionPoint.get(headers, endpoint);
+
+    }
+
+    public void confirmCustomerPersonalDetails(String ownershipDetails, String firstName, String surName) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(10000);

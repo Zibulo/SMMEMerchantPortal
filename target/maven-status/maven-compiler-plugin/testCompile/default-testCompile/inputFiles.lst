@@ -7,10 +7,12 @@ C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\we
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\api\apiFeatures\MerchantLogoff.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\web\pageObjectModel\CardDetailsPom.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\api\apiFeatures\MerchantRecentTransactions.java
+C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\api\apiFeatures\RestClient.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\web\webFeatures\ThirdPartyLogin1.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\web\webFeatures\MerchantTransactions.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\api\apiFeatures\MerchantChangePassword.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\runners\Runner.java
+C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\api\apiFeatures\SFTokenManage.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\web\pageObjectModel\Logoff.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\web\pageObjectModel\MerchantAccounts.java
 C:\Users\ntyit001\IdeaProjects\SMMEMerchantPortal\src\test\java\za\co\vodacom\api\apiFeatures\MerchantLogin.java
