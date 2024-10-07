@@ -1,5 +1,6 @@
 package za.co.vodacom.stepDefinitions;
 
+import com.jayway.jsonpath.JsonPath;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -12,8 +13,7 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import vfs.automation.core.assertions.Assertions;
 import vfs.automation.core.utilities.SystemUtilities;
 import vfs.automation.core.utilities.WebDriverUtilities;
@@ -73,13 +73,20 @@ public class MerchantStepDefinitions extends SystemUtilities {
         System.setProperty("Browser","Chrome");
         //System.setProperty("java.net.preferIPv4Stack", "true");
         setSystemProperty("Browser", "EDGE"); //Defaults the environment to chrome unless if it is set in the environment variables.
-   /*     System.out.println("I am testing browser");
-        System.out.println(getSystemProperty("Browser"));*/
+
+/*        if (driver != null && ((RemoteWebDriver) driver).getSessionId() != null) {
+            // Proceed with taking a screenshot or other actions
+            System.out.println("Driver session is active");
+        } else {
+            System.out.println("Driver session is not active");
+        }*/
+
         if (driver == null) {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             driver = webDriverUtil.initializeWebDriver(getSystemProperty("Browser"), Integer.parseInt(getSystemProperty("timeout")));
-/*            FirefoxOptions options = new FirefoxOptions();
-            options.addPreference("permissions.default.camera", 1);*/
+
+        }else {
+            System.out.println("Driver session not null");
         }
     }
 
@@ -767,13 +774,23 @@ public class MerchantStepDefinitions extends SystemUtilities {
         else
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            response = merchantTransactions.submitMerchantDetailsSFConfirmation();
+            response = merchantTransactions.getSFConfirmation("RNWIKBKMPG");
             System.out.println("Response for token");
-            System.out.println(response.prettyPrint());
+            System.out.println(response.getBody().jsonPath().getString("ResponseData"));
+            String data = JsonPath.read(response.getBody().jsonPath().getString("ResponseData"), "$.referenceNumber");
+            System.out.println(data);
 /*            extentTest.log(LogStatus.PASS, "Pos Option is Selected");
             String fileName = webDriverUtil.takeScreenshot(driver);
             extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));*/
         }
+    }
+
+    @And("I close all browser")
+    public void iCloseAllBrowser() throws InterruptedException {
+        Thread.sleep(5000);
+        System.out.println("I am about to close the browser");
+        driver.quit();
+        driver = null;
     }
 }
 

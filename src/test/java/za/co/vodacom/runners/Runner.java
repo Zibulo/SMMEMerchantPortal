@@ -10,7 +10,7 @@ import vfs.automation.core.utilities.SystemUtilities;
         monochrome = true,
         features = "src/test/resources/features/web",
         glue = "za.co.vodacom.stepDefinitions",
-        tags = ("@deviceActivationRevamp"),
+        tags = ("@thirdPartyOnboardingPaymentRequest"),
         plugin = {"pretty","json:target/report/json/cucumber.json",
                 "junit:target/report/TEST-za.co.vodacom.runners.Runner.xml"})
 

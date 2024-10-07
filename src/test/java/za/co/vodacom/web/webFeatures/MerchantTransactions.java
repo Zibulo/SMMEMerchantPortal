@@ -1,6 +1,5 @@
 package za.co.vodacom.web.webFeatures;
 
-import com.relevantcodes.extentreports.ExtentTest;
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
@@ -14,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import vfs.automation.core.api.RestInteractionPoint;
 import vfs.automation.core.utilities.SystemUtilities;
 import vfs.automation.core.utilities.WebDriverUtilities;
-import za.co.vodacom.api.apiFeatures.SFTokenManage;
 import za.co.vodacom.commonMethods.CommonMethods;
 import za.co.vodacom.fileUploadHandler.fileupload;
 import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
@@ -2257,18 +2255,53 @@ public class MerchantTransactions extends SystemUtilities {
 
     }
 
-    public Response submitMerchantDetailsSFConfirmation() throws Exception {
+    public Response getSFConfirmation(String ref) throws Exception {
+        try
+        {
+            String access_token = getToken().getBody().jsonPath().getString("access_token");
+            System.out.println("Response for token");
+            System.out.println(access_token);
+            RestInteractionPoint restInteractionPoint = new RestInteractionPoint();
+            String endpoint="https://vfsprod-domain--uat.sandbox.my.salesforce.com/services/apexrest/retrieveApplicationData?refNumber="+ref;
+            Map<String,String> headers = new HashMap<>();
+            headers.put("Authorization","Bearer "+access_token);
+
+            RestAssured.useRelaxedHTTPSValidation();
+            RequestSpecification httpRequest = RestAssured.given();
+            httpRequest.request(Method.GET, endpoint);
+
+            return restInteractionPoint.get(headers, endpoint);
+        } catch (Exception e)
+        {
+            // Handle the exception, log the error, and return null
+            System.out.println("An error occurred while creating the post: " + e.getMessage());
+            e.printStackTrace();  // Optional: Print the stack trace for debugging
+            return null;  // Return null in case of failure
+        }
+
+    }
+
+    public Response getToken() {
         // Create an instance of the RestClient
-        RestInteractionPoint restInteractionPoint = new RestInteractionPoint();
-        String endpoint="https://vodapayapiqa.vodacom.co.za/cloud/public-services/financial-services/v1/smme/salesforce/token?isbeUser=true";
-        Map<String,String> headers = new HashMap<>();
-        headers.put("isbeUser","true");
+        try
+        {
+            RestInteractionPoint restInteractionPoint = new RestInteractionPoint();
+            String endpoint="https://vodapayapiqa.vodacom.co.za/cloud/public-services/financial-services/v1/smme/salesforce/token?isbeUser=true";
+            Map<String,String> headers = new HashMap<>();
+            headers.put("isbeUser","true");
 
-        RestAssured.useRelaxedHTTPSValidation();
-        RequestSpecification httpRequest = RestAssured.given();
-        httpRequest.request(Method.GET, endpoint);
+            RestAssured.useRelaxedHTTPSValidation();
+            RequestSpecification httpRequest = RestAssured.given();
+            httpRequest.request(Method.GET, endpoint);
 
-        return restInteractionPoint.get(headers, endpoint);
+            return restInteractionPoint.get(headers, endpoint);
+        } catch (Exception e)
+        {
+            // Handle the exception, log the error, and return null
+            System.out.println("An error occurred while creating the post: " + e.getMessage());
+            e.printStackTrace();  // Optional: Print the stack trace for debugging
+            return null;  // Return null in case of failure
+        }
 
     }
 
