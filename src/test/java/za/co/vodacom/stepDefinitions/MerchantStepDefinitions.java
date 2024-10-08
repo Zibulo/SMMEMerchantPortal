@@ -787,7 +787,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     @And("I close all browser")
     public void iCloseAllBrowser() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(15000);
         System.out.println("I am about to close the browser");
         driver.quit();
         driver = null;

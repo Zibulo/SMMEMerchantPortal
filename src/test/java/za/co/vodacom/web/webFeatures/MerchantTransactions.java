@@ -979,8 +979,8 @@ public class MerchantTransactions extends SystemUtilities {
           if(ficaConfirmation)
           {
               Thread.sleep(3000);
-              webDriverUtil.waitUntilElementClickable(driver, login.ficaConfirmBtn, 120);
-              webDriverUtil.clickElement(login.ficaConfirmBtn);
+//              webDriverUtil.waitUntilElementClickable(driver, login.ficaConfirmBtn, 120);
+//              webDriverUtil.clickElement(login.ficaConfirmBtn);
 
               webDriverUtil.waitUntilElementClickable(driver, login.nextBtn, 120);
               webDriverUtil.clickElement(login.nextBtn);
@@ -999,7 +999,7 @@ public class MerchantTransactions extends SystemUtilities {
 
           Thread.sleep(3000);
           webDriverUtil.implicitWait(driver, 30);
-          if(ficaConfirmation)
+/*          if(ficaConfirmation)
           {
               webDriverUtil.waitUntilElementClickable(driver, login.residential_address, 120);
               webDriverUtil.clickElement(login.residential_address);
@@ -1019,7 +1019,7 @@ public class MerchantTransactions extends SystemUtilities {
               Thread.sleep(1000);
               webDriverUtil.waitUntilElementClickable(driver,login.selectOwner, 120);
               webDriverUtil.clickElement(login.selectOwner);
-          }
+          }*/
 
 
           webDriverUtil.waitUntilElementClickable(driver,login.clickResidentialNextBtn, 120);
@@ -2349,6 +2349,12 @@ public class MerchantTransactions extends SystemUtilities {
            webDriverUtil.enterText(login.accountHolder_input,firstName+" "+surName);
        }
 
+       if(ficaConfirmation)
+       {
+           webDriverUtil.waitUntilElementClickable(driver,login.accountHolder_input, 120);
+           webDriverUtil.enterText(login.accountHolder_input,firstName+" "+surName);
+       }
+
        Actions actions = new Actions(driver);
        actions.sendKeys(Keys.PAGE_DOWN).perform();
 
@@ -2378,8 +2384,11 @@ public class MerchantTransactions extends SystemUtilities {
        Thread.sleep(2000);
        if(ficaConfirmation)
        {
-           webDriverUtil.waitUntilElementClickable(driver,login.accountType_select, 120);
-           webDriverUtil.clickElement(login.accountType_select);
+//           webDriverUtil.waitUntilElementClickable(driver,login.accountType_select, 120);
+//           webDriverUtil.clickElement(login.accountType_select);
+
+           webDriverUtil.waitUntilElementClickable(driver,login.accountType_select_kwikaOnly, 120);
+           webDriverUtil.clickElement(login.accountType_select_kwikaOnly);
        }else
        {
            webDriverUtil.waitUntilElementClickable(driver,login.accountType_select_kwikaOnly, 120);
@@ -2387,7 +2396,7 @@ public class MerchantTransactions extends SystemUtilities {
        }
 
 
-        if(ficaConfirmation)
+ /*       if(ficaConfirmation)
         {
             Thread.sleep(2000);
             webDriverUtil.waitUntilElementClickable(driver,login.bank_AccountOpenMonth_input, 120);
@@ -2402,7 +2411,7 @@ public class MerchantTransactions extends SystemUtilities {
             Thread.sleep(2000);
             webDriverUtil.waitUntilElementClickable(driver,login.bank_AccountOpenYear_select, 120);
             webDriverUtil.clickElement(login.bank_AccountOpenYear_select);
-        }
+        }*/
 
        Thread.sleep(2000);
        webDriverUtil.waitUntilElementClickable(driver,login.confirmBankingDetails_btn, 120);
