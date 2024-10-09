@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="277.068">
+<testcase classname="third Party Login" name="&quot;Makro selects Kwika&quot;" time="276.959">
+<system-out><![CDATA[Given The webBrowser is launched............................................passed
+And I am on the dealer landing page "Makro selects Kwika""Makro dealer journey""3poURL""Tebello Ntyingila""".passed
+And When I select Dealer "Makro""Shubham""Traderoot123!"....................passed
+And I Choose Available POS Option "VodaPay Kwika"...........................passed
+And Submit Merchant details "Business owner/director" "NONDIPHA" "LOUW" "satisfied-by@dggrvtf2.mailosaur.net" "0833721854" "South African" "6807015897087" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng" "Three PO".passed
+And I Then Assign Device and Process Order "emailReceipt" "cardPayment" "Three PO".passed
+And I verify Payment Request Link and complete payment "cardPayment"........passed
+And I select immediate payment method "NONDIPHA LOUW""5181030000959467""2029""February""813""cardPayment".passed
+And I Populate ThreeD Secure "test123""Physical""Nedbank Debit".............passed
+And I close ThreeD tab "cardPayment""Nedbank Debit".........................passed
+And I Check Payment Status "cardPayment""Nedbank Debit".....................passed
+And Start Setup Customer Account Landing Page...............................passed
+And FICA PROCESS Pages Tell Us About The Customers Business "Sole Proprietorship" "VFS Payment Testing" "15000" "Computer Software Shop" "2024-03-03".passed
+And FICA PROCESS Pages Confirm the customers banking details "Nedbank Debit" "6807015897087" "1288655444" "NONDIPHA" "LOUW".passed
+]]></system-out>
+</testcase>
+</testsuite>
