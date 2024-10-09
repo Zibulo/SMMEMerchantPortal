@@ -108,7 +108,9 @@ public class MerchantTransactions extends SystemUtilities {
                     webDriverUtil.implicitWait(driver,30);
                     actions.sendKeys(Keys.PAGE_DOWN).perform();
                     webDriverUtil.waitUntilElementClickable(driver,login.paymentSolution_btn, 120);
+                    Thread.sleep(2000);
                     login.paymentSolution_btn.click();
+                    Thread.sleep(2000);
                     js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
                 }
                 System.out.println("Payment Solution BTN Expanded");
@@ -127,6 +129,8 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.implicitWait(driver,30);
                 webDriverUtil.implicitWait(driver,30);
 
+                login.radio_solution_first.click();
+                Thread.sleep(3000);
                 if(login.Option_img1.getText().equalsIgnoreCase("VodaPay Kwika"))
                 {
                     login.radio_solution_first.click();
@@ -201,8 +205,9 @@ public class MerchantTransactions extends SystemUtilities {
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-                Thread.sleep(5000);
 
+                login.radio_solution_first.click();
+                Thread.sleep(3000);
                 if(login.Option_img1.getText().equalsIgnoreCase("VodaPay Max"))
                 {
                     login.radio_solution_first.click();
@@ -273,7 +278,8 @@ public class MerchantTransactions extends SystemUtilities {
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
 
                 Thread.sleep(5000);
-
+                login.radio_solution_first.click();
+                Thread.sleep(3000);
                 if(login.Option_img1.getText().equalsIgnoreCase("VodaPay Payment Gateway"))
                 {
                     login.radio_solution_first.click();
@@ -339,6 +345,8 @@ public class MerchantTransactions extends SystemUtilities {
 
                 Thread.sleep(5000);
 
+                login.radio_solution_first.click();
+                Thread.sleep(3000);
                 if(login.Option_img1.getText().equalsIgnoreCase("VodaPay Tap on Phone"))
                 {
                     login.radio_solution_first.click();
@@ -409,6 +417,8 @@ public class MerchantTransactions extends SystemUtilities {
 
                 Thread.sleep(5000);
 
+                login.radio_solution_first.click();
+                Thread.sleep(3000);
                 if(login.Option_img1.getText().equalsIgnoreCase("VodaPay Payment Request"))
                 {
                     login.radio_solution_first.click();
@@ -786,8 +796,8 @@ public class MerchantTransactions extends SystemUtilities {
 
 
                ////webDriverUtil.implicitWait(driver, 30);
-               webDriverUtil.waitUntilVisible(driver,login.orderContinueBtn,30);
-               webDriverUtil.clickElement(login.orderContinueBtn);
+               webDriverUtil.waitUntilVisible(driver,login.payNowBtn,30);
+               webDriverUtil.clickElement(login.payNowBtn);
                webDriverUtil.implicitWait(driver, 30);
                webDriverUtil.clickElement(login.reserveFundsBtn);
 

@@ -260,6 +260,10 @@ public class Login {
 
     @FindBy(xpath="//button[normalize-space(text())='Continue to payment']")
     public WebElement orderContinueBtn;
+
+    @FindBy(xpath="//button[normalize-space(text())='Pay now']")
+    public WebElement payNowBtn;
+
     @FindBy(xpath="//button[@type='button' and @data-automationid='undefined_Plus' and contains(@class, 'ns-text-grey-600') and contains(@class, 'ns-cursor-pointer')]")
     public WebElement addDeviceBtn;
     @FindBy(xpath="//button[contains(text(),'Next')]")
