@@ -759,8 +759,11 @@ public class MerchantTransactions extends SystemUtilities {
        {
            if(KwikaOnly || ficaConfirmation)
            {
-               webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceContinueBtn, 120);
-               webDriverUtil.clickElement(login.assignDeviceContinueBtn);
+/*               webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceContinueBtn, 120);
+               webDriverUtil.clickElement(login.assignDeviceContinueBtn);*/
+               webDriverUtil.waitUntilElementClickable(driver,login.payNowBtn, 120);
+               webDriverUtil.clickElement(login.payNowBtn);
+
            }else
            {
                webDriverUtil.waitUntilElementClickable(driver,login.completeApplicationBtn, 120);
