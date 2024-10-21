@@ -21,10 +21,7 @@ import za.co.vodacom.web.pageObjectModel.Logoff;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MerchantTransactions extends SystemUtilities {
 
@@ -82,8 +79,20 @@ public class MerchantTransactions extends SystemUtilities {
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(login.)));
 
         String[] stringArray = deviceOption.split(",");
+        Boolean kwikax = false;
+        kwikax = getKwiMax(stringArray);
+        for (String element : stringArray) {
 
-        for (String s : stringArray) {
+
+            // Split into name and number part
+            String s = element.substring(0, element.indexOf('['));
+            String s_number_string = element.substring(element.indexOf('[') + 1, element.indexOf(']'));
+
+            // Convert s_number to integer
+            int s_number = Integer.parseInt(s_number_string);
+
+            //convert s_number int to array
+            int[] s_number_arr =new int[s_number];
 
             if (s.equalsIgnoreCase("VodaPay Kwika")) {
                 KwikaOnly = true;
@@ -168,9 +177,28 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.waitUntilElementClickable(driver,login.addPosOptionKwika, 120);
                 Thread.sleep(2000);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
-                //Thread.sleep(3000);
+                Thread.sleep(2000);
                 webDriverUtil.implicitWait(driver,30);
                 webDriverUtil.implicitWait(driver,30);
+
+
+                //Add more replicate sale
+/*                int index = 1;
+                for(int inst : s_number_arr)
+                {
+                    if(index!=s_number_arr.length)
+                    {
+                        webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts, 15);
+                        Thread.sleep(2000);
+                        webDriverUtil.clickElement(login.addMoreProducts);
+
+                        System.out.println("che che");
+                        System.out.println(inst);
+                    }
+
+                    index++;
+                }*/
+                addMoreProducts(s,s_number_arr,driver,login,webDriverUtil,kwikax);
                 webDriverUtil.waitUntilElementClickable(driver,login.closeCart, 60);
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
@@ -240,7 +268,9 @@ public class MerchantTransactions extends SystemUtilities {
                 Thread.sleep(2000);
                 webDriverUtil.waitUntilElementClickable(driver,login.addMaxToCart, 120);
                 webDriverUtil.clickElement(login.addMaxToCart);
-                //Thread.sleep(6000);
+
+                Thread.sleep(3000);
+                addMoreProducts(s,s_number_arr,driver,login,webDriverUtil,kwikax);
                 webDriverUtil.waitUntilElementClickable(driver,login.closeCart, 60);
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
@@ -584,6 +614,85 @@ public class MerchantTransactions extends SystemUtilities {
 
 
     }
+
+    public void addMoreProducts(String s, int[] s_number_arr, WebDriver driver, Login login, WebDriverUtilities webDriverUtil, Boolean kwimax) throws Exception {
+        //int index = 1;
+        for(int i = 1; i < s_number_arr.length; i++)
+        {
+
+/*            if(kwimax)
+            {
+                if(index!=s_number_arr.length)
+                {
+                    webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts, 15);
+                    Thread.sleep(2000);
+                    webDriverUtil.clickElement(login.addMoreProducts);
+                }
+            }else
+            {
+                if(index!=s_number_arr.length)
+                {
+                    webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts, 15);
+                    Thread.sleep(2000);
+                    webDriverUtil.clickElement(login.addMoreProducts);
+
+                    System.out.println("che che");
+                    System.out.println(inst);
+                }
+            }*/
+            if((KwikaOnly && !ficaConfirmation) || (!KwikaOnly && ficaConfirmation))
+            {
+                webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts, 15);
+                Thread.sleep(2000);
+                webDriverUtil.clickElement(login.addMoreProducts);
+
+                System.out.println("addMoreProducts");
+                //System.out.println(inst);
+            }else if(KwikaOnly && ficaConfirmation)
+            {
+/*                webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts_two, 15);
+                Thread.sleep(2000);
+                webDriverUtil.clickElement(login.addMoreProducts_two);*/
+                List<WebElement> buttons = driver.findElements(By.xpath("//button[@data-automationid='undefined_Plus']"));
+
+                if (buttons.size() > 1) {
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttons.get(2)); // Click the second button
+                }
+
+                System.out.println("addMoreProducts_two");
+                //System.out.println(inst);
+            }
+
+            //index++;
+        }
+    }
+
+   public boolean getKwiMax(String[] stringArray)
+   {
+       //Determine whether kwika and max selected
+       boolean kwi = false;
+       boolean max = false;
+       boolean kwimax = false;
+       for (String element : stringArray)
+       {
+           String s = element.substring(0, element.indexOf('['));
+
+
+           if (s.equalsIgnoreCase("VodaPay Kwika"))
+           {
+               kwi= true;
+           }else if (s.equalsIgnoreCase("VodaPay Max"))
+           {
+               max = true;
+
+           }
+       }
+       if(kwi && max)
+       {
+           kwimax = true;
+       }
+        return kwimax;
+   }
 
     public void completeDeviceOrder() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
@@ -2826,5 +2935,49 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.deviceActivationLandingPage);
 
     }
+
+    public void disableProofOfLife() throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+
+        //Click SMME DevTools Settings Button
+        webDriverUtil.waitUntilElementClickable(driver,login.SMMEDevTool_btn, 120);
+        webDriverUtil.clickElement(login.SMMEDevTool_btn);
+
+        //Scroll Down Stages
+        Thread.sleep(25000);
+        System.out.println("DevTools Before Scroll");
+// Scroll down by a specific number of pixels
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, 500);"); // Scroll down 500 pixels
+
+// OR to scroll to the bottom of the page
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+/*
+        // Stage 1 Create an instance of JavascriptExecutor
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        // Stage 2 Scroll down by 1000 pixels
+        //js.executeScript("window.scrollBy(0, 1000)");
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
+        Actions act = new Actions(driver);
+        //webDriverUtil.implicitWait(driver, 24000);
+        act.sendKeys(Keys.PAGE_DOWN).perform();
+
+        WebElement targetElement = driver.findElement(By.xpath("//input[@name='proofOfLife']"));
+        Thread.sleep(2400);
+
+        // Scroll to the target element using JavaScript
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", targetElement);
+*/
+
+
+        Thread.sleep(2000);
+
+        //Select Proof_of_Life Disable Checkbox (Checkbox must be ticked so it is diabled)
+        webDriverUtil.waitUntilElementClickable(driver,login.proofOfLife_input_CB, 12);
+        webDriverUtil.clickElement(login.proofOfLife_input_CB);
+    }
+
 
 }

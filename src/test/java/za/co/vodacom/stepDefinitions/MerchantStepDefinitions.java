@@ -792,5 +792,15 @@ public class MerchantStepDefinitions extends SystemUtilities {
         driver.quit();
         driver = null;
     }
+
+    @And("I Disable SMME DevTools Proof of Life")
+    public void iDisableSMMEDevToolsProofOfLife() throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions.disableProofOfLife();
+
+        extentTest.log(LogStatus.PASS, "Disable SMME DevTools Proof of Life");
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
 }
 

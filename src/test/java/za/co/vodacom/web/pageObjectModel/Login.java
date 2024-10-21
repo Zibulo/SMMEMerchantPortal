@@ -26,6 +26,22 @@ public class Login {
     @FindBy(xpath= "//span[contains(text(),'Add to cart') and contains(@class, 'ns-bg-blue-700')]")
     public WebElement addPosOptionKwika;
 
+    @FindBy(xpath= "//button[@data-automationid='undefined_Plus']")
+    public WebElement addMoreProducts;
+
+
+    @FindBy(xpath= "//button[@data-automationid='undefined_Plus'][2]")
+    public WebElement addMoreProducts_two;
+
+    @FindBy(xpath= "//*[@id='radix-53']/div/section/article[1]/section[1]/section/div/h2")
+    public WebElement addMoreProductsText_one;
+
+    @FindBy(xpath= "//*[@id='radix-53']/div/section/article[2]/section[1]/section/div/h2")
+    public WebElement addMoreProductsText_two;
+
+    @FindBy(xpath= "//*[@id='radix-53']/div/section/article/section[1]/section/div/h2")
+    public WebElement addMoreProductsText;
+
     @FindBy(xpath= "//span[text()='Add to cart']")
     public WebElement addMaxToCart;
 
@@ -166,6 +182,13 @@ public class Login {
 
     @FindBy(xpath="//span[contains(@class, 'content-normal') and contains(@class, 'font-bold') and text()='Register here']")
     public WebElement deviceActivationLandingPage;
+
+    @FindBy(xpath="//button[contains(@class, 'dev-tools-button')]")
+    public WebElement SMMEDevTool_btn;
+
+    @FindBy(xpath="//input[@name='proofOfLife']")
+    public WebElement proofOfLife_input_CB;
+
 
     @FindBy(xpath="//button[@type='submit' and contains(@class, 'primary') and contains(@class, 'medium-size') and @automationid='DA_Continue_Button']")
     public WebElement barcode_submit_btn;
