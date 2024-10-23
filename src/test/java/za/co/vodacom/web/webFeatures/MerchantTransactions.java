@@ -2944,15 +2944,26 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.waitUntilElementClickable(driver,login.SMMEDevTool_btn, 120);
         webDriverUtil.clickElement(login.SMMEDevTool_btn);
 
+
         //Scroll Down Stages
-        Thread.sleep(25000);
+        Thread.sleep(5000);
+
+        webDriverUtil.waitUntilElementClickable(driver,login.miniAppBuyOnlineJourney_CB, 12);
+        webDriverUtil.clickElement(login.miniAppBuyOnlineJourney_CB);
+
         System.out.println("DevTools Before Scroll");
-// Scroll down by a specific number of pixels
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebElement articleSection = driver.findElement(By.xpath("//section[contains(@class, 'scroll-box')]"));
+        Thread.sleep(3000);
+        articleSection.click();
+        js.executeScript("arguments[0].scrollTop = arguments[0].scrollTop + 500;", articleSection);
+
+/*// Scroll down by a specific number of pixels
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 500);"); // Scroll down 500 pixels
 
 // OR to scroll to the bottom of the page
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");*/
 /*
         // Stage 1 Create an instance of JavascriptExecutor
         JavascriptExecutor js = (JavascriptExecutor) driver;

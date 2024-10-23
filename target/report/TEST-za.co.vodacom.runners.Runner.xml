@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="44.508">
+<testcase classname="third Party Login" name="&quot;Makro selects Kwika and Max with All Virtual Devices&quot;" time="44.333">
+<failure message="Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (65709a9bd9be6ab7c5ef3aa4fad25328)] -&gt; xpath: //input[@name='miniAppBuyOnlineJourney']] (tried for 12 second(s) with 500 milliseconds interval)&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-TNT', ip: '192.168.8.101', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_422'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.90, chrome: {chromedriverVersion: 128.0.6613.84 (606aa55c7d68..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60044}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 65709a9bd9be6ab7c5ef3aa4fad25328" type="org.openqa.selenium.TimeoutException"><![CDATA[Given The webBrowser is launched............................................passed
+And I am on the dealer landing page "Makro selects Kwika and Max with All Virtual Devices""Makro dealer journey""3poURL""Tebello Ntyingila""".passed
+And When I select Dealer "Makro""Shubham""Traderoot123!"....................passed
+And I Disable SMME DevTools Proof of Life...................................failed
+And I Choose Available POS Option "VodaPay Kwika[2],VodaPay Max[2],VodaPay Tap on Phone[1],VodaPay Payment Gateway[1] Gateway,VodaPay Payment Request[1]".skipped
+
+StackTrace:
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (65709a9bd9be6ab7c5ef3aa4fad25328)] -> xpath: //input[@name='miniAppBuyOnlineJourney']] (tried for 12 second(s) with 500 milliseconds interval)
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ILAB-TNT', ip: '192.168.8.101', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_422'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 129.0.6668.90, chrome: {chromedriverVersion: 128.0.6613.84 (606aa55c7d68..., userDataDir: C:\Users\ntyit001\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:60044}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 65709a9bd9be6ab7c5ef3aa4fad25328
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at vfs.automation.core.utilities.WebDriverUtilities.waitUntilElementClickable(WebDriverUtilities.java:187)
+	at za.co.vodacom.web.webFeatures.MerchantTransactions.disableProofOfLife(MerchantTransactions.java:2951)
+	at za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iDisableSMMEDevToolsProofOfLife(MerchantStepDefinitions.java:799)
+	at ✽.I Disable SMME DevTools Proof of Life(file:///C:/Users/ntyit001/IdeaProjects/SMMEMerchantPortal/src/test/resources/features/web/thirdPartyOnboardPaymentRequest.feature:13)
+]]></failure>
+</testcase>
+</testsuite>

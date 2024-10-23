@@ -186,9 +186,11 @@ public class Login {
     @FindBy(xpath="//button[contains(@class, 'dev-tools-button')]")
     public WebElement SMMEDevTool_btn;
 
+    @FindBy(xpath="//input[@name='miniAppBuyOnlineJourney']")
+    public WebElement miniAppBuyOnlineJourney_CB;
+
     @FindBy(xpath="//input[@name='proofOfLife']")
     public WebElement proofOfLife_input_CB;
-
 
     @FindBy(xpath="//button[@type='submit' and contains(@class, 'primary') and contains(@class, 'medium-size') and @automationid='DA_Continue_Button']")
     public WebElement barcode_submit_btn;
