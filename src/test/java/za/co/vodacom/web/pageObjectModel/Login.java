@@ -189,8 +189,11 @@ public class Login {
     @FindBy(xpath="//input[@name='miniAppBuyOnlineJourney']")
     public WebElement miniAppBuyOnlineJourney_CB;
 
-    @FindBy(xpath="//input[@name='proofOfLife']")
+    @FindBy(xpath="//label[@for='proofOfLife']")
     public WebElement proofOfLife_input_CB;
+
+    @FindBy(xpath="//button[contains(text(), 'Submit')]")
+    public WebElement devTool_submit_btn;
 
     @FindBy(xpath="//button[@type='submit' and contains(@class, 'primary') and contains(@class, 'medium-size') and @automationid='DA_Continue_Button']")
     public WebElement barcode_submit_btn;

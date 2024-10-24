@@ -10,23 +10,23 @@ Feature: third Party Login
     Given The webBrowser is launched
     And I am on the dealer landing page "<ScenarioDescription>""<reportName>""<landingPage>""<reportAuthor>""<landingPageSuccess>"
     And When I select Dealer "<dealer>""<userId>""<password>"
-    #And I Disable SMME DevTools Proof of Life
+    And I Disable SMME DevTools Proof of Life
     And I Choose Available POS Option "<deviceOption>"
-    #And Submit Merchant details "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
+    And Submit Merchant details "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
     ##And Submit Merchant details SF Confirmation "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
-    #And I Then Assign Device and Process Order "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
-    #And I verify Payment Request Link and complete payment "<devicePaymentOption>"
-    #And I select immediate payment method "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>""<devicePaymentOption>"
-    #And I Populate ThreeD Secure "<threeDPassword>""<cardType>""<bankName>"
-    #And I close ThreeD tab "<devicePaymentOption>""<bankName>"
-    #And I Check Payment Status "<devicePaymentOption>""<bankName>"
-    #And Start Setup Customer Account Landing Page
-    #And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
+    And I Then Assign Device and Process Order "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
+    And I verify Payment Request Link and complete payment "<devicePaymentOption>"
+    And I select immediate payment method "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>""<devicePaymentOption>"
+    And I Populate ThreeD Secure "<threeDPassword>""<cardType>""<bankName>"
+    And I close ThreeD tab "<devicePaymentOption>""<bankName>"
+    And I Check Payment Status "<devicePaymentOption>""<bankName>"
+    And Start Setup Customer Account Landing Page
+    And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
     ##And FICA PROCESS Pages Confirm the customers personal details "<ownershipDetails>" "<firstName>" "<surName>"
-    #And FICA PROCESS Pages Confirm the customers banking details "<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
-    #And I take a selfie
-    #And I  upload documents "<companyTypeOption>""<idDocumentType>"
-    #And I close all browser
+    And FICA PROCESS Pages Confirm the customers banking details "<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
+    And I take a selfie
+    And I  upload documents "<companyTypeOption>""<idDocumentType>"
+    And I close all browser
 
 
     #And I populate Once Card Details "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>"

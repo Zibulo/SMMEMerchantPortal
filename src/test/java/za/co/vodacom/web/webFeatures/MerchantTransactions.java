@@ -19,9 +19,12 @@ import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
 import za.co.vodacom.web.pageObjectModel.Login;
 import za.co.vodacom.web.pageObjectModel.Logoff;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.List;
+import java.awt.event.KeyEvent;
 
 public class MerchantTransactions extends SystemUtilities {
 
@@ -2946,48 +2949,30 @@ public class MerchantTransactions extends SystemUtilities {
 
 
         //Scroll Down Stages
-        Thread.sleep(5000);
-
-        webDriverUtil.waitUntilElementClickable(driver,login.miniAppBuyOnlineJourney_CB, 12);
-        webDriverUtil.clickElement(login.miniAppBuyOnlineJourney_CB);
-
-        System.out.println("DevTools Before Scroll");
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement articleSection = driver.findElement(By.xpath("//section[contains(@class, 'scroll-box')]"));
-        Thread.sleep(3000);
-        articleSection.click();
-        js.executeScript("arguments[0].scrollTop = arguments[0].scrollTop + 500;", articleSection);
-
-/*// Scroll down by a specific number of pixels
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0, 500);"); // Scroll down 500 pixels
-
-// OR to scroll to the bottom of the page
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");*/
-/*
-        // Stage 1 Create an instance of JavascriptExecutor
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        // Stage 2 Scroll down by 1000 pixels
-        //js.executeScript("window.scrollBy(0, 1000)");
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-
+        Thread.sleep(15000);
+        WebElement modalButton = driver.findElement(By.cssSelector(".modal-box")); // Adjust selector
+        modalButton.click(); // Close the modal or interact with it
+        Thread.sleep(2000);
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+        robot.keyRelease(KeyEvent.VK_PAGE_DOWN); // Release the key after pressing it
+        robot.keyPress(KeyEvent.VK_PAGE_DOWN);
+        robot.keyRelease(KeyEvent.VK_PAGE_DOWN); // Release the key after pressing it
+        Thread.sleep(100);
         Actions act = new Actions(driver);
-        //webDriverUtil.implicitWait(driver, 24000);
         act.sendKeys(Keys.PAGE_DOWN).perform();
-
-        WebElement targetElement = driver.findElement(By.xpath("//input[@name='proofOfLife']"));
-        Thread.sleep(2400);
-
-        // Scroll to the target element using JavaScript
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", targetElement);
-*/
-
 
         Thread.sleep(2000);
 
         //Select Proof_of_Life Disable Checkbox (Checkbox must be ticked so it is diabled)
+        WebElement pol = driver.findElement(By.cssSelector(".modal-box")); // Adjust selector
+        pol.click();
         webDriverUtil.waitUntilElementClickable(driver,login.proofOfLife_input_CB, 12);
         webDriverUtil.clickElement(login.proofOfLife_input_CB);
+
+        Thread.sleep(2000);
+        webDriverUtil.waitUntilElementClickable(driver,login.devTool_submit_btn, 15);
+        webDriverUtil.clickElement(login.devTool_submit_btn);
     }
 
 
