@@ -29,6 +29,11 @@ public class Login {
     @FindBy(xpath= "//button[@data-automationid='undefined_Plus']")
     public WebElement addMoreProducts;
 
+    @FindBy(xpath= "//h3/button[contains(text(),'Rent')]/ancestor::*[2]")
+    public WebElement rentSection;
+
+    @FindBy(xpath= "//h3/button[contains(text(),'Buy')]/ancestor::*[2]")
+    public WebElement buySection;
 
     @FindBy(xpath= "//button[@data-automationid='undefined_Plus'][2]")
     public WebElement addMoreProducts_two;
@@ -44,6 +49,12 @@ public class Login {
 
     @FindBy(xpath= "//span[text()='Add to cart']")
     public WebElement addMaxToCart;
+
+    @FindBy(xpath= "//button[@id='Rent']")
+    public WebElement rent_rad;
+
+    @FindBy(xpath= "//button[@id='Buy']")
+    public WebElement buy_rad;
 
     @FindBy(xpath= "//*[@id='radix-9']/section/section[1]/button")
     public WebElement posCloseBtn;
@@ -427,6 +438,10 @@ public class Login {
     public WebElement businessProvNorthWest;
     @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[9]")  //*[@id="float-label"]/div/div/div[2]/div[9]
     public WebElement businessProvWesternCape;
+
+    @FindBy(xpath="//input[@id='termsAndConditions']")
+    public WebElement mercgantAgreement_CB;
+
     @FindBy(xpath="//input[@automationid='Revamp_Your_Details_Business_Address_Street_Address']")
     public WebElement businessAddress;
 

@@ -6,6 +6,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -89,6 +90,7 @@ public class MerchantTransactions extends SystemUtilities {
 
             // Split into name and number part
             String s = element.substring(0, element.indexOf('['));
+            System.out.println("Check Products: "+s);
             String s_number_string = element.substring(element.indexOf('[') + 1, element.indexOf(']'));
 
             // Convert s_number to integer
@@ -97,7 +99,8 @@ public class MerchantTransactions extends SystemUtilities {
             //convert s_number int to array
             int[] s_number_arr =new int[s_number];
 
-            if (s.equalsIgnoreCase("VodaPay Kwika")) {
+            if (s.equalsIgnoreCase("VodaPay Kwika"))
+            {
                 KwikaOnly = true;
                 webDriverUtil.implicitWait(driver, 100);
                 Actions actions = new Actions(driver);
@@ -177,6 +180,7 @@ public class MerchantTransactions extends SystemUtilities {
                     Thread.sleep(2000);
                     login.Option_img5.click();
                 }
+
                 webDriverUtil.waitUntilElementClickable(driver,login.addPosOptionKwika, 120);
                 Thread.sleep(2000);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
@@ -205,7 +209,8 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.waitUntilElementClickable(driver,login.closeCart, 60);
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
-            }else if (s.equalsIgnoreCase("VodaPay Max")) {
+            }else if (s.equalsIgnoreCase("VodaPay Max Buy"))
+            {
                 ficaConfirmation= true;
                 System.out.println("Fica Confirmation is true");
                 System.out.println(String.valueOf(ficaConfirmation));
@@ -269,7 +274,11 @@ public class MerchantTransactions extends SystemUtilities {
                 Thread.sleep(2000);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 Thread.sleep(2000);
+                webDriverUtil.waitUntilElementClickable(driver,login.buy_rad, 120);
+                webDriverUtil.clickElement(login.buy_rad);
+                Thread.sleep(2000);
                 webDriverUtil.waitUntilElementClickable(driver,login.addMaxToCart, 120);
+                System.out.println("Added to Cart");
                 webDriverUtil.clickElement(login.addMaxToCart);
 
                 Thread.sleep(3000);
@@ -278,7 +287,8 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
 
-            } else if (s.equalsIgnoreCase("VodaPay Payment Gateway")) {
+            } else if (s.equalsIgnoreCase("VodaPay Payment Gateway"))
+            {
                 Thread.sleep(8000);
                 runPaymentMethod=true;
                 runVPGCheck=true;
@@ -346,7 +356,8 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
 
-            } else if (s.equalsIgnoreCase("VodaPay Tap on Phone")) {
+            } else if (s.equalsIgnoreCase("VodaPay Tap on Phone"))
+            {
                 runPaymentMethod = true;
                 Thread.sleep(15000);
                 webDriverUtil.implicitWait(driver, 30);
@@ -416,7 +427,8 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
 
-            } else if (s.equalsIgnoreCase("VodaPay Payment Request")) {
+            } else if (s.equalsIgnoreCase("VodaPay Payment Request"))
+            {
                 runPaymentMethod=true;
                 runVPRCheck=true;
                 webDriverUtil.implicitWait(driver, 30);
@@ -484,24 +496,83 @@ public class MerchantTransactions extends SystemUtilities {
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: "+s);
 
-            } else if (s.equalsIgnoreCase("VodaPay Max2")) {
+            } else if (s.equalsIgnoreCase("VodaPay Max Rent"))
+            {
 
-/*                //webDriverUtil.implicitWait(driver, 20);
-                webDriverUtil.clickElement(login.addPosOptionScrollBar);
-                Thread.sleep(600);
-                webDriverUtil.clickElement(login.addPosOptionScrollBar);
-                Thread.sleep(600);
-                webDriverUtil.clickElement(login.addPosOptionScrollBar);
-                Thread.sleep(600);
-                webDriverUtil.clickElement(login.addPosOptionScrollBar);
-                Thread.sleep(600);
-                ;
-                webDriverUtil.clickElement(login.addPosOptionScrollBar);
-                //webDriverUtil.implicitWait(driver, 20);
-                webDriverUtil.clickElement(login.addPosoptionMax2);
-                Thread.sleep(6000);
+                ficaConfirmation= true;
+                System.out.println("Fica Confirmation is true");
+                System.out.println(String.valueOf(ficaConfirmation));
+                Thread.sleep(15000);
+                webDriverUtil.implicitWait(driver, 30);
+                Actions actions = new Actions(driver);
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();actions.sendKeys(Keys.PAGE_DOWN).perform();actions.sendKeys(Keys.PAGE_DOWN).perform();actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+
+
+                // Create an instance of JavascriptExecutor
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                Thread.sleep(2000);
+                // Scroll to the bottom of the page
+                js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                Thread.sleep(2000);
+                if(login.paymentSolution_btn.getAttribute("data-state").
+                        equalsIgnoreCase("closed"))
+                {
+                    login.paymentSolution_btn.click();
+                    js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                }
+                System.out.println("Payment Solution BTN Expanded");
+                js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+
+                login.radio_solution_first.click();
+                Thread.sleep(3000);
+                if(login.Option_img1.getText().equalsIgnoreCase("VodaPay Max"))
+                {
+                    login.radio_solution_first.click();
+                    Thread.sleep(2000);
+                    login.Option_img1.click();
+                }else if(login.Option_img2.getText().equalsIgnoreCase("VodaPay Max"))
+                {
+                    login.radio_solution_first.click();
+                    Thread.sleep(2000);
+                    login.Option_img2.click();
+                }else if(login.Option_img3.getText().equalsIgnoreCase("VodaPay Max"))
+                {
+                    login.radio_solution_first.click();
+                    Thread.sleep(2000);
+                    login.Option_img3.click();
+                }else if(login.Option_img4.getText().equalsIgnoreCase("VodaPay Max"))
+                {
+                    login.radio_solution_first.click();
+                    Thread.sleep(2000);
+                    login.Option_img4.click();
+                }else
+                {
+                    login.radio_solution_third.click();
+                    Thread.sleep(2000);
+                    login.Option_img5.click();
+                }
+
+                Thread.sleep(2000);
+                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                Thread.sleep(2000);
+                webDriverUtil.waitUntilElementClickable(driver,login.rent_rad, 120);
+                webDriverUtil.clickElement(login.rent_rad);
+                Thread.sleep(2000);
+                webDriverUtil.waitUntilElementClickable(driver,login.addMaxToCart, 120);
+                webDriverUtil.clickElement(login.addMaxToCart);
+
+                Thread.sleep(3000);
+                addMoreProducts(s,s_number_arr,driver,login,webDriverUtil,kwikax);
+                webDriverUtil.waitUntilElementClickable(driver,login.closeCart, 60);
                 webDriverUtil.clickElement(login.closeCart);
-                System.out.println("Product Selected: "+s);*/
+                System.out.println("Product Selected: "+s);
             }
 
 
@@ -619,31 +690,11 @@ public class MerchantTransactions extends SystemUtilities {
     }
 
     public void addMoreProducts(String s, int[] s_number_arr, WebDriver driver, Login login, WebDriverUtilities webDriverUtil, Boolean kwimax) throws Exception {
-        //int index = 1;
         for(int i = 1; i < s_number_arr.length; i++)
         {
+            System.out.println("Product looping to add products: "+ s );
 
-/*            if(kwimax)
-            {
-                if(index!=s_number_arr.length)
-                {
-                    webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts, 15);
-                    Thread.sleep(2000);
-                    webDriverUtil.clickElement(login.addMoreProducts);
-                }
-            }else
-            {
-                if(index!=s_number_arr.length)
-                {
-                    webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts, 15);
-                    Thread.sleep(2000);
-                    webDriverUtil.clickElement(login.addMoreProducts);
-
-                    System.out.println("che che");
-                    System.out.println(inst);
-                }
-            }*/
-            if((KwikaOnly && !ficaConfirmation) || (!KwikaOnly && ficaConfirmation))
+    /*        if((KwikaOnly && !ficaConfirmation) || (!KwikaOnly && ficaConfirmation))
             {
                 webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts, 15);
                 Thread.sleep(2000);
@@ -653,9 +704,6 @@ public class MerchantTransactions extends SystemUtilities {
                 //System.out.println(inst);
             }else if(KwikaOnly && ficaConfirmation)
             {
-/*                webDriverUtil.waitUntilElementClickable(driver,login.addMoreProducts_two, 15);
-                Thread.sleep(2000);
-                webDriverUtil.clickElement(login.addMoreProducts_two);*/
                 List<WebElement> buttons = driver.findElements(By.xpath("//button[@data-automationid='undefined_Plus']"));
 
                 if (buttons.size() > 1) {
@@ -663,10 +711,81 @@ public class MerchantTransactions extends SystemUtilities {
                 }
 
                 System.out.println("addMoreProducts_two");
-                //System.out.println(inst);
-            }
+            }*/
 
-            //index++;
+
+            /////////////////////////////
+
+            if(s.equalsIgnoreCase("VodaPay Kwika"))
+            {
+                System.out.println("I am trying to add more Kwika Products");
+                // Check if "VodaPay Kwika" is in the Buy section and click the button if found
+                try {
+                    Thread.sleep(3000);
+                    WebElement BuyKwikaHeading_button = login.buySection.findElement(By.xpath(".//h2[text()='VodaPay Kwika']/ancestor::*[4]"));
+                    if(BuyKwikaHeading_button.isDisplayed())
+                    {
+                        System.out.println("Verify Buy VodaPay Kwika Tagname: " + BuyKwikaHeading_button.getTagName());
+                        System.out.println("Verify Buy VodaPay Kwika Class: " + BuyKwikaHeading_button.getAttribute("class"));
+                        WebElement buttons = BuyKwikaHeading_button.findElement(By.xpath(".//button[@data-automationid='undefined_Plus']"));
+                        buttons.click();
+
+                    }
+                    Thread.sleep(2000);
+
+                } catch (NoSuchElementException e) {
+                    System.out.println("VodaPay Kwika button is not found in the Buy section");
+                }
+            }
+            else if(s.equalsIgnoreCase("VodaPay Max Buy"))
+            {
+                System.out.println("I am trying to add more Max Buy Products");
+                System.out.println("Show buy section Max text: ");
+                // Check if "VodaPay Max" is in the Buy section and click the button if found
+                try {
+
+                    Thread.sleep(3000);
+                    System.out.println("Verify Buy or Rent Tagname: " + login.buySection.getTagName());
+                    System.out.println("Verify Buy or Rent class: " + login.buySection.getAttribute("class"));
+                    WebElement BuyMaxheading_button = login.buySection.findElement(By.xpath(".//h2[text()='VodaPay Max']/ancestor::*[4]"));
+                    if(BuyMaxheading_button.isDisplayed())
+                    {
+                        System.out.println("Verify Buy VodaPay Max Tagname: " + BuyMaxheading_button.getTagName());
+                        System.out.println("Verify Buy VodaPay Max class: " + BuyMaxheading_button.getAttribute("class"));
+                        WebElement buttonss = BuyMaxheading_button.findElement(By.xpath(".//button[@data-automationid='undefined_Plus']"));
+                        buttonss.click();
+                    }
+                    Thread.sleep(2000);
+                } catch (NoSuchElementException e) {
+                    System.out.println("VodaPay Max button is not found in the Buy section");
+                }
+            }
+            else if(s.equalsIgnoreCase("VodaPay Max Rent"))
+            {
+                System.out.println("I am trying to add more Max Rent Products");
+                if(login.rentSection.isDisplayed())
+                {
+                    System.out.println("Show rent section text");
+                    Thread.sleep(3000);
+                    // Check if "VodaPay Max" is in the Rent section and click the button if found
+                    try {
+
+/*                        WebElement maxRentButton = login.rentSection.findElement(By.xpath(".//h2[contains(text(),'VodaPay Max')]/following::button[@data-automationid='undefined_Plus']"));
+                        System.out.println("VodaPay Max button is found in the Rent section");
+                        maxRentButton.click();*/
+                        List<WebElement> buttons = login.rentSection.findElements(By.xpath("//button[@data-automationid='undefined_Plus']"));
+                        System.out.println("button plus size: " + buttons.size());
+                        if (buttons.size() > 1) {
+                            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", buttons.get(1)); // Click the second button
+                        }
+                        Thread.sleep(2000);
+                    } catch (NoSuchElementException e) {
+                        System.out.println("VodaPay Max button is not found in the Rent section");
+                    }
+                }
+
+
+            }
         }
     }
 
@@ -2364,6 +2483,10 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.clickElement(login.businessProvWesternCape);
         }
+
+
+        webDriverUtil.waitUntilElementClickable(driver,login.mercgantAgreement_CB, 120);
+        webDriverUtil.clickElement(login.mercgantAgreement_CB);
 
         if(journey_name.equalsIgnoreCase("Device Activation"))
         {
