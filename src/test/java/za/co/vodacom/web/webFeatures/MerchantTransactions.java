@@ -31,6 +31,7 @@ public class MerchantTransactions extends SystemUtilities {
 
     public WebDriver driver;
     public static boolean ficaConfirmation = false;
+    public static boolean MaxRentSelected = false;
     public static boolean KwikaOnly = false;
     public static boolean assignDeviceActivation;
     public static boolean SkipForTapOnPhoneOnly;
@@ -115,7 +116,7 @@ public class MerchantTransactions extends SystemUtilities {
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-                //Thread.sleep(3000);
+                Thread.sleep(2000);
                 webDriverUtil.waitUntilElementClickable(driver,login.paymentSolution_btn, 60);
                 if(login.paymentSolution_btn.getAttribute("data-state").
                         equalsIgnoreCase("closed"))
@@ -500,6 +501,7 @@ public class MerchantTransactions extends SystemUtilities {
             {
 
                 ficaConfirmation= true;
+                MaxRentSelected = true;
                 System.out.println("Fica Confirmation is true");
                 System.out.println(String.valueOf(ficaConfirmation));
                 Thread.sleep(15000);
@@ -1062,8 +1064,12 @@ public class MerchantTransactions extends SystemUtilities {
            {
                Thread.sleep(3000);
                webDriverUtil.implicitWait(driver, 60);
-               webDriverUtil.waitUntilElementClickable(driver,login.deviceCardPaymentOption, 120);
-               webDriverUtil.clickElement(login.deviceCardPaymentOption);
+               if(KwikaOnly || (ficaConfirmation && !MaxRentSelected))
+               {
+                   webDriverUtil.waitUntilElementClickable(driver,login.deviceCardPaymentOption, 120);
+                   webDriverUtil.clickElement(login.deviceCardPaymentOption);
+               }
+
                webDriverUtil.waitUntilElementClickable(driver,login.assignDeviceContinueBtn, 120);
                webDriverUtil.clickElement(login.assignDeviceContinueBtn);
 
@@ -2484,9 +2490,12 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.clickElement(login.businessProvWesternCape);
         }
 
+      //  if(KwikaOnly || runPaymentMethod || tapOnPhone || (ficaConfirmation && !MaxRentSelected))
+        //{
+            webDriverUtil.waitUntilElementClickable(driver,login.mercgantAgreement_CB, 120);
+            webDriverUtil.clickElement(login.mercgantAgreement_CB);
+       // }
 
-        webDriverUtil.waitUntilElementClickable(driver,login.mercgantAgreement_CB, 120);
-        webDriverUtil.clickElement(login.mercgantAgreement_CB);
 
         if(journey_name.equalsIgnoreCase("Device Activation"))
         {
@@ -3096,6 +3105,101 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(2000);
         webDriverUtil.waitUntilElementClickable(driver,login.devTool_submit_btn, 15);
         webDriverUtil.clickElement(login.devTool_submit_btn);
+    }
+
+    public void enterValidContinueCredentials(String continueEmailAddress, String continueRefNumber) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        CommonMethods commonMethods = new CommonMethods();
+        Thread.sleep(2400);
+        String applicationRefNo = commonMethods.getEmailrefNo();
+        commonMethods.deleteMsg();
+        System.out.println("This is the ref num used to continue with application\n" +applicationRefNo);
+        webDriverUtil.enterText(login.continueEmailAddress, continueEmailAddress);
+        webDriverUtil.implicitWait(driver, 05);
+        webDriverUtil.enterText(login.continueRefNumber, applicationRefNo);
+        webDriverUtil.implicitWait(driver,60);
+
+    }
+
+    public void enterValidContinueOTP(String continueOTP) throws Exception {
+
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+
+        Login login = new Login(driver);
+
+        CommonMethods commonMethods = new CommonMethods();
+
+        Thread.sleep(1200);
+
+        String retrievedOTP = commonMethods.getEmailContinueOTP();
+
+        System.out.println(retrievedOTP);
+
+//String str = "abcdef";
+
+        char oTPNo1 = retrievedOTP.charAt(1);
+
+        System.out.println("1st OTP value retrieved\n"+oTPNo1);
+
+        char oTPNo2 = retrievedOTP.charAt(2);
+
+        System.out.println("1ast OTP value retrieved\n"+oTPNo2);
+
+        char oTPNo3 = retrievedOTP.charAt(3);
+
+        System.out.println("2nd OTP value retrieved\n"+oTPNo3);
+
+        char oTPNo4 = retrievedOTP.charAt(4);
+
+        System.out.println("2nd OTP value retrieved\n"+oTPNo4);
+
+        char oTPNo5 = retrievedOTP.charAt(5);
+
+        System.out.println("2nd OTP value retrieved\n"+oTPNo5);
+
+        char oTPNo6 = retrievedOTP.charAt(6);
+
+        System.out.println("2nd OTP value retrieved\n"+oTPNo6);
+
+
+        Thread.sleep(1200);
+
+        webDriverUtil.enterText(login.oTPNo1, String.valueOf(oTPNo1));
+
+        webDriverUtil.implicitWait(driver,60);
+
+        Thread.sleep(1200);
+
+        webDriverUtil.enterText(login.oTPNo2, String.valueOf(oTPNo2));
+
+        webDriverUtil.implicitWait(driver,60);
+
+        Thread.sleep(1200);
+
+        webDriverUtil.enterText(login.oTPNo3, String.valueOf(oTPNo3));
+
+        webDriverUtil.implicitWait(driver,60);
+
+        Thread.sleep(1200);
+
+        webDriverUtil.enterText(login.oTPNo4, String.valueOf(oTPNo4));
+
+        webDriverUtil.implicitWait(driver,60);
+
+        Thread.sleep(1200);
+
+        webDriverUtil.enterText(login.oTPNo5, String.valueOf(oTPNo5));
+
+        webDriverUtil.implicitWait(driver,60);
+
+        Thread.sleep(1200);
+
+        webDriverUtil.enterText(login.oTPNo6, String.valueOf(oTPNo6));
+
+        webDriverUtil.implicitWait(driver,60);
+
+
     }
 
 

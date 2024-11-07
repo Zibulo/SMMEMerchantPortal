@@ -620,6 +620,44 @@ public class Login {
     @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/article/section/input")
     public WebElement businessCategory_text;
 
+    @FindBy(xpath = "//input[@name='email' and @automationid='Onboarding_POS_Revamp_Login_Request_OTP_Field_Email']")
+    public WebElement continueEmailAddress;
 
+    @FindBy(xpath = "//input[@name='referenceNumber' and @automationid='Onboarding_POS_Revamp_Login_Request_OTP_Field_Reference_Number']")
+    public WebElement continueRefNumber;
+
+    @FindBy(xpath = "//input[@aria-label='Please enter verification code. Digit 1']"
+            )
+    public WebElement oTPNo1;
+
+    @FindBy
+            (xpath =
+                    "//input[@aria-label='Digit 2']"
+            )
+    public WebElement oTPNo2;
+
+    @FindBy
+            (xpath =
+                    "//input[@aria-label='Digit 3']"
+            )
+    public WebElement oTPNo3;
+
+    @FindBy
+            (xpath =
+                    "//input[@aria-label='Digit 4']"
+            )
+    public WebElement oTPNo4;
+
+    @FindBy
+            (xpath =
+                    "//input[@aria-label='Digit 5']"
+            )
+    public WebElement oTPNo5;
+
+    @FindBy
+            (xpath =
+                    "//input[@aria-label='Digit 6']"
+            )
+    public WebElement oTPNo6;
 
 }

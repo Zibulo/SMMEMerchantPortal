@@ -18,7 +18,9 @@ import vfs.automation.core.assertions.Assertions;
 import vfs.automation.core.utilities.SystemUtilities;
 import vfs.automation.core.utilities.WebDriverUtilities;
 import za.co.vodacom.api.apiFeatures.*;
+import za.co.vodacom.commonMethods.CommonMethods;
 import za.co.vodacom.web.pageObjectModel.CardDetailsPom;
+import za.co.vodacom.web.pageObjectModel.Login;
 import za.co.vodacom.web.webFeatures.MerchantTransactions;
 
 import static za.co.vodacom.web.webFeatures.MerchantTransactions.*;
@@ -774,7 +776,12 @@ public class MerchantStepDefinitions extends SystemUtilities {
         else
         {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            response = merchantTransactions.getSFConfirmation("RNWIKBKMPG");
+            CommonMethods commonMethods = new CommonMethods();
+            Thread.sleep(2400);
+            String applicationRefNo = commonMethods.getEmailrefNo();
+            commonMethods.deleteMsg();
+            System.out.println("Application Reference Tibi: " + applicationRefNo);
+            response = merchantTransactions.getSFConfirmation(applicationRefNo);
             System.out.println("Response for token");
             System.out.println(response.getBody().jsonPath().getString("ResponseData"));
             String data = JsonPath.read(response.getBody().jsonPath().getString("ResponseData"), "$.referenceNumber");
@@ -801,6 +808,45 @@ public class MerchantStepDefinitions extends SystemUtilities {
         extentTest.log(LogStatus.PASS, "Disable SMME DevTools Proof of Life");
         String fileName = webDriverUtil.takeScreenshot(driver);
         extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+    }
+
+    @Given("I am on the Continue application login page {string}{string}{string}{string}{string}")
+    public void iAmOnTheContinueApplicationLoginPage(String scenarioDescription,String reportName,String landingPage,
+                                                     String reportAuthor,String landingPageSuccess) throws Exception{
+        //WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        merchantTransactions = new MerchantTransactions(driver);
+        merchantTransactions.selectLandingPage(landingPage);
+        initialiseTestReport(scenarioDescription,reportName,reportAuthor,landingPageSuccess);
+    }
+
+    @And("I enter valid continue credentials {string} {string}")
+    public void iEnterValidContinueCredentials(String continuEmailAddress, String continueRefNumber) throws Exception{
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        merchantTransactions.enterValidContinueCredentials(continuEmailAddress,continueRefNumber);
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        webDriverUtil.clickElement(login.loginSubmit);
+        extentTest.log(LogStatus.PASS, "Login details successfully processed");
+        Thread.sleep(1200);
+        String fileName1 = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName1));
+    }
+
+    @And("I enter valid application OTP {string}")
+    public void iEnterValidApplicationOTP(String continueOTP) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        Thread.sleep(2400);
+        merchantTransactions.enterValidContinueOTP(continueOTP);
+        Thread.sleep(1000);
+        String fileName = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        webDriverUtil.clickElement(login.loginSubmit);
+        extentTest.log(LogStatus.PASS, "OTP succefully Processed for application");
+        Thread.sleep(1000);
+        String fileName1 = webDriverUtil.takeScreenshot(driver);
+        extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName1));
     }
 }
 
