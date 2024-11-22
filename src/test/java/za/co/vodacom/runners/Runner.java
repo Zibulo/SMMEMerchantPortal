@@ -8,7 +8,7 @@ import vfs.automation.core.utilities.SystemUtilities;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         monochrome = true,
-        features = "src/test/resources/features/web",
+        features = "src/test/resources/features/regression",
         glue = "za.co.vodacom.stepDefinitions",
         tags = ("@thirdPartyOnboardingPaymentRequest"),
         plugin = {"pretty","json:target/report/json/cucumber.json",

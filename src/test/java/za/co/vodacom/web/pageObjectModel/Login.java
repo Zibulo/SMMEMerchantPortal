@@ -50,7 +50,7 @@ public class Login {
     @FindBy(xpath= "//span[text()='Add to cart']")
     public WebElement addMaxToCart;
 
-    @FindBy(xpath= "//button[@id='Rent']")
+    @FindBy(xpath= "/html/body/div[1]/div/div[1]/section/section/article/div/article/section[3]/section/fieldset/div/label[2]")
     public WebElement rent_rad;
 
     @FindBy(xpath= "//button[@id='Buy']")
@@ -65,10 +65,15 @@ public class Login {
     @FindBy(xpath="/html/body/div[5]/button")
     public WebElement closeCart;
 
+
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/section/section/article/article/article/nav/section/span")
+    public WebElement openCart;
+
      @FindBy(xpath=" //*[@id=\"root\"]/div/div[1]/div/section[1]/section/article/div/article/section[3]/section/button/span[2]")
     public WebElement addToCart;
 
-    @FindBy(xpath="//*[@id='radix-4']")
+    @FindBy(xpath="//button[text()='More VodaPay payment solutions']")
     public WebElement paymentSolution_btn;
 
     @FindBy(xpath=" //*[@id=\"radix-3\"]/div/div/div/div/div[1]/article")
@@ -90,25 +95,25 @@ public class Login {
     @FindBy(xpath="//*[@id='radix-3']/div/div[1]/div/div/div[2]/article/figure/img")
     public WebElement OptionVodaPaymentGateway;
 
-    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[1]/article/figcaption/p")
+    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[1]/article/figcaption/p")
     public WebElement Option_img1;
 
-    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[2]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[2]/article/figcaption/p[1]")
     public WebElement Option_img2;
 
-    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[3]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[3]/article/figcaption/p[1]")
     public WebElement Option_img3;
 
-    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[4]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[4]/article/figcaption/p[1]")
     public WebElement Option_img4;
 
-    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[5]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[5]/article/figcaption/p[1]")
     public WebElement Option_img5;
 
-    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[2]/button[3]")
+    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[2]/button[3]")
     public WebElement radio_solution_third;
 
-    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[2]/button[1]")
+    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[2]/button[1]")
     public WebElement radio_solution_first;
 
 
@@ -209,7 +214,7 @@ public class Login {
     @FindBy(xpath="//button[@type='submit' and contains(@class, 'primary') and contains(@class, 'medium-size') and @automationid='DA_Continue_Button']")
     public WebElement barcode_submit_btn;
 
-    @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[1]/article/div[2]/div/div/div/form/div[4]/div/div/div/div[2]/div[1]")
+    @FindBy(xpath="//div[text()='Current Cheque Account']")
     public WebElement accountType_select_kwikaOnly;
 
     @FindBy(xpath="//input[@automationid='Revamp_Bank_Details_Bank_Account_Open_Since_Month']")
@@ -261,7 +266,7 @@ public class Login {
     @FindBy(xpath="/html/body/div[5]/section/button") //Absolute xpath used to locate elements
     public WebElement checkoutProceedBtn;
 
-    @FindBy(xpath="/html/body/div[1]/div/div[1]/div/section[2]/div/div[1]/div[2]/button") //Absolute xpath used to locate elements
+    @FindBy(xpath="//*[@id=\"radix-0\"]/section[2]/button") //Absolute xpath used to locate elements
     public WebElement solutionCheckoutProceedBtn;
 
     @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/h3[1]") //Absolute xpath used to locate elements
@@ -334,7 +339,7 @@ public class Login {
     @FindBy(xpath="//button[contains(text(),'Complete application')]")
     public WebElement completeApplicationBtn;
 
-    @FindBy(xpath="//*[@id='root']/div/div[1]/div/section[1]/main/div[2]/dialog[1]/div/button[2]")
+    @FindBy(xpath="//button[contains(text(),'Submit')]")
     public WebElement submitBtn;
 
     @FindBy(xpath="//button[contains(text(),'Reserve funds')]")
@@ -344,7 +349,7 @@ public class Login {
 
     @FindBy(xpath="//input[@name='receiptOption' and @type='radio' and @value='email']")
     public WebElement emailRadioOption;
-    @FindBy(xpath="//*[@id='root']/div/div[1]/div/section/div/form/div[3]/div[1]/button")
+    @FindBy(xpath="//button[text()='Send Payment Request']")
     public WebElement sendPaymentRequestBtn;
     @FindBy(xpath="//button[@automationid='Revamp_Setup_Your_Account_Get_Started_Button']")
     public WebElement acctSetUpGetStartedBtn;
@@ -472,6 +477,10 @@ public class Login {
 
     @FindBy(name = "directors[0].idNumber")
     public WebElement partnerID;
+
+
+    @FindBy(xpath ="//label[@for='consentToggle']")
+    public WebElement consent_CK;
 
     @FindBy(xpath ="//button[contains(text(),'Next')]")
     public WebElement nextBtn;

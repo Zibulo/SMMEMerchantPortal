@@ -13,7 +13,6 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import vfs.automation.core.assertions.Assertions;
 import vfs.automation.core.utilities.SystemUtilities;
 import vfs.automation.core.utilities.WebDriverUtilities;
@@ -355,7 +354,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         }
         else
         {
-            if(KwikaOnly || ficaConfirmation)
+            if(KwikaOnly || (ficaConfirmation && !MaxRentSelected))
             {
                 WebDriverUtilities webDriverUtil = new WebDriverUtilities();
                 MerchantTransactions paymentsTransactions = new MerchantTransactions(driver);
@@ -459,7 +458,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
             webDriverUtil.implicitWait(driver, 40);
             extentTest.log(LogStatus.PASS, "Tell Us About Your Business Start");
-            merchantTransactions.customebusinessComplete(companyTypeOption,companyRegName, businessMonthlIncome, businessCategory,AddressYearMonthDayStayed);
+            merchantTransactions.customerBusinessComplete(companyTypeOption,companyRegName, businessMonthlIncome, businessCategory,AddressYearMonthDayStayed);
 
             String fileName = webDriverUtil.takeScreenshot(driver);
             extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
@@ -493,7 +492,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         }
         else
         {
-            if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation))
+            if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || (ficaConfirmation && !MaxRentSelected)))
             {
                 WebDriverUtilities webDriverUtil = new WebDriverUtilities();
                 Thread.sleep(7000);
@@ -516,7 +515,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         }
         else
         {
-            if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || ficaConfirmation)) {
+            if(devicePaymentOption.equalsIgnoreCase("cardPayment") && (KwikaOnly || (ficaConfirmation && !MaxRentSelected))) {
                 WebDriverUtilities webDriverUtil = new WebDriverUtilities();
                 MerchantTransactions merchantTransactions = new MerchantTransactions(driver);
 
@@ -659,7 +658,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         else
         {
             if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-                    && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
+                    && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || (ficaConfirmation && !MaxRentSelected)))
             {
                 WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
@@ -683,7 +682,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         else
         {
             if(devicePaymentOption.equalsIgnoreCase("cardPayment")
-                    && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || ficaConfirmation))
+                    && bankName.equalsIgnoreCase("Nedbank Debit") && (KwikaOnly || (ficaConfirmation && !MaxRentSelected)))
             {
                 WebDriverUtilities webDriverUtil = new WebDriverUtilities();
 
@@ -706,7 +705,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
         }
         else
         {
-            if(ficaConfirmation)
+            if(!KwikaOnly && (ficaConfirmation && MaxRentSelected))
             {
                 WebDriverUtilities webDriverUtil = new WebDriverUtilities();
                 merchantTransactions.confirmCustomerPersonalDetails(ownershipDetails, firstName, surName);
@@ -782,7 +781,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
             commonMethods.deleteMsg();
             System.out.println("Application Reference Tibi: " + applicationRefNo);
             response = merchantTransactions.getSFConfirmation(applicationRefNo);
-            System.out.println("Response for token");
+            System.out.println("Response Data");
             System.out.println(response.getBody().jsonPath().getString("ResponseData"));
             String data = JsonPath.read(response.getBody().jsonPath().getString("ResponseData"), "$.referenceNumber");
             System.out.println(data);
@@ -813,6 +812,7 @@ public class MerchantStepDefinitions extends SystemUtilities {
     @Given("I am on the Continue application login page {string}{string}{string}{string}{string}")
     public void iAmOnTheContinueApplicationLoginPage(String scenarioDescription,String reportName,String landingPage,
                                                      String reportAuthor,String landingPageSuccess) throws Exception{
+        Thread.sleep(5000);
         //WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         merchantTransactions = new MerchantTransactions(driver);
         merchantTransactions.selectLandingPage(landingPage);
