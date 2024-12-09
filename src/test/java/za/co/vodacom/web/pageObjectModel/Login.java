@@ -50,7 +50,7 @@ public class Login {
     @FindBy(xpath= "//span[text()='Add to cart']")
     public WebElement addMaxToCart;
 
-    @FindBy(xpath= "/html/body/div[1]/div/div[1]/section/section/article/div/article/section[3]/section/fieldset/div/label[2]")
+    @FindBy(xpath= "//label[@for='Rent']")
     public WebElement rent_rad;
 
     @FindBy(xpath= "//button[@id='Buy']")
@@ -95,25 +95,25 @@ public class Login {
     @FindBy(xpath="//*[@id='radix-3']/div/div[1]/div/div/div[2]/article/figure/img")
     public WebElement OptionVodaPaymentGateway;
 
-    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[1]/article/figcaption/p")
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[1]/article/figcaption/p")
     public WebElement Option_img1;
 
-    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[2]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[2]/article/figcaption/p[1]")
     public WebElement Option_img2;
 
-    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[3]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[3]/article/figcaption/p[1]")
     public WebElement Option_img3;
 
-    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[4]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[4]/article/figcaption/p[1]")
     public WebElement Option_img4;
 
-    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[1]/div/div/div[5]/article/figcaption/p[1]")
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[1]/div/div/div[5]/article/figcaption/p[1]")
     public WebElement Option_img5;
 
-    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[2]/button[3]")
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[2]/button[3]")
     public WebElement radio_solution_third;
 
-    @FindBy(xpath="//*[@id=\"radix-4\"]/div/div[2]/button[1]")
+    @FindBy(xpath="//*[@id=\"radix-3\"]/div/div[2]/button[1]")
     public WebElement radio_solution_first;
 
 
@@ -266,7 +266,7 @@ public class Login {
     @FindBy(xpath="/html/body/div[5]/section/button") //Absolute xpath used to locate elements
     public WebElement checkoutProceedBtn;
 
-    @FindBy(xpath="//*[@id=\"radix-0\"]/section[2]/button") //Absolute xpath used to locate elements
+    @FindBy(xpath="//button[text()='Proceed to checkout']") //Absolute xpath used to locate elements
     public WebElement solutionCheckoutProceedBtn;
 
     @FindBy(xpath="//*[@id=\"root\"]/div/div[1]/div/section[1]/main/article/h3[1]") //Absolute xpath used to locate elements
