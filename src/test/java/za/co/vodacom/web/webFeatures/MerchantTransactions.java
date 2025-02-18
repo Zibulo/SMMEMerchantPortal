@@ -351,6 +351,8 @@ public class MerchantTransactions extends SystemUtilities {
                     login.Option_img5.click();
                 }
 
+                webDriverUtil.waitUntilElementClickable(driver,login.addPosOptionKwika, 120);
+                Thread.sleep(3000);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
                 Thread.sleep(6000);
                 webDriverUtil.implicitWait(driver, 30);
@@ -569,8 +571,8 @@ public class MerchantTransactions extends SystemUtilities {
                 JavascriptExecutor jss = (JavascriptExecutor) driver;
                 jss.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", elementea);
                 Thread.sleep(2000);
-                webDriverUtil.waitUntilElementClickable(driver,login.rent_rad, 120);
-                webDriverUtil.clickElement(login.rent_rad);
+               /* webDriverUtil.waitUntilElementClickable(driver,login.rent_rad, 120);
+                webDriverUtil.clickElement(login.rent_rad);*/
                 //login.rent_rad.isSelected();
                 Thread.sleep(2000);
                 webDriverUtil.waitUntilElementClickable(driver,login.addMaxToCart, 120);
@@ -592,17 +594,25 @@ public class MerchantTransactions extends SystemUtilities {
         Actions actions = new Actions(driver);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         Thread.sleep(3000);
-/*        webDriverUtil.waitUntilElementClickable(driver,login.openCart, 60);
-        webDriverUtil.clickElement(login.openCart);*/
+        webDriverUtil.waitUntilElementClickable(driver,login.openCart, 60);
+        webDriverUtil.clickElement(login.openCart);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         Thread.sleep(3000);
         webDriverUtil.clickElement(login.solutionCheckoutProceedBtn);
 
         if(runPaymentMethod)
         {
+            webDriverUtil.waitUntilElementClickable(driver,login.ozow, 120);
+            webDriverUtil.clickElement(login.ozow);
+
+            webDriverUtil.waitUntilElementClickable(driver,login.nextBtn, 120);
+            webDriverUtil.clickElement(login.nextBtn);
+        }
+/*        if(runPaymentMethod)
+        {
             if(runVPGCheck)
             {
-                Thread.sleep(5000);
+           *//*     Thread.sleep(5000);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
                 System.out.println("Show Payment MTH");
                 //System.out.println(login.paymentMethodVPG.getText());
@@ -631,20 +641,24 @@ public class MerchantTransactions extends SystemUtilities {
                     login.instant_ozow.click();
                 }
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
-                actions.sendKeys(Keys.PAGE_DOWN).perform();
+                actions.sendKeys(Keys.PAGE_DOWN).perform();*//*
 
+                webDriverUtil.waitUntilElementClickable(driver,login.ozow, 120);
+                webDriverUtil.clickElement(login.ozow);
 
+                webDriverUtil.waitUntilElementClickable(driver,login.nextBtn, 120);
+                webDriverUtil.clickElement(login.nextBtn);
 
             }
 
-/*            // Check if an element exists using WebDriverWait
+*//*            // Check if an element exists using WebDriverWait
             WebDriverWait wait = new WebDriverWait(driver, 10);
             try {
                 WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.valueOf(login.paymentMethodVPR))));
                 System.out.println("Element exists.");
             } catch (TimeoutException e) {
                 System.out.println("Element does not exist.");
-            }*/
+            }*//*
 
             if(runVPRCheck) {
                 Thread.sleep(5000);
@@ -652,7 +666,13 @@ public class MerchantTransactions extends SystemUtilities {
                 Thread.sleep(3000);
                 if(runVPGCheck)
                 {
-                    if(login.VPRVisaCard.getText().equalsIgnoreCase("select"))
+                    webDriverUtil.waitUntilElementClickable(driver,login.ozow, 120);
+                    webDriverUtil.clickElement(login.ozow);
+
+                    webDriverUtil.waitUntilElementClickable(driver,login.nextBtn, 120);
+                    webDriverUtil.clickElement(login.nextBtn);
+
+         *//*           if(login.VPRVisaCard.getText().equalsIgnoreCase("select"))
                     {
                         login.VPRVisaCard.click();
                     }
@@ -660,10 +680,10 @@ public class MerchantTransactions extends SystemUtilities {
                     if(login.VPRamericanExpress.getText().equalsIgnoreCase("select"))
                     {
                         login.VPRamericanExpress.click();
-                    }
+                    }*//*
                 }else
                 {
-                    if(login.VPRVisaCard_falseVpg.getText().equalsIgnoreCase("select"))
+           *//*         if(login.VPRVisaCard_falseVpg.getText().equalsIgnoreCase("select"))
                     {
                         login.VPRVisaCard_falseVpg.click();
                     }
@@ -671,14 +691,19 @@ public class MerchantTransactions extends SystemUtilities {
                     if(login.instant_eft_falseVpg.getText().equalsIgnoreCase("select"))
                     {
                         login.instant_eft_falseVpg.click();
-                    }
+                    }*//*
+                    webDriverUtil.waitUntilElementClickable(driver,login.ozow, 120);
+                    webDriverUtil.clickElement(login.ozow);
+
+                    webDriverUtil.waitUntilElementClickable(driver,login.nextBtn, 120);
+                    webDriverUtil.clickElement(login.nextBtn);
                 }
 
 
 
             }
 
-            Thread.sleep(3000);
+*//*            Thread.sleep(3000);
             actions.sendKeys(Keys.PAGE_DOWN).perform();
             actions.sendKeys(Keys.PAGE_DOWN).perform();
             Thread.sleep(1000);
@@ -691,10 +716,10 @@ public class MerchantTransactions extends SystemUtilities {
             else
             {
                 webDriverUtil.clickElement(login.Vpgvpt_proceedBtn);
-            }
+            }*//*
 
 
-        }
+        }*/
 
 
 
@@ -2558,8 +2583,8 @@ public class MerchantTransactions extends SystemUtilities {
       //  if(KwikaOnly || runPaymentMethod || tapOnPhone || (ficaConfirmation && !MaxRentSelected))
         //{
         //Merchant agreeement only removed on QA
-/*        webDriverUtil.waitUntilElementClickable(driver,login.mercgantAgreement_CB, 120);
-        webDriverUtil.clickElement(login.mercgantAgreement_CB);*/
+        webDriverUtil.waitUntilElementClickable(driver,login.mercgantAgreement_CB, 120);
+        webDriverUtil.clickElement(login.mercgantAgreement_CB);
        // }
 
 
@@ -2668,7 +2693,7 @@ public class MerchantTransactions extends SystemUtilities {
         //////webDriverUtil.implicitWait(driver, 18000);
 
        //Run this code if kwika is selected and max not selected to input account holder name manually
-       if((KwikaOnly && !ficaConfirmation) || assignDeviceActivation || runVPGCheck || runVPRCheck || tapOnPhone)
+       if((!KwikaOnly && !ficaConfirmation) || assignDeviceActivation || runVPGCheck || runVPRCheck || tapOnPhone)
        {
            webDriverUtil.waitUntilElementClickable(driver,login.accountHolder_input, 120);
            webDriverUtil.enterText(login.accountHolder_input,firstName+" "+surName);
@@ -3145,6 +3170,7 @@ public class MerchantTransactions extends SystemUtilities {
 
         //Click SMME DevTools Settings Button
         webDriverUtil.waitUntilElementClickable(driver,login.SMMEDevTool_btn, 120);
+        Thread.sleep(3000);
         webDriverUtil.clickElement(login.SMMEDevTool_btn);
 
 
