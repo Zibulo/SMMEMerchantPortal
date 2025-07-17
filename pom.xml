@@ -150,5 +150,6 @@
             <artifactId>mailosaur-java</artifactId>
             <version>7.13.1</version>
         </dependency>
+
     </dependencies>
 </project>

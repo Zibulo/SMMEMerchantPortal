@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.Date;
 
 
 public class CommonMethods {
@@ -21,13 +22,15 @@ public class CommonMethods {
     public String getPaymentRequestLink() throws Exception {
 
         Thread.sleep(3600);
-        String apikey = "6XMpUegGfXfIspPgnYn2ER4rmqdHvyeZ";
-        String serverid = "i7wbi0dc";
+        //String apikey = "6XMpUegGfXfIspPgnYn2ER4rmqdHvyeZ";
+        String apikey = "r3QIlcfLOCw60YWNCUhGqyskec3EabKU";
+        String serverid = "zriufac0";
         //String server_domain = "fire-add@n9ftmnyu.mailosaur.net";
 
         MailosaurClient maialosaur = new MailosaurClient(apikey);
         MessageSearchParams params = new MessageSearchParams();
         params.withServer(serverid);
+
         SearchCriteria criteria = new SearchCriteria();
         criteria.withSubject("Make your payment using the VodaPay Payment Gateway");
         Message msg = maialosaur.messages().get(params, criteria);
@@ -77,8 +80,10 @@ public class CommonMethods {
     public String getEmailrefNo() throws Exception {
 
         Thread.sleep(15000);
-        String apikey = "6XMpUegGfXfIspPgnYn2ER4rmqdHvyeZ";
-        String serverid = "i7wbi0dc";
+        //String apikey = "6XMpUegGfXfIspPgnYn2ER4rmqdHvyeZ";
+       // String serverid = "i7wbi0dc";
+        String apikey = "r3QIlcfLOCw60YWNCUhGqyskec3EabKU";
+        String serverid = "zriufac0";
         String server_domain = "fire-add@n9ftmnyu.mailosaur.net";
 
         MailosaurClient mailosaur = new MailosaurClient(apikey);

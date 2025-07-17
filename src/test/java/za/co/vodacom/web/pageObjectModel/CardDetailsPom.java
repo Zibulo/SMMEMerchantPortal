@@ -107,7 +107,7 @@ public class CardDetailsPom {
     @FindBy(xpath = "//*[@id='next-button']")
     public WebElement ozowPayOptionContinueBtn;
 
-    @FindBy(xpath = "/html/body/div/div[2]/div[2]/div/div/div[3]/div[1]/div/button")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div/div[4]/div/div/div[1]/div[2]/div/div/div/button")
     public WebElement tradePaymentSubmit;
 
     @FindBy(xpath = "//*[@id='reskin-content']/div[3]/div/div/div[2]/div/div[2]/div/div/div/input")
@@ -122,37 +122,69 @@ public class CardDetailsPom {
     @FindBy(xpath = "//*[@id='NewCard_NameOnCard']")
     public WebElement onceCardHolder;
 
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/main/article/section/form/div/div/div[1]/button")
+    public WebElement bankName;
+
+
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div/div/div[5]/div[2]/div/input")
+    public WebElement openDate;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div/div/section/section/label")
+    public WebElement proofOfBank;
+
+    @FindBy(xpath ="//*[@id=\"root\"]/div[1]/main/main/article/section/form/div/div/div[3]/input")
+    public WebElement accountNo;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/main/article/section/form/div/div/select[1]/option[2]")
+    public WebElement nedBankSelection;
+    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/main/article/section/form/div/div/div[5]/section/button[2]")
+    public WebElement nextBtn;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div/div/select[2]/option[1]")
+    public WebElement typeSelection;
+
     @FindBy(xpath = "//*[@id='nameOfCard']")
     public WebElement VPG_onceCardHolder;
 
-    @FindBy(xpath = "//*[@id='NewCard_CardNumber']")
+    @FindBy(xpath = "//*[@id=\"CARD_NUMBER\"]")
     public WebElement onceCardNo;
+    //*[@id="CARD_NUMBER"]
 
-    @FindBy(xpath = "//*[@id='cardNumber']")
+    @FindBy(xpath = "//*[@id=\"CARD_NUMBER\"]")
     public WebElement onceCardNo_ten;
 
     @FindBy(xpath="//*[@id='cardExpiryYear']")
     public WebElement onceCardExpiry;
-    @FindBy(xpath ="//*[@id=\"cardCvv\"]")
+    @FindBy(xpath ="//*[@id=\"CVV\"]")
     public WebElement onceCvv;
 
     @FindBy(xpath ="//*[@id=\"NewCard_Cvv\"]")
     public WebElement new_onceCvv;
 
-    @FindBy(xpath = "//*[@id='cardExpiryYear']")
+    @FindBy(xpath = "//*[@id=\"EXPIRY_YEAR\"]")
     public WebElement onceExpireYear;
 
     @FindBy(xpath = "/html/body/div/div[2]/div[2]/div/div/div[3]/div[1]/div/button")
     public WebElement OncepaymentSubmit;
 
-    @FindBy(xpath = "//*[@id='nameOfCard']")
+    @FindBy(xpath = "//*[@id=\"CARD_HOLDER_NAME\"]")
     public WebElement onceNameOnCard;
 
-    @FindBy(xpath = "//*[@id='NewCard_ExpiryDate']")
+    //*[@id="CARD_HOLDER_NAME\]
+    @FindBy(xpath = "//*[@id=\"EXPIRY_MONTH\"]")
     public WebElement onceExpiryDate;
 
-    @FindBy(xpath = "//*[@id='cardExpiryDate']")
+    @FindBy(xpath = "//*[@id=\"EXPIRY_MONTH\"]")
     public WebElement onceExpiryDate_ten;
+
+    @FindBy(xpath = "//*[@id=\"EXPIRY_MONTH\"]")
+    public WebElement onceExpireMonth;
+      @FindBy(xpath = "//*[@id=\"EXPIRY_YEAR\"]")
+     public WebElement onceExpiryYear;
+
+    //*[@id="EXPIRY_YEAR"]
+
 
     @FindBy(xpath = "//*[@id='SubmitButton']")
     public WebElement onceNewPayButton;
