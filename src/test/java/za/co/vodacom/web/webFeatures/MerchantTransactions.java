@@ -3082,8 +3082,9 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(6000);
         WebElement activeElement = driver.switchTo().activeElement();
         activeElement.sendKeys(Keys.ARROW_DOWN);
-        Thread.sleep(200);
         activeElement.sendKeys(Keys.ENTER);
+
+
 
 
 
@@ -3131,7 +3132,7 @@ public class MerchantTransactions extends SystemUtilities {
 
 
         Actions action = new Actions(driver);
-        activeElement.sendKeys(Keys.ENTER);
+        action.sendKeys(Keys.ENTER).perform();
         System.out.println("Testing Business category");
         Thread.sleep(5000);
 
@@ -3899,10 +3900,10 @@ Thread.sleep(2000);
 //        webDriverUtil.clickElement(CardDetailsPom.proofOfBank);
 //        webDriverUtil.clickElement(CardDetailsPom.proofOfBank);
 
-
+         Thread.sleep(4000);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
-        webDriverUtil.clickElement(CardDetailsPom.nextBtn);
+        webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn2,120);
+        webDriverUtil.clickElement(CardDetailsPom.nextBtn2);
         Thread.sleep(6000);
 
 

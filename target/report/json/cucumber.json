@@ -1,0 +1,248 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "line": 5,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 2281950300,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The webBrowser is launched",
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.theWebBrowserIsLaunched()"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2025-07-17T10:05:37.609Z",
+        "line": 57,
+        "name": "\"Makro selects Kwika\"",
+        "description": "",
+        "id": "onboarding-new-merchant-choose-pos-option;\"\u003cscenariodescription\u003e\";;2",
+        "after": [
+          {
+            "result": {
+              "duration": 845955200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.afterTest(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 3863475700,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "I am on the merchant landing page \"Makro selects Kwika\"\"Makro dealer journey\"\"smmeOnboardingURL\"\"Tebello Ntyingila\"\"\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Makro selects Kwika\"",
+                  "offset": 34
+                },
+                {
+                  "val": "\"Makro dealer journey\"",
+                  "offset": 55
+                },
+                {
+                  "val": "\"smmeOnboardingURL\"",
+                  "offset": 77
+                },
+                {
+                  "val": "\"Tebello Ntyingila\"",
+                  "offset": 96
+                },
+                {
+                  "val": "\"\"",
+                  "offset": 115
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnMerchantLandingLoginPage(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 47514101100,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "I Choose Available POS Option \"VodaPay Max[1]\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"VodaPay Max[1]\"",
+                  "offset": 30
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 21751556200,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "Submit Personal Details \"ASANDA\" \"KHUMALO\" \"needle-early@olieygik.mailosaur.net\" \"0833721854\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"ASANDA\"",
+                  "offset": 24
+                },
+                {
+                  "val": "\"KHUMALO\"",
+                  "offset": 33
+                },
+                {
+                  "val": "\"needle-early@olieygik.mailosaur.net\"",
+                  "offset": 43
+                },
+                {
+                  "val": "\"0833721854\"",
+                  "offset": 81
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 42509513500,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "I take a Selfie",
+            "match": {
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.Selfie()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "error_message": "org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (8add8c4896e69c6f63f6ffebba806db5)] -\u003e xpath: //*[@id\u003d\"root\"]/div[1]/main/main/article/section/form/div[2]/section/button[2]] (tried for 120 second(s) with 500 milliseconds interval)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027ILAB-AK\u0027, ip: \u002710.133.209.86\u0027, os.name: \u0027Windows 11\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002723.0.2\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.101, chrome: {chromedriverVersion: 138.0.7204.94 (545025748884..., userDataDir: C:\\Users\\khuma004\\AppData\\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:40416}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: 8add8c4896e69c6f63f6ffebba806db5\r\n\tat org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)\r\n\tat org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)\r\n\tat vfs.automation.core.utilities.WebDriverUtilities.waitUntilElementClickable(WebDriverUtilities.java:187)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.submitBusinessDetails(MerchantTransactions.java:3140)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(MerchantStepDefinitions.java:356)\r\n\tat ✽.Submit Business details \"Business owner/director\" \"Miss\" \"A\" \"8902210085089\" \"single\" \"4586 Isacholo Crescent\" \"03-03-2013\" \"VFS Payment Testing\" \"15000\" \"Computer Software Shop\"(file:///C:/IdeaProjects/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal/src/test/resources/features/regression/1.selfOnBoarding-rental.feature:16)\r\n",
+              "duration": 161523088900,
+              "status": "failed"
+            },
+            "line": 16,
+            "name": "Submit Business details \"Business owner/director\" \"Miss\" \"A\" \"8902210085089\" \"single\" \"4586 Isacholo Crescent\" \"03-03-2013\" \"VFS Payment Testing\" \"15000\" \"Computer Software Shop\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Business owner/director\"",
+                  "offset": 24
+                },
+                {
+                  "val": "\"Miss\"",
+                  "offset": 50
+                },
+                {
+                  "val": "\"A\"",
+                  "offset": 57
+                },
+                {
+                  "val": "\"8902210085089\"",
+                  "offset": 61
+                },
+                {
+                  "val": "\"single\"",
+                  "offset": 77
+                },
+                {
+                  "val": "\"4586 Isacholo Crescent\"",
+                  "offset": 86
+                },
+                {
+                  "val": "\"03-03-2013\"",
+                  "offset": 111
+                },
+                {
+                  "val": "\"VFS Payment Testing\"",
+                  "offset": 124
+                },
+                {
+                  "val": "\"15000\"",
+                  "offset": 146
+                },
+                {
+                  "val": "\"Computer Software Shop\"",
+                  "offset": 154
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 17,
+            "name": "Submit bank Details \"Nedbank\"\"Current Cheque Account\"\"1010340824\"\"16-05-2025\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"Nedbank\"",
+                  "offset": 20
+                },
+                {
+                  "val": "\"Current Cheque Account\"",
+                  "offset": 29
+                },
+                {
+                  "val": "\"1010340824\"",
+                  "offset": 53
+                },
+                {
+                  "val": "\"16-05-2025\"",
+                  "offset": 65
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitBank(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@selfOnBoardingRental"
+          }
+        ]
+      }
+    ],
+    "name": "OnBoarding New Merchant Choose POS Option",
+    "description": "",
+    "id": "onboarding-new-merchant-choose-pos-option",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/regression/1.selfOnBoarding-rental.feature",
+    "tags": [
+      {
+        "name": "@selfOnBoardingRental",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
