@@ -268,6 +268,11 @@ public class Login {
     @FindBy(xpath="//*[@id=\"root\"]/div[1]/main/div/div/form/select/option[1]")
     public WebElement idSAOption;
 
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/div/form/select/option[1]")
+    public WebElement SAIDOption;
+
+
+
 
  @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[2]")
     public WebElement idPassportOption;
@@ -301,10 +306,18 @@ public class Login {
 
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/main/article/section/form/div[1]/div/div[3]/input")
     public WebElement idNumber;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[4]/input")
+    public WebElement IDNumber;
+
+
     @FindBy(xpath = "//*[@id=\"registeredName\"]")
     public WebElement businessName;
     @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[6]/div[2]/input")
     public  WebElement MonthlyPayment;
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/input")
+    public  WebElement paymentMonthly;
+
     //*[@id="root"]/div/main/main/article/section/form/div[1]/div/div[6]/div[2]/input
     @FindBy(xpath = "//*[@id=\"businessWebsiteURL\"]")
    public  WebElement businessUrl;
@@ -415,8 +428,15 @@ public class Login {
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[1]/button")
     public WebElement buildingType;
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[7]/div[2]/div/button")
+    public WebElement buildingTyp;
+    @FindBy(xpath = " //*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[7]/div[2]/select/option[1]")
+    public WebElement buildTypeSelection;
+
    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/select[1]/option[1]")
     public WebElement buildTypeSelction;
+
+
     @FindBy(xpath="//input[@automationid='Revamp_Business_Details_Company_Type']")
     public WebElement companyType;
     @FindBy(xpath="//div[@automationid='undefined_Field_Item_Street_Sole_Proprietorship_Unregistered_Business_undefined']")
@@ -473,12 +493,34 @@ public class Login {
 
     @FindBy(xpath="//*[@id=\"radix-«rk6»\"]")
     public WebElement inputBusinessStreetName;
-    @FindBy(xpath="//*[@id=\"radix-«r32»\"]")
+    @FindBy(xpath="//*[@id=\"radix-«r37»\"]")
     public WebElement inputBusinessStreetName2;
+    @FindBy(xpath="//*[@id=\"radix-«r32»\"]")
+    public WebElement inputBusinessStreetName3;
+
+
+    //*[@id="radix-«rlg»"]
+    @FindBy(xpath="//*[@id=\"radix-«rlm»\"]")
+    public WebElement inputBusinessStreetNam3;
+    @FindBy(xpath="//*[@id=\"radix-«rj1»\"]")
+    public WebElement inputBusinessStreetName4;
     @FindBy(xpath = "//*[@id=\"root\"]/div/main/section/article/div/article/section[3]/section/fieldset/div/label[2]")
     public WebElement rental;
     @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[3]/div/input")
     public WebElement date;
+    @FindBy(xpath = " //*[@id=\"radix-«r48»\"]/p")
+    public WebElement selectBusinessAdress;
+    @FindBy(xpath = "//*[@id=\"radix-«rj4»\"]/p")
+    public WebElement selectAddress;
+    @FindBy(xpath = "//*[@id=\"radix-«r4d»\"]/p")
+    public WebElement address;
+
+
+
+
+
+
+    //*[@id="radix-«r48»"]/p
 
 
 
@@ -498,31 +540,31 @@ public class Login {
  public  WebElement next2;
 
 
- @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[2]/div[2]/div/div[1]/input]")
+ @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/div[1]/input")
     public WebElement businessPostalCode;
 
-    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[2]/div[2]/div/div[2]/button")
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/div[2]/button")
     public WebElement businessSuburb;
 
-    @FindBy(xpath="//p[text()='Blue Valley Golf Estate']")
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/select[1]/option[2]")
     public WebElement businessSuburbOption;
 
     @FindBy(xpath="//*[@id='float-label']/div/div/div/span")
     public WebElement businessSuburbInput;
 
-    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[2]/div[2]/div/div[3]/input")
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/div[3]/input")
     public WebElement businessTown;
 
-    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[2]/div[2]/div/div[4]/button")
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/div[4]/button")
     public WebElement businessProvince;
 
-    @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[1]")
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/select[2]/option[1]]")
     public WebElement businessProvEasternCape;
 
-    @FindBy(xpath="//*[@id=\"float-label\"]/div/div/div[2]/div[2]")
+    @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/select[2]/option[2]")
     public WebElement businessProvFreeState;
 
-    @FindBy(xpath=" //p[text()='Gauteng']")
+    @FindBy(xpath=" //*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/div[2]/div/select[2]/option[3]")
     public WebElement businessProvGauteng;
 
 
@@ -582,6 +624,11 @@ public class Login {
     @FindBy(xpath ="//button[contains(text(),'Next')]")
     public WebElement nextBtn;
 
+    @FindBy(xpath ="//*[@id=\"root\"]/div/main/div/form/button")
+    public WebElement nextB;
+    //*[@id="root"]/div/main/div/form/button
+
+
     @FindBy(xpath = "/html/body/div[1]/div/div[1]/div/section[1]/article/div[1]/div/div/div/form/div[6]/div/input")
     public WebElement urlText_input;
 
@@ -636,17 +683,28 @@ public class Login {
     public WebElement takePic;
     @FindBy(xpath = "//button[contains(text(),'Confirm')]")
     public WebElement confirmTakePhotoBtn;
-    @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div/button")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/div[1]/div[2]/button")
     public WebElement takSelfie;
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/div/div/form/section[2]/button[1]/span")
     public WebElement takeSelfie;
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/main/div[1]/div[2]/button")
     public WebElement takePicture;
-   @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/main/section/button[1]/span")
-   public WebElement takeSelfie2;
+   @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/section/button[1]")
+   public WebElement confirmSelfie;
 
-    @FindBy(xpath = "//span[text()='Upload']")
+
+
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/div/section[2]/button")
     public WebElement uploadID;
+
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/div/form/div/button")
+    public WebElement idTypeInput;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/main/div/form/section/label")
+    public WebElement idUpload;
+
 
     @FindBy(xpath = "//input[@role='combobox']")
     public WebElement selectIdType;

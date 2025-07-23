@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="280.582">
-    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Makro selects Kwika&quot;" time="280.394">
-        <failure message="Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (8add8c4896e69c6f63f6ffebba806db5)] -&gt; xpath: //*[@id=&quot;root&quot;]/div[1]/main/main/article/section/form/div[2]/section/button[2]] (tried for 120 second(s) with 500 milliseconds interval)&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-AK', ip: '10.133.209.86', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.101, chrome: {chromedriverVersion: 138.0.7204.94 (545025748884..., userDataDir: C:\Users\khuma004\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:40416}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: 8add8c4896e69c6f63f6ffebba806db5" type="org.openqa.selenium.TimeoutException"><![CDATA[Given The webBrowser is launched............................................passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="391.977">
+    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Makro selects Kwika&quot;" time="391.485">
+        <system-out><![CDATA[Given The webBrowser is launched............................................passed
 Given I am on the merchant landing page "Makro selects Kwika""Makro dealer journey""smmeOnboardingURL""Tebello Ntyingila""".passed
-And I Choose Available POS Option "VodaPay Max[1]"..........................passed
-And Submit Personal Details "ASANDA" "KHUMALO" "needle-early@olieygik.mailosaur.net" "0833721854".passed
-And I take a Selfie.........................................................passed
-And Submit Business details "Business owner/director" "Miss" "A" "8902210085089" "single" "4586 Isacholo Crescent" "03-03-2013" "VFS Payment Testing" "15000" "Computer Software Shop".failed
-And Submit bank Details "Nedbank""Current Cheque Account""1010340824""16-05-2025".skipped
-
-StackTrace:
-org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (8add8c4896e69c6f63f6ffebba806db5)] -> xpath: //*[@id="root"]/div[1]/main/main/article/section/form/div[2]/section/button[2]] (tried for 120 second(s) with 500 milliseconds interval)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ILAB-AK', ip: '10.133.209.86', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 138.0.7204.101, chrome: {chromedriverVersion: 138.0.7204.94 (545025748884..., userDataDir: C:\Users\khuma004\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:40416}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 8add8c4896e69c6f63f6ffebba806db5
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
-	at vfs.automation.core.utilities.WebDriverUtilities.waitUntilElementClickable(WebDriverUtilities.java:187)
-	at za.co.vodacom.web.webFeatures.MerchantTransactions.submitBusinessDetails(MerchantTransactions.java:3140)
-	at za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(MerchantStepDefinitions.java:356)
-	at ✽.Submit Business details "Business owner/director" "Miss" "A" "8902210085089" "single" "4586 Isacholo Crescent" "03-03-2013" "VFS Payment Testing" "15000" "Computer Software Shop"(file:///C:/IdeaProjects/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal/src/test/resources/features/regression/1.selfOnBoarding-rental.feature:16)
-]]></failure>
+And I Choose Available POS Option "VodaPay Kwika[1]"........................passed
+And Submit Personal Details "ASANDA" "KHUMALO" "needle-early@olieygik.mailosaur.net" "0606799922".passed
+And I select immediate payment method "4922130001585845""03""2027""904""NONDIPHA LOUW""cardPayment".passed
+And I choose ThreeD Secure Option...........................................passed
+And I upload ID documents "South African ID card"...........................passed
+And I take a selfie.........................................................passed
+And Submit business details "Business owner/director" "Miss" "8902210085089" "VFS Payment Testing" "15000" "null" "Computer Software Shop".passed
+And Submit Bank Details "Nedbank""Current Cheque Account""1010340824".......passed
+And Submit delivery details "House" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng" "My business address is the same as my trading address" "Self Onboarding".passed
+]]></system-out>
     </testcase>
 </testsuite>

@@ -314,46 +314,46 @@ public class MerchantStepDefinitions extends SystemUtilities {
 
     }
 
-    @And("Submit Business details {string} {string} {string} {string} {string} {string}")
-    public void submitMerchantDetails(String ownershipDetails, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory) throws Exception {
-
-        if (SkipForTapOnPhoneOnly) {
-            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
-        } else {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            merchantTransactions.submitBusinessDetails(ownershipDetails,id,businessName,monthlyPayment,businessUrl,businessCategory);
-
-            extentTest.log(LogStatus.PASS, "Pos Option is Selected");
-            String fileName = webDriverUtil.takeScreenshot(driver);
-            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-        }
-
-    }
-
-    @And("Submit business details {string} {string} {string} {string} {string} {string}")
-    public void sbmitMerchantDetails(String ownershipDetails, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory) throws Exception {
-
-        if (SkipForTapOnPhoneOnly) {
-            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
-        } else {
-            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            merchantTransactions.submtBusinessDetails(ownershipDetails,id,businessName,monthlyPayment,businessUrl,businessCategory);
-
-            extentTest.log(LogStatus.PASS, "Pos Option is Selected");
-            String fileName = webDriverUtil.takeScreenshot(driver);
-            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
-        }
-
-    }
-
     @And("Submit Business details {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
-    public void submitMerchantDetails(String ownershipDetails,String title, String initials, String id, String maritalStatus, String address,String date, String businessName, String monthlyPayment,String businessCategory) throws Exception {
+    public void submitMerchantDetails(String ownershipDetails,String title, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory,String buildingType,String businessaddress,String tradingAddress ) throws Exception {
 
         if (SkipForTapOnPhoneOnly) {
             System.out.println("Skipped because of TAP ON PHONE ONLY journey");
         } else {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            merchantTransactions.submitBusinessDetails(ownershipDetails,title,initials,id,maritalStatus,address,date,businessName,monthlyPayment,businessCategory);
+            merchantTransactions.submitBusinessDetails(ownershipDetails,title,id,businessName,monthlyPayment,businessUrl,businessCategory,buildingType,businessaddress,tradingAddress);
+
+            extentTest.log(LogStatus.PASS, "Pos Option is Selected");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
+
+    }
+
+    @And("Submit business details {string} {string} {string} {string} {string} {string} {string}")
+    public void sbmitMerchantDetails(String ownershipDetails,String title, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory) throws Exception {
+
+        if (SkipForTapOnPhoneOnly) {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        } else {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            merchantTransactions.submtBusinessDetails(ownershipDetails,title,id,businessName,monthlyPayment,businessUrl,businessCategory);
+
+            extentTest.log(LogStatus.PASS, "Pos Option is Selected");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
+
+    }
+
+    @And("Submit Business details {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string} {string}")
+    public void submitMerchantDetail(String ownershipDetails,String title, String initials, String id, String maritalStatus, String address, String code,String suburb,String town, String province,String date, String businessName, String monthlyPayment,String businessCategory) throws Exception {
+
+        if (SkipForTapOnPhoneOnly) {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        } else {
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            merchantTransactions.submitBusinessDetails(ownershipDetails,title,initials,id,maritalStatus,address,code,suburb,town,province,date,businessName,monthlyPayment,businessCategory);
 
             extentTest.log(LogStatus.PASS, "Pos Option is Selected");
             String fileName = webDriverUtil.takeScreenshot(driver);
@@ -770,26 +770,14 @@ public class MerchantStepDefinitions extends SystemUtilities {
     public void takeSelfie() throws Exception {
 
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-         Login login = new Login(driver);
-        Thread.sleep(3000);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         webDriverUtil.implicitWait(driver, 100);
         Thread.sleep(9000);
          Actions actions = new Actions(driver);
          //actions.sendKeys(Keys.ENTER).perform();
         Thread.sleep(9000);
-        Thread.sleep(9000);
-        Thread.sleep(9000);
         webDriverUtil.implicitWait(driver, 100);
         actions.sendKeys(Keys.ENTER).perform();
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.accSetUpBtn);
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", login.accSetUpBtn);
-//        login.accSetUpBtn.click();
-//        webDriverUtil.clickElement(login.accSetUpBtn);
-        System.out.println("Set up");
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-        webDriverUtil.waitUntilElementClickable(driver,login.acctSetUpGetStartedBtn, 120);
-        webDriverUtil.clickElement(login.acctSetUpGetStartedBtn);
 
 
         if (SkipForTapOnPhoneOnly) {
@@ -821,8 +809,8 @@ public class MerchantStepDefinitions extends SystemUtilities {
 //        webDriverUtil.waitUntilElementClickable(driver,login.accSetUpBtn, 150);
 //        webDriverUtil.clickElement(login.accSetUpBtn);
         System.out.println("Set up");
-        webDriverUtil.waitUntilElementClickable(driver,login.acctSetUpGetStartedBtn, 120);
-        webDriverUtil.clickElement(login.acctSetUpGetStartedBtn);
+//        webDriverUtil.waitUntilElementClickable(driver,login.acctSetUpGetStartedBtn, 120);
+//        webDriverUtil.clickElement(login.acctSetUpGetStartedBtn);
 
         //System.out.println("close set up");
 
@@ -855,6 +843,21 @@ public class MerchantStepDefinitions extends SystemUtilities {
             extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
         }
     }
+
+    @And("I upload ID documents {string}")
+    public void iUploadIdDocuments(String idType) throws Exception {
+        if (SkipForTapOnPhoneOnly) {
+            System.out.println("Skipped because of TAP ON PHONE ONLY journey");
+        } else {
+            //Thread.sleep(2400);
+            WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+            merchantTransactions.uploadIdDoc(idType);
+            extentTest.log(LogStatus.PASS, "Documents uploaded successfully");
+            String fileName = webDriverUtil.takeScreenshot(driver);
+            extentTest.log(LogStatus.PASS, extentTest.addScreenCapture(fileName));
+        }
+    }
+
 
     @And("When I select Dealer {string}{string}{string}")
     public void iSelectDealer(String dealer, String userId, String password) throws Exception {

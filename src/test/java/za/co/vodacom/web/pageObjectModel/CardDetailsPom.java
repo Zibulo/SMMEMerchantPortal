@@ -140,6 +140,8 @@ public class CardDetailsPom {
     public WebElement nedBankSelection;
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/main/main/article/section/form/div/div/div[5]/section/button[2]")
     public WebElement nextBtn;
+    @FindBy(xpath="//p[text()='Proof of banking upload']")
+    public WebElement proofText;
     @FindBy(xpath = " //*[@id=\"root\"]/div/main/main/article/section/form/div/div/div[6]/section/button[2]")
     public WebElement nextBtn2;
 

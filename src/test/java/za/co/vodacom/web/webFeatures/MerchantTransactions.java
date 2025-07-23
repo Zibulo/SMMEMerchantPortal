@@ -7,6 +7,7 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.poi.ss.formula.functions.T;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -158,13 +159,17 @@ public class MerchantTransactions extends SystemUtilities {
                     login.radio_solution_first.click();
                     Thread.sleep(2000);
                     login.Option_img4.click();
-                } else {
-                    login.radio_solution_third.click();
+                } else if (login.Option_img5.getText().equalsIgnoreCase("VodaPay Kwika")) {
+                    login.radio_solution_first.click();
                     Thread.sleep(2000);
                     login.Option_img5.click();
+                } else {
+                    login.radio_solution_fourth.click();
+                    Thread.sleep(2000);
+                    login.Option_img6.click();
                 }
 
-
+//
                 webDriverUtil.waitUntilElementClickable(driver, login.rental, 120);
                 webDriverUtil.clickElement(login.rental);
                 actions.sendKeys(Keys.PAGE_DOWN).perform();
@@ -1931,27 +1936,19 @@ public class MerchantTransactions extends SystemUtilities {
 
         optionsC.addArguments("--use-fake-device-for-media-stream");
         optionsC.addArguments(Arrays.asList("disable-infobars", "ignore-certificate-errors", "start-maximized", "use-fake-ui-for-media-stream"));
-        webDriverUtil.clickElement(login.takePic);
-        Thread.sleep(1200);
-        webDriverUtil.clickElement(login.idType);
-        Thread.sleep(2000);
-        webDriverUtil.clickElement(login.idSAOption);
-        Actions actions = new Actions(driver);
-        actions.sendKeys(Keys.ENTER).perform();
+
         //actions.moveToElement(login.idSAOption).click().sendKeys(Keys.ARROW_DOWN)        .sendKeys(Keys.ENTER).perform();
         //webDriverUtil.selectByVisibleText(login.idSAOption,"South African ID card");
         Thread.sleep(3000);
-        webDriverUtil.clickElement(login.takeSelfie);
-              webDriverUtil.implicitWait(driver,300);
-         Thread.sleep(9000);
          JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-        js.executeScript("window.scrollBy(0, 500)");
-        Thread.sleep(9000);
-        js.executeScript("arguments[0].scrollIntoView(true);",login.takePicture);
-        webDriverUtil.clickElement(login.takePicture);
+//        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+//        js.executeScript("window.scrollBy(0, 500)");
+        Thread.sleep(2000);
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        js.executeScript("arguments[0].scrollIntoView(true);",login.takSelfie);
+        webDriverUtil.clickElement(login.takSelfie);
         Thread.sleep(3000);
-        webDriverUtil.clickElement(login.takeSelfie2);
+        webDriverUtil.clickElement(login.confirmSelfie);
 //        webDriverUtil.clickElement(login.openCamDiv);
 //        Thread.sleep(5000);
 //        //optionsC.addArguments("profile.default_content_setting_values.media_stream_camera", "1");
@@ -1971,6 +1968,77 @@ public class MerchantTransactions extends SystemUtilities {
         //webDriverUtil.waitUntilEnabled(driver, login.takePhoto, 30);
     }
 
+    public void uploadIdDoc(String idDocumentType) throws Exception {
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        fileupload up = new fileupload();
+         Actions actions = new Actions(driver);
+        Thread.sleep(800);
+        webDriverUtil.implicitWait(driver, 20);
+        Thread.sleep(9000);
+        Thread.sleep(9000);Thread.sleep(9000);
+        webDriverUtil.implicitWait(driver, 100);
+        actions.sendKeys(Keys.ENTER).perform();
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.accSetUpBtn);
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", login.accSetUpBtn);
+//        login.accSetUpBtn.click();
+
+//        webDriverUtil.clickElement(login.accSetUpBtn);
+        System.out.println("Account start button");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        webDriverUtil.waitUntilElementClickable(driver,login.acctSetUpGetStartedBtn, 120);
+        webDriverUtil.clickElement(login.acctSetUpGetStartedBtn);
+          Thread.sleep(2000);
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        webDriverUtil.waitUntilElementClickable(driver, login.uploadID, 120);
+        webDriverUtil.clickElement(login.uploadID);
+        Thread.sleep(200);
+        webDriverUtil.waitUntilElementClickable(driver, login.idTypeInput, 120);
+        webDriverUtil.clickElement(login.idTypeInput);
+
+
+        if (idDocumentType.equalsIgnoreCase("South African ID card")) {
+            System.out.println("I see myself here smart card");
+            ////webDriverUtil.implicitWait(driver, 30);  Passport Document
+//            webDriverUtil.clickElement(login.idType);
+//            Thread.sleep(2000);
+            webDriverUtil.clickElement(login.SAIDOption);
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            Thread.sleep(3000);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+            Thread.sleep(3000);
+            actions.sendKeys(Keys.ENTER);
+            //actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("file uploaded");
+
+        } else if (idDocumentType.equalsIgnoreCase("South African ID book")) {
+            webDriverUtil.clickElement(login.idSAOption);
+
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+        } else if (idDocumentType.equalsIgnoreCase("Passport Document")) {
+            webDriverUtil.clickElement(login.idSAOption);
+
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+        } else if (idDocumentType.equalsIgnoreCase("Asylum seeker Document")) {
+            webDriverUtil.clickElement(login.idSAOption);
+
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+
+        } else {
+            System.out.println("ID TYPE IS NOT FOUND");
+        }
+        Thread.sleep(2400);
+        webDriverUtil.clickElement(login.nextB);
+    }
+
 
 
 
@@ -1982,8 +2050,55 @@ public class MerchantTransactions extends SystemUtilities {
 
         Thread.sleep(800);
         webDriverUtil.implicitWait(driver, 20);
+
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         webDriverUtil.waitUntilElementClickable(driver,login.uploadID, 120);
         webDriverUtil.clickElement(login.uploadID);
+        Thread.sleep(200);
+        webDriverUtil.waitUntilElementClickable(driver,login.idTypeInput, 120);
+        webDriverUtil.clickElement(login.idTypeInput);
+
+
+        if(idDocumentType.equalsIgnoreCase("South African ID card")) {
+            System.out.println("I see myself here smart card");
+            ////webDriverUtil.implicitWait(driver, 30);  Passport Document
+            webDriverUtil.clickElement(login.idType);
+            Thread.sleep(2000);
+            webDriverUtil.clickElement(login.idSAOption);
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+
+        }else if (idDocumentType.equalsIgnoreCase("South African ID book"))
+        {
+            webDriverUtil.clickElement(login.idSAOption);
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+        } else if (idDocumentType.equalsIgnoreCase("Passport Document"))
+        {
+            webDriverUtil.clickElement(login.idSAOption);
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+        }else if (idDocumentType.equalsIgnoreCase("Asylum seeker Document"))
+        {
+            webDriverUtil.clickElement(login.idSAOption);
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+
+        }else {
+            System.out.println("ID TYPE IS NOT FOUND");
+        }
+        Thread.sleep(2400);
+        webDriverUtil.clickElement(login.nextB);
+
+
 
         if (companytype.equalsIgnoreCase("Sole Proprietorship")) {
             if (idDocumentType.equalsIgnoreCase("smart card")) {
@@ -2831,7 +2946,7 @@ public class MerchantTransactions extends SystemUtilities {
 
     }
 
-    public void submitBusinessDetails(String ownershipDetails, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory ) throws Exception {
+    public void submitBusinessDetails(String ownershipDetails,String title, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory ,String buildingType, String inputBusinessAddress,String tradingAddress) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(2000);
@@ -2868,22 +2983,38 @@ public class MerchantTransactions extends SystemUtilities {
         }
 
 
+        webDriverUtil.waitUntilElementClickable(driver,login.title_input, 120);
+        webDriverUtil.clickElement(login.title_input);
+        if(title.equalsIgnoreCase("Miss"))
+        {
+            Actions actions = new Actions(driver);
+            Thread.sleep(200);
+            webDriverUtil.waitUntilElementClickable(driver,login.title_select, 120);
+            webDriverUtil.clickElement(login.title_select);
+            Thread.sleep(1000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("Title  selected");
+        }else{
+            System.out.println("Title not found");
+        }
 
 
         //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.idNumber);
         //// webDriverUtil.implicitWait(driver, 60);
         Actions actions = new Actions(driver);
-        actions.moveToElement(login.idNumber).click().perform();
-        webDriverUtil.enterText(login.idNumber, id);
-
+       webDriverUtil.clickElement(login.IDNumber);
+        webDriverUtil.enterText(login.IDNumber, id);
+         Thread.sleep(2000);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        actions.moveToElement(login.businessName).click().perform();
+        webDriverUtil.clickElement(login.businessName);
         webDriverUtil.enterText(login.businessName, businessName);
 
-        actions.moveToElement(login.MonthlyPayment).click().perform();
-        webDriverUtil.enterText(login.MonthlyPayment, monthlyPayment);
+        webDriverUtil.clickElement(login.paymentMonthly);
+        webDriverUtil.enterText(login.paymentMonthly, monthlyPayment);
 
-        actions.moveToElement(login.businessUrl).click().perform();
+        webDriverUtil.clickElement(login.businessUrl);
         webDriverUtil.enterText(login.businessUrl, businessUrl);
        System.out.println("Businessurl :" +businessUrl );
 
@@ -2910,14 +3041,29 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(5000);
         //webDriverUtil.enterText(login.businessCategry, businessCategory);
 
+        webDriverUtil.waitUntilElementClickable(driver, login.buildingTyp,120);
+        webDriverUtil.clickElement(login.buildingTyp);
+        Thread.sleep(2000);
+        webDriverUtil.waitUntilElementClickable(driver, login.buildTypeSelection,120);
+        webDriverUtil.clickElement(login.buildTypeSelection);
+        actions.sendKeys(Keys.ENTER).perform();
+        webDriverUtil.implicitWait(driver, 60);
+
+
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetName4,120);
+        webDriverUtil.enterText(login.inputBusinessStreetName4, inputBusinessAddress);
+        Thread.sleep(5000);
+        webDriverUtil.clickElement(login.selectAddress);
+         Thread.sleep(2000);
         webDriverUtil.waitUntilElementClickable(driver,login.nextButn,120);
         webDriverUtil.clickElement(login.nextButn);
 
-        Thread.sleep(5000);
+        Thread.sleep(6000);
     }
 
 
-    public void submtBusinessDetails(String ownershipDetails, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory ) throws Exception {
+    public void submtBusinessDetails(String ownershipDetails,String title, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory ) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(2000);
@@ -2954,20 +3100,39 @@ public class MerchantTransactions extends SystemUtilities {
         }
 
 
+        webDriverUtil.waitUntilElementClickable(driver,login.title_input, 120);
+        webDriverUtil.clickElement(login.title_input);
+        if(title.equalsIgnoreCase("Miss"))
+        {
+            Actions actions = new Actions(driver);
+            Thread.sleep(200);
+            webDriverUtil.waitUntilElementClickable(driver,login.title_select, 120);
+            webDriverUtil.clickElement(login.title_select);
+            Thread.sleep(1000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("Title  selected");
+        }else{
+            System.out.println("Title not found");
+        }
+
+
+
 
 
         //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.idNumber);
         //// webDriverUtil.implicitWait(driver, 60);
         Actions actions = new Actions(driver);
-        actions.moveToElement(login.idNumber).click().perform();
-        webDriverUtil.enterText(login.idNumber, id);
+        webDriverUtil.clickElement(login.IDNumber);
+        webDriverUtil.enterText(login.IDNumber, id);
 
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        actions.moveToElement(login.businessName).click().perform();
+        webDriverUtil.clickElement(login.businessName);
         webDriverUtil.enterText(login.businessName, businessName);
 
-        actions.moveToElement(login.MonthlyPayment).click().perform();
-        webDriverUtil.enterText(login.MonthlyPayment, monthlyPayment);
+        webDriverUtil.clickElement(login.paymentMonthly);
+        webDriverUtil.enterText(login.paymentMonthly, monthlyPayment);
 
         webDriverUtil.clickElement(login.businessCategory);
         Thread.sleep(3000);
@@ -2995,7 +3160,7 @@ public class MerchantTransactions extends SystemUtilities {
     }
 
 
-    public void submitBusinessDetails(String ownershipDetails,String title,String initials, String id, String maritalStatus,String address, String date,String businessName, String monthlyPayment,String businessCategory ) throws Exception {
+    public void submitBusinessDetails(String ownershipDetails,String title,String initials, String id, String maritalStatus,String address,String postalCode,String suburb, String town, String province,String date,String businessName, String monthlyPayment,String businessCategory ) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(2000);
@@ -3079,33 +3244,75 @@ public class MerchantTransactions extends SystemUtilities {
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetName2,120);
         webDriverUtil.enterText(login.inputBusinessStreetName2, address);
-        Thread.sleep(6000);
-        WebElement activeElement = driver.switchTo().activeElement();
-        activeElement.sendKeys(Keys.ARROW_DOWN);
-        activeElement.sendKeys(Keys.ENTER);
+        Thread.sleep(5000);
+        webDriverUtil.clickElement(login.address);
+       // (login.selectBusinessAdress).sendKeys(Keys.ENTER);
 
 
 
 
 
-//        webDriverUtil.waitUntilElementClickable(driver,login.businessPostalCode, 120);
-//        webDriverUtil.enterText(login.businessPostalCode,businessPostalCode);
+//       webDriverUtil.clickElement(login.businessPostalCode);
+//        webDriverUtil.enterText(login.businessPostalCode,postalCode);
+////
+////
 //
-//
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", login.businessSuburb);
 //        webDriverUtil.waitUntilElementClickable(driver,login.businessSuburb, 120);
-//        webDriverUtil.clickElement(login.businessSuburb);
-//        actions.sendKeys(Keys.ARROW_DOWN).perform();
-//        actions.sendKeys(Keys.ENTER).perform();
+//       /// WebElement activeElement = driver.switchTo().activeElement();
+//        activeElement.sendKeys(Keys.ARROW_DOWN); // Repeat until desired option
+//        activeElement.sendKeys(Keys.ENTER);
+//
+//
 //
 //        webDriverUtil.waitUntilElementClickable(driver,login.businessTown, 120);
-//        webDriverUtil.enterText(login.businessTown,businessTown);
+//        webDriverUtil.enterText(login.businessTown,town);
+//        Thread.sleep(3000);
 //
 //        webDriverUtil.waitUntilElementClickable(driver,login.businessProvince, 120);
 //        webDriverUtil.clickElement(login.businessProvince);
-//        actions.sendKeys(Keys.ARROW_DOWN).perform();
-//        actions.sendKeys(Keys.ARROW_DOWN).perform();
-//        actions.sendKeys(Keys.ARROW_DOWN).perform();
-//        actions.sendKeys(Keys.ENTER).perform();
+//        webDriverUtil.implicitWait(driver, 20);
+//
+//        System.out.println("Province : " + province);
+//        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+//        if (province.equalsIgnoreCase("Eastern Cape")) {
+//            Thread.sleep(1000);
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.clickElement(login.businessProvEasternCape);
+//        } else if (province.equalsIgnoreCase("Free State")) {
+//            Thread.sleep(1000);
+//            webDriverUtil.clickElement(login.businessProvFreeState);
+//        } else if (province.equalsIgnoreCase("Gauteng")) {
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.waitUntilElementClickable(driver, login.businessProvGauteng, 120);
+//            // webDriverUtil.clickElement(login.businessProvGauteng);
+//            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", login.businessProvGauteng);
+//        } else if (province.equalsIgnoreCase("KwaZulu Natal")) {
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.clickElement(login.businessKwaZulu);
+//        } else if (province.equalsIgnoreCase("Limpopo")) {
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.clickElement(login.businessProvLimpopo);
+//        } else if (province.equalsIgnoreCase("Mpumalanga")) {
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.clickElement(login.businessProvMpumalanga);
+//        } else if (province.equalsIgnoreCase("Northen Cape")) {
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.clickElement(login.businessProvNorthCape);
+//        } else if (province.equalsIgnoreCase("North West")) {
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.clickElement(login.businessProvNorthWest);
+//        } else if (province.equalsIgnoreCase("Western Cape")) {
+//            webDriverUtil.implicitWait(driver, 20);
+//            webDriverUtil.clickElement(login.businessProvWesternCape);
+//        } else {
+//            System.out.println("Invalid province: " + province);
+//        }
+//        activeElement.sendKeys(Keys.ARROW_DOWN);
+//        activeElement.sendKeys(Keys.ARROW_DOWN);
+//        activeElement.sendKeys(Keys.ARROW_DOWN);
+//        activeElement.sendKeys(Keys.ENTER);
+
         ;
 
         webDriverUtil.waitUntilElementClickable(driver, login.date,120);
@@ -3201,8 +3408,8 @@ Thread.sleep(2000);
 //        webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetName,120);
 //        webDriverUtil.enterText(login.inputBusinessStreetName, inputBusinessStreetName);
 
-        webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetName2,120);
-        webDriverUtil.enterText(login.inputBusinessStreetName2, inputBusinessStreetName);
+        webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetNam3,120);
+        webDriverUtil.enterText(login.inputBusinessStreetNam3, inputBusinessStreetName);
         Thread.sleep(2000);
         act.sendKeys(Keys.PAGE_DOWN).perform();
 
@@ -3790,7 +3997,7 @@ Thread.sleep(2000);
 //        webDriverUtil.clickElement(CardDetailsPom.bankName);
   //      Thread.sleep(3000);
         Actions actions = new Actions(driver);
-
+               Thread.sleep(3000);
         WebElement dropdown1 = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/article/section/form/div/div/div[1]/button"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown1);
         Thread.sleep(2000);
@@ -3799,6 +4006,7 @@ Thread.sleep(2000);
             // webDriverUtil.implicitWait(driver, 05);
             webDriverUtil.waitUntilElementClickable(driver, CardDetailsPom.nedBankSelection, 120);
             webDriverUtil.clickElement(CardDetailsPom.nedBankSelection);
+            Thread.sleep(2000);
             actions.sendKeys(Keys.ARROW_DOWN).perform();
             Thread.sleep(2000);
             actions.sendKeys(Keys.ENTER).perform();
@@ -3830,12 +4038,33 @@ Thread.sleep(2000);
 
 
 
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Thread.sleep(2000);
         webDriverUtil.enterText(CardDetailsPom.accountNo,accountNo);
 
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
         webDriverUtil.clickElement(CardDetailsPom.nextBtn);
+        Thread.sleep(5000);
+        if (CardDetailsPom.proofText.isDisplayed()) {
+//            WebElement uploadLabel = driver.findElement(By.xpath("//label[.//span[text()='Attach file']]"));
+//            uploadLabel.click();
+            fileupload up = new fileupload();
+            webDriverUtil.clickElement(CardDetailsPom.proofOfBank);
+            Thread.sleep(2000);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Proof_of_Bank.pdf\"");
+            Thread.sleep(2000);
+            actions.sendKeys(Keys.ENTER);
+
+
+
+        }
+
+        webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
+        webDriverUtil.clickElement(CardDetailsPom.nextBtn);
+
+
+
         Thread.sleep(6000);
 
 
