@@ -11,7 +11,7 @@ Feature: third Party Login
     And I am on the dealer landing page "<ScenarioDescription>""<reportName>""<landingPage>""<reportAuthor>""<landingPageSuccess>"
     And When I select Dealer "<dealer>""<userId>""<password>"
     And I Choose Available POS Option "<deviceOption>"
-    And Submit Merchant details "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
+    And Submit Personal Details "<firstName>" "<surName>" "<eMail>" "<mobileNo>"
     #And Submit Merchant details SF Confirmation "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
     And I Then Assign Device and Process Order "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
     #And I Then Assign Device and Process Order SF Confirmation "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"

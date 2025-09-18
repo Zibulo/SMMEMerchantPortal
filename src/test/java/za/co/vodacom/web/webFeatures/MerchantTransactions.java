@@ -84,7 +84,7 @@ public class MerchantTransactions extends SystemUtilities {
         WebDriverWait wait = new WebDriverWait(driver, 120L);
 
         // Wait for the page title to be the expected value
-        wait.until(ExpectedConditions.titleIs("VodaPay SMME Portal"));
+       // wait.until(ExpectedConditions.titleIs("VodaPay SMME Portal"));
         Thread.sleep(6000);
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(login.)));
 
@@ -257,10 +257,10 @@ public class MerchantTransactions extends SystemUtilities {
                     login.Option_img6.click();
                 }
 
-                webDriverUtil.waitUntilElementClickable(driver, login.addPosOptionKwika, 120);
-                Thread.sleep(3000);
                 webDriverUtil.clickElement(login.addPosOptionKwika);
-                Thread.sleep(6000);
+                //webDriverUtil.waitUntilElementClickable(driver, login.addPosOptionKwika, 150);
+//                webDriverUtil.clickElement(login.addPosOptionKwika);
+//                Thread.sleep(6000);
                 webDriverUtil.implicitWait(driver, 30);
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: " + s);
@@ -1972,7 +1972,7 @@ public class MerchantTransactions extends SystemUtilities {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         fileupload up = new fileupload();
-         Actions actions = new Actions(driver);
+        Actions actions = new Actions(driver);
         Thread.sleep(800);
         webDriverUtil.implicitWait(driver, 20);
         Thread.sleep(9000);
@@ -1991,7 +1991,8 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.acctSetUpGetStartedBtn);
           Thread.sleep(2000);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        webDriverUtil.waitUntilElementClickable(driver, login.uploadID, 120);
+        Thread.sleep(2000);
+       // webDriverUtil.waitUntilElementClickable(driver, login.uploadID, 120);
         webDriverUtil.clickElement(login.uploadID);
         Thread.sleep(200);
         webDriverUtil.waitUntilElementClickable(driver, login.idTypeInput, 120);
@@ -2007,34 +2008,40 @@ public class MerchantTransactions extends SystemUtilities {
             actions.sendKeys(Keys.ENTER).perform();
             webDriverUtil.clickElement(login.idUpload);
             Thread.sleep(3000);
-            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
-            Thread.sleep(3000);
-            actions.sendKeys(Keys.ENTER);
-            //actions.sendKeys(Keys.ENTER).perform();
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\SA.jpg\"");
+           // Thread.sleep(3000);
+//            actions.sendKeys(Keys.ENTER);
+//            actions.sendKeys(Keys.ENTER).perform();
             System.out.println("file uploaded");
+            System.out.println("333333333333333333333333333333333");
 
         } else if (idDocumentType.equalsIgnoreCase("South African ID book")) {
             webDriverUtil.clickElement(login.idSAOption);
-
             actions.sendKeys(Keys.ENTER).perform();
             webDriverUtil.clickElement(login.idUpload);
-            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\SA.jpg\"");
         } else if (idDocumentType.equalsIgnoreCase("Passport Document")) {
-            webDriverUtil.clickElement(login.idSAOption);
+            webDriverUtil.clickElement(login.idPassportOption);
 
             actions.sendKeys(Keys.ENTER).perform();
             webDriverUtil.clickElement(login.idUpload);
-            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
-        } else if (idDocumentType.equalsIgnoreCase("Asylum seeker Document")) {
-            webDriverUtil.clickElement(login.idSAOption);
-
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\SA.jpg\"");
+        } else if (idDocumentType.equalsIgnoreCase("Refugee Document")) {
+            webDriverUtil.clickElement(login.idRefugeeOption);
             actions.sendKeys(Keys.ENTER).perform();
             webDriverUtil.clickElement(login.idUpload);
-            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\Asanda Khumalo ID.png\"");
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\SA.jpg\"");
+
+        }else if (idDocumentType.equalsIgnoreCase("Asylum seeker Document")) {
+            webDriverUtil.clickElement(login.idAsylumSeekerOption);
+            actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.clickElement(login.idUpload);
+            up.handleFileDialog("\"C:\\Users\\khuma004\\Downloads\\SA.jpg\"");
 
         } else {
             System.out.println("ID TYPE IS NOT FOUND");
         }
+
         Thread.sleep(2400);
         webDriverUtil.clickElement(login.nextB);
     }
@@ -3011,9 +3018,6 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.businessName);
         webDriverUtil.enterText(login.businessName, businessName);
 
-        webDriverUtil.clickElement(login.paymentMonthly);
-        webDriverUtil.enterText(login.paymentMonthly, monthlyPayment);
-
         webDriverUtil.clickElement(login.businessUrl);
         webDriverUtil.enterText(login.businessUrl, businessUrl);
        System.out.println("Businessurl :" +businessUrl );
@@ -3063,9 +3067,10 @@ public class MerchantTransactions extends SystemUtilities {
     }
 
 
-    public void submtBusinessDetails(String ownershipDetails,String title, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory ) throws Exception {
+    public void submtBusinessDetails(String ownershipDetails,String title, String id, String businessName, String businessCategory,String streetAddress,String businessAddress ) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
+        Actions actions = new Actions(driver);
         Thread.sleep(2000);
         webDriverUtil.waitUntilElementClickable(driver,login.businessType,300);
         webDriverUtil.clickElement(login.businessType);
@@ -3078,37 +3083,69 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.ownershipDetails);
         System.out.println("Ownership " +ownershipDetails);
         Thread.sleep(3000);
+
         if (ownershipDetails.equalsIgnoreCase("Business owner/director")) {
-            ////webDriverUtil.implicitWait(driver, 20);
-            // webDriverUtil.implicitWait(driver, 05);
-            Actions actions = new Actions(driver);
+          ;
+           // Actions actions = new Actions(driver);
             Thread.sleep(200);
             webDriverUtil.waitUntilElementClickable(driver,login.businessOwnerOption, 120);
             webDriverUtil.clickElement(login.businessOwnerOption);
             Thread.sleep(4000);
-            actions.sendKeys(Keys.ENTER).perform();
-            actions.moveToElement(login.businessOwnerOption).click().sendKeys(Keys.ARROW_DOWN);
+             actions.sendKeys(Keys.ENTER).perform();
+//            actions.sendKeys(Keys.ENTER).perform();
+//            actions.moveToElement(login.businessOwnerOption).click().sendKeys(Keys.ARROW_DOWN);
             System.out.println("Business owner selected");
 
             //webDriverUtil.clickElement(login.businessOwnerOption);
 
-        } else {
+        } else{
             //////webDriverUtil.implicitWait(driver, 20);
             webDriverUtil.waitUntilElementClickable(driver,login.businessBehalfOption, 120);
             webDriverUtil.clickElement(login.businessBehalfOption);
+            actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
             System.out.println("Assistant on behalf of the business own");
         }
 
 
         webDriverUtil.waitUntilElementClickable(driver,login.title_input, 120);
         webDriverUtil.clickElement(login.title_input);
-        if(title.equalsIgnoreCase("Miss"))
+        if(title.equalsIgnoreCase("Mr"))
         {
-            Actions actions = new Actions(driver);
             Thread.sleep(200);
-            webDriverUtil.waitUntilElementClickable(driver,login.title_select, 120);
-            webDriverUtil.clickElement(login.title_select);
+            webDriverUtil.waitUntilElementClickable(driver,login.mrOption, 120);
+            webDriverUtil.clickElement(login.mrOption);
             Thread.sleep(1000);
+            actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("Title  selected");
+        }else  if(title.equalsIgnoreCase("Mrs"))
+        {
+
+            Thread.sleep(200);
+            webDriverUtil.waitUntilElementClickable(driver,login.mrsOption, 120);
+            webDriverUtil.clickElement(login.mrOption);
+            Thread.sleep(1000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("Title  selected");
+        }else if(title.equalsIgnoreCase("Miss"))
+        {
+
+            Thread.sleep(200);
+            webDriverUtil.waitUntilElementClickable(driver,login.missOption, 120);
+            webDriverUtil.clickElement(login.missOption);
+            Thread.sleep(1000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("Title  selected");
+        }else if(title.equalsIgnoreCase("Dr"))
+        {
+
+            Thread.sleep(200);
+            webDriverUtil.waitUntilElementClickable(driver,login.drOption, 120);
+            webDriverUtil.clickElement(login.drOption);
+            Thread.sleep(1000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
             actions.sendKeys(Keys.ARROW_DOWN).perform();
             actions.sendKeys(Keys.ARROW_DOWN).perform();
             actions.sendKeys(Keys.ENTER).perform();
@@ -3116,14 +3153,9 @@ public class MerchantTransactions extends SystemUtilities {
         }else{
             System.out.println("Title not found");
         }
-
-
-
-
-
-        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.idNumber);
+ //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.idNumber);
         //// webDriverUtil.implicitWait(driver, 60);
-        Actions actions = new Actions(driver);
+
         webDriverUtil.clickElement(login.IDNumber);
         webDriverUtil.enterText(login.IDNumber, id);
 
@@ -3131,8 +3163,6 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.businessName);
         webDriverUtil.enterText(login.businessName, businessName);
 
-        webDriverUtil.clickElement(login.paymentMonthly);
-        webDriverUtil.enterText(login.paymentMonthly, monthlyPayment);
 
         webDriverUtil.clickElement(login.businessCategory);
         Thread.sleep(3000);
@@ -3152,6 +3182,31 @@ public class MerchantTransactions extends SystemUtilities {
         System.out.println("Testing Business category");
         Thread.sleep(5000);
         //webDriverUtil.enterText(login.businessCategry, businessCategory);
+
+         Actions act = new Actions(driver);
+        webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetNam3,120);
+        webDriverUtil.enterText(login.inputBusinessStreetNam3, streetAddress);
+        Thread.sleep(2000);
+        act.sendKeys(Keys.PAGE_DOWN).perform();
+
+        //*[@id="radix-«rka»"]
+        ///Uncomment for business if the function is working
+        //((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        webDriverUtil.waitUntilElementClickable(driver,login.businessStreetName, 120);
+        webDriverUtil.clickElement(login.businessStreetName);
+        Thread.sleep(2000);
+        act.sendKeys(Keys.ARROW_DOWN).perform();
+        Thread.sleep(2000);
+        actions.sendKeys(Keys.ENTER).perform();
+
+        webDriverUtil.waitUntilElementClickable(driver, login.tradeAddress,120);
+        webDriverUtil.clickElement(login.tradeAddress);
+        Thread.sleep(6000);
+        act.sendKeys(Keys.PAGE_DOWN).perform();
+        actions.sendKeys(Keys.ENTER).perform();
+        Thread.sleep(6000);
+
+
 
         webDriverUtil.waitUntilElementClickable(driver,login.nextButn,120);
         webDriverUtil.clickElement(login.nextButn);
@@ -3323,8 +3378,6 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.waitUntilElementClickable(driver,login.businessName,120);
         webDriverUtil.enterText(login.businessName, businessName);
 
-        webDriverUtil.waitUntilElementClickable(driver,login.MonthlyPayment,120);
-        webDriverUtil.enterText(login.MonthlyPayment, monthlyPayment);
 
    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         // actions.moveToElement(login.businessCategry).click().perform();
@@ -3355,9 +3408,10 @@ public class MerchantTransactions extends SystemUtilities {
     WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
 
-        webDriverUtil.implicitWait(driver, 20);
-        webDriverUtil.waitUntilElementClickable(driver, login.firstName,1000);
+        Thread.sleep(3000);
+        webDriverUtil.clickElement(login.firstName);
         webDriverUtil.enterText(login.firstName, firstName);
+        ////webDriverUtil.waitUntilElementClickable(driver, login.firstName,1000);
         //////webDriverUtil.implicitWait(driver, 20);
         webDriverUtil.waitUntilElementClickable(driver, login.surName,120);
         webDriverUtil.enterText(login.surName, surName);
@@ -3390,7 +3444,7 @@ public class MerchantTransactions extends SystemUtilities {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Actions actions = new Actions(driver);
-Thread.sleep(2000);
+        Thread.sleep(2000);
         webDriverUtil.waitUntilElementClickable(driver, login.buildingType,120);
         webDriverUtil.clickElement(login.buildingType);
         Thread.sleep(2000);
@@ -3881,6 +3935,7 @@ Thread.sleep(2000);
         webDriverUtil.clickElement(login.vodacomStoreAgentOption);
 
     }
+        Thread.sleep(4000);
         webDriverUtil.enterText(login.thirdPartyId, userId);
         webDriverUtil.implicitWait(driver, 30);
         webDriverUtil.enterText(login.makroPassword, password);
@@ -3991,15 +4046,10 @@ Thread.sleep(2000);
 
         CardDetailsPom CardDetailsPom = new CardDetailsPom(driver);
 
-
-//        webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.bankName,120);
-//        Thread.sleep(5000);
-//        webDriverUtil.clickElement(CardDetailsPom.bankName);
-  //      Thread.sleep(3000);
         Actions actions = new Actions(driver);
-               Thread.sleep(3000);
-        WebElement dropdown1 = driver.findElement(By.xpath("//*[@id=\"root\"]/div/main/main/article/section/form/div/div/div[1]/button"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown1);
+        Thread.sleep(3000);
+        WebElement dropdown1 = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/main/main/article/section/form/div/div/div[1]/button"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown1);  //*[@id="root"]/div/div/main/main/article/section/form/div/div/div[1]/button
         Thread.sleep(2000);
         if (bankName.equalsIgnoreCase("NEDBANK")) {
             ////webDriverUtil.implicitWait(driver, 20);
@@ -4021,7 +4071,7 @@ Thread.sleep(2000);
 
 //        Thread.sleep(3000);
         WebElement dropdown = driver.findElement(By.xpath("//button[@data-automationid='Bank_Details_Account_Type']"));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown);  //*[@id="root"]/div/div/main/main/article/section/form/div/div/div[2]/button
        Thread.sleep(2000);
 
         WebElement select = driver.findElement(By.name("accountType"));
@@ -4044,6 +4094,7 @@ Thread.sleep(2000);
 
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
         webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
+
         webDriverUtil.clickElement(CardDetailsPom.nextBtn);
         Thread.sleep(5000);
         if (CardDetailsPom.proofText.isDisplayed()) {
@@ -4056,18 +4107,17 @@ Thread.sleep(2000);
             Thread.sleep(2000);
             actions.sendKeys(Keys.ENTER);
 
-
-
         }
 
         webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
         webDriverUtil.clickElement(CardDetailsPom.nextBtn);
 
+//        Thread.sleep(6000);
 
-
-        Thread.sleep(6000);
-
-
+//        webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn3,120);
+//        webDriverUtil.clickElement(CardDetailsPom.nextBtn3);
+//
+//          Thread.sleep(2000);
     }
 
     public void submitBankDetails(String bankName, String accountType, String accountNo,String openDate) throws Exception {
@@ -4261,8 +4311,8 @@ Thread.sleep(2000);
     public void submitbarcodeInformation(String barcodeNumber) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
-        webDriverUtil.waitUntilElementClickable(driver,login.selectBarcode_btn, 120);
-        webDriverUtil.clickElement(login.selectBarcode_btn);
+//        webDriverUtil.waitUntilElementClickable(driver,login.selectBarcode_btn, 120);
+//        webDriverUtil.clickElement(login.selectBarcode_btn);
 
         webDriverUtil.waitUntilElementClickable(driver,login.enterbarcode_input, 120);
         System.out.println(barcodeNumber);
@@ -4270,9 +4320,10 @@ Thread.sleep(2000);
         Thread.sleep(2000);
         webDriverUtil.enterText(login.enterbarcode_input,barcodeNumber);
 
-        webDriverUtil.waitUntilElementClickable(driver,login.enterbarcode_input_confirm, 120);
-        Thread.sleep(2000);
-        webDriverUtil.enterText(login.enterbarcode_input_confirm,barcodeNumber);
+        webDriverUtil.clickElement(login.addbarcode);
+       // webDriverUtil.waitUntilElementClickable(driver,login.enterbarcode_input_confirm, 120);
+//        Thread.sleep(2000);
+//        webDriverUtil.enterText(login.enterbarcode_input_confirm,barcodeNumber);
 
         webDriverUtil.waitUntilElementClickable(driver,login.barcode_submit_btn, 120);
         webDriverUtil.clickElement(login.barcode_submit_btn);

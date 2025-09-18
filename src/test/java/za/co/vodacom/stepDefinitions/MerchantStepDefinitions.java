@@ -331,13 +331,13 @@ public class MerchantStepDefinitions extends SystemUtilities {
     }
 
     @And("Submit business details {string} {string} {string} {string} {string} {string} {string}")
-    public void sbmitMerchantDetails(String ownershipDetails,String title, String id, String businessName, String monthlyPayment,String businessUrl,String businessCategory) throws Exception {
+    public void sbmitMerchantDetails(String ownershipDetails,String title, String id, String businessName, String businessCategory,String streetAddress,String businessAddress) throws Exception {
 
         if (SkipForTapOnPhoneOnly) {
             System.out.println("Skipped because of TAP ON PHONE ONLY journey");
         } else {
             WebDriverUtilities webDriverUtil = new WebDriverUtilities();
-            merchantTransactions.submtBusinessDetails(ownershipDetails,title,id,businessName,monthlyPayment,businessUrl,businessCategory);
+            merchantTransactions.submtBusinessDetails(ownershipDetails,title,id,businessName,businessCategory,streetAddress,businessAddress);
 
             extentTest.log(LogStatus.PASS, "Pos Option is Selected");
             String fileName = webDriverUtil.takeScreenshot(driver);

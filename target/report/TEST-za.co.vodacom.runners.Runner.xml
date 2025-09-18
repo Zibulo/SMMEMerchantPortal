@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="391.977">
-    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Makro selects Kwika&quot;" time="391.485">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="235.52">
+    <testcase classname="Device Activation" name="&quot;Kwika Activation&quot;" time="234.967">
         <system-out><![CDATA[Given The webBrowser is launched............................................passed
-Given I am on the merchant landing page "Makro selects Kwika""Makro dealer journey""smmeOnboardingURL""Tebello Ntyingila""".passed
-And I Choose Available POS Option "VodaPay Kwika[1]"........................passed
-And Submit Personal Details "ASANDA" "KHUMALO" "needle-early@olieygik.mailosaur.net" "0606799922".passed
-And I select immediate payment method "4922130001585845""03""2027""904""NONDIPHA LOUW""cardPayment".passed
-And I choose ThreeD Secure Option...........................................passed
+Given I am on the merchant landing page "Kwika Activation""Kwika Activation""deviceActivationUrl""Tebello Ntyingila""".passed
+And Submit Personal Details "NONDIPHA" "LOUW" "needle-early@olieygik.mailosaur.net" "0833721854".passed
 And I upload ID documents "South African ID card"...........................passed
 And I take a selfie.........................................................passed
-And Submit business details "Business owner/director" "Miss" "8902210085089" "VFS Payment Testing" "15000" "null" "Computer Software Shop".passed
-And Submit Bank Details "Nedbank""Current Cheque Account""1010340824".......passed
-And Submit delivery details "House" "4586 Isacholo Crescent" "4586 Isacholo Crescent" "0187" "Blue Golf Estate" "Centurion" "Gauteng" "My business address is the same as my trading address" "Self Onboarding".passed
+And Submit business details "Business owner/director" "Mrs" "6807015897087" "VFS Payment Testing" "Computer Software Shop" "4586 Isacholo Crescent" "My business address is the same as my trading address".passed
+And Submit Bank Details "Nedbank""Current Cheque Account""1234567890".......passed
+And Submit Barcode Information "K3R0W007700"................................passed
 ]]></system-out>
     </testcase>
 </testsuite>
