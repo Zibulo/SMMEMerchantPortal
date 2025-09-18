@@ -161,9 +161,16 @@ public class Login {
 
    @FindBy(xpath="//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[1]/button")
    public WebElement ownershipDetails;
-   @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/fieldset/div/label[1]/div")
-   public WebElement businessType; //*[@id="root"]/div/div/main/main/article/section/form/fieldset/div/label[1]/div
-   @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div/section/button[2]")
+   @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/fieldset/div/label[2]/div")
+   public WebElement registered_Type;
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/fieldset/div/label[1]/div")
+    public WebElement unregistered_Type;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[5]/div[4]/input")
+    public WebElement regitrationNumber;
+
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div/section/button[2]")
    public WebElement nextButton;
 
     @FindBy(xpath=" //*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/select[1]/option[1]")
@@ -190,6 +197,15 @@ public class Login {
     public WebElement missOption;
     @FindBy(xpath="//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[2]/select/option[4]")
     public WebElement drOption;
+
+
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[5]/div[2]/button")
+    public WebElement business_type_input;
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[5]/select/option[1]")
+    public WebElement close_corp_selection;
+    @FindBy(xpath="//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[5]/select/option[2]")
+    public WebElement company_selection;
+
 
     @FindBy(xpath="//*[@id=\"root\"]/div/main/main/article/section/form/div[1]/div/div[2]/div[2]/input")
     public WebElement initials;
@@ -478,7 +494,7 @@ public class Login {
     @FindBy(xpath="//input[@automationid='Revamp_Business_Details_Company_Registration_Number']")
     public WebElement companyRegNo;
 
-    @FindBy(xpath="//*[@id=\"radix-«r25»\"]")
+    @FindBy(xpath="//*[@id=\"radix-«r26»\"]")
     public WebElement businessCategory;
 
    // @FindBy(xpath="//input[@name='businessCategory.name']")
@@ -512,7 +528,10 @@ public class Login {
 
 
     //*[@id="radix-«rlg»"]
-    @FindBy(xpath="//*[@id=\"radix-«r28»\"]")
+    @FindBy(xpath="//*[@id=\"complex\"]")
+    public WebElement complexName;
+
+    @FindBy(xpath="//*[@id=\"radix-«r29»\"]")
     public WebElement inputBusinessStreetNam3;
     @FindBy(xpath="//*[@id=\"radix-«rj1»\"]")
     public WebElement inputBusinessStreetName4;
@@ -538,11 +557,16 @@ public class Login {
 
     //@FindBy(xpath="//div[contains(@class, 'autocomplete-item') and contains(text(), '4586 Isacholo Crescent, Blue Valley Golf & Country Estate, Centurion, Gauteng, 0187')]")
     //@FindBy(xpath = "//p[text()='4586 Isacholo Crescent, Blue Valley Golf & Country Estate, Centurion, Gauteng, 0187']")
-    @FindBy(xpath ="//*[@id=\"radix-«ri0»\"]/p")
+    @FindBy(xpath ="//*[@id=\"radix-«rtu»\"]/p")
     public WebElement businessStreetName;
 
-   @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[7]/div/div[3]/button")
+   @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[11]/div/div[3]/button")
    public  WebElement tradeAddress;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/div[11]/div/select/option[1]")
+    public  WebElement tradeAddressSelection;
+
+
 
  //*[@id="root"]/div/main/main/article/section/form/div[2]/section/button[2]
    @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div[2]/section/button[2]")
@@ -716,6 +740,11 @@ public class Login {
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/div/form/section/label")
     public WebElement idUpload;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div[1]/div/section/label")
+    public WebElement uploadResolution;
+
+
 
 
     @FindBy(xpath = "//input[@role='combobox']")

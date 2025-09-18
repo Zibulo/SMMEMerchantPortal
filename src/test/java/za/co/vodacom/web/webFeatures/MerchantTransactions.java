@@ -2957,8 +2957,8 @@ public class MerchantTransactions extends SystemUtilities {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(2000);
-        webDriverUtil.waitUntilElementClickable(driver,login.businessType,300);
-        webDriverUtil.clickElement(login.businessType);
+       // webDriverUtil.waitUntilElementClickable(driver,login.businessType,300);
+       // webDriverUtil.clickElement(login.businessType);
 
         webDriverUtil.waitUntilElementClickable(driver,login.nextButton,120);
         webDriverUtil.clickElement(login.nextButton);
@@ -3067,151 +3067,332 @@ public class MerchantTransactions extends SystemUtilities {
     }
 
 
-    public void submtBusinessDetails(String ownershipDetails,String title, String id, String businessName, String businessCategory,String streetAddress,String businessAddress ) throws Exception {
+    public void submtBusinessDetails(String businessType,String ownershipDetails,String title, String id, String businessName, String registrationNumber,String businessCategory,String streetAddress,String businessAddress ) throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Actions actions = new Actions(driver);
         Thread.sleep(2000);
-        webDriverUtil.waitUntilElementClickable(driver,login.businessType,300);
-        webDriverUtil.clickElement(login.businessType);
 
-        webDriverUtil.waitUntilElementClickable(driver,login.nextButton,120);
-        webDriverUtil.clickElement(login.nextButton);
-        Thread.sleep(3000);
+        System.out.println("The business is " + businessType);
 
-        webDriverUtil.waitUntilElementClickable(driver,login.ownershipDetails, 120);
-        webDriverUtil.clickElement(login.ownershipDetails);
-        System.out.println("Ownership " +ownershipDetails);
-        Thread.sleep(3000);
+        if(businessType.equalsIgnoreCase("Unregistered business")) {
 
-        if (ownershipDetails.equalsIgnoreCase("Business owner/director")) {
-          ;
-           // Actions actions = new Actions(driver);
-            Thread.sleep(200);
-            webDriverUtil.waitUntilElementClickable(driver,login.businessOwnerOption, 120);
-            webDriverUtil.clickElement(login.businessOwnerOption);
-            Thread.sleep(4000);
-             actions.sendKeys(Keys.ENTER).perform();
+            webDriverUtil.waitUntilElementClickable(driver, login.unregistered_Type, 300);
+            webDriverUtil.clickElement(login.unregistered_Type);
+
+            webDriverUtil.waitUntilElementClickable(driver, login.nextButton, 120);
+            webDriverUtil.clickElement(login.nextButton);
+            Thread.sleep(3000);
+
+            webDriverUtil.waitUntilElementClickable(driver, login.ownershipDetails, 120);
+            webDriverUtil.clickElement(login.ownershipDetails);
+            System.out.println("Ownership " + ownershipDetails);
+            Thread.sleep(3000);
+
+            if (ownershipDetails.equalsIgnoreCase("Business owner/director")) {
+                ;
+                // Actions actions = new Actions(driver);
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.businessOwnerOption, 120);
+                webDriverUtil.clickElement(login.businessOwnerOption);
+                Thread.sleep(4000);
+                actions.sendKeys(Keys.ENTER).perform();
 //            actions.sendKeys(Keys.ENTER).perform();
 //            actions.moveToElement(login.businessOwnerOption).click().sendKeys(Keys.ARROW_DOWN);
-            System.out.println("Business owner selected");
+                System.out.println("Business owner selected");
 
-            //webDriverUtil.clickElement(login.businessOwnerOption);
+                //webDriverUtil.clickElement(login.businessOwnerOption);
 
-        } else{
-            //////webDriverUtil.implicitWait(driver, 20);
-            webDriverUtil.waitUntilElementClickable(driver,login.businessBehalfOption, 120);
-            webDriverUtil.clickElement(login.businessBehalfOption);
-            actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
-            System.out.println("Assistant on behalf of the business own");
+            } else {
+                //////webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.waitUntilElementClickable(driver, login.businessBehalfOption, 120);
+                webDriverUtil.clickElement(login.businessBehalfOption);
+                actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+                System.out.println("Assistant on behalf of the business own");
+            }
+
+
+            webDriverUtil.waitUntilElementClickable(driver, login.title_input, 120);
+            webDriverUtil.clickElement(login.title_input);
+            if (title.equalsIgnoreCase("Mr")) {
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.mrOption, 120);
+                webDriverUtil.clickElement(login.mrOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else if (title.equalsIgnoreCase("Mrs")) {
+
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.mrsOption, 120);
+                webDriverUtil.clickElement(login.mrOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else if (title.equalsIgnoreCase("Miss")) {
+
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.missOption, 120);
+                webDriverUtil.clickElement(login.missOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else if (title.equalsIgnoreCase("Dr")) {
+
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.drOption, 120);
+                webDriverUtil.clickElement(login.drOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else {
+                System.out.println("Title not found");
+            }
+            //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.idNumber);
+            //// webDriverUtil.implicitWait(driver, 60);
+
+            webDriverUtil.clickElement(login.IDNumber);
+            webDriverUtil.enterText(login.IDNumber, id);
+
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            webDriverUtil.clickElement(login.businessName);
+            webDriverUtil.enterText(login.businessName, businessName);
+
+
+            webDriverUtil.clickElement(login.businessCategory);
+            Thread.sleep(3000);
+            login.businessCategory.sendKeys("C");
+            Thread.sleep(2000);
+            login.businessCategory.sendKeys("o");
+            Thread.sleep(2000);
+            login.businessCategory.sendKeys("m");
+            Thread.sleep(2000);
+            login.businessCategory.sendKeys("p");
+            Thread.sleep(2000);
+
+
+            Actions action = new Actions(driver);
+            action.sendKeys(Keys.PAGE_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("Testing Business category");
+            Thread.sleep(5000);
+            //webDriverUtil.enterText(login.businessCategry, businessCategory);
+
+            Actions act = new Actions(driver);
+            webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetNam3, 120);
+            webDriverUtil.enterText(login.inputBusinessStreetNam3, streetAddress);
+            Thread.sleep(2000);
+            act.sendKeys(Keys.PAGE_DOWN).perform();
+
+            //*[@id="radix-«rka»"]
+            ///Uncomment for business if the function is working
+            //((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            webDriverUtil.waitUntilElementClickable(driver, login.businessStreetName, 120);
+            webDriverUtil.clickElement(login.businessStreetName);
+            Thread.sleep(2000);
+            act.sendKeys(Keys.ARROW_DOWN).perform();
+            Thread.sleep(2000);
+            actions.sendKeys(Keys.ENTER).perform();
+
+            webDriverUtil.waitUntilElementClickable(driver, login.tradeAddress, 120);
+            webDriverUtil.clickElement(login.tradeAddress);
+            Thread.sleep(6000);
+            act.sendKeys(Keys.PAGE_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            Thread.sleep(6000);
+
+
+            webDriverUtil.waitUntilElementClickable(driver, login.nextButn, 120);
+            webDriverUtil.clickElement(login.nextButn);
+
+        }else if (businessType.equalsIgnoreCase("Registered Business"))
+        {
+            webDriverUtil.waitUntilElementClickable(driver, login.registered_Type, 300);
+            webDriverUtil.clickElement(login.registered_Type);
+
+            webDriverUtil.waitUntilElementClickable(driver, login.nextButton, 120);
+            webDriverUtil.clickElement(login.nextButton);
+            Thread.sleep(3000);
+
+            webDriverUtil.waitUntilElementClickable(driver, login.ownershipDetails, 120);
+            webDriverUtil.clickElement(login.ownershipDetails);
+            System.out.println("Ownership " + ownershipDetails);
+            Thread.sleep(3000);
+
+            if (ownershipDetails.equalsIgnoreCase("Business owner/director")) {
+                ;
+                // Actions actions = new Actions(driver);
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.businessOwnerOption, 120);
+                webDriverUtil.clickElement(login.businessOwnerOption);
+                Thread.sleep(4000);
+                actions.sendKeys(Keys.ENTER).perform();
+//            actions.sendKeys(Keys.ENTER).perform();
+//            actions.moveToElement(login.businessOwnerOption).click().sendKeys(Keys.ARROW_DOWN);
+                System.out.println("Business owner selected");
+
+                //webDriverUtil.clickElement(login.businessOwnerOption);
+
+            } else {
+                //////webDriverUtil.implicitWait(driver, 20);
+                webDriverUtil.waitUntilElementClickable(driver, login.businessBehalfOption, 120);
+                webDriverUtil.clickElement(login.businessBehalfOption);
+                actions.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+                System.out.println("Assistant on behalf of the business own");
+            }
+
+
+            webDriverUtil.waitUntilElementClickable(driver, login.title_input, 120);
+            webDriverUtil.clickElement(login.title_input);
+            if (title.equalsIgnoreCase("Mr")) {
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.mrOption, 120);
+                webDriverUtil.clickElement(login.mrOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else if (title.equalsIgnoreCase("Mrs")) {
+
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.mrsOption, 120);
+                webDriverUtil.clickElement(login.mrOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else if (title.equalsIgnoreCase("Miss")) {
+
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.missOption, 120);
+                webDriverUtil.clickElement(login.missOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else if (title.equalsIgnoreCase("Dr")) {
+
+                Thread.sleep(200);
+                webDriverUtil.waitUntilElementClickable(driver, login.drOption, 120);
+                webDriverUtil.clickElement(login.drOption);
+                Thread.sleep(1000);
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ARROW_DOWN).perform();
+                actions.sendKeys(Keys.ENTER).perform();
+                System.out.println("Title  selected");
+            } else {
+                System.out.println("Title not found");
+            }
+            //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.idNumber);
+            //// webDriverUtil.implicitWait(driver, 60);
+
+            webDriverUtil.clickElement(login.IDNumber);
+            webDriverUtil.enterText(login.IDNumber, id);
+
+            String businessType2 = "Close Corparation";
+
+            webDriverUtil.waitUntilElementClickable(driver,login.business_type_input,120);
+            webDriverUtil.clickElement(login.business_type_input);
+
+            if(businessType2.equalsIgnoreCase("Close Corparation"))
+            {
+                webDriverUtil.waitUntilElementClickable(driver,login.close_corp_selection,120);
+                webDriverUtil.clickElement(login.close_corp_selection);
+                actions.sendKeys(Keys.ENTER).perform();
+                Thread.sleep(3000);
+                System.out.println("close coparation is selected");
+
+
+            }else if(businessType2.equalsIgnoreCase("Company"))
+            {
+                webDriverUtil.waitUntilElementClickable(driver,login.company_selection,120);
+                webDriverUtil.clickElement(login.company_selection);
+            }else{
+                  System.out.println("Not found");
+             }
+            Thread.sleep(200);
+
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            webDriverUtil.clickElement(login.businessName);
+            webDriverUtil.enterText(login.businessName, businessName);
+
+
+            webDriverUtil.clickElement(login.regitrationNumber);
+            webDriverUtil.enterText(login.regitrationNumber, registrationNumber);
+
+                 Thread.sleep(2000);
+
+            webDriverUtil.clickElement(login.businessCategory);
+            Thread.sleep(3000);
+            login.businessCategory.sendKeys("C");
+            Thread.sleep(2000);
+            login.businessCategory.sendKeys("o");
+            Thread.sleep(2000);
+            login.businessCategory.sendKeys("m");
+            Thread.sleep(2000);
+            login.businessCategory.sendKeys("p");
+            Thread.sleep(2000);
+
+
+            Actions action = new Actions(driver);
+            action.sendKeys(Keys.PAGE_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            System.out.println("Testing Business category");
+            Thread.sleep(5000);
+            //webDriverUtil.enterText(login.businessCategry, businessCategory);
+
+            webDriverUtil.clickElement(login.uploadResolution);
+            fileupload up = new fileupload();
+            Thread.sleep(3000);
+            up.handleFileDialog("C:\\Users\\khuma004\\Downloads\\Resolution Letter.jpg");
+
+
+            webDriverUtil.waitUntilElementClickable(driver, login.complexName, 120);
+            webDriverUtil.enterText(login.complexName, "City Building");
+
+            Actions act = new Actions(driver);
+            webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetNam3, 120);
+            webDriverUtil.enterText(login.inputBusinessStreetNam3, streetAddress);
+            Thread.sleep(2000);
+            act.sendKeys(Keys.PAGE_DOWN).perform();
+
+            //*[@id="radix-«rka»"]
+            ///Uncomment for business if the function is working
+            //((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+            webDriverUtil.waitUntilElementClickable(driver, login.businessStreetName, 120);
+            webDriverUtil.clickElement(login.businessStreetName);
+            Thread.sleep(2000);
+            act.sendKeys(Keys.ARROW_DOWN).perform();
+            Thread.sleep(2000);
+            actions.sendKeys(Keys.ENTER).perform();
+
+            webDriverUtil.waitUntilElementClickable(driver, login.tradeAddress, 120);
+            webDriverUtil.clickElement(login.tradeAddress);
+
+            webDriverUtil.waitUntilElementClickable(driver, login.tradeAddressSelection,120);
+            webDriverUtil.clickElement(login.tradeAddressSelection);
+
+            Thread.sleep(6000);
+            act.sendKeys(Keys.PAGE_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            Thread.sleep(6000);
+
+
+            webDriverUtil.waitUntilElementClickable(driver, login.nextButn, 120);
+            webDriverUtil.clickElement(login.nextButn);
+
+            }else {
+            System.out.println("Business Type is not found");
         }
 
-
-        webDriverUtil.waitUntilElementClickable(driver,login.title_input, 120);
-        webDriverUtil.clickElement(login.title_input);
-        if(title.equalsIgnoreCase("Mr"))
-        {
-            Thread.sleep(200);
-            webDriverUtil.waitUntilElementClickable(driver,login.mrOption, 120);
-            webDriverUtil.clickElement(login.mrOption);
-            Thread.sleep(1000);
-            actions.sendKeys(Keys.ENTER).perform();
-            System.out.println("Title  selected");
-        }else  if(title.equalsIgnoreCase("Mrs"))
-        {
-
-            Thread.sleep(200);
-            webDriverUtil.waitUntilElementClickable(driver,login.mrsOption, 120);
-            webDriverUtil.clickElement(login.mrOption);
-            Thread.sleep(1000);
-            actions.sendKeys(Keys.ARROW_DOWN).perform();
-            actions.sendKeys(Keys.ENTER).perform();
-            System.out.println("Title  selected");
-        }else if(title.equalsIgnoreCase("Miss"))
-        {
-
-            Thread.sleep(200);
-            webDriverUtil.waitUntilElementClickable(driver,login.missOption, 120);
-            webDriverUtil.clickElement(login.missOption);
-            Thread.sleep(1000);
-            actions.sendKeys(Keys.ARROW_DOWN).perform();
-            actions.sendKeys(Keys.ARROW_DOWN).perform();
-            actions.sendKeys(Keys.ENTER).perform();
-            System.out.println("Title  selected");
-        }else if(title.equalsIgnoreCase("Dr"))
-        {
-
-            Thread.sleep(200);
-            webDriverUtil.waitUntilElementClickable(driver,login.drOption, 120);
-            webDriverUtil.clickElement(login.drOption);
-            Thread.sleep(1000);
-            actions.sendKeys(Keys.ARROW_DOWN).perform();
-            actions.sendKeys(Keys.ARROW_DOWN).perform();
-            actions.sendKeys(Keys.ARROW_DOWN).perform();
-            actions.sendKeys(Keys.ENTER).perform();
-            System.out.println("Title  selected");
-        }else{
-            System.out.println("Title not found");
-        }
- //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", login.idNumber);
-        //// webDriverUtil.implicitWait(driver, 60);
-
-        webDriverUtil.clickElement(login.IDNumber);
-        webDriverUtil.enterText(login.IDNumber, id);
-
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        webDriverUtil.clickElement(login.businessName);
-        webDriverUtil.enterText(login.businessName, businessName);
-
-
-        webDriverUtil.clickElement(login.businessCategory);
-        Thread.sleep(3000);
-        login.businessCategory.sendKeys("C");
-        Thread.sleep(2000);
-        login.businessCategory.sendKeys("o");
-        Thread.sleep(2000);
-        login.businessCategory.sendKeys("m");
-        Thread.sleep(2000);
-        login.businessCategory.sendKeys("p");
-        Thread.sleep(2000);
-
-
-        Actions action = new Actions(driver);
-        action.sendKeys(Keys.PAGE_DOWN).perform();
-        actions.sendKeys(Keys.ENTER).perform();
-        System.out.println("Testing Business category");
         Thread.sleep(5000);
-        //webDriverUtil.enterText(login.businessCategry, businessCategory);
-
-         Actions act = new Actions(driver);
-        webDriverUtil.waitUntilElementClickable(driver, login.inputBusinessStreetNam3,120);
-        webDriverUtil.enterText(login.inputBusinessStreetNam3, streetAddress);
-        Thread.sleep(2000);
-        act.sendKeys(Keys.PAGE_DOWN).perform();
-
-        //*[@id="radix-«rka»"]
-        ///Uncomment for business if the function is working
-        //((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
-        webDriverUtil.waitUntilElementClickable(driver,login.businessStreetName, 120);
-        webDriverUtil.clickElement(login.businessStreetName);
-        Thread.sleep(2000);
-        act.sendKeys(Keys.ARROW_DOWN).perform();
-        Thread.sleep(2000);
-        actions.sendKeys(Keys.ENTER).perform();
-
-        webDriverUtil.waitUntilElementClickable(driver, login.tradeAddress,120);
-        webDriverUtil.clickElement(login.tradeAddress);
-        Thread.sleep(6000);
-        act.sendKeys(Keys.PAGE_DOWN).perform();
-        actions.sendKeys(Keys.ENTER).perform();
-        Thread.sleep(6000);
-
-
-
-        webDriverUtil.waitUntilElementClickable(driver,login.nextButn,120);
-        webDriverUtil.clickElement(login.nextButn);
-
-        Thread.sleep(7000);
     }
 
 
@@ -3219,8 +3400,8 @@ public class MerchantTransactions extends SystemUtilities {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
         Thread.sleep(2000);
-        webDriverUtil.waitUntilElementClickable(driver,login.businessType,300);
-        webDriverUtil.clickElement(login.businessType);
+       // webDriverUtil.waitUntilElementClickable(driver,login.businessType,300);
+        //webDriverUtil.clickElement(login.businessType);
 
         webDriverUtil.waitUntilElementClickable(driver,login.nextButton,120);
         webDriverUtil.clickElement(login.nextButton);

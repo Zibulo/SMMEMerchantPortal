@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 7720783900,
+              "duration": 2559315900,
               "status": "passed"
             },
             "line": 6,
@@ -24,7 +24,7 @@
         ]
       },
       {
-        "start_timestamp": "2025-09-17T07:00:33.244Z",
+        "start_timestamp": "2025-09-18T13:07:16.955Z",
         "line": 40,
         "name": "\"Kwika Activation\"",
         "description": "",
@@ -32,7 +32,7 @@
         "after": [
           {
             "result": {
-              "duration": 1267252400,
+              "duration": 583779200,
               "status": "passed"
             },
             "match": {
@@ -45,7 +45,7 @@
         "steps": [
           {
             "result": {
-              "duration": 12023520200,
+              "duration": 3932757700,
               "status": "passed"
             },
             "line": 9,
@@ -79,7 +79,7 @@
           },
           {
             "result": {
-              "duration": 27526705500,
+              "duration": 25103385500,
               "status": "passed"
             },
             "line": 11,
@@ -109,7 +109,7 @@
           },
           {
             "result": {
-              "duration": 42980940600,
+              "duration": 41622429600,
               "status": "passed"
             },
             "line": 12,
@@ -127,7 +127,7 @@
           },
           {
             "result": {
-              "duration": 34390545000,
+              "duration": 33483714000,
               "status": "passed"
             },
             "line": 13,
@@ -139,49 +139,57 @@
           },
           {
             "result": {
-              "duration": 67516790700,
+              "duration": 70625144200,
               "status": "passed"
             },
             "line": 14,
-            "name": "Submit business details \"Business owner/director\" \"Mrs\" \"6807015897087\" \"VFS Payment Testing\" \"Computer Software Shop\" \"4586 Isacholo Crescent\" \"My business address is the same as my trading address\"",
+            "name": "Submit business details \"Registered Business\" \"Business owner/director\" \"Mrs\" \"6807015897087\" \"VFS Payment Testing\" \"1977/001783/07\" \"Computer Software Shop\" \"4586 Isacholo Crescent\" \"My business address is the same as my trading address\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"Business owner/director\"",
+                  "val": "\"Registered Business\"",
                   "offset": 24
                 },
                 {
+                  "val": "\"Business owner/director\"",
+                  "offset": 46
+                },
+                {
                   "val": "\"Mrs\"",
-                  "offset": 50
-                },
-                {
-                  "val": "\"6807015897087\"",
-                  "offset": 56
-                },
-                {
-                  "val": "\"VFS Payment Testing\"",
                   "offset": 72
                 },
                 {
-                  "val": "\"Computer Software Shop\"",
+                  "val": "\"6807015897087\"",
+                  "offset": 78
+                },
+                {
+                  "val": "\"VFS Payment Testing\"",
                   "offset": 94
                 },
                 {
+                  "val": "\"1977/001783/07\"",
+                  "offset": 116
+                },
+                {
+                  "val": "\"Computer Software Shop\"",
+                  "offset": 133
+                },
+                {
                   "val": "\"4586 Isacholo Crescent\"",
-                  "offset": 119
+                  "offset": 158
                 },
                 {
                   "val": "\"My business address is the same as my trading address\"",
-                  "offset": 144
+                  "offset": 183
                 }
               ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.sbmitMerchantDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitBusinessDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "duration": 30234303200,
+              "duration": 27225306700,
               "status": "passed"
             },
             "line": 15,
@@ -207,7 +215,7 @@
           },
           {
             "result": {
-              "duration": 11157412600,
+              "duration": 11295968500,
               "status": "passed"
             },
             "line": 18,
