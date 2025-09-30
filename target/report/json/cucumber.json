@@ -11,7 +11,7 @@
         "steps": [
           {
             "result": {
-              "duration": 3369505700,
+              "duration": 2797470800,
               "status": "passed"
             },
             "line": 6,
@@ -24,17 +24,16 @@
         ]
       },
       {
-        "start_timestamp": "2025-09-19T08:34:50.409Z",
-        "line": 40,
-        "name": "\"Kwika Activation\"",
+        "start_timestamp": "2025-09-29T10:47:51.916Z",
+        "line": 23,
+        "name": "\"Makro selects VPR\"",
         "description": "",
-        "id": "device-activation;\"\u003cscenariodescription\u003e\";;2",
+        "id": "onboarding-new-merchant-choose-pos-option;\"\u003cscenariodescription\u003e\";;2",
         "after": [
           {
             "result": {
-              "error_message": "java.lang.NullPointerException: Cannot invoke \"com.relevantcodes.extentreports.ExtentReports.endTest(com.relevantcodes.extentreports.ExtentTest)\" because \"za.co.vodacom.stepDefinitions.MerchantStepDefinitions.extentReport\" is null\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.afterTest(MerchantStepDefinitions.java:73)\r\n",
-              "duration": 570251800,
-              "status": "failed"
+              "duration": 1067930200,
+              "status": "passed"
             },
             "match": {
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.afterTest(io.cucumber.java.Scenario)"
@@ -46,33 +45,32 @@
         "steps": [
           {
             "result": {
-              "error_message": "org.openqa.selenium.WebDriverException: unknown error: failed to change window state to \u0027maximized\u0027, current state is \u0027minimized\u0027\n  (Session info: chrome\u003d140.0.7339.186)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027ILAB-AK\u0027, ip: \u002710.133.214.18\u0027, os.name: \u0027Windows 11\u0027, os.arch: \u0027amd64\u0027, os.version: \u002710.0\u0027, java.version: \u002723.0.2\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.80 (670b6f192f46..., userDataDir: C:\\Users\\khuma004\\AppData\\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63077}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}\nSession ID: c1db764efe92ad9bf0361df66926b5c7\r\n\tat java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)\r\n\tat java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)\r\n\tat java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\r\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\r\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\r\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\r\n\tat org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:837)\r\n\tat za.co.vodacom.web.webFeatures.MerchantTransactions.selectLandingPage(MerchantTransactions.java:56)\r\n\tat za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnMerchantLandingLoginPage(MerchantStepDefinitions.java:122)\r\n\tat ✽.I am on the merchant landing page \"Kwika Activation\"\"Kwika Activation\"\"deviceActivationUrl\"\"Tebello Ntyingila\"\"\"(file:///C:/IdeaProjects/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal/src/test/resources/features/regression/3.deviceActivationRevamped.feature:9)\r\n",
-              "duration": 5557824000,
-              "status": "failed"
+              "duration": 4569565000,
+              "status": "passed"
             },
             "line": 9,
-            "name": "I am on the merchant landing page \"Kwika Activation\"\"Kwika Activation\"\"deviceActivationUrl\"\"Tebello Ntyingila\"\"\"",
+            "name": "I am on the merchant landing page \"Makro selects VPR\"\"Makro dealer journey\"\"smmeOnboardingURL\"\"Tebello Ntyingila\"\"\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"Kwika Activation\"",
+                  "val": "\"Makro selects VPR\"",
                   "offset": 34
                 },
                 {
-                  "val": "\"Kwika Activation\"",
-                  "offset": 52
+                  "val": "\"Makro dealer journey\"",
+                  "offset": 53
                 },
                 {
-                  "val": "\"deviceActivationUrl\"",
-                  "offset": 70
+                  "val": "\"smmeOnboardingURL\"",
+                  "offset": 75
                 },
                 {
                   "val": "\"Tebello Ntyingila\"",
-                  "offset": 91
+                  "offset": 94
                 },
                 {
                   "val": "\"\"",
-                  "offset": 110
+                  "offset": 113
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnMerchantLandingLoginPage(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -81,28 +79,46 @@
           },
           {
             "result": {
-              "duration": 512300,
-              "status": "skipped"
+              "duration": 54813573700,
+              "status": "passed"
             },
             "line": 11,
-            "name": "Submit Personal Details \"NONDIPHA\" \"LOUW\" \"needle-early@olieygik.mailosaur.net\" \"0833721854\"",
+            "name": "I Choose Available POS Option \"VodaPay Payment Request[4]\"",
             "match": {
               "arguments": [
                 {
-                  "val": "\"NONDIPHA\"",
+                  "val": "\"VodaPay Payment Request[4]\"",
+                  "offset": 30
+                }
+              ],
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iChooseAvalaiblePOSOption(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 25705055700,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "Submit Personal Details \"ASANDA\" \"KHUMALO\" \"asanda.khumalo@vcontractor.co.za\" \"0833721856\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"ASANDA\"",
                   "offset": 24
                 },
                 {
-                  "val": "\"LOUW\"",
-                  "offset": 35
+                  "val": "\"KHUMALO\"",
+                  "offset": 33
                 },
                 {
-                  "val": "\"needle-early@olieygik.mailosaur.net\"",
-                  "offset": 42
+                  "val": "\"asanda.khumalo@vcontractor.co.za\"",
+                  "offset": 43
                 },
                 {
-                  "val": "\"0833721854\"",
-                  "offset": 80
+                  "val": "\"0833721856\"",
+                  "offset": 78
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitMerchantDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -111,9 +127,10 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 42486635900,
+              "status": "passed"
             },
-            "line": 12,
+            "line": 13,
             "name": "I upload ID documents \"South African ID card\"",
             "match": {
               "arguments": [
@@ -128,21 +145,23 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 22550331500,
+              "status": "passed"
             },
-            "line": 13,
-            "name": "I take a selfie",
+            "line": 14,
+            "name": "I take a Selfie",
             "match": {
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.takeSelfie()"
+              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.Selfie()"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 82533578200,
+              "status": "passed"
             },
-            "line": 14,
-            "name": "Submit business details \"Registered Business\" \"Business owner/director\" \"Mrs\" \"6807015897087\" \"VFS Payment Testing\" \"1977/001783/07\" \"Computer Software Shop\" \"4586 Isacholo Crescent\" \"My business address is the same as my trading address\"",
+            "line": 15,
+            "name": "Submit business details \"Registered Business\" \"Business owner/director\" \"Miss\" \"8902210085089\" \"VFS Payment Testing\" \"1988/000188/23\" \"Computer Software Shop\" \"4586 Isacholo Crescent\" \"My business address is the same as my trading address\"",
             "match": {
               "arguments": [
                 {
@@ -154,32 +173,32 @@
                   "offset": 46
                 },
                 {
-                  "val": "\"Mrs\"",
+                  "val": "\"Miss\"",
                   "offset": 72
                 },
                 {
-                  "val": "\"6807015897087\"",
-                  "offset": 78
+                  "val": "\"8902210085089\"",
+                  "offset": 79
                 },
                 {
                   "val": "\"VFS Payment Testing\"",
-                  "offset": 94
+                  "offset": 95
                 },
                 {
-                  "val": "\"1977/001783/07\"",
-                  "offset": 116
+                  "val": "\"1988/000188/23\"",
+                  "offset": 117
                 },
                 {
                   "val": "\"Computer Software Shop\"",
-                  "offset": 133
+                  "offset": 134
                 },
                 {
                   "val": "\"4586 Isacholo Crescent\"",
-                  "offset": 158
+                  "offset": 159
                 },
                 {
                   "val": "\"My business address is the same as my trading address\"",
-                  "offset": 183
+                  "offset": 184
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitBusinessDetails(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
@@ -188,10 +207,11 @@
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 30232347100,
+              "status": "passed"
             },
-            "line": 15,
-            "name": "Submit Bank Details \"Nedbank\"\"Current Cheque Account\"\"1234567890\"",
+            "line": 16,
+            "name": "Submit Bank Details \"Nedbank\"\"Current Cheque Account\"\"1010340824\"",
             "match": {
               "arguments": [
                 {
@@ -203,47 +223,30 @@
                   "offset": 29
                 },
                 {
-                  "val": "\"1234567890\"",
+                  "val": "\"1010340824\"",
                   "offset": 53
                 }
               ],
               "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitBank(java.lang.String,java.lang.String,java.lang.String)"
             },
             "keyword": "And "
-          },
-          {
-            "result": {
-              "status": "skipped"
-            },
-            "line": 18,
-            "name": "Submit Barcode Information \"K3R0W007700\"",
-            "match": {
-              "arguments": [
-                {
-                  "val": "\"K3R0W007700\"",
-                  "offset": 27
-                }
-              ],
-              "location": "za.co.vodacom.stepDefinitions.MerchantStepDefinitions.submitBarcodeInformation(java.lang.String)"
-            },
-            "keyword": "And "
           }
         ],
         "tags": [
           {
-            "name": "@deviceActivationRevamp"
+            "name": "@ecomOnboarding"
           }
         ]
       }
     ],
-    "name": "Device Activation",
+    "name": "OnBoarding New Merchant Choose POS Option",
     "description": "",
-    "id": "device-activation",
+    "id": "onboarding-new-merchant-choose-pos-option",
     "keyword": "Feature",
-    "uri": "file:src/test/resources/features/regression/3.deviceActivationRevamped.feature",
+    "uri": "file:src/test/resources/features/regression/EcomOnboarding.feature",
     "tags": [
       {
-        "name": "@deviceActivationRevamp",
+        "name": "@ecomOnboarding",
         "type": "Tag",
         "location": {
           "line": 1,

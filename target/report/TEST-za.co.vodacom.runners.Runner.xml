@@ -1,37 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="10.062">
-    <testcase classname="Device Activation" name="&quot;Kwika Activation&quot;" time="9.651">
-        <failure message="unknown error: failed to change window state to 'maximized', current state is 'minimized'&#10;  (Session info: chrome=140.0.7339.186)&#10;Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'&#10;System info: host: 'ILAB-AK', ip: '10.133.214.18', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.80 (670b6f192f46..., userDataDir: C:\Users\khuma004\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63077}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}&#10;Session ID: c1db764efe92ad9bf0361df66926b5c7" type="org.openqa.selenium.WebDriverException"><![CDATA[Given The webBrowser is launched............................................passed
-Given I am on the merchant landing page "Kwika Activation""Kwika Activation""deviceActivationUrl""Tebello Ntyingila""".failed
-And Submit Personal Details "NONDIPHA" "LOUW" "needle-early@olieygik.mailosaur.net" "0833721854".skipped
-And I upload ID documents "South African ID card"...........................skipped
-And I take a selfie.........................................................skipped
-And Submit business details "Registered Business" "Business owner/director" "Mrs" "6807015897087" "VFS Payment Testing" "1977/001783/07" "Computer Software Shop" "4586 Isacholo Crescent" "My business address is the same as my trading address".skipped
-And Submit Bank Details "Nedbank""Current Cheque Account""1234567890".......skipped
-And Submit Barcode Information "K3R0W007700"................................skipped
-
-StackTrace:
-org.openqa.selenium.WebDriverException: unknown error: failed to change window state to 'maximized', current state is 'minimized'
-  (Session info: chrome=140.0.7339.186)
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ILAB-AK', ip: '10.133.214.18', os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '23.0.2'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 140.0.7339.186, chrome: {chromedriverVersion: 140.0.7339.80 (670b6f192f46..., userDataDir: C:\Users\khuma004\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63077}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: c1db764efe92ad9bf0361df66926b5c7
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:501)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:485)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
-	at org.openqa.selenium.remote.RemoteWebDriver$RemoteWebDriverOptions$RemoteWindow.maximize(RemoteWebDriver.java:837)
-	at za.co.vodacom.web.webFeatures.MerchantTransactions.selectLandingPage(MerchantTransactions.java:56)
-	at za.co.vodacom.stepDefinitions.MerchantStepDefinitions.iAmOnMerchantLandingLoginPage(MerchantStepDefinitions.java:122)
-	at ✽.I am on the merchant landing page "Kwika Activation""Kwika Activation""deviceActivationUrl""Tebello Ntyingila"""(file:///C:/IdeaProjects/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal_2025_03_17/SMMEMerchantPortal/src/test/resources/features/regression/3.deviceActivationRevamped.feature:9)
-]]></failure>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="267.344">
+    <testcase classname="OnBoarding New Merchant Choose POS Option" name="&quot;Makro selects VPR&quot;" time="266.879">
+        <system-out><![CDATA[Given The webBrowser is launched............................................passed
+Given I am on the merchant landing page "Makro selects VPR""Makro dealer journey""smmeOnboardingURL""Tebello Ntyingila""".passed
+And I Choose Available POS Option "VodaPay Payment Request[4]"..............passed
+And Submit Personal Details "ASANDA" "KHUMALO" "asanda.khumalo@vcontractor.co.za" "0833721856".passed
+And I upload ID documents "South African ID card"...........................passed
+And I take a Selfie.........................................................passed
+And Submit business details "Registered Business" "Business owner/director" "Miss" "8902210085089" "VFS Payment Testing" "1988/000188/23" "Computer Software Shop" "4586 Isacholo Crescent" "My business address is the same as my trading address".passed
+And Submit Bank Details "Nedbank""Current Cheque Account""1010340824".......passed
+]]></system-out>
     </testcase>
 </testsuite>

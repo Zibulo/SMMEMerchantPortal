@@ -256,12 +256,14 @@ public class MerchantTransactions extends SystemUtilities {
                     Thread.sleep(2000);
                     login.Option_img6.click();
                 }
+                Thread.sleep(2000);
 
                 webDriverUtil.clickElement(login.addPosOptionKwika);
                 //webDriverUtil.waitUntilElementClickable(driver, login.addPosOptionKwika, 150);
 //                webDriverUtil.clickElement(login.addPosOptionKwika);
 //                Thread.sleep(6000);
                 webDriverUtil.implicitWait(driver, 30);
+                Thread.sleep(2000);
                 webDriverUtil.clickElement(login.closeCart);
                 System.out.println("Product Selected: " + s);
 
@@ -3327,7 +3329,13 @@ public class MerchantTransactions extends SystemUtilities {
             webDriverUtil.clickElement(login.regitrationNumber);
             webDriverUtil.enterText(login.regitrationNumber, registrationNumber);
 
-                 Thread.sleep(2000);
+            if(login.businessUrl.isDisplayed())
+            {
+                webDriverUtil.clickElement(login.businessUrl);
+                webDriverUtil.enterText(login.businessUrl, "http://vodacom.com");
+            }
+
+            Thread.sleep(2000);
 
             webDriverUtil.clickElement(login.businessCategory);
             Thread.sleep(3000);
@@ -4229,7 +4237,7 @@ public class MerchantTransactions extends SystemUtilities {
 
         Actions actions = new Actions(driver);
         Thread.sleep(3000);
-        WebElement dropdown1 = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/main/main/article/section/form/div/div/div[1]/button"));
+        WebElement dropdown1 = driver.findElement(By.xpath("//button[@data-automationid='Bank_Details_Bank_Name']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown1);  //*[@id="root"]/div/div/main/main/article/section/form/div/div/div[1]/button
         Thread.sleep(2000);
         if (bankName.equalsIgnoreCase("NEDBANK")) {

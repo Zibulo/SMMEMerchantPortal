@@ -130,15 +130,15 @@ public class CardDetailsPom {
     @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div/div/div[5]/div[2]/div/input")
     public WebElement openDate;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div/div/section/section/label")
+    @FindBy(xpath = "//label[.//span[text()='Attach file'] and .//input[@type='file']]")
     public WebElement proofOfBank;
 
-    @FindBy(xpath ="//*[@id=\"root\"]/div/div/main/main/article/section/form/div/div/div[3]/input")
+    @FindBy(xpath ="//input[@data-automationid='Bank_Details_Account_Number']")
     public WebElement accountNo;
 
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div/div/select[1]/option[2]")
+    @FindBy(xpath = "//option[@value='NEDBANK']")
     public WebElement nedBankSelection;
-    @FindBy(xpath = "//*[@id=\"root\"]/div/div/main/main/article/section/form/div/div/div[5]/section/button[2]")
+    @FindBy(xpath = "//button[@data-automationid='next-button']")
     public WebElement nextBtn;
     @FindBy(xpath = "//*[@id=\"root\"]/div/main/main/article/section/form/div/div/div[2]/section/button[2]")
     public WebElement nextBtn3;
