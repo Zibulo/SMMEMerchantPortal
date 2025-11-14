@@ -1304,6 +1304,68 @@ public class MerchantTransactions extends SystemUtilities {
         System.out.println("Payment completed and status checked");
     }
 
+
+    public void assignDevices(String assignDeviceOption, String deviceReceiptOption) throws Exception {
+
+        WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+
+
+        if(assignDeviceOption.equalsIgnoreCase("Deliver it"))
+        {
+            webDriverUtil.waitUntilElementClickable(driver,login.deliverItOption, 120);
+            webDriverUtil.clickElement(login.deliverItOption);
+
+            webDriverUtil.waitUntilElementClickable(driver,login.nextButton1, 120);
+            webDriverUtil.clickElement(login.nextButton1);
+
+            Thread.sleep(8000);
+
+           // webDriverUtil.waitUntilElementClickable(driver,login.deviceCardPaymentOption, 120);
+            Thread.sleep(4000);
+            webDriverUtil.clickElement(login.deviceCardPaymentOption);
+
+            webDriverUtil.waitUntilElementClickable(driver,login.payNowBtn, 120);
+            webDriverUtil.clickElement(login.payNowBtn);
+
+            if (deviceReceiptOption.equalsIgnoreCase("smsReceipt")) {
+                ////webDriverUtil.implicitWait(driver, 30);
+                webDriverUtil.clickElement(login.smsRadioOption);
+            }
+            else
+            {
+                webDriverUtil.waitUntilVisible(driver,login.emailRadioOption,30);
+                webDriverUtil.clickElement(login.emailRadioOption);
+                System.out.println("The email option has been selected");
+            }
+
+            Thread.sleep(2000);
+            webDriverUtil.clickElement(login.sendPaymentRequestBtn);
+
+
+
+
+        }else if (assignDeviceOption.equalsIgnoreCase("Take it now"))
+        {
+            webDriverUtil.waitUntilElementClickable(driver,login.takeItOption, 120);
+            webDriverUtil.clickElement(login.takeItOption);
+
+            webDriverUtil.waitUntilElementClickable(driver,login.nextButton1, 120);
+            webDriverUtil.clickElement(login.nextButton1);
+
+            Thread.sleep(5000);
+            webDriverUtil.waitUntilElementClickable(driver,login.nextButton1, 120);
+            Thread.sleep(2000);
+            webDriverUtil.clickElement(login.nextButton1);
+
+
+
+        }else{
+            System.out.println( assignDeviceOption + " is Not found");
+        }
+
+    }
+
     public void setUpTR() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
@@ -1598,44 +1660,71 @@ public class MerchantTransactions extends SystemUtilities {
         // Return them in an array
         return new int[]{year, month, day};
     }
+
+
     public void completePaymentRequest() throws Exception {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         CommonMethods commonMethods = new CommonMethods();
+        CardDetailsPom transactionsPom = new CardDetailsPom(driver);
+         Login login = new Login(driver);
 
-
-
-        Login login = new Login(driver);
+        System.out.println("common method is called ");
 
         Thread.sleep(10000);
-
         String link = commonMethods.getPaymentRequestLink();
-        String parent = commonMethods.openLinkInNewTab(link,driver);
+
+        System.out.println("111111111111111111");
 
 
+        String parentWindow = commonMethods.openLinkInNewTab(link, driver);
 
-        //entering credit card details
-    /*    webDriverUtil.enterText(login.nameOnCardInput, nameOnCard);
-        ////webDriverUtil.implicitWait(driver, 20);
-        webDriverUtil.enterText(login.cardNumInput, cardNum);
-        ////webDriverUtil.implicitWait(driver, 20);
-        webDriverUtil.selectByVisibleText(login.expiryYearDrpdwn ,"2029");
-        ////webDriverUtil.implicitWait(driver, 20);
-        webDriverUtil.selectByVisibleText(login.expirymonthDrpdwn, "February");
-        ////webDriverUtil.implicitWait(driver, 20);
-        webDriverUtil.enterText(login.cvvInput, cvv);
-        ////webDriverUtil.implicitWait(driver, 20);
+        Thread.sleep(10000);
+        webDriverUtil.implicitWait(driver, 24000);
+        webDriverUtil.enterText(transactionsPom.onceCardNo, "5120350100064594");
+        webDriverUtil.implicitWait(driver, 10);
+        webDriverUtil.enterText(transactionsPom.onceExpireMonth, "05");
+        //webDriverUtil.selectByVisibleText(transactionsPom.onceExpiryMonth, getCardExpireDate(onceExpiryDate));
+        webDriverUtil.implicitWait(driver, 10);
+        webDriverUtil.enterText(transactionsPom.onceExpiryYear, "26");
+        //webDriverUtil.selectByVisibleText(transactionsPom.onceExpireYear, getCardExpiryYear(onceExpireYear));
+        webDriverUtil.implicitWait(driver, 10);
+        webDriverUtil.enterText(transactionsPom.onceCvv, "855");
+        webDriverUtil.implicitWait(driver, 20);
+        webDriverUtil.enterText(transactionsPom.onceNameOnCard, "Testing Card");
+        webDriverUtil.implicitWait(driver, 30);
 
-     */
-      //  webDriverUtil.clickElement(login.paymentGatewayContinueBtn);
-      //  Thread.sleep(10000);
-      //  webDriverUtil.clickElement(login.paymentConfirmContinueBtn);
-      //  Thread.sleep(20000);
-        //closing payment window and switching control to previous window
-        //driver.close();
-        //driver.switchTo().window(parent);
-     //   System.out.println(driver.getCurrentUrl());
-     //   webDriverUtil.clickElement(login.checkPaymentStatusBtn);
-     //   Thread.sleep(10000);
+        webDriverUtil.clickElement(transactionsPom.tradePaymentSubmit);
+
+        Thread.sleep(25000);
+        List<WebElement> iframes = driver.findElements(By.id("3ds_iframe"));
+        if (!iframes.isEmpty())
+        {
+            driver.switchTo().frame("3ds_iframe");
+            WebElement heading = driver.findElement(By.xpath("//h1[contains(text(), 'You are using fake 3ds2 challenge page')]"));
+
+            if(heading.isDisplayed())
+            {
+                webDriverUtil.waitUntilElementClickable(driver,login.input_number_threeD,120);
+                webDriverUtil.enterText(login.input_number_threeD, "1234");
+                Thread.sleep(2000);
+                webDriverUtil.waitUntilElementClickable(driver,login.submit_threeD,120);
+                webDriverUtil.clickElement(login.submit_threeD);
+            }
+            System.out.println("Secured Authentication Button clicked");
+        }
+        Thread.sleep(5000);
+        webDriverUtil.implicitWait(driver, 30);
+        JavascriptExecutor jss = (JavascriptExecutor) driver;
+
+Thread.sleep(10000);
+
+
+// Close the payment tab and switch back to the parent window
+ driver.close();
+ driver.switchTo().window(parentWindow);
+ Thread.sleep(5000);
+  webDriverUtil.clickElement(login.checkPaymentStatusBtn);
+  System.out.println("Status checked");
 
             }
 
@@ -3623,7 +3712,7 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.clickElement(login.nextSubmitMerchantBtn);
 
 
-          Thread.sleep(9000);
+          Thread.sleep(1000);
 
 
     }
@@ -4087,8 +4176,12 @@ public class MerchantTransactions extends SystemUtilities {
         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
         Login login = new Login(driver);
 
-        Thread.sleep(6000);
-        webDriverUtil.clickElement(login.selectDealerDrpdwn);
+        Thread.sleep(7000);
+        WebElement input = driver.findElement(By.xpath("//*[@id=\"radix-_r_2_\"]"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", input);
+        input.click();
+       // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", login.selectDealerDrpdwn);
+       // webDriverUtil.clickElement(login.selectDealerDrpdwn);
         if (dealer.equalsIgnoreCase("Makro")) {
             webDriverUtil.implicitWait(driver, 05);
             webDriverUtil.waitUntilElementClickable(driver,login.makroDrpdwnOption, 120);
@@ -4123,15 +4216,35 @@ public class MerchantTransactions extends SystemUtilities {
         Thread.sleep(1200);
         webDriverUtil.clickElement(login.vodacomStoreAgentOption);
 
+    }else if(dealer.equalsIgnoreCase("Vodacom Payment Services NI"))
+    {
+
+        System.out.println("12234444");
+        webDriverUtil.implicitWait(driver, 05);
+        webDriverUtil.waitUntilElementClickable(driver,login.vpsNIDrpdwnOption, 120);
+        webDriverUtil.clickElement(login.vpsNIDrpdwnOption);
+        Actions actions = new Actions(driver);
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+        actions.sendKeys(Keys.ARROW_DOWN).perform();
+        actions.sendKeys(Keys.ENTER).perform();
+        //actions.moveToElement(login.vpsNIDrpdwnOption).click().perform();
+        Thread.sleep(3000);
     }
+
+
         Thread.sleep(4000);
         webDriverUtil.enterText(login.thirdPartyId, userId);
-        webDriverUtil.implicitWait(driver, 30);
+       // webDriverUtil.implicitWait(driver, 30);
+        Thread.sleep(4000);
         webDriverUtil.enterText(login.makroPassword, password);
         webDriverUtil.implicitWait(driver, 30);
         Thread.sleep(5000);
         webDriverUtil.clickElement(login.brk_loginBtn);
-        ////webDriverUtil.implicitWait(driver, 30);
+        webDriverUtil.implicitWait(driver, 30);
+
     }
 
     public void selectPayment(String onceCardNo,String onceExpiryDate,
@@ -4236,7 +4349,7 @@ public class MerchantTransactions extends SystemUtilities {
         CardDetailsPom CardDetailsPom = new CardDetailsPom(driver);
 
         Actions actions = new Actions(driver);
-        Thread.sleep(3000);
+        Thread.sleep(6000);
         WebElement dropdown1 = driver.findElement(By.xpath("//button[@data-automationid='Bank_Details_Bank_Name']"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", dropdown1);  //*[@id="root"]/div/div/main/main/article/section/form/div/div/div[1]/button
         Thread.sleep(2000);
@@ -4285,7 +4398,7 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
 
         webDriverUtil.clickElement(CardDetailsPom.nextBtn);
-        Thread.sleep(5000);
+        Thread.sleep(6000);
         if (CardDetailsPom.proofText.isDisplayed()) {
 //            WebElement uploadLabel = driver.findElement(By.xpath("//label[.//span[text()='Attach file']]"));
 //            uploadLabel.click();
@@ -4296,17 +4409,28 @@ public class MerchantTransactions extends SystemUtilities {
             Thread.sleep(2000);
             actions.sendKeys(Keys.ENTER);
 
+        }else
+        {
+            System.out.println("BAV PASSED");
         }
 
         webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
         webDriverUtil.clickElement(CardDetailsPom.nextBtn);
 
-//        Thread.sleep(6000);
+        Thread.sleep(5000);
 
-//        webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn3,120);
-//        webDriverUtil.clickElement(CardDetailsPom.nextBtn3);
-//
-//          Thread.sleep(2000);
+         if(CardDetailsPom.machineDelivery.isDisplayed())
+         {
+             Thread.sleep(500);
+             webDriverUtil.waitUntilElementClickable(driver,CardDetailsPom.nextBtn,120);
+             webDriverUtil.clickElement(CardDetailsPom.nextBtn);
+         }else
+         {
+             System.out.println("Card Machine delivery is not displayed.");
+         }
+
+
+          Thread.sleep(2000);
     }
 
     public void submitBankDetails(String bankName, String accountType, String accountNo,String openDate) throws Exception {
@@ -4676,6 +4800,28 @@ public class MerchantTransactions extends SystemUtilities {
         webDriverUtil.enterText(login.oTPNo6, String.valueOf(oTPNo6));
 
         webDriverUtil.implicitWait(driver,60);
+
+
+    }
+
+
+    public void enterSerialNumber(String serialNumber) throws Exception {
+         WebDriverUtilities webDriverUtil = new WebDriverUtilities();
+        Login login = new Login(driver);
+        Actions actions = new Actions(driver);
+
+         Thread.sleep(5000);
+        if(login.serialHeader.isDisplayed())
+        {
+            webDriverUtil.clickElement(login.input_serialNo);
+            webDriverUtil.enterText(login.input_serialNo, serialNumber);
+
+            webDriverUtil.clickElement(login.addSerialNobutton);
+
+            Thread.sleep(3000);
+            webDriverUtil.clickElement(login.nextButn);
+
+        }
 
 
     }

@@ -20,31 +20,35 @@ public class CommonMethods {
 
 
     public String getPaymentRequestLink() throws Exception {
-
         Thread.sleep(3600);
-        //String apikey = "6XMpUegGfXfIspPgnYn2ER4rmqdHvyeZ";
-        String apikey = "r3QIlcfLOCw60YWNCUhGqyskec3EabKU";
-        String serverid = "zriufac0";
-        //String server_domain = "fire-add@n9ftmnyu.mailosaur.net";
+        String apikey = "dqatswo4tpAgMk30quIufZGZ2QqVLbyu";
+      //  String serverid = "ce80x1dz"
 
-        MailosaurClient maialosaur = new MailosaurClient(apikey);
+
+        MailosaurClient maialosaur = new MailosaurClient("dqatswo4tpAgMk30quIufZGZ2QqVLbyu");
         MessageSearchParams params = new MessageSearchParams();
-        params.withServer(serverid);
+        params.withServer("ce80x1dz");
 
         SearchCriteria criteria = new SearchCriteria();
         criteria.withSubject("Make your payment using the VodaPay Payment Gateway");
-        Message msg = maialosaur.messages().get(params, criteria);
+        Thread.sleep(9000);
+        Message msg = maialosaur.messages().get(params,criteria);
         System.out.println("Sucessfully connected to Mailosaur Application");
         Thread.sleep(10000);
         String msgbody = msg.text().body();
         System.out.println("This is the message returned\n" + msgbody);
 
-        String regex = "https://uat[\\w.-]+(:\\d+)?(/[^\\s.]+)?";
+
+       // String regex = "https://[\\w.-]+(?:\\.[\\w.-]+)+(:\\d+)?(/[\\w\\-./?=&%]*)?";
+        String regex = "https://[\\w.-]+(?:\\.[\\w.-]+)+(:\\d+)?(/[\\w\\-./?=&%]*)?";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(msgbody);
         if (matcher.find()) {
+            Thread.sleep(4000);
             String url = matcher.group();
+            url = url.replaceAll("[.,;!?]+$", "");
             System.out.println("Expected URL: " + url);
+            Thread.sleep(2000);
             return url;
         } else {
             System.out.println("URL Not Found");
@@ -71,6 +75,11 @@ public class CommonMethods {
 
         // Navigate to the provided URL in the new tab
         driver.get(url);
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return parentWindow;
 
         // If needed, you can switch back to the parent window later

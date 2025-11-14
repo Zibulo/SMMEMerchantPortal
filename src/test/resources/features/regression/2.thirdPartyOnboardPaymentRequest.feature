@@ -12,33 +12,41 @@ Feature: third Party Login
     And When I select Dealer "<dealer>""<userId>""<password>"
     And I Choose Available POS Option "<deviceOption>"
     And Submit Personal Details "<firstName>" "<surName>" "<eMail>" "<mobileNo>"
-    #And Submit Merchant details SF Confirmation "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
-    And I Then Assign Device and Process Order "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
-    #And I Then Assign Device and Process Order SF Confirmation "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
+    And I Then Assign Device "<devicePaymentOption>" "<deviceReceiptOption>"
     And I verify Payment Request Link and complete payment "<devicePaymentOption>"
+    And I upload ID documents "<idDocumentType>"
+    And I take a selfie
+    And Submit business details "<businessType>" "<ownershipDetails>" "<title>" "<idNo>" "<companyRegName>" "<registrationNumber>" "<businessCategory>" "<inputBusinessStreetName>" "<businessAdress>"
+    And Submit Bank Details "<bankName>""<accountType>""<accountNumber>"
+    #And Enter Serial Number "<serialNumber>"
+
+    #And Submit Merchant details SF Confirmation "<ownershipDetails>" "<firstName>" "<surName>" "<eMail>" "<mobileNo>" "<idType>" "<idNo>" "<inputBusinessStreetName>" "<businessStreetName>" "<businessPostalCode>" "<businessSuburb>" "<businessTown>" "<Province>" "<journey_name>"
+    # And I Then Assign Device and Process Order "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
+    #And I Then Assign Device and Process Order SF Confirmation "<deviceReceiptOption>" "<devicePaymentOption>" "<journey_name>"
+    #And I verify Payment Request Link and complete payment "<devicePaymentOption>"
     #And I verify Payment Request Link and complete payment SF Confirmation "<devicePaymentOption>"
-    And I select immediate payment method "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>""<devicePaymentOption>"
+     #And I select immediate payment method "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>""<devicePaymentOption>"
     #And I select immediate payment method SF Confirmation "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>""<devicePaymentOption>"
-    And I Populate ThreeD Secure "<threeDPassword>""<cardType>""<bankName>"
+      #And I Populate ThreeD Secure "<threeDPassword>""<cardType>""<bankName>"
     #And I Populate ThreeD Secure SF Confirmation"<threeDPassword>""<cardType>""<bankName>"
-    And I close ThreeD tab "<devicePaymentOption>""<bankName>"
+      #And I close ThreeD tab "<devicePaymentOption>""<bankName>"
     #And I close ThreeD tab SF Confirmation"<devicePaymentOption>""<bankName>"
-    And I Check Payment Status "<devicePaymentOption>""<bankName>"
+      #And I Check Payment Status "<devicePaymentOption>""<bankName>"
     #And I Check Payment Status SF Confirmation"<devicePaymentOption>""<bankName>"
-    And Start Setup Customer Account Landing Page
-    And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
+      #And Start Setup Customer Account Landing Page
+      #And FICA PROCESS Pages Tell Us About The Customers Business "<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
     #And FICA PROCESS Pages Tell Us About The Customers Business SF Confirmation"<companyTypeOption>" "<companyRegName>" "<businessMonthlIncome>" "<businessCategory>" "<AddressYearMonthDayStayed>"
-    And FICA PROCESS Pages Confirm the customers personal details "<ownershipDetails>" "<firstName>" "<surName>"
+      #And FICA PROCESS Pages Confirm the customers personal details "<ownershipDetails>" "<firstName>" "<surName>"
     #And FICA PROCESS Pages Confirm the customers personal details SF Confirmation"<ownershipDetails>" "<firstName>" "<surName>"
     ##And FICA PROCESS Pages Confirm the customers banking details "<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
     ##And FICA PROCESS Pages Confirm the customers banking details SF Confirmation"<bankName>" "<idNo>" "<account_number>" "<firstName>" "<surName>"
-    And I Disable SMME DevTools Proof of Life
+      #And I Disable SMME DevTools Proof of Life
     #And I Disable SMME DevTools Proof of Life SF Confirmation
-    And I take a selfie
+     #And I take a selfie
     #And I take a selfie SF Confirmation
-    And I  upload documents "<companyTypeOption>""<idDocumentType>"
+      #And I  upload documents "<companyTypeOption>""<idDocumentType>"
     #And I  upload documents SF Confirmation"<companyTypeOption>""<idDocumentType>"
-    And I close all browser
+      #And I close all browser
     #
     #
     ##And I populate Once Card Details "<onceNameOnCard>""<onceCardNo>""<onceExpireYear>""<onceExpiryDate>""<onceCvv>"
@@ -49,8 +57,8 @@ Feature: third Party Login
     ##And I must assert card transaction message "Approved or completed successfully""<ExpectedMessage>" and report
 
     Examples:
-      | TC | ScenarioDescription | ScenarioType | reportName           | landingPage | reportAuthor      | landingPageSuccess | dealer | userId | password  | deviceOption     | merchantId      | passWord   | ownershipDetails           | firstName | surName | eMail                                 | mobileNo   | idType        | idNo          | idDocumentType | inputBusinessStreetName | businessStreetName     | businessPostalCode | businessSuburb   | businessTown | Province | deviceReceiptOption | devicePaymentOption | companyTypeOption   | companyRegName      | companyDifferentName | monthlyIncomeKnowledge | businessMonthlIncome | companyTradingName   | companyRegNo | businessCategory       | partnersID    | accountName    | accountNumber | onceNameOnCard | onceCardNo      | onceExpireYear | onceExpiryDate | onceCvv | threeDPassword | cardType | bankName      | AddressYearMonthDayStayed | account_number | journey_name | Barcode Number |
-      | 1  | Kwika Once off      | Positive     | Makro dealer journey | 3poURL      | Tebello Ntyingila |                    | Makro  | Maddy  | Testing@1 | VodaPay Kwika[1] | VPS983577986487 | 143@Mayoga | Business owner or Director | NONDIPHA  | LOUW    | lying-none@zriufac0.mailosaur.net | 0606799914 | South African | 6807015897087 | green card     | 4586 Isacholo Crescent  | 4586 Isacholo Crescent | 0187               | Blue Golf Estate | Centurion    | Gauteng  | emailReceipt        | cardPayment         | Sole Proprietorship | VFS Payment Testing | Yes                  | Yes                    | 15000                | VFS Software Testing | 123456789012 | Computer Software Shop | 6508267473086 | VFS Automators | 1234567890    | NONDIPHA LOUW  | 4606390200034986 | 2027           | March          | 165     | test123        | Physical | Nedbank Debit | 2024-03-03                | 1288655444     | Three PO     | K3R0W007700    |
+      | TC | ScenarioDescription | ScenarioType | reportName           | landingPage | reportAuthor      | landingPageSuccess | dealer | userId | password  | deviceOption     | merchantId      | passWord   | ownershipDetails           | firstName | surName | eMail                                 | mobileNo   | idType        | idNo          | idDocumentType | inputBusinessStreetName | businessStreetName     | businessPostalCode | businessSuburb   | businessTown | Province | deviceReceiptOption | devicePaymentOption | companyTypeOption   | companyRegName      | companyDifferentName | monthlyIncomeKnowledge | businessMonthlIncome | companyTradingName   | companyRegNo | businessCategory       | partnersID    | accountName    | accountNumber | onceNameOnCard | onceCardNo      | onceExpireYear | onceExpiryDate | onceCvv | threeDPassword | cardType | bankName      | AddressYearMonthDayStayed | account_number | journey_name | Barcode Number | businessType |  title |  registrationNumber | businessAdress | accountType | serialNumber |
+      | 1  | Kwika Once off      | Positive     | Makro dealer journey | 3poURL      | Tebello Ntyingila |                    | Vodacom Payment Services NI  | 726853452  | 5141 | VodaPay Kwika[1] | VPS983577986487 | 143@Mayoga | Business owner/director | NONDIPHA  | LOUW    | anything@ce80x1dz.mailosaur.net| 0606799914 | South African | 6807015897087 | South African ID card     | 4586 Isacholo Crescent  | 4586 Isacholo Crescent | 0187               | Blue Golf Estate | Centurion    | Gauteng  | emailReceipt        |Deliver it        | Sole Proprietorship | VFS Payment Testing | Yes                  | Yes                    | 15000                | VFS Software Testing | 123456789012 | Computer Software Shop | 6508267473086 | VFS Automators | 1234567890    | NONDIPHA LOUW  | 4606390200034986 | 2027           | March          | 165     | test123        | Physical | Nedbank | 2024-03-03                | 1288655444     | Three PO     | K3R0W007700    | Unregistered Business| Miss |1988/000188/23| My business address is the same as my trading address | Current Cheque Account | K3R0W8 904 03 |
       #| 2  | Makro selects Max                                        | Positive     | Makro dealer journey | 3poURL      | Tebello Ntyingila |                    | Makro  | Maddy  | Testing@1 | VodaPay Max Buy[1]                                                                                                        | VPS983577986487 | 143@Mayoga | Business owner or Director | NONDIPHA  | LOUW    | loose-congress@i7wbi0dc.mailosaur.net | 0833721854 | South African | 6807015897087 | green card     | 4586 Isacholo Crescent  | 4586 Isacholo Crescent | 0187               | Blue Golf Estate | Centurion    | Gauteng  | emailReceipt        | cardPayment         | Sole Proprietorship | VFS Payment Testing | Yes                  | Yes                    | 15000                | VFS Software Testing | 123456789012 | Computer Software Shop | 6508267473086 | VFS Automators | 1234567890    | NONDIPHA LOUW  | 377121700272544 | 2027           | March          | 165     | test123        | Physical | Nedbank Debit | 2024-03-03                | 1288655444     | Three PO     | K3R0W007700    |
       #| 3  | Makro selects All Virtual Devices                        | Positive     | Makro dealer journey | 3poURL      | Tebello Ntyingila |                    | Makro  | Maddy  | Testing@1 | VodaPay Tap on Phone[1],VodaPay Payment Gateway[1],VodaPay Payment Request[1]                                             | VPS983577986487 | 143@Mayoga | Business owner or Director | NONDIPHA  | LOUW    | loose-congress@i7wbi0dc.mailosaur.net | 0833721854 | South African | 6807015897087 | green card     | 4586 Isacholo Crescent  | 4586 Isacholo Crescent | 0187               | Blue Golf Estate | Centurion    | Gauteng  | emailReceipt        | cardPayment         | Sole Proprietorship | VFS Payment Testing | Yes                  | Yes                    | 15000                | VFS Software Testing | 123456789012 | Computer Software Shop | 6508267473086 | VFS Automators | 1234567890    | NONDIPHA LOUW  | 377121700272544 | 2027           | March          | 165     | test123        | Physical | Nedbank Debit | 2024-03-03                | 1288655444     | Three PO     | K3R0W007700    |
       #| 4  | Makro selects VPG                                        | Positive     | Makro dealer journey | 3poURL      | Tebello Ntyingila |                    | Makro  | Maddy  | Testing@1 | VodaPay Payment Gateway[1]                                                                                                | VPS983577986487 | 143@Mayoga | Business owner or Director | NONDIPHA  | LOUW    | loose-congress@i7wbi0dc.mailosaur.net | 0833721854 | South African | 6807015897087 | green card     | 4586 Isacholo Crescent  | 4586 Isacholo Crescent | 0187               | Blue Golf Estate | Centurion    | Gauteng  | emailReceipt        | cardPayment         | Sole Proprietorship | VFS Payment Testing | Yes                  | Yes                    | 15000                | VFS Software Testing | 123456789012 | Computer Software Shop | 6508267473086 | VFS Automators | 1234567890    | NONDIPHA LOUW  | 377121700272544 | 2027           | March          | 165     | test123        | Physical | Nedbank Debit | 2024-03-03                | 1288655444     | Three PO     | K3R0W007700    |
